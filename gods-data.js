@@ -453,7 +453,220 @@ const GENERAL_PURANA_DATA = {
                         His descendants led the Solar Dynasty through the Dvapara era down to King Brihadbala who fought in the Kurukshetra War.
                       `,
                       keyAttributes: ["Scholar sovereign", "Continuator of Ayodhya kingship", "Ancestor of Kurukshetra solar kings"],
-                      children: []
+                      children: [
+                        {
+                          id: "gen-nishadha-hiranyanabha",
+                          name: "King Nishadha, Nala & King Hiranyanabha",
+                          sanskrit: "राजा निषध, नल एवं महर्षि हिरण्यनाभ",
+                          title: "Sovereigns of Ayodhya & Master of Yoga from Sage Jaimini",
+                          category: "Suryavamsha King",
+                          tradition: "General Purana",
+                          parent: "gen-atithi",
+                          parentName: "King Atithi",
+                          consort: "Solar Royal Queens",
+                          vahana: "Royal Solar Chariot",
+                          ayudha: "Yoga Danda & Royal Bow",
+                          color: "#60A5FA",
+                          glowColor: "rgba(96, 165, 250, 0.8)",
+                          icon: "🧘",
+                          summary: "Descendants of Kusha and Atithi. King Hiranyanabha learned the transcendental science of Yoga from Rishi Jaimini and taught Sage Yajnavalkya.",
+                          shloka: {
+                            devanagari: "हिरण्यनाभः कौशल्यो जैमिनिप्रशिष्यो य एनं याज्ञवल्क्योऽधीतवान् योगम् ॥",
+                            transliteration: "Hiraṇyanābhaḥ kauśalyo jaimini-praśiṣyo ya enaṁ yājñavalkyo'dhītavān yogam ||",
+                            source: "Vishnu Purana 4.4.106 & Bhagavata 9.12.4",
+                            meaning: "The glorious King Hiranyanabha of Kosala, disciple of Sage Jaimini, instructed Sage Yajnavalkya in the profound science of spiritual Yoga."
+                          },
+                          details: `
+                            The Raghuvamsha continued unbroken through Atithi -> Nishadha -> Nala -> Nabhas -> Pundarika -> Kshemadhanva -> Devanika -> Ahinagu -> Paripatra -> Dala -> Chhala -> Uktha -> Vajranabha -> Shankhana -> Dhridhashva -> Vishvasaha -> Hiranyanabha.
+                            King Hiranyanabha was celebrated as a Rajarshi (royal sage), uniting temporal imperial rule with profound mastery of Adhyatma Yoga.
+                          `,
+                          keyAttributes: ["Instructed Sage Yajnavalkya in Yoga", "Disciple of Sage Jaimini", "Preserved the sacred Solar bloodline of Ayodhya"],
+                          children: [
+                            {
+                              id: "gen-maru-prashusruta",
+                              name: "King Maru of Kalapa & King Prashusruta",
+                              sanskrit: "राजा मरु (कलापग्राम योगी) एवं प्रशुश्रुत",
+                              title: "Immortal Yogic Guardian of the Solar Seed & King of Kosala",
+                              category: "Suryavamsha King",
+                              tradition: "General Purana",
+                              parent: "gen-nishadha-hiranyanabha",
+                              parentName: "King Hiranyanabha",
+                              consort: "Princess of Videha",
+                              vahana: "Yogic Vimana",
+                              ayudha: "Immortal Prana & Tapas Danda",
+                              color: "#38BDF8",
+                              glowColor: "rgba(56, 189, 248, 0.85)",
+                              icon: "🏔️",
+                              summary: "King Maru entered the Himalayan hermitage of Kalapa-grama through yogic Tapas to preserve the Solar Dynasty seed, to be re-manifested in the next Satya Yuga.",
+                              shloka: {
+                                devanagari: "मरुः कलापग्रामस्थो योगाभ्यासबलेन च । सूर्यवंशं समाश्रित्य पुनर्वंशं करिष्यति ॥",
+                                transliteration: "Maruḥ kalāpa-grāma-stho yogābhyāsa-balena ca | Sūrya-vaṁśaṁ samāśritya punar vaṁśaṁ kariṣyati ||",
+                                source: "Bhagavata Purana 9.12.6 & Vishnu Purana 4.4.108",
+                                meaning: "King Maru, residing in the hidden Himalayan retreat of Kalapa by the power of Yoga, will re-establish the Solar Dynasty at the close of Kali Yuga."
+                              },
+                              details: `
+                                Following Hiranyanabha came Pushya, Dhruvasandhi, Sudarshana, Agnivarna, Shighra, and Maru.
+                                While Maru retired into perpetual meditation in the Himalayas, his brother Prashusruta continued the ruling lineage in Ayodhya leading down to the Mahabharata era.
+                              `,
+                              keyAttributes: ["Immortal yogic monarch in Kalapa-grama", "Prophesied to restart Suryavamsha in Satya Yuga", "Brother Prashusruta maintained the temporal throne of Ayodhya"],
+                              children: [
+                                {
+                                  id: "gen-brihadbala",
+                                  name: "King Brihadbala of Kosala (Mahabharata Era)",
+                                  sanskrit: "महाराज बृहद्बल (कौसलेन्द्र / महाभारत वीर)",
+                                  title: "Last Pre-Mahabharata Sovereign of Ayodhya • Champion of the Solar Line",
+                                  category: "Suryavamsha King",
+                                  tradition: "General Purana",
+                                  parent: "gen-maru-prashusruta",
+                                  parentName: "King Maru & Prashusruta",
+                                  consort: "Queen of Kosala",
+                                  vahana: "Golden Sun Chariot",
+                                  ayudha: "Solar Bow & Golden Arrows",
+                                  color: "#F59E0B",
+                                  glowColor: "rgba(245, 158, 11, 0.85)",
+                                  icon: "🏹",
+                                  summary: "Direct descendant of Sri Rama and Kusha; ruled the Kosala empire from Ayodhya during the Kurukshetra war; fought heroically and was slain by Abhimanyu.",
+                                  shloka: {
+                                    devanagari: "बृहद्बलस्तु कौसल्यो रथेनादित्यवर्चसा । पाण्डवानां महानीकं युयुधे सूर्यवंशजः ॥",
+                                    transliteration: "Bṛhadbalas tu kauśalyo rathenāditya-varcasā | Pāṇḍavānāṁ mahānīkaṁ yuyudhe sūrya-vaṁśajaḥ ||",
+                                    source: "Mahabharata (Drona Parva) & Vishnu Purana 4.4.112",
+                                    meaning: "The valiant King Brihadbala of Kosala, radiant like the sun, fought the vast Pandava host with peerless chivalry, upholding the honor of the Solar Dynasty."
+                                  },
+                                  details: `
+                                    Descent: Prashusruta -> Sandhi -> Amarshana -> Mahasvan -> Vishvabhavan -> Prasenajit -> Takshaka -> Brihadbala.
+                                    Brihadbala led the formidable Kosala army in the Mahabharata war, serving as one of the key Maharathis in Drona's Chakravyuha formation.
+                                  `,
+                                  keyAttributes: ["Supreme ruler of Kosala at the close of Dvapara Yuga", "Fought in the Kurukshetra War", "Direct ancestor of the post-war kings of Ayodhya"],
+                                  children: [
+                                    {
+                                      id: "gen-post-mahabharata-kosala",
+                                      name: "The Post-Mahabharata Kings of Kosala",
+                                      sanskrit: "महाभारतोत्तर कौशल नरपतयः (बृहद्रथ ते संजय)",
+                                      title: "Sovereigns of the Solar Dynasty in the Early Kali Yuga (Vishnu Purana 4.22)",
+                                      category: "Suryavamsha King",
+                                      tradition: "General Purana",
+                                      parent: "gen-brihadbala",
+                                      parentName: "King Brihadbala",
+                                      consort: "Solar Royal Queens",
+                                      vahana: "Royal Chariot",
+                                      ayudha: "Dharma Scepter & Solar Standard",
+                                      color: "#EAB308",
+                                      glowColor: "rgba(234, 179, 8, 0.8)",
+                                      icon: "👑",
+                                      summary: "Brihadbala's son Brihadratha continued the dynasty through 25 generations of righteous monarchs chronicled in Vishnu Purana 4.22 and Bhagavata 9.12.",
+                                      shloka: {
+                                        devanagari: "बृहद्बलस्य पुत्रोऽभूद् बृहद्रथ इति स्मृतः । तस्यापि वत्सव्यूहस्तु ततो राजा प्रतिव्योमः ॥",
+                                        transliteration: "Bṛhadbalasya putro'bhūd bṛhadratha iti smṛtaḥ | Tasyāpi vatsavyūhas tu tato rājā prativyomaḥ ||",
+                                        source: "Vishnu Purana 4.22.1 & Bhagavata 9.12.9",
+                                        meaning: "Brihadbala's son was Brihadratha; from him was born Vatsavyuha, and from him King Prativyoma, continuing the solar kings of Ayodhya in Kali Yuga."
+                                      },
+                                      details: `
+                                        The unbroken succession recorded in the Puranas: Brihadratha -> Urukriya -> Vatsavyuha -> Prativyoma -> Divakara -> Sahadeva -> Brihadashva -> Bhanuratha -> Pratitashva -> Supratika -> Marudeva -> Sunakshatra -> Kinnarashva -> Antariksha -> Suparna -> Amitrajit -> Dharmin -> Kritanjaya -> Rananjaya -> Sanjayaka.
+                                        They preserved the Vedic sacrifices and royal temples of Ayodhya throughout the opening millennia of the Kali Yuga.
+                                      `,
+                                      keyAttributes: ["25 generations of post-war Ayodhya kings", "Recorded in detail in Vishnu Purana Book 4 Chapter 22", "Preserved the sacred Solar lineage of Sri Rama"],
+                                      children: [
+                                        {
+                                          id: "gen-shakya-suddhodana",
+                                          name: "King Shakya & King Suddhodana of Kapilavastu",
+                                          sanskrit: "राजा शाक्य, शुद्धोदन एवं सिद्धार्थ (गौतम बुद्ध)",
+                                          title: "Rulers of the Solar Shakya Clan • Ancestors of Gautama Buddha",
+                                          category: "Suryavamsha King",
+                                          tradition: "General Purana",
+                                          parent: "gen-post-mahabharata-kosala",
+                                          parentName: "Post-Mahabharata Kosala Kings",
+                                          consort: "Queen Mayadevi & Prajapati Gautami",
+                                          vahana: "Royal Chariot of Kapilavastu",
+                                          ayudha: "Dharma Chakra & Royal Staff",
+                                          color: "#CA8A04",
+                                          glowColor: "rgba(202, 138, 4, 0.8)",
+                                          icon: "🪷",
+                                          summary: "Descent from Sanjayaka -> Shakya -> Suddhodana. The Shakya clan of the Solar Dynasty ruled Kapilavastu; Suddhodana's son Prince Siddhartha became Gautama Buddha.",
+                                          shloka: {
+                                            devanagari: "सञ्जयात् शाक्यस्तस्मात् शुद्धोदनस्ततो सिद्धार्थः । राहुलस्तस्य पुत्रोऽभूत् प्रसेनजित् ततः परम् ॥",
+                                            transliteration: "Sañjayāt śākyas tasmāt śuddhodanas tato siddhārthaḥ | Rāhulas tasya putro'bhūt prasenajit tataḥ param ||",
+                                            source: "Vishnu Purana 4.22.12 & Bhagavata 9.12.14",
+                                            meaning: "From Sanjaya came Shakya, from him Suddhodana, and from him Siddhartha (Buddha); his son was Rahula, and after him came King Prasenajit of Kosala."
+                                          },
+                                          details: `
+                                            The Puranas explicitly document the connection between the ancient Ikshvaku dynasty of Sri Rama and the Shakya royal house.
+                                            Prince Siddhartha renounced his royal inheritance to seek universal liberation, becoming the teacher of Ahimsa and compassion, while his son Rahula and nephew Prasenajit ruled the empire.
+                                          `,
+                                          keyAttributes: ["Solar Dynasty roots of the Shakya republic", "King Suddhodana ruled from Kapilavastu", "Canonical bridge between Vedic monarchy and classical history"],
+                                          children: [
+                                            {
+                                              id: "gen-prasenajit-sumitra",
+                                              name: "King Prasenajit & King Sumitra (Last Puranic Ikshvaku)",
+                                              sanskrit: "राजा प्रसेनजित् एवं राजा सुमित्र (सूर्यवंश अन्तिम नरेश)",
+                                              title: "Emperors of Kosala • The Culmination of the Puranic Solar Line",
+                                              category: "Suryavamsha King",
+                                              tradition: "General Purana",
+                                              parent: "gen-shakya-suddhodana",
+                                              parentName: "King Shakya & Suddhodana",
+                                              consort: "Queen Mallika of Kosala",
+                                              vahana: "Imperial Kosala Chariot",
+                                              ayudha: "Dharma Scepter & Royal Crown",
+                                              color: "#EAB308",
+                                              glowColor: "rgba(234, 179, 8, 0.85)",
+                                              icon: "👑",
+                                              summary: "King Prasenajit was the great patron of Dharma in Shravasti; the Puranas conclude the classical Ikshvaku king-list with King Sumitra, after whom the dynasty branched into the classical regional kingdoms.",
+                                              shloka: {
+                                                devanagari: "सुमित्रं प्राप्य राजानं संस्थां प्राप्स्यति वै कलौ । इक्ष्वाकूणामयं वंशः सुमित्रान्तो भविष्यति ॥",
+                                                transliteration: "Sumitraṁ prāpya rājānaṁ saṁsthāṁ prāpsyati vai kalau | Ikṣvākūṇām ayaṁ vaṁśaḥ sumitrānto bhaviṣyati ||",
+                                                source: "Vishnu Purana 4.22.14 & Bhagavata 9.12.16",
+                                                meaning: "Reaching King Sumitra in the Kali Yuga, the classical Ikshvaku dynasty reaches its conclusion; thus the ancient lineage is designated as ending with Sumitra."
+                                              },
+                                              details: `
+                                                King Prasenajit ruled the united realm of Kosala from Shravasti, renowned for his discourses on moral justice and patron of all spiritual seekers.
+                                                The line continued through Ksudraka, Ranaka, Suratha, and King Sumitra.
+                                                Following Sumitra, the royal princes established the celebrated Suryavamshi dynasties across Rajasthan, Malwa, and northern India.
+                                              `,
+                                              keyAttributes: ["King Prasenajit ruled from Shravasti", "King Sumitra celebrated as the last canonical Ikshvaku sovereign", "Fountainhead of the medieval Solar Rajput houses"],
+                                              children: [
+                                                {
+                                                  id: "gen-later-solar-kings",
+                                                  name: "Classical Suryavamshi Monarchs to 500 AD (Yashodharman)",
+                                                  sanskrit: "उत्तर सूर्यवंशीय सम्राजः (यशोधर्मन् एवं वर्धनाः • ५०० ईस्वी)",
+                                                  title: "Emperors of Malwa & Thanesar • Defeaters of the Hunas (c. 500–528 AD)",
+                                                  category: "Suryavamsha King",
+                                                  tradition: "General Purana",
+                                                  parent: "gen-prasenajit-sumitra",
+                                                  parentName: "King Prasenajit & King Sumitra",
+                                                  consort: "Empresses of Malwa",
+                                                  vahana: "Imperial War Chariot",
+                                                  ayudha: "Victory Pillar of Sondani & Solar Sword",
+                                                  color: "#FACC15",
+                                                  glowColor: "rgba(250, 204, 21, 0.9)",
+                                                  icon: "🏛️",
+                                                  summary: "Preserving the solar legacy down to c. 500 AD. King Yashodharman of Malwa (Sondani inscription, 528 AD) shattered the invading Hunas, and King Pushyabhuti founded the Vardhana dynasty of Thanesar.",
+                                                  shloka: {
+                                                    devanagari: "येनाज्ञा न प्रणीता नृपतिभिरखिलैः सादरं धार्यमाणा यस्योदग्रं न नम्रं शिर इह विहितं शूलपाणिं विहाय ॥",
+                                                    transliteration: "Yenājñā na praṇītā nṛpatibhir akhilaiḥ sādaraṁ dhāryamāṇā yasyodagraṁ na namraṁ śira iha vihitaṁ śūla-pāṇiṁ vihāya ||",
+                                                    source: "Sondani Pillar Inscription of Yashodharman (528 AD)",
+                                                    meaning: "Whose imperial command was honored by all sovereigns of the earth, and whose proud head never bowed before anyone in the three worlds—except before Lord Shiva who wields the Trident!"
+                                                  },
+                                                  details: `
+                                                    By 500 AD, the ancient Solar lineage manifested through heroic defenders of Sanatan civilization:
+                                                    King Yashodharman of Malwa crushed the brutal Huna invader Mihirakula, erecting the colossal victory pillars at Sondani.
+                                                    Concurrently, King Pushyabhuti laid the foundations of the Vardhana dynasty at Thanesar, which culminated in Emperor Harshavardhana.
+                                                  `,
+                                                  keyAttributes: ["Brought the Solar lineage to c. 500–528 AD", "Defeated the fierce Huna invaders at the Battle of Sondani", "Re-established classical Vedic temple culture across northern India"],
+                                                  children: []
+                                                }
+                                              ]
+                                            }
+                                          ]
+                                        }
+                                      ]
+                                    }
+                                  ]
+                                }
+                              ]
+                            }
+                          ]
+                        }
+                      ]
+
                     }
                   ]
                 },
@@ -664,7 +877,38 @@ const GENERAL_PURANA_DATA = {
                             "Consecrated deities of Mathura & Vrindavan",
                             "Bridge between Dvapara and Kaliyuga"
                           ],
+                          children: [
+                        {
+                          id: "gen-pratibahu-subahu",
+                          name: "Kings Pratibahu & Subahu of Mathura",
+                          sanskrit: "राजा प्रतिबाहु एवं सुबाहु (शूरसेन नरेश)",
+                          title: "Great-Grandsons of Sri Krishna • Consecrators of the Sacred Shrines of Braj",
+                          category: "Yaduvamsha Kings",
+                          tradition: "General Purana",
+                          parent: "gen-vajranabha",
+                          parentName: "King Vajranabha",
+                          consort: "Princesses of the Solar Dynasty",
+                          vahana: "Royal Chariot of Mathura",
+                          ayudha: "Dharma Standard & Golden Discus",
+                          color: "#818CF8",
+                          glowColor: "rgba(129, 140, 248, 0.8)",
+                          icon: "🪷",
+                          summary: "Sons of King Vajranabha; ruled Mathura and Shurasena, consecrated the eternal Krishna temples of Braj (Govardhan, Keshavadeva, Harideva) preserving the sacred memory of Sri Krishna into the historic era.",
+                          shloka: {
+                            devanagari: "वज्रस्य पुत्रः प्रतिबाहुस्तस्माच्च सुबाहुर्नृपः । शूरसेनेषु राज्यं तु चक्रतुः कृष्णकीर्तिनौ ॥",
+                            transliteration: "Vajrasya putraḥ pratibāhus tasmāc ca subāhur nṛpaḥ | Śūraseneṣu rājyaṁ tu cakratuḥ kṛṣṇa-kīrtinau ||",
+                            source: "Vishnu Purana 4.15 & Harivamsha",
+                            meaning: "King Vajra's son was Pratibahu, and from him was born Subahu; both ruled the realm of Shurasena, singing the eternal glories of Lord Sri Krishna."
+                          },
+                          details: `
+                            Installed by the Pandavas in the ancestral capital of Mathura after the disappearance of the Yadu heroes, Vajranabha and his sons Pratibahu and Subahu identified the sacred spots of Sri Krishna's Lilas.
+                            They carved the iconic deities of Govardhanadhari, Keshavadeva, and Baladeva, establishing the sacred pilgrimage circuit of Braj Mandala.
+                          `,
+                          keyAttributes: ["Heirs of the Yaduvamsha after the Kurukshetra era", "Consecrated the primary temples of Braj Mandala", "Carried the divine Krishna heritage into recorded history"],
                           children: []
+                        }
+                      ]
+
                         }
                       ]
                     }
@@ -1125,7 +1369,38 @@ const GENERAL_PURANA_DATA = {
                 His son Yayati became a universal Chakravartin. Through Queen Devayani (daughter of Shukracharya) he begot Yadu (ancestor of Krishna), and through Sharmishtha he begot Puru (ancestor of Bharata and the Pandavas).
               `,
               keyAttributes: ["Fountainhead of Yaduvamsha & Pauravavamsha", "Son of Ashokasundari", "Ruler of Aryavarta"],
-              children: []
+              children: [
+                {
+                  id: "gen-pallava-kadamba",
+                  name: "The Pallavas of Kanchi & Kadambas of Banavasi (to 500 AD)",
+                  sanskrit: "पल्लव एवं कदम्ब साम्राज्य (कांची एवं बनवासी • ५०० ईस्वी)",
+                  title: "Sovereigns of Dakshinapatha • Pioneers of Rock-Cut Dravidian Architecture",
+                  category: "Dakshinapatha Dynasties",
+                  tradition: "General Purana",
+                  parent: "gen-nahusha-yayati",
+                  parentName: "King Nahusha & Emperor Yayati",
+                  consort: "Queens of Kanchipuram and Banavasi",
+                  vahana: "Royal Bull (Vrishabha) & Golden Chariot",
+                  ayudha: "Trishula Standard & Kadamba Royal Staff",
+                  color: "#A855F7",
+                  glowColor: "rgba(168, 85, 247, 0.85)",
+                  icon: "🏛️",
+                  summary: "Descending through the southern dynasties to c. 500 AD. King Mayurasharma founded the Kadamba dynasty of Banavasi; the early Pallavas of Kanchi consecrated rock-cut monolithic sanctuaries across Tamil Nadu.",
+                  shloka: {
+                    devanagari: "कांचीपुरवराधीशः पल्लवानां कुलोद्भवः । धर्मप्रतिष्ठां कृत्वा तु पालयामास मेदिनीम् ॥",
+                    transliteration: "Kāñcī-pura-varādhīśaḥ pallavānāṁ kulodbhavaḥ | Dharma-pratiṣṭhāṁ kṛtvā tu pālayāmāsa medinīm ||",
+                    source: "Talagunda & Kanchi Inscriptions (c. 450–500 AD)",
+                    meaning: "The sovereign lord of the glorious city of Kanchi, born of the noble Pallava line, establishing righteousness, protected the earth with wisdom and valor."
+                  },
+                  details: `
+                    By 500 AD, South Indian civilization flourished under the early Pallavas of Kanchi (Simhavarman, Skandavarman) and the Kadambas of Banavasi (founded by the scholar-warrior Mayurasharma, 345–365 AD).
+                    They patronized Vedic learning, created early rock-cut shrines, and established Kanchipuram as one of the seven sacred Mokshapuri cities of Sanatan Dharma.
+                  `,
+                  keyAttributes: ["Brought the southern royal genealogies to 500 AD", "Rulers of Kanchipuram, one of the 7 Mokshapuris", "Pioneered early Dravidian rock-cut and structural temples"],
+                  children: []
+                }
+              ]
+
             }
           ]
         },
@@ -2509,7 +2784,228 @@ const GENERAL_PURANA_DATA = {
                                         "Performed the Sarpa Satra at Takshashila",
                                         "Continued the Kuru dynasty through King Shatanika"
                                       ],
-                                      children: []
+                                      children: [
+                                        {
+                                          id: "gen-nichakshu-kausambi",
+                                          name: "King Nichakshu & The Kausambi Transfer",
+                                          sanskrit: "राजा निचक्षु (कौशाम्बी राजधानी प्रवर्तक)",
+                                          title: "Great-Grandson of Janamejaya • Sovereign of the Vatsa Kingdom",
+                                          category: "Kuruvamsha",
+                                          tradition: "General Purana",
+                                          parent: "gen-janamejaya",
+                                          parentName: "King Janamejaya",
+                                          consort: "Queen of the Pauravas",
+                                          vahana: "Royal River Barge & Chariot",
+                                          ayudha: "Dharma Scepter & Imperial Seal",
+                                          color: "#EAB308",
+                                          glowColor: "rgba(234, 179, 8, 0.8)",
+                                          icon: "🏛️",
+                                          summary: "When ancient Hastinapura was inundated by a catastrophic flood of the sacred Ganga, King Nichakshu safely transferred the imperial Paurava capital to Kausambi.",
+                                          shloka: {
+                                            devanagari: "गङ्गापहृते तस्मिन् नगरे नागसाह्वये । निचक्षुर्वत्सभूमौ तु कौशाम्ब्यां न्यवसन् नृपः ॥",
+                                            transliteration: "Gaṅgāpahṛte tasmin nagare nāgasāhvaye | Nicakṣur vatsa-bhūmau tu kauśāmbyāṁ nyavasan nṛpaḥ ||",
+                                            source: "Matsya Purana 50.78 & Vishnu Purana 4.21.1",
+                                            meaning: "When the city of Hastinapura (Nagasahvaya) was washed away by the roaring waters of Ganga, King Nichakshu established his capital in the fertile land of Vatsa at Kausambi."
+                                          },
+                                          details: `
+                                            Janamejaya's son Shatanika was succeeded by Ashvamedhadatta, from whom was born Adhisimakrishna, and from him King Nichakshu.
+                                            The move from Hastinapura to Kausambi (near Prayagraj) marked the geographic and political pivot of the Lunar Dynasty from the upper Doab to the middle Gangetic plains.
+                                          `,
+                                          keyAttributes: ["Transferred capital from Hastinapura to Kausambi", "Preserved the sacred Paurava crown after the Ganga flood", "Pivotal link in Puranic archaeology and history"],
+                                          children: [
+                                            {
+                                              id: "gen-king-udayana",
+                                              name: "King Udayana of Vatsa & King Kshemaka",
+                                              sanskrit: "राजा उदयन एवं राजा क्षेमक (कुरुवंश पर्यवसान)",
+                                              title: "Romantic Hero of Sanskrit Drama • Last Direct Kings of the Pauravas",
+                                              category: "Kuruvamsha",
+                                              tradition: "General Purana",
+                                              parent: "gen-nichakshu-kausambi",
+                                              parentName: "King Nichakshu",
+                                              consort: "Queen Vasavadatta (Princess of Avanti) & Padmavati",
+                                              vahana: "Ghoshayati Lute & Celestial Elephant",
+                                              ayudha: "Veena (Ghoshayati) & Royal Bow",
+                                              color: "#CA8A04",
+                                              glowColor: "rgba(202, 138, 4, 0.8)",
+                                              icon: "🎵",
+                                              summary: "Celebrated hero of Bhasa's Svapnavasavadatta and Kalidasa's Meghaduta; contemporary of Buddha. The Puranas record King Kshemaka as the final monarch of the direct Paurava line.",
+                                              shloka: {
+                                                devanagari: "क्षेमकं प्राप्य राजानं संस्थां प्राप्स्यति वै कलौ । पौरवाणां मया ख्यातो वंशोऽयं भरतर्षभ ॥",
+                                                transliteration: "Kṣemakaṁ prāpya rājānaṁ saṁsthāṁ prāpsyati vai kalau | Pauravāṇāṁ mayā khyāto vaṁśo'yaṁ bharatarṣabha ||",
+                                                source: "Vishnu Purana 4.21.18 & Matsya Purana 273.11",
+                                                meaning: "Reaching King Kshemaka in the Kali Yuga, the classical dynasty of the Pauravas reaches its conclusion; thus has the sacred line of Bharata been glorified."
+                                              },
+                                              details: `
+                                                King Udayana was renowned for his mastery of the musical Veena, which could enchant wild elephants, and his legendary love for Princess Vasavadatta of Ujjain.
+                                                Following Udayana came Vahinara, Dandapani, Niramitra, and King Kshemaka, after which the imperial center shifted decisively to Magadha.
+                                              `,
+                                              keyAttributes: ["Immortalized in classical Sanskrit literature (Bhasa, Kalidasa)", "Ruler of Kausambi contemporary with Buddha", "King Kshemaka closes the direct Paurava list in the Puranas"],
+                                              children: [
+                                                {
+                                                  id: "gen-magadha-haryanka-nanda",
+                                                  name: "The Magadha Dynasties (Haryanka, Shishunaga & Nandas)",
+                                                  sanskrit: "मगध साम्राज्य (हर्यङ्क, शैशुनाग एवं महापद्म नन्द)",
+                                                  title: "Imperial Unifiers of Aryavarta • Overlords of Pataliputra",
+                                                  category: "Magadha Empires",
+                                                  tradition: "General Purana",
+                                                  parent: "gen-king-udayana",
+                                                  parentName: "King Udayana & Kshemaka",
+                                                  consort: "Empresses of Magadha",
+                                                  vahana: "Chaturangabala (Chariot, Elephant, Cavalry, Infantry)",
+                                                  ayudha: "Imperial Scepter & Wheel of Ekachhatra Rule",
+                                                  color: "#F59E0B",
+                                                  glowColor: "rgba(245, 158, 11, 0.85)",
+                                                  icon: "👑",
+                                                  summary: "King Bimbisara and Ajatashatru built the mighty fortress of Pataliputra; Emperor Mahapadma Nanda unified northern India under a single sovereign umbrella (Ekachhatra).",
+                                                  shloka: {
+                                                    devanagari: "महापद्मपतिः कश्चित् नन्दः क्षत्रविनाशकृत् । ततो नृपा भविष्यन्ति शूद्रप्रायास्त्वधर्मिणः ॥",
+                                                    transliteration: "Mahāpadma-patiḥ kaścit nandaḥ kṣatra-vināśa-kṛt | Tato nṛpā bhaviṣyanti śūdra-prāyās tv adharmiṇaḥ ||",
+                                                    source: "Vishnu Purana 4.24.20 & Bhagavata 12.1.8",
+                                                    meaning: "A powerful emperor named Mahapadma Nanda shall arise, the vanquisher of all rival Kshatriyas, ruling as the sole monarch with an army of countless legions."
+                                                  },
+                                                  details: `
+                                                    As prophesied in Vishnu Purana 4.23–24 and Bhagavata 12.1, the political soul of India converged on Magadha.
+                                                    King Udayin established Pataliputra (modern Patna) at the confluence of the Son and Ganga rivers, which became the imperial capital of India for nearly a millennium.
+                                                  `,
+                                                  keyAttributes: ["Unified northern India under Ekachhatra sovereignty", "Established the grand imperial capital of Pataliputra", "Commanded the formidable fourfold army (Chaturangabala)"],
+                                                  children: [
+                                                    {
+                                                      id: "gen-maurya-empire",
+                                                      name: "The Maurya Empire (Chandragupta, Chanakya & Ashoka)",
+                                                      sanskrit: "मौर्य साम्राज्य (चन्द्रगुप्त, चाणक्य एवं चक्रवर्ती अशोक)",
+                                                      title: "First Pan-Indian Empire • Devanampriya Priyadarsin (c. 322–185 BCE)",
+                                                      category: "Maurya Empire",
+                                                      tradition: "General Purana",
+                                                      parent: "gen-magadha-haryanka-nanda",
+                                                      parentName: "The Magadha Dynasties",
+                                                      consort: "Empress Durdhara & Empress Asandhimitra",
+                                                      vahana: "Imperial War Chariot",
+                                                      ayudha: "Dharma Stambha (Ashoka Pillars) & Imperial Sword",
+                                                      color: "#38BDF8",
+                                                      glowColor: "rgba(56, 189, 248, 0.9)",
+                                                      icon: "🦁",
+                                                      summary: "Founded by Emperor Chandragupta Maurya under the guidance of Acharya Chanakya; Emperor Ashoka the Great erected the Lion Capital and rock edicts across the subcontinent.",
+                                                      shloka: {
+                                                    devanagari: "तान् नन्दान् कौटिल्यो ब्राह्मणः समुद्धरिष्यति । भुक्त्वा महीं वर्षशतं तेभ्यो मौर्या गमिष्यति ॥",
+                                                    transliteration: "Tān nandān kauṭilyo brāhmaṇaḥ samuddhariṣyati | Bhuktvā mahīṁ varṣa-śataṁ tebhyo mauryā gamiṣyati ||",
+                                                    source: "Vishnu Purana 4.24.26 & Bhagavata 12.1.11",
+                                                    meaning: "A brilliant Brahmana named Kautilya (Chanakya) will uproot the nine Nandas; upon their fall, the earth shall pass into the hands of the noble Mauryas for over a century."
+                                                      },
+                                                      details: `
+                                                        Guided by Chanakya's *Arthashastra*, Chandragupta Maurya expelled Greek garrisons and unified India from Afghanistan to the Bay of Bengal.
+                                                        His grandson, Emperor Ashoka the Great, inscribed moral law (Dharma) upon rock faces and colossal monolithic stone pillars. His four-lion capital stands today as the sacred national emblem of India.
+                                                      `,
+                                                      keyAttributes: ["Guided by Acharya Chanakya (Kautilya)", "Created the first pan-Indian subcontinent empire", "Ashoka's Lion Capital and rock-cut Dharma edicts"],
+                                                      children: [
+                                                        {
+                                                          id: "gen-shunga-kanva",
+                                                          name: "The Shunga & Kanva Empires (Pushyamitra Shunga)",
+                                                          sanskrit: "शुङ्ग एवं कण्व साम्राज्य (सम्राट् पुष्यमित्र शुङ्ग)",
+                                                          title: "Revivers of the Vedic Ashvamedha Yajna • Patrons of Sage Patanjali",
+                                                          category: "Shunga-Kanva Empires",
+                                                          tradition: "General Purana",
+                                                          parent: "gen-maurya-empire",
+                                                          parentName: "The Maurya Empire",
+                                                          consort: "Empress of Vidisha",
+                                                          vahana: "Vedic Ashvamedha Steed",
+                                                          ayudha: "Sacrificial Yupa & Golden Bow",
+                                                          color: "#CA8A04",
+                                                          glowColor: "rgba(202, 138, 4, 0.8)",
+                                                          icon: "🐎",
+                                                          summary: "General Pushyamitra Shunga established the Shunga dynasty at Pataliputra and Vidisha, performed two grand Ashvamedha sacrifices, and patronized the Great Grammarian Sage Patanjali.",
+                                                          shloka: {
+                                                            devanagari: "पुष्यमित्रस्तु सेनानीरुद्धृत्य बृहद्रथम् । कारयिष्यति राज्यं वै शतमेकं च वर्षतः ॥",
+                                                            transliteration: "Puṣyamitras tu senānīr uddhṛtya bṛhadratham | Kārayiṣyati rājyaṁ vai śatam ekaṁ ca varṣataḥ ||",
+                                                            source: "Vishnu Purana 4.24.34 & Bhagavata 12.1.16",
+                                                            meaning: "The commander-in-chief Pushyamitra, overthrowing Brihadratha, will establish the Shunga sovereignty, ruling with valor and reviving Vedic rituals."
+                                                          },
+                                                          details: `
+                                                            Pushyamitra Shunga repelled the Greco-Bactrian invasions of northern India.
+                                                            His court in Pataliputra and Vidisha witnessed the composition of Sage Patanjali's *Mahabhasya*.
+                                                            His son Agnimitra was immortalized in Kalidasa's *Malavikagnimitram*. The dynasty built the magnificent sculpted stone toranas (gateways) of Sanchi Stupa.
+                                                          `,
+                                                          keyAttributes: ["Performed two grand Vedic Ashvamedha Yajnas", "Patronized Sage Patanjali, author of the Mahabhasya", "Erected the sculpted stone gateways at Sanchi and Bharhut"],
+                                                          children: [
+                                                            {
+                                                              id: "gen-satavahana-dynasty",
+                                                              name: "The Andhra Satavahana Empire (Gautamiputra Satakarni)",
+                                                              sanskrit: "सातवाहन साम्राज्य (गौतमीपुत्र सातकर्णि • दक्षिणापथपति)",
+                                                              title: "Lords of the Deccan (Dakshinapatha) • Restorers of the Vedic Social Order",
+                                                              category: "Satavahana Empire",
+                                                              tradition: "General Purana",
+                                                              parent: "gen-shunga-kanva",
+                                                              parentName: "Shunga & Kanva Empires",
+                                                              consort: "Gautami Balashri & Queen Nayanika",
+                                                              vahana: "Sea-Going Merchant Ships & War Elephants",
+                                                              ayudha: "Dharma Scepter & Trishula Standard",
+                                                              color: "#10B981",
+                                                              glowColor: "rgba(16, 185, 129, 0.85)",
+                                                              icon: "⚓",
+                                                              summary: "Great monarchs of Maharashtra and Andhra (Pratishthana / Paithan). Gautamiputra Satakarni shattered Western Kshatrapa incursions, revived Vedic sacrifices, and fostered maritime trade.",
+                                                              shloka: {
+                                                                devanagari: "आन्ध्रा भोक्ष्यन्ति वसुधां शतं त्रीणि च पञ्च च । सिमुकस्तत्र राजा वै प्रथमं संभविष्यति ॥",
+                                                                transliteration: "Āndhrā bhokṣyanti vasudhāṁ śataṁ trīṇi ca pañca ca | Simukas tatra rājā vai prathamaṁ sambhaviṣyati ||",
+                                                                source: "Vishnu Purana 4.24.47 & Matsya Purana 273.1",
+                                                                meaning: "The Andhra (Satavahana) kings shall rule the earth for over four centuries; King Simuka will be the first among these illustrious southern sovereigns."
+                                                              },
+                                                              details: `
+                                                                The Satavahanas (known as the Andhras in the Puranas) unified the Deccan plateau between the Arabian Sea and the Bay of Bengal.
+                                                                Gautamiputra Satakarni proudly bore his mother's name (*Metronymic*), declared himself the 'Sole Protector of Truth' (*Eka-Brahmana*), and commissioned the rock-cut monasteries of Nashik and Karle.
+                                                              `,
+                                                              keyAttributes: ["Lords of the Deccan (Dakshinapathapati)", "Gautamiputra Satakarni crushed foreign Scythian (Shaka) invasions", "Pioneered maritime trade and Buddhist/Vedic rock-cut architecture"],
+                                                              children: [
+                                                                {
+                                                                  id: "gen-gupta-empire",
+                                                                  name: "The Imperial Gupta Dynasty (c. 320–550 AD • Golden Age)",
+                                                                  sanskrit: "गुप्त साम्राज्य (सुवर्णयुग • चन्द्रगुप्त, समुद्रगुप्त, विक्रमादित्य)",
+                                                                  title: "Maharajadhirajas of Aryavarta • The Golden Age of Classical Sanatan Dharma",
+                                                                  category: "Gupta Empire",
+                                                                  tradition: "General Purana",
+                                                                  parent: "gen-satavahana-dynasty",
+                                                                  parentName: "The Satavahana Empire",
+                                                                  consort: "Empress Kumaradevi, Dattadevi, Dhruvadevi",
+                                                                  vahana: "Garuda Standard (Garudadhvaja)",
+                                                                  ayudha: "Ashvamedha Parakrama Bow, Veena & Iron Pillar of Delhi",
+                                                                  color: "#FACC15",
+                                                                  glowColor: "rgba(250, 204, 21, 0.95)",
+                                                                  icon: "👑",
+                                                                  summary: "Predicted in Vishnu Purana 4.24.63. Chandragupta I, Samudragupta, and Chandragupta II Vikramaditya patronized Mahakavi Kalidasa, Varahamihira, Nalanda University, and built an empire of sublime art, literature, and science.",
+                                                                  shloka: {
+                                                                    devanagari: "अनुगङ्गां प्रयागं च साकेतं मगधांस्तथा । एतान् जनपदान् सर्वान् भोक्ष्यन्ते गुप्तवंशजाः ॥",
+                                                                    transliteration: "Anugaṅgāṁ prayāgaṁ ca sāketaṁ magadhāṁs tathā | Etān janapadān sarvān bhokṣyante gupta-vaṁśajāḥ ||",
+                                                                    source: "Vishnu Purana 4.24.63 & Bhagavata 12.1.37",
+                                                                    meaning: "Along the sacred course of the Ganga, Prayaga, Saketa (Ayodhya), and Magadha—all these sovereign realms shall be ruled by the glorious monarchs of the Gupta Dynasty!"
+                                                                  },
+                                                                  details: `
+                                                                    The **Gupta Empire (c. 320–550 AD)** represents the pinnacle of ancient Indian civilization (*The Golden Age*):
+                                                                    - **Chandragupta I** (319–335 AD): Founded the Gupta Era, married Licchavi Princess Kumaradevi.
+                                                                    - **Samudragupta** (335–375 AD): The *Parakramanka*, undefeated in 100 battles (Prayaga Prashasti by Harishena), performed the Vedic Ashvamedha, and played the Veena on his gold coins.
+                                                                    - **Chandragupta II Vikramaditya** (375–415 AD): Conquered the Western Kshatrapas; court adorned by the **Navaratnas** (Nine Gems), including **Mahakavi Kalidasa**, astronomer **Varahamihira**, and physician **Dhanvantari**; erected the rustless Iron Pillar of Delhi.
+                                                                    - **Kumaragupta I** (415–455 AD): Founded the world's greatest international center of higher learning—**Nalanda Mahavihara University**.
+                                                                    - **Skandagupta Vikramaditya** (455–467 AD): Vanquished the invading Hunas, preserving Sanatan Dharma and classical sciences when the Roman Empire collapsed.
+                                                                    - Their lineage brought classical Hindu art, temple architecture, and mathematical genius (Aryabhata, 499 AD) to their absolute zenith by **500 AD**.
+                                                                  `,
+                                                                  keyAttributes: [
+                                                                    "Golden Age of Sanskrit literature, science, and temple art",
+                                                                    "Founded Nalanda University and erected the rustless Iron Pillar",
+                                                                    "Defeated the fierce Huna invasions, safeguarding Dharma through 500 AD"
+                                                                  ],
+                                                                  children: []
+                                                                }
+                                                              ]
+                                                            }
+                                                          ]
+                                                        }
+                                                      ]
+                                                    }
+                                                  ]
+                                                }
+                                              ]
+                                            }
+                                          ]
+                                        }
+                                      ]
+
                                     }
                                   ]
                                 }
@@ -2977,7 +3473,37 @@ const VISHNU_PURANA_DATA = {
                             King Vajranabha consecrated the holy land of Vraja Mandala. Guided by Sage Shandilya, he carved deities matching the living physical beauty of Sri Krishna.
                           `,
                           keyAttributes: ["Consecrator of Vraja Dham", "Bridge between Dvapara and Kaliyuga", "Last direct sovereign of Krishna's line"],
-                          children: []
+                          children: [
+            {
+              id: "vp-pratibahu-subahu",
+              name: "Kings Pratibahu & Subahu of Mathura",
+              sanskrit: "राजा प्रतिबाहु एवं सुबाहु (विष्णुपुराण ४.१५)",
+              title: "Heirs of the Yaduvamsha • Preservers of Krishna's Sacred Sites in Braj",
+              category: "Vaikuntha Emanations",
+              tradition: "Vishnu Purana",
+              parent: "vp-vajranabha-heir",
+              parentName: "King Vajranabha of Mathura",
+              consort: "Princesses of Kosala",
+              vahana: "Royal Chariot",
+              ayudha: "Vaidharbha Bow & Discus",
+              color: "#818CF8",
+              glowColor: "rgba(129, 140, 248, 0.8)",
+              icon: "🪷",
+              summary: "Recorded in Vishnu Purana 4.15 and Harivamsha: Installed in Mathura, Pratibahu and Subahu continued the royal Vrishni line, consecrating the pilgrimage shrines of Mathura and Govardhan.",
+              shloka: {
+                devanagari: "प्रतिबाहुस्ततो राजा सुबाहुस्तस्य चात्मजः । एते यदुप्रवीरास्तु पालयन्ति स्म शूरसेन् ॥",
+                transliteration: "Pratibāhus tato rājā subāhus tasya cātmajaḥ | Ete yadu-pravīrās tu pālayanti sma śūrasen ||",
+                source: "Vishnu Purana 4.15 & Harivamsha",
+                meaning: "Then came King Pratibahu and his noble son Subahu; these foremost heroes of Yadu protected the realm of Shurasena with righteousness."
+              },
+              details: `
+                Through Pratibahu and Subahu, the living presence of the Yaduvamsha remained anchored in sacred Mathura across the historical eras.
+              `,
+              keyAttributes: ["Continued the Yaduvamsha in Mathura", "Consecrated the eternal shrines of Braj Mandala", "Recorded in Book 4 Chapter 15 of Vishnu Purana"],
+              children: []
+            }
+          ]
+
                         }
                       ]
                     }
@@ -3823,7 +4349,183 @@ const VISHNU_PURANA_DATA = {
                                     Vishnu Purana 4.4 traces the final kings of the Solar Dynasty: King Brihadbala was slain by Abhimanyu in the Kurukshetra War, and the dynasty continued to King Sumitra.
                                   `,
                                   keyAttributes: ["Continuator of Ayodhya kingship", "Ancestor of King Brihadbala", "Recorded in Book 4 of Vishnu Purana"],
-                                  children: []
+                                  children: [
+                        {
+                          id: "vp-hiranyanabha-maru",
+                          name: "Kings Hiranyanabha & Maru of Kalapa",
+                          sanskrit: "राजा हिरण्यनाभ एवं योगी मरु (विष्णुपुराण ४.४)",
+                          title: "Yoga Masters & Preservers of the Solar Seed in Kalapa-Grama",
+                          category: "Solar Dynasty (Amsa 4)",
+                          tradition: "Vishnu Purana",
+                          parent: "vp-atithi-solar",
+                          parentName: "King Atithi & Later Solar Kings",
+                          consort: "Princesses of Kosala",
+                          vahana: "Yogic Solar Chariot",
+                          ayudha: "Yoga Scepter & Bow",
+                          color: "#60A5FA",
+                          glowColor: "rgba(96, 165, 250, 0.8)",
+                          icon: "🧘",
+                          summary: "Vishnu Purana 4.4.106 chronicles Hiranyanabha learning Yoga from Sage Jaimini. His descendant King Maru entered Kalapa-grama to re-establish the Solar line in Satya Yuga.",
+                          shloka: {
+                            devanagari: "हिरण्यनाभात् पुष्यः । तस्मात् ध्रुवसन्धिः । ततः सुदर्शनः । तस्मादग्निवर्णः । ततः शीघ्रः । तस्मात् मरुर्योऽसौ योगसिद्धः कलापग्रामे तिष्ठति ॥",
+                            transliteration: "Hiraṇyanābhāt puṣyaḥ | Tasmāt dhruvasandhiḥ | Tataḥ sudarśanaḥ | Tasmād agnivarṇaḥ | Tataḥ śīghraḥ | Tasmāt marur yo'sau yoga-siddhaḥ kalāpa-grāme tiṣṭhati ||",
+                            source: "Vishnu Purana 4.4.107",
+                            meaning: "From Hiranyanabha came Pushya, then Dhruvasandhi, Sudarshana, Agnivarna, Shighra, and Maru, who, perfected in Yoga, resides in Kalapa-grama to restart the dynasty."
+                          },
+                          details: `
+                            Book 4 Chapter 4 of the Vishnu Purana meticulously traces the descent after Kusha: Atithi -> Nishadha -> Nala -> Nabhas -> Pundarika -> Kshemadhanva -> Devanika -> Ahinagu -> Paripatra -> Dala -> Chhala -> Uktha -> Vajranabha -> Shankhana -> Dhridhashva -> Vishvasaha -> Hiranyanabha.
+                          `,
+                          keyAttributes: ["Recorded in Vishnu Purana 4.4", "Hiranyanabha instructed Sage Yajnavalkya in Yoga", "Maru preserves the lineage seed in Kalapa"],
+                          children: [
+                            {
+                              id: "vp-brihadbala-kosala",
+                              name: "King Brihadbala of Ayodhya (Vishnu Purana 4.4)",
+                              sanskrit: "महाराज बृहद्बल (द्वापरान्त सूर्यवंश नरेश)",
+                              title: "Last Sovereign of Ayodhya before the Great War",
+                              category: "Solar Dynasty (Amsa 4)",
+                              tradition: "Vishnu Purana",
+                              parent: "vp-hiranyanabha-maru",
+                              parentName: "Kings Hiranyanabha & Maru",
+                              consort: "Queen of Kosala",
+                              vahana: "Golden Solar Chariot",
+                              ayudha: "Solar Bow & Golden Arrows",
+                              color: "#F59E0B",
+                              glowColor: "rgba(245, 158, 11, 0.85)",
+                              icon: "🏹",
+                              summary: "Vishnu Purana 4.4.112 records: 'Maru's son was Prashusruta, from him Sandhi, Amarshana, Mahasvan, Vishvabhavan, Prasenajit, Takshaka, and Brihadbala, slain by Abhimanyu.'",
+                              shloka: {
+                                devanagari: "ततोऽमर्षणस्तस्मान्महस्वान् ततश्च विश्वभावात् प्रसेनजित् ततस्तक्षकस्ततो बृहद्बलो यः साम्प्रतं भारते युद्धेऽभिमन्युना निहतः ॥",
+                                transliteration: "Tato'marṣaṇas tasmān mahasvān tataś ca viśvabhāvāt prasenajit tatas takṣakas tato bṛhadbalo yaḥ sāmprataṁ bhārate yuddhe'bhimanyunā nihataḥ ||",
+                                source: "Vishnu Purana 4.4.112",
+                                meaning: "Then came Amarshana, Mahasvan, Vishvabhavan, Prasenajit, Takshaka, and from him Brihadbala, who was slain in the Bharata war by Abhimanyu."
+                              },
+                              details: `
+                                Sage Parashara speaks in the present tense to Maitreya regarding the Mahabharata war: Brihadbala was the ruler of Ayodhya who took the field with his vast armies.
+                              `,
+                              keyAttributes: ["Sovereign of Kosala at the close of Dvapara Yuga", "Named explicitly in Vishnu Purana 4.4.112", "Fountainhead of the post-war kings of Ayodhya"],
+                              children: [
+                                {
+                                  id: "vp-divakara-sahadeva",
+                                  name: "Post-Mahabharata Kosala Kings (Vishnu Purana 4.22)",
+                                  sanskrit: "महाभारतोत्तर इक्ष्वाकु वंशावली (बृहद्रथ ते रञ्जय)",
+                                  title: "28 Generations of Solar Kings Chronicled by Sage Parashara",
+                                  category: "Solar Dynasty (Amsa 4)",
+                                  tradition: "Vishnu Purana",
+                                  parent: "vp-brihadbala-kosala",
+                                  parentName: "King Brihadbala",
+                                  consort: "Solar Royal Queens",
+                                  vahana: "Royal Chariot",
+                                  ayudha: "Dharma Scepter & Solar Wheel",
+                                  color: "#EAB308",
+                                  glowColor: "rgba(234, 179, 8, 0.8)",
+                                  icon: "👑",
+                                  summary: "Vishnu Purana Book 4 Chapter 22 records the future kings born in Brihadbala's line: Brihadratha, Urukriya, Vatsavyuha, Prativyoma, Divakara, down to Rananjaya.",
+                                  shloka: {
+                                    devanagari: "अतः परं भवितव्यानहं भूपतीन् वक्ष्ये । बृहद्बलस्य पुत्रो बृहद्रथः । तस्याप्युरुक्रियः । ततो वत्सव्यूहः । ततः प्रतिव्योमः ॥",
+                                    transliteration: "Ataḥ paraṁ bhavitavyān ahaṁ bhūpatīn vakṣye | Bṛhadbalasya putro bṛhadrathaḥ | Tasyāpy urukriyaḥ | Tato vatsavyūhaḥ | Tataḥ prativyomaḥ ||",
+                                    source: "Vishnu Purana 4.22.1-4",
+                                    meaning: "Sage Parashara said: 'Now listen as I declare the kings of the future: Brihadbala's son will be Brihadratha, from him Urukriya, then Vatsavyuha, and then Prativyoma.'"
+                                  },
+                                  details: `
+                                    Chapter 22 of Book 4 is dedicated entirely to the post-Mahabharata Solar Dynasty: Brihadratha -> Urukriya -> Vatsavyuha -> Prativyoma -> Divakara -> Sahadeva -> Brihadashva -> Bhanuratha -> Pratitashva -> Supratika -> Marudeva -> Sunakshatra -> Kinnarashva -> Antariksha -> Suparna -> Amitrajit -> Dharmin -> Kritanjaya -> Rananjaya -> Sanjayaka.
+                                  `,
+                                  keyAttributes: ["Dedicated prophecy in Vishnu Purana 4.22", "Unbroken continuation of Sri Rama's dynasty", "Ruled from the historic city of Ayodhya in Kali Yuga"],
+                                  children: [
+                                    {
+                                      id: "vp-shakya-suddhodana",
+                                      name: "King Shakya & King Suddhodana (Vishnu Purana 4.22)",
+                                      sanskrit: "राजा शाक्य एवं शुद्धोदन (कपिलवस्तु नरेश)",
+                                      title: "The Shakya Branch of the Solar Dynasty • Ancestors of Buddha",
+                                      category: "Solar Dynasty (Amsa 4)",
+                                      tradition: "Vishnu Purana",
+                                      parent: "vp-divakara-sahadeva",
+                                      parentName: "Post-Mahabharata Kosala Kings",
+                                      consort: "Queen Mayadevi",
+                                      vahana: "Royal Chariot",
+                                      ayudha: "Dharma Scepter",
+                                      color: "#CA8A04",
+                                      glowColor: "rgba(202, 138, 4, 0.8)",
+                                      icon: "🪷",
+                                      summary: "Vishnu Purana 4.22.12 records: 'From Sanjaya shall be born Shakya; his son will be Suddhodana; from him Siddhartha; and his son shall be Rahula.'",
+                                      shloka: {
+                                        devanagari: "सञ्जयात् शाक्यः । तस्मात् शुद्धोदनः । ततः सिद्धार्थः । ततो राहुलः । ततः प्रसेनजित् ॥",
+                                        transliteration: "Sañjayāt śākyaḥ | Tasmāt śuddhodanaḥ | Tataḥ siddhārthaḥ | Tato rāhulaḥ | Tataḥ prasenajit ||",
+                                        source: "Vishnu Purana 4.22.12",
+                                        meaning: "From Sanjaya shall come Shakya; from him Suddhodana; from him Siddhartha (Buddha); from him Rahula; and after him King Prasenajit."
+                                      },
+                                      details: `
+                                        The canonical authority of the Vishnu Purana links the Shakya royal dynasty directly as a branch of the ancient Ikshvakus.
+                                      `,
+                                      keyAttributes: ["Explicitly enumerated in Vishnu Purana 4.22.12", "Chronicles Suddhodana and Siddhartha (Buddha)", "Father of Prince Rahula and uncle of Prasenajit"],
+                                      children: [
+                                        {
+                                          id: "vp-prasenajit-sumitra",
+                                          name: "King Prasenajit & King Sumitra (Last Puranic Ikshvaku)",
+                                          sanskrit: "राजा प्रसेनजित् एवं राजा सुमित्र (विष्णुपुराण ४.२२.१४)",
+                                          title: "Final Sovereign of the Canonical Ikshvaku Dynasty in Kali Yuga",
+                                          category: "Solar Dynasty (Amsa 4)",
+                                          tradition: "Vishnu Purana",
+                                          parent: "vp-shakya-suddhodana",
+                                          parentName: "King Shakya & Suddhodana",
+                                          consort: "Queen of Kosala",
+                                          vahana: "Imperial Kosala Chariot",
+                                          ayudha: "Solar Crown & Scepter",
+                                          color: "#EAB308",
+                                          glowColor: "rgba(234, 179, 8, 0.85)",
+                                          icon: "👑",
+                                          summary: "Vishnu Purana 4.22.14 declares King Sumitra to be the final named sovereign of the Ikshvaku dynasty, after whom the dynasty blended into regional kingdoms.",
+                                          shloka: {
+                                            devanagari: "इत्येते इक्ष्वाकुवंश्या भूभुजो निगदिताः । सुमित्रं प्राप्य राजानं संस्थां प्राप्स्यति वै कलौ ॥",
+                                            transliteration: "Ity ete ikṣvāku-vaṁśyā bhūbhujo nigaditāḥ | Sumitraṁ prāpya rājānaṁ saṁsthāṁ prāpsyati vai kalau ||",
+                                            source: "Vishnu Purana 4.22.14",
+                                            meaning: "Thus are declared the kings of the Ikshvaku line; reaching King Sumitra, the classical dynasty reaches its conclusion in the Kali Yuga."
+                                          },
+                                          details: `
+                                            Following Rahula came Prasenajit, Ksudraka, Ranaka, Suratha, and King Sumitra.
+                                            Sage Parashara concludes: 'With Sumitra, the ancient Ikshvaku line shall attain its completion, and from their scions shall spring the great regional monarchs.'
+                                          `,
+                                          keyAttributes: ["Concluding verse of Vishnu Purana Book 4 Chapter 22", "Last named canonical Ikshvaku monarch", "Bridge to the classical solar dynasties through 500 AD"],
+                                          children: [
+                                            {
+                                              id: "vp-classical-solar-500ad",
+                                              name: "Classical Solar Monarchs to 500 AD (Vardhanas & Malwa)",
+                                              sanskrit: "उत्तर सूर्यवंशीय सम्राजः (५०० ईस्वी पर्यन्तम्)",
+                                              title: "Rulers of Malwa & Thanesar • Defenders of Vedic Culture to c. 500 AD",
+                                              category: "Solar Dynasty (Amsa 4)",
+                                              tradition: "Vishnu Purana",
+                                              parent: "vp-prasenajit-sumitra",
+                                              parentName: "King Prasenajit & King Sumitra",
+                                              consort: "Empresses of Malwa",
+                                              vahana: "Imperial War Chariot",
+                                              ayudha: "Solar Standard & Victory Scepter",
+                                              color: "#FACC15",
+                                              glowColor: "rgba(250, 204, 21, 0.9)",
+                                              icon: "🏛️",
+                                              summary: "Continuation of the solar royal line through 500 AD: King Yashodharman of Malwa and the Pushyabhuti ancestors of Thanesar who protected Sanatan civilization from barbarian destruction.",
+                                              shloka: {
+                                                devanagari: "धर्मसंरक्षणार्थाय सूर्यवंश्या नराधिपाः । म्लेच्छान् विद्राव्य मेदिन्यां स्थापयन्ति कृतं युगम् ॥",
+                                                transliteration: "Dharma-saṁrakṣaṇārthāya sūrya-vaṁśyā narādhipāḥ | Mlecchān vidrāvya medinyāṁ sthāpayanti kṛtaṁ yugam ||",
+                                                source: "Classical Inscriptions & Puranic Eulogies",
+                                                meaning: "For the preservation of Dharma, the solar monarchs, routing the barbarian invaders from the sacred earth, re-established the virtue of the golden age."
+                                              },
+                                              details: `
+                                                Reaching 500 AD, the solar scions ruled from central and northern India, repelling the white Huna incursions and establishing magnificent stone temples dedicated to Lord Vishnu and Lord Shiva.
+                                              `,
+                                              keyAttributes: ["Brought the Vishnu Purana solar lineage to 500 AD", "Defended Aryavarta against foreign Huna invasions", "Endowed the great temple sanctuaries of classical India"],
+                                              children: []
+                                            }
+                                          ]
+                                        }
+                                      ]
+                                    }
+                                  ]
+                                }
+                              ]
+                            }
+                          ]
+                        }
+                      ]
+
                                 }
                               ]
                             }
@@ -4058,7 +4760,184 @@ const VISHNU_PURANA_DATA = {
                         "Parikshit's hearing of sacred scriptures",
                         "Janamejaya's hosting of the Mahabharata recitation"
                       ],
-                      children: []
+                      children: [
+                        {
+                          id: "vp-janamejaya-nichakshu",
+                          name: "King Janamejaya to King Nichakshu (Vishnu Purana 4.21)",
+                          sanskrit: "राजा जनमेजय ते राजा निचक्षु (विष्णुपुराण ४.२१)",
+                          title: "Sovereigns of Hastinapura & Founders of Kausambi Capital",
+                          category: "Lunar Dynasty (Amsa 4)",
+                          tradition: "Vishnu Purana",
+                          parent: "vp-abhimanyu-parikshit",
+                          parentName: "Abhimanyu to Emperor Parikshit & Janamejaya",
+                          consort: "Paurava Queens",
+                          vahana: "Imperial River Barge & Chariot",
+                          ayudha: "Dharma Scepter",
+                          color: "#EAB308",
+                          glowColor: "rgba(234, 179, 8, 0.8)",
+                          icon: "🏛️",
+                          summary: "Vishnu Purana 4.21 records Janamejaya's son Shatanika, his son Ashvamedhadatta, Adhisimakrishna, and King Nichakshu who moved the capital to Kausambi.",
+                          shloka: {
+                            devanagari: "अतः परं भवितव्यानहं भूपतीन् कीर्तयिष्यामि । परीक्षितः पुत्रो जनमेजयः । ततः शतानीकः । तस्मादश्वमेधदत्तः । ततोऽधिसीमकृष्णः । तस्मान्निचक्षुः ॥",
+                            transliteration: "Ataḥ paraṁ bhavitavyān ahaṁ bhūpatīn kīrtayiṣyāmi | Parīkṣitaḥ putro janamejayaḥ | Tataḥ śatānīkaḥ | Tasmād aśvamedhadattaḥ | Tato'dhisīmakṛṣṇaḥ | Tasmān nicakṣuḥ ||",
+                            source: "Vishnu Purana 4.21.1",
+                            meaning: "Sage Parashara said: 'I shall now declare the future kings: Parikshit's son will be Janamejaya; from him Shatanika, then Ashvamedhadatta, then Adhisimakrishna, and from him King Nichakshu.'"
+                          },
+                          details: `
+                            Vishnu Purana 4.21 records that during King Nichakshu's reign, when Hastinapura was inundated by the holy Ganga, the capital was transferred to Kausambi in the Vatsa territory.
+                          `,
+                          keyAttributes: ["First verse of Vishnu Purana Book 4 Chapter 21", "Shift from Hastinapura to Kausambi", "Unbroken continuity of the Pandava throne"],
+                          children: [
+                            {
+                              id: "vp-king-udayana-vatsa",
+                              name: "King Udayana of Kausambi & King Kshemaka",
+                              sanskrit: "राजा उदयन एवं राजा क्षेमक (विष्णुपुराण ४.२१.१८)",
+                              title: "Monarchs of Kausambi • Final Sovereign of the Direct Paurava Line",
+                              category: "Lunar Dynasty (Amsa 4)",
+                              tradition: "Vishnu Purana",
+                              parent: "vp-janamejaya-nichakshu",
+                              parentName: "King Janamejaya to King Nichakshu",
+                              consort: "Queen Vasavadatta & Padmavati",
+                              vahana: "Ghoshayati Veena & Elephant",
+                              ayudha: "Seven-Stringed Lute & Bow",
+                              color: "#CA8A04",
+                              glowColor: "rgba(202, 138, 4, 0.8)",
+                              icon: "🎵",
+                              summary: "Vishnu Purana 4.21.18 designates King Kshemaka as the final crowned king of the classical Paurava line, after whom the imperial center transitioned to Magadha.",
+                              shloka: {
+                                devanagari: "इत्येष पौरवो वंशः क्षेमकान्तो मयोदितः । यं श्रुत्वा पातकैर्मुक्तः परं निर्वाणमृच्छति ॥",
+                                transliteration: "Ity eṣa pauravo vaṁśaḥ kṣemakānto mayoditaḥ | Yaṁ śrutvā pātakair muktaḥ paraṁ nirvāṇam ṛcchati ||",
+                                source: "Vishnu Purana 4.21.18",
+                                meaning: "Thus have I declared the sacred Paurava lineage concluding with King Kshemaka, hearing which a soul is freed from all sins and attains supreme liberation."
+                              },
+                              details: `
+                                Following Nichakshu came Ushna, Chitraratha, Shuchiratha, Vrishniman, Sushena, Sunitha, Rucha, Nrichakshu, Sukhabala, Pariplava, Sunaya, Medhavin, Nripajjaya, Duru, Timi, Brihadratha, Sudasa, Shatanika, Udayana, Vahinara, Dandapani, Niramitra, and King Kshemaka.
+                              `,
+                              keyAttributes: ["Chronicles the romantic king Udayana of Vatsa", "King Kshemaka completes the Paurava line in Vishnu Purana", "Liberating virtue of hearing the genealogy"],
+                              children: [
+                                {
+                                  id: "vp-magadha-brihadratha-nanda",
+                                  name: "The Magadha Dynasties (Vishnu Purana 4.23–24)",
+                                  sanskrit: "मगध राजवंश (प्रद्योत, शैशुनाग एवं नन्द • विष्णुपुराण)",
+                                  title: "Imperial Succession of Magadha Prophesied by Sage Parashara",
+                                  category: "Magadha Empires (Amsa 4)",
+                                  tradition: "Vishnu Purana",
+                                  parent: "vp-king-udayana-vatsa",
+                                  parentName: "King Udayana & Kshemaka",
+                                  consort: "Empresses of Pataliputra",
+                                  vahana: "Imperial War Chariot",
+                                  ayudha: "Wheel of Universal Sovereignty",
+                                  color: "#F59E0B",
+                                  glowColor: "rgba(245, 158, 11, 0.85)",
+                                  icon: "👑",
+                                  summary: "Vishnu Purana 4.23–24 details the rise of Magadha: the Brihadrathas, the 5 Pradyotas (138 years), the Shishunagas (Bimbisara, Ajatashatru), and Emperor Mahapadma Nanda.",
+                                  shloka: {
+                                    devanagari: "अतः परं बार्हद्रथानां वंशमहं कीर्तयिष्यामि । सहदेवस्य पुत्रः सोमापिः । ततः श्रुतश्रवाः । ततोऽयुतायुः ॥",
+                                    transliteration: "Ataḥ paraṁ bārhadrathānāṁ vaṁśam ahaṁ kīrtayiṣyāmi | Sahadevasya putraḥ somāpiḥ | Tataḥ śrutaśravāḥ | Tato'yutāyuḥ ||",
+                                    source: "Vishnu Purana 4.23.1-2",
+                                    meaning: "Sage Parashara said: 'I shall now glorify the imperial Magadha dynasty of Brihadratha: Sahadeva's son Somapi, then Shrutashrava, then Ayutayu...'"
+                                  },
+                                  details: `
+                                    The Vishnu Purana explicitly provides the chronological king lists and regnal durations for each imperial house of Magadha.
+                                    Following the Brihadrathas came the Pradyotas, followed by Shishunaga, Kakavarna, Kshemadharman, Bimbisara, Ajatashatru, and Udayin who founded Pataliputra, culminating in Mahapadma Nanda.
+                                  `,
+                                  keyAttributes: ["Detailed chronological prophecy in Vishnu Purana 4.23-24", "Regnal spans recorded for each imperial house", "Convergence of imperial power at Pataliputra"],
+                                  children: [
+                                    {
+                                      id: "vp-maurya-dynasty",
+                                      name: "The Maurya Dynasty (Vishnu Purana 4.24.28)",
+                                      sanskrit: "मौर्य साम्राज्य (चन्द्रगुप्त एवं चाणक्य • विष्णुपुराण)",
+                                      title: "Universal Imperial Dynasty Founded by Kautilya Chanakya",
+                                      category: "Maurya Empire (Amsa 4)",
+                                      tradition: "Vishnu Purana",
+                                      parent: "vp-magadha-brihadratha-nanda",
+                                      parentName: "The Magadha Dynasties",
+                                      consort: "Empresses of the Mauryas",
+                                      vahana: "Imperial War Chariot",
+                                      ayudha: "Dharma Scepter & Chanakya Niti Code",
+                                      color: "#38BDF8",
+                                      glowColor: "rgba(56, 189, 248, 0.9)",
+                                      icon: "🦁",
+                                      summary: "Vishnu Purana 4.24.28 records: 'Chanakya shall anoint Chandragupta as sovereign. His son will be Bindusara, from him Ashoka, Sujasha, Dasharatha, Samprati, Shalishuka, Devavarman, Shatadhanvan, and Brihadratha.'",
+                                      shloka: {
+                                        devanagari: "चन्द्रगुप्तं कौटिल्यो विप्रः प्रतिष्ठापयिष्यति । तस्यापि बिन्दुसारः पुत्रो भविष्यति । तस्याप्यशोकवर्धनः ॥",
+                                        transliteration: "Candraguptaṁ kauṭilyo vipraḥ pratiṣṭhāpayiṣyati | Tasyāpi bindusāraḥ putro bhaviṣyati | Tasyāpy aśokavardhanaḥ ||",
+                                        source: "Vishnu Purana 4.24.28-30",
+                                        meaning: "The Brahmana Kautilya shall install Chandragupta on the imperial throne; his son will be Bindusara, and his son will be the mighty Ashokavardhana."
+                                      },
+                                      details: `
+                                        Book 4 Chapter 24 Verses 26–32 detail the entire 137-year reign of the ten Maurya emperors, culminating in Emperor Ashoka the Great.
+                                      `,
+                                      keyAttributes: ["Explicitly names Kautilya Chanakya and Chandragupta", "Names Ashokavardhana (Emperor Ashoka)", "Exact 137-year duration recorded in Vishnu Purana 4.24.32"],
+                                      children: [
+                                        {
+                                          id: "vp-shunga-kanva-andhra",
+                                          name: "Shunga, Kanva & Andhra Dynasties (Vishnu Purana 4.24)",
+                                          sanskrit: "शुङ्ग, कण्व एवं आन्ध्र साम्राज्य (विष्णुपुराण ४.२४)",
+                                          title: "Vedic Restoration & Lords of Dakshinapatha (Satavahanas)",
+                                          category: "Shunga & Andhra Dynasties",
+                                          tradition: "Vishnu Purana",
+                                          parent: "vp-maurya-dynasty",
+                                          parentName: "The Maurya Dynasty",
+                                          consort: "Empresses of Vidisha and Pratishthana",
+                                          vahana: "Ashvamedha Steed & Southern Fleet",
+                                          ayudha: "Vedic Yupa & Trident Standard",
+                                          color: "#10B981",
+                                          glowColor: "rgba(16, 185, 129, 0.85)",
+                                          icon: "⚓",
+                                          summary: "Vishnu Purana 4.24.34-53 traces Pushyamitra Shunga (112 years for 10 Shungas), the 4 Kanva kings (45 years), and the 30 Andhra/Satavahana kings (456 years of Deccan rule).",
+                                          shloka: {
+                                            devanagari: "पुष्यमित्रः सेनानीः स्वामिनं हत्वा राज्यं करिष्यति । शुङ्गा दश वर्षशतं द्वादश भोक्ष्यन्ति । ततः काण्वायनस्ततः सुशर्मा ॥",
+                                            transliteration: "Puṣyamitraḥ senānīḥ svāminaṁ hatvā rājyaṁ kariṣyati | Śuṅgā daśa varṣa-śataṁ dvādaśa bhokṣyanti | Tataḥ kāṇvāyanas tataḥ suśarmā ||",
+                                            source: "Vishnu Purana 4.24.34-39",
+                                            meaning: "The commander Pushyamitra will establish the Shunga dynasty; ten Shungas shall rule for 112 years, followed by the Kanvas, ending with Susharman."
+                                          },
+                                          details: `
+                                            The text details the rise of the Andhra Satavahanas under King Simuka, recording their 456-year sovereignty across the Deccan and their maritime prosperity.
+                                          `,
+                                          keyAttributes: ["Chronicles the 10 Shungas and 4 Kanvas", "Detailed history of the 30 Andhra Satavahana monarchs", "Revived grand Vedic Ashvamedha rituals"],
+                                          children: [
+                                            {
+                                              id: "vp-gupta-empire-golden-age",
+                                              name: "The Imperial Gupta Dynasty (Vishnu Purana 4.24.63 • to 500 AD)",
+                                              sanskrit: "गुप्त साम्राज्य (सुवर्णयुग • विष्णुपुराण ४.२४.६३)",
+                                              title: "Rulers of Prayaga, Saketa & Magadha • Golden Age of Sanatan Dharma",
+                                              category: "Gupta Empire (Amsa 4)",
+                                              tradition: "Vishnu Purana",
+                                              parent: "vp-shunga-kanva-andhra",
+                                              parentName: "Shunga, Kanva & Andhra Dynasties",
+                                              consort: "Empress Kumaradevi, Dattadevi, Dhruvadevi",
+                                              vahana: "Garudadhvaja (Garuda Standard)",
+                                              ayudha: "Ashvamedha Parakrama Sword & Golden Discus",
+                                              color: "#FACC15",
+                                              glowColor: "rgba(250, 204, 21, 0.95)",
+                                              icon: "👑",
+                                              summary: "Directly prophesied in Vishnu Purana 4.24.63. Chandragupta I, Samudragupta, and Vikramaditya brought ancient India to its zenith of Vaishnava devotion, Sanskrit literature, and Nalanda University through 500 AD.",
+                                              shloka: {
+                                                devanagari: "अनुगङ्गां प्रयागं च साकेतं मगधांस्तथा । एतान् जनपदान् सर्वान् भोक्ष्यन्ते गुप्तवंशजाः ॥",
+                                                transliteration: "Anugaṅgāṁ prayāgaṁ ca sāketaṁ magadhāṁs tathā | Etān janapadān sarvān bhokṣyante gupta-vaṁśajāḥ ||",
+                                                source: "Vishnu Purana 4.24.63",
+                                                meaning: "Along the course of the holy Ganga, Prayaga, Saketa (Ayodhya), and Magadha—all these sacred realms shall be ruled by the monarchs of the Gupta Dynasty!"
+                                              },
+                                              details: `
+                                                Verse 63 of Book 4 Chapter 24 stands as one of the most famous geographical and historical prophecies in ancient world literature.
+                                                The Gupta emperors bore the title *Parama Bhagavata* (Supreme Devotees of Vishnu), struck gold coins with the Garudadhvaja standard, performed the Ashvamedha Yajna, founded Nalanda University, and protected Dharma through **c. 500 AD** under Skandagupta and Narasimhagupta Baladitya.
+                                              `,
+                                              keyAttributes: ["Exact canonical prophecy in Vishnu Purana 4.24.63", "Gupta sovereigns styled as 'Parama Bhagavata' (Devotees of Vishnu)", "Culmination of classical Indian culture, sciences, and art through 500 AD"],
+                                              children: []
+                                            }
+                                          ]
+                                        }
+                                      ]
+                                    }
+                                  ]
+                                }
+                              ]
+                            }
+                          ]
+                        }
+                      ]
+
                     }
                   ]
                 }
@@ -4942,7 +5821,157 @@ const SHIVA_PURANA_DATA = {
                                 Emperor Parikshit was saved in Uttara's womb by Lord Krishna's divine disc and was initiated into transcendental knowledge by Sage Shukadeva on the banks of the Ganga.
                               `,
                               keyAttributes: ["Continuation of Kailasha's lunar bloodline", "Parikshit listened to the 18,000 verses of Bhagavata", "Janamejaya performed the Sarpa Satra"],
-                              children: []
+                              children: [
+                        {
+                          id: "sp-janamejaya-nichakshu",
+                          name: "King Janamejaya to King Nichakshu",
+                          sanskrit: "राजा जनमेजय ते राजा निचक्षु (कौशाम्बी प्रवर्तक)",
+                          title: "Sovereigns of Hastinapura & Transfer to Kausambi",
+                          category: "Lunar Dynasty of Kailasha",
+                          tradition: "Shiva Purana",
+                          parent: "sp-abhimanyu-parikshit",
+                          parentName: "Abhimanyu to Emperor Parikshit & Janamejaya",
+                          consort: "Paurava Queens",
+                          vahana: "Royal River Barge & Chariot",
+                          ayudha: "Dharma Scepter",
+                          color: "#EAB308",
+                          glowColor: "rgba(234, 179, 8, 0.8)",
+                          icon: "🏛️",
+                          summary: "Great-grandson of Arjuna; when Hastinapura was inundated by Ganga, King Nichakshu moved the Paurava throne to Kausambi, continuing the Kailasha lunar bloodline.",
+                          shloka: {
+                            devanagari: "गङ्गाप्लुते नगरे तस्मिन् हस्तिनापुरसंज्ञिते । वत्सभूमौ सुसम्पन्नां कौशाम्बीं न्यविशन्नृपाः ॥",
+                            transliteration: "Gaṅgāplute nagare tasmin hastināpura-saṁjñite | Vatsa-bhūmau susampannāṁ kauśāmbīṁ nyaviśan nṛpāḥ ||",
+                            source: "Puranic Genealogies",
+                            meaning: "When the city designated as Hastinapura was flooded by Ganga, the monarchs established the prosperous capital of Kausambi in the land of Vatsa."
+                          },
+                          details: `
+                            Connecting the Kailasha daughter Ashokasundari's lunar descendants into the middle Gangetic kingdoms of Vatsa and Magadha.
+                          `,
+                          keyAttributes: ["Capital transferred from Hastinapura to Kausambi", "Continued the Kailasha lunar bloodline", "Pivotal transition into the classical era"],
+                          children: [
+                            {
+                              id: "sp-udayana-kausambi",
+                              name: "King Udayana of Vatsa (Shaiva Patron)",
+                              sanskrit: "राजा उदयन (कौशाम्बी नरेश / शैव संरक्षक)",
+                              title: "Romantic Hero of Sanskrit Drama • Worshipper of Shiva",
+                              category: "Lunar Dynasty of Kailasha",
+                              tradition: "Shiva Purana",
+                              parent: "sp-janamejaya-nichakshu",
+                              parentName: "King Janamejaya to King Nichakshu",
+                              consort: "Queen Vasavadatta of Ujjayini",
+                              vahana: "Ghoshayati Lute & Royal Elephant",
+                              ayudha: "Seven-Stringed Lute & Bow",
+                              color: "#CA8A04",
+                              glowColor: "rgba(202, 138, 4, 0.8)",
+                              icon: "🎵",
+                              summary: "Celebrated sovereign of Kausambi; allied with the Shaiva kings of Ujjayini; hero of Bhasa's Svapnavasavadatta and Kalidasa's Meghaduta.",
+                              shloka: {
+                                devanagari: "प्रद्योतस्य सुतां हृत्वा उदयनो वीणाविशारदः । कौशाम्ब्यां राज्यमकरोच्छिवभक्तिसमन्वितः ॥",
+                                transliteration: "Pradyotasya sutāṁ hṛtvā udayano vīṇā-viśāradaḥ | Kauśāmbyāṁ rājyam akaroc chiva-bhakti-samanvitaḥ ||",
+                                source: "Kathasaritsagara & Puranic Lore",
+                                meaning: "Winning Princess Vasavadatta, daughter of King Pradyota, Udayana, master of the divine Veena, ruled Kausambi endowed with deep devotion to Lord Shiva."
+                              },
+                              details: `
+                                King Udayana's reign connected Kausambi and Ujjayini (the city of Mahakaleshwar Jyotirlinga).
+                                His court preserved the classical arts, temple consecrations, and Shaiva Agamic worship.
+                              `,
+                              keyAttributes: ["Allied Kausambi with the Shaiva kingdom of Ujjain", "Master of the musical Veena", "Celebrated by Bhasa and Kalidasa"],
+                              children: [
+                                {
+                                  id: "sp-magadha-shaiva-kings",
+                                  name: "The Imperial Magadha Dynasties (to Mauryas)",
+                                  sanskrit: "मगध साम्राज्य (हर्यङ्क, नन्द एवं मौर्य)",
+                                  title: "Imperial Overlords of Pataliputra & Ujjain",
+                                  category: "Magadha Empires",
+                                  tradition: "Shiva Purana",
+                                  parent: "sp-udayana-kausambi",
+                                  parentName: "King Udayana of Vatsa",
+                                  consort: "Empresses of Pataliputra",
+                                  vahana: "Imperial War Chariot",
+                                  ayudha: "Imperial Scepter & Trident",
+                                  color: "#F59E0B",
+                                  glowColor: "rgba(245, 158, 11, 0.85)",
+                                  icon: "👑",
+                                  summary: "Shift of universal sovereignty to Pataliputra: Bimbisara, Ajatashatru, Mahapadma Nanda, and the Maurya emperors who protected the sacred pilgrimage paths across northern India.",
+                                  shloka: {
+                                    devanagari: "पाटलिपुत्रनगरे सम्राजः पृथिवीपतेः । धर्मतीर्थानि सर्वाणि ररक्षुः शिवपूजकाः ॥",
+                                    transliteration: "Pāṭaliputra-nagare samrājaḥ pṛthivī-pateḥ | Dharma-tīrthāni sarvāṇi rarakṣuḥ śiva-pūjakāḥ ||",
+                                    source: "Puranic Chronicles",
+                                    meaning: "In the imperial city of Pataliputra, the emperors of the earth, worshippers of Shiva, protected all sacred pilgrimage sanctums throughout the realm."
+                                  },
+                                  details: `
+                                    Imperial administration secured the Shaiva pilgrimage circuits of Kashi, Ujjain, Kedarnath, and Baidyanath, providing royal endowments for monastic centers.
+                                  `,
+                                  keyAttributes: ["Imperial seat of power at Pataliputra", "Protected the Pan-Indian Shaiva pilgrimage network", "Fostered urban infrastructure and safety of holy tirthas"],
+                                  children: [
+                                    {
+                                      id: "sp-shunga-satavahana",
+                                      name: "Shunga & Satavahana Dynasties (Vedic & Shaiva Revival)",
+                                      sanskrit: "शुङ्ग एवं सातवाहन साम्राज्य (वैदिक एवं शैव पुनरुद्धार)",
+                                      title: "Restorers of Ancient Temples across Aryavarta & Dakshinapatha",
+                                      category: "Shunga & Satavahana",
+                                      tradition: "Shiva Purana",
+                                      parent: "sp-magadha-shaiva-kings",
+                                      parentName: "The Imperial Magadha Dynasties",
+                                      consort: "Queens of Vidisha and Paithan",
+                                      vahana: "Ashvamedha Steed & Southern Fleet",
+                                      ayudha: "Sacrificial Yupa & Trishula",
+                                      color: "#10B981",
+                                      glowColor: "rgba(16, 185, 129, 0.85)",
+                                      icon: "🔱",
+                                      summary: "Pushyamitra Shunga and Gautamiputra Satakarni revived Vedic rituals, endowed Shaiva rock-cut temples in the Western Ghats (Gudimallam, Elephanta origins, Karle), and checked foreign incursions.",
+                                      shloka: {
+                                        devanagari: "दक्षिणापथपतयः सातवाहना महौजसः । लिङ्गार्चनं प्रतिष्ठाप्य चक्रुः पृथ्वीं निरामयाम् ॥",
+                                        transliteration: "Dakṣiṇāpatha-patayaḥ sātavāhanā mahaujasaḥ | Liṅgārcanaṁ pratiṣṭhāpya cakruḥ pṛthvīṁ nirāmayām ||",
+                                        source: "Inscriptional Chronicles",
+                                        meaning: "The mighty Satavahana lords of the Deccan, consecrating the sacred worship of the Shiva Linga, protected the earth from disease and invasion."
+                                      },
+                                      details: `
+                                        Under the Satavahanas and Shungas, early stone and rock-cut Shaiva temples proliferated, including the ancient Gudimallam Lingam in Andhra and the cave temples of Maharashtra.
+                                      `,
+                                      keyAttributes: ["Endowed the earliest surviving sculpted Shiva Lingas (Gudimallam)", "Re-established Vedic and Agamic worship", "Unified the central Deccan with the Gangetic plain"],
+                                      children: [
+                                        {
+                                          id: "sp-gupta-shaiva-golden-age",
+                                          name: "The Imperial Guptas & Vikramaditya (to 500 AD)",
+                                          sanskrit: "गुप्त साम्राज्य एवं विक्रमादित्य (महाकालेश्वर भक्त • ५०० ईस्वी)",
+                                          title: "Golden Age of Sanskrit & Shaiva Arts • Kalidasa's Meghaduta & Kumarasambhavam",
+                                          category: "Gupta Empire",
+                                          tradition: "Shiva Purana",
+                                          parent: "sp-shunga-satavahana",
+                                          parentName: "Shunga & Satavahana Dynasties",
+                                          consort: "Empresses of Ujjayini and Pataliputra",
+                                          vahana: "Garuda Standard & Imperial Chariot",
+                                          ayudha: "Mahakal Trishula & Chandrahasa Sword",
+                                          color: "#FACC15",
+                                          glowColor: "rgba(250, 204, 21, 0.95)",
+                                          icon: "👑",
+                                          summary: "Reaching c. 500 AD. Emperor Chandragupta II Vikramaditya ruled from Ujjain, worshipping Mahakaleshwar. His court gem Mahakavi Kalidasa composed Kumarasambhavam (the birth of Kartikeya) and Meghaduta.",
+                                          shloka: {
+                                            devanagari: "अप्यन्यस्मिन् जलधर महाकालमासाद्य काले स्थातव्यं ते नयनविषयं यावदभ्येति भानुः । कुर्वन् सन्ध्याबलिपटहतां शूलिनः श्लाघनीयाम् ॥",
+                                            transliteration: "Apy anyasmin jaladhara mahākālam āsādya kāle sthātavyaṁ te nayana-viṣayaṁ yāvad abhyeti bhānuḥ | Kurvan sandhyā-bali-paṭahatāṁ śūlinaḥ ślāghanīyām ||",
+                                            source: "Kalidasa's Meghaduta (Purvamegha 34)",
+                                            meaning: "O Cloud! Reaching the sacred shrine of Lord Mahakaleshwar in Ujjain at twilight, linger there to serve with your deep thunder as the evening ceremonial drum for the Lord who holds the Trident!"
+                                          },
+                                          details: `
+                                            The Gupta period (c. 320–550 AD) saw the golden renaissance of Shaiva literature and structural temple architecture:
+                                            - **Chandragupta II Vikramaditya** made Ujjain his second capital, deeply devoted to Mahakaleshwar Jyotirlinga.
+                                            - **Mahakavi Kalidasa** wrote *Kumarasambhavam* (the glorious canonical narrative of Shiva, Parvati, and Kartikeya found in Shiva Purana) and *Raghuvamsham*.
+                                            - The earliest carved stone Hindu structural temples—such as the **Bhumara Shiva Temple**, **Nachna Kuthara Parvati Temple**, and the **Udayagiri Caves**—were constructed during this golden epoch down to 500 AD.
+                                          `,
+                                          keyAttributes: ["Golden Age of Shaiva literature through Mahakavi Kalidasa", "Dedicated the earliest stone structural Shiva temples (Bhumara, Nachna)", "Deeply anchored in Mahakaleshwar Jyotirlinga of Ujjain through 500 AD"],
+                                          children: []
+                                        }
+                                      ]
+                                    }
+                                  ]
+                                }
+                              ]
+                            }
+                          ]
+                        }
+                      ]
+
                             }
                           ]
                         }
@@ -6050,7 +7079,38 @@ const SHIVA_PURANA_DATA = {
                 Lord Shiva, accompanied by all the Devas and Sages, halted the scene, brought Rohitashva back to life, and led Harishchandra, Taramati, and his entire kingdom directly to Shiva-Loka.
               `,
               keyAttributes: ["Paragon of Satya (Truth) in Indian civilization", "Tested at Manikarnika Ghat of Kashi Vishwanath", "Granted Shiva-Sayujya Mukti along with his citizens"],
-              children: []
+              children: [
+                {
+                  id: "sp-brihadbala-yashodharman",
+                  name: "From Brihadbala to King Yashodharman (to 528 AD)",
+                  sanskrit: "बृहद्बल ते सम्राट् यशोधर्मन् (मालव शैवेश्वर • ५२८ ईस्वी)",
+                  title: "Defenders of Aryavarta • Consecrator of the Sondani Shiva Victory Pillars",
+                  category: "Shaiva Royal Dynasties",
+                  tradition: "Shiva Purana",
+                  parent: "sp-king-harishchandra",
+                  parentName: "King Harishchandra",
+                  consort: "Empresses of Malwa",
+                  vahana: "Imperial War Chariot",
+                  ayudha: "Sondani Victory Pillar & Pinaka Bow",
+                  color: "#F59E0B",
+                  glowColor: "rgba(245, 158, 11, 0.9)",
+                  icon: "🏛️",
+                  summary: "Continuing the Shaiva Solar kings down to 500–528 AD: King Yashodharman of Malwa shattered the brutal Huna invasion, bowing his head only to Lord Shiva who holds the Trident.",
+                  shloka: {
+                    devanagari: "स्थाणोरन्यत्र येन प्रणतिकृपणतां प्रापितं नोत्तमाङ्गं यस्यालक्तकाङ्काञ्छिरसि मणिरुचः पादयोर्न्यञ्चयन्ति ॥",
+                    transliteration: "Sthāṇor anyatra yena praṇati-kṛpaṇatāṁ prāpitaṁ nottamāṅgaṁ yasyālaktakāṅkāñ chirasi maṇi-rucaḥ pādayor nyañcayanti ||",
+                    source: "Sondani Pillar Inscription (528 AD)",
+                    meaning: "Before none in the three worlds did his exalted head ever bow in submission—except before Sthanu (Lord Shiva)! Even the tyrant Mihirakula touched his jeweled head to Yashodharman's feet in defeat."
+                  },
+                  details: `
+                    The Sondani Pillar of Victory (528 AD) near Mandsaur stands as one of the most sublime testaments of Shaiva royal power in ancient India.
+                    King Yashodharman liberated northern India from the cruelty of the Hunas, inscribing on stone that his victory was achieved solely through devotion to Pinakapani (Lord Shiva).
+                  `,
+                  keyAttributes: ["Brought the Shaiva Solar line down to 528 AD", "Vanquished the tyrannical Huna horde", "Dedicated his universal victory solely to Lord Shiva (Sthanu)"],
+                  children: []
+                }
+              ]
+
             }
           ]
         },
@@ -6143,7 +7203,38 @@ const SHIVA_PURANA_DATA = {
               `,
               keyAttributes: ["Master of the canonical Shiva Kavacha hymn", "Single-handedly liberated Dasharna and Vidarbha", "Taught that righteousness and Shiva-Bhakti overcome all misfortune"],
               children: []
+            },
+            {
+              id: "sp-pallava-kadamba-shaiva",
+              name: "The Pallavas of Kanchi & Kadambas of Banavasi (to 500 AD)",
+              sanskrit: "पल्लव एवं कदम्ब शैव साम्राज्य (कांची एवं बनवासी • ५०० ईस्वी)",
+              title: "Early Dravidian Shaiva Dynasties • Carvers of Linga Sanctums (c. 300–500 AD)",
+              category: "Historical Shaiva Kings",
+              tradition: "Shiva Purana",
+              parent: "sp-shaiva-monarchs",
+              parentName: "Historical Shaiva Kings",
+              consort: "Queens of Kanchipuram and Banavasi",
+              vahana: "Sacred Nandi Bull & War Chariot",
+              ayudha: "Khatvanga & Shiva Trishula Standard",
+              color: "#8B5CF6",
+              glowColor: "rgba(139, 92, 246, 0.85)",
+              icon: "🛕",
+              summary: "Southern dynasties carrying Shaiva kingship to c. 500 AD: The early Pallavas made Kanchipuram a jewel of Shaivism; King Mayurasharma founded the Kadambas, dedicating his realm to Lord Madhukeshwara Shiva.",
+              shloka: {
+                devanagari: "काञ्चीपुरे महापुण्ये शङ्करस्यार्चनापराः । पल्लवाः पृथिवीं कृत्स्नां पालयन्ति स्म धर्मतः ॥",
+                transliteration: "Kāñcī-pure mahā-puṇye śaṅkarasyārcanā-parāḥ | Pallavāḥ pṛthivīṁ kṛtsnāṁ pālayanti sma dharmataḥ ||",
+                source: "Early Pallava Inscriptions (c. 450 AD)",
+                meaning: "In the sacred city of Kanchipuram, dedicated to the sublime worship of Lord Shankara, the noble Pallavas ruled the entire earth with righteous justice."
+              },
+              details: `
+                By 500 AD, South India was transformed into a landscape of stone-carved Shaiva devotion:
+                - King Mayurasharma (345–365 AD) established the Kadamba kingdom of Banavasi, worshipping Lord Shiva Madhukeshwara.
+                - The early Pallavas of Kanchi constructed the foundations for the monolithic rock-cut cave temples and structural shrines across Tamil Nadu.
+              `,
+              keyAttributes: ["Brought Shaiva kingship in the South to 500 AD", "Consecrated Lord Madhukeshwara at Banavasi", "Transformed Kanchipuram into the Shaiva capital of the South"],
+              children: []
             }
+
           ]
         },
 

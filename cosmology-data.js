@@ -942,7 +942,109 @@ const COSMOLOGY_DATA = {
                                                         Under His ideal governance (*Ramarajya*), natural calamities ceased, grief vanished, and all living beings thrived in cosmic harmony.
                                                       `,
                                                       keyAttributes: ["Dharma personified (Vigrahavan Dharma)", "Vanquisher of tyranny and establish of Ramarajya", "Father of Kusha (who ruled Kosala) and Lava"],
-                                                      children: []
+                                                      /* --- COSMOLOGICAL SURYAVAMSHA CONTINUATION TO 500 AD --- */
+                                                    children: [
+                                                      {
+                                                        id: "cosmo-kusha-atithi",
+                                                        name: "King Kusha & King Atithi (Cosmic Kings of Kosala)",
+                                                        sanskrit: "राजा कुश एवं अतिथि (कौशल साम्राज्य)",
+                                                        title: "Sons and Heirs of Sri Rama • Sovereigns of Kushavati & Ayodhya",
+                                                        tier: "beings",
+                                                        tierLevel: 14,
+                                                        category: "Cosmic Royal Dynasties",
+                                                        color: "#60A5FA",
+                                                        glowColor: "rgba(96, 165, 250, 0.8)",
+                                                        icon: "👑",
+                                                        summary: "Kusha ruled Dakshina Kosala from Kushavati; returned to Ayodhya and crowned his son Atithi, continuing the solar kings through Nishadha, Nala, and Nabhas.",
+                                                        shloka: {
+                                                          devanagari: "कुशस्य चाभवत् पुत्रोऽतिथी राजर्षिसत्तमः । ततो निषधनामाभूत् नलो नाम ततः परम् ॥",
+                                                          transliteration: "Kuśasya cābhavat putro'tithī rājarṣi-sattamaḥ | Tato niṣadha-nāmābhūt nalo nāma tataḥ param ||",
+                                                          source: "Bhagavata Purana 9.12.1",
+                                                          meaning: "Kusha's son was the exalted royal sage Atithi; from him sprang Nishadha, and after him King Nala, sustaining the solar throne."
+                                                        },
+                                                        details: `
+                                                          In Puranic cosmology, the succession after Sri Rama preserved universal order across northern and central India through Kusha and Atithi.
+                                                        `,
+                                                        keyAttributes: ["Heirs of Sri Rama in Ayodhya", "Preserved the moral constitution of Ramarajya", "Progenitors of the later solar emperors"],
+                                                        children: [
+                                                          {
+                                                            id: "cosmo-hiranyanabha-brihadbala",
+                                                            name: "King Hiranyanabha to King Brihadbala",
+                                                            sanskrit: "महर्षि हिरण्यनाभ ते राजा बृहद्बल (द्वापरान्त)",
+                                                            title: "Masters of Adhyatma Yoga & The Sovereign of the Mahabharata Era",
+                                                            tier: "beings",
+                                                            tierLevel: 15,
+                                                            category: "Cosmic Royal Dynasties",
+                                                            color: "#38BDF8",
+                                                            glowColor: "rgba(56, 189, 248, 0.85)",
+                                                            icon: "🏹",
+                                                            summary: "Hiranyanabha mastered the science of Yoga from Jaimini; King Brihadbala led the Kosala imperial forces in the Kurukshetra war at the transition into Kali Yuga.",
+                                                            shloka: {
+                                                              devanagari: "हिरण्यनाभाद् योगज्ञो मरुः शिष्यस्ततः परम् । बृहद्बलस्तु कौसल्यो युधि कौरवपक्षतः ॥",
+                                                              transliteration: "Hiraṇyanābhād yoga-jño maruḥ śiṣyas tataḥ param | Bṛhadbalas tu kauśalyo yudhi kaurava-pakṣataḥ ||",
+                                                              source: "Vishnu Purana 4.4 & Mahabharata",
+                                                              meaning: "From Hiranyanabha descended King Maru, master of Yoga, and King Brihadbala of Kosala, who fought in the great war."
+                                                            },
+                                                            details: `
+                                                              The cosmic transition from Dvapara Yuga into Kali Yuga occurred during the reign of King Brihadbala.
+                                                            `,
+                                                            keyAttributes: ["Mastery of Yoga united with royal sovereignty", "Brihadbala fought in the Mahabharata war", "Marked the cosmic Yuga transition"],
+                                                            children: [
+                                                              {
+                                                                id: "cosmo-shakya-sumitra",
+                                                                name: "King Shakya, Suddhodana & King Sumitra",
+                                                                sanskrit: "राजा शाक्य, शुद्धोदन एवं सुमित्र (अन्तिम इक्ष्वाकु)",
+                                                                title: "Rulers of Kapilavastu & Last Crowned Ikshvaku Monarch of the Kali Yuga",
+                                                                tier: "beings",
+                                                                tierLevel: 16,
+                                                                category: "Cosmic Royal Dynasties",
+                                                                color: "#CA8A04",
+                                                                glowColor: "rgba(202, 138, 4, 0.8)",
+                                                                icon: "🪷",
+                                                                summary: "The Shakya branch of the Solar Dynasty produced Prince Siddhartha (Buddha); the Puranas conclude the classical Ikshvaku dynasty with King Sumitra.",
+                                                                shloka: {
+                                                                  devanagari: "एष इक्ष्वाकुवंशस्तु सुमित्रान्तो भविष्यति । यतस्तं प्राप्य राजानं संस्थां प्राप्स्यति वै कलौ ॥",
+                                                                  transliteration: "Eṣa ikṣvāku-vaṁśas tu sumitrānto bhaviṣyati | Yatas taṁ prāpya rājānaṁ saṁsthāṁ prāpsyati vai kalau ||",
+                                                                  source: "Vishnu Purana 4.22.14 & Bhagavata 9.12.16",
+                                                                  meaning: "This celebrated dynasty of Ikshvaku shall conclude with King Sumitra, reaching whom the classical line attains completion in Kali Yuga."
+                                                                },
+                                                                details: `
+                                                                  King Sumitra marks the transition of the Ikshvaku lineage from epic antiquity into the historical regional monarchies of India.
+                                                                `,
+                                                                keyAttributes: ["Ancestors of Gautama Buddha in Kapilavastu", "King Sumitra closes the Puranic Ikshvaku canon", "Transition into historical regional dynasties"],
+                                                                children: [
+                                                                  {
+                                                                    id: "cosmo-solar-empires-500ad",
+                                                                    name: "Solar Monarchies of Bhurloka to 500 AD (Yashodharman)",
+                                                                    sanskrit: "भूलोक सूर्यवंशीय साम्राज्य (५०० ईस्वी • यशोधर्मन्)",
+                                                                    title: "Defenders of Aryavarta • Liberators from the Huna Invasions (c. 500–528 AD)",
+                                                                    tier: "beings",
+                                                                    tierLevel: 17,
+                                                                    category: "Cosmic Royal Dynasties",
+                                                                    color: "#FACC15",
+                                                                    glowColor: "rgba(250, 204, 21, 0.9)",
+                                                                    icon: "🏛️",
+                                                                    summary: "Preserved the solar lineage on earth through 500 AD: King Yashodharman of Malwa (528 AD) routed the barbarian Hunas, re-establishing classical Vedic civilization and temple culture.",
+                                                                    shloka: {
+                                                                      devanagari: "आलौहित्योपकण्ठात् तलिनवनगहनोपत्यकादा महेन्द्रादागङ्गाश्लिष्टसानोस्तुहिनशिखरिणः पश्चिमात् पयोराशेः ॥",
+                                                                      transliteration: "Ālauhityopakaṇṭhāt talina-vana-gahanopatyakād ā mahendrād āgaṅgāśliṣṭa-sānos tuhina-śikhariṇaḥ paścimāt payorāśeḥ ||",
+                                                                      source: "Mandsaur Pillar Inscription of Yashodharman (528 AD)",
+                                                                      meaning: "From the banks of the Brahmaputra (Lauhitya) to Mount Mahendra in the south, and from the snowy Himalayas kissed by Ganga to the Western Ocean—his righteous suzerainty was acknowledged!"
+                                                                    },
+                                                                    details: `
+                                                                      Reaching 500 AD on Bhurloka, the solar monarchs preserved cosmic Dharma during foreign invasions, rebuilding the grand stone temples of northern India.
+                                                                    `,
+                                                                    keyAttributes: ["Brought the cosmological solar line down to 500–528 AD", "Vanquished the tyrannical Hunas at the Battle of Sondani", "Safeguarded the cultural and religious continuity of Bharatavarsha"],
+                                                                    children: []
+                                                                  }
+                                                                ]
+                                                              }
+                                                            ]
+                                                          }
+                                                        ]
+                                                      }
+                                                    ]
+
                                                     }
                                                   ]
                                                 }
@@ -1076,7 +1178,117 @@ const COSMOLOGY_DATA = {
                                                         His peaceful departure through seven days of Srimad Bhagavatam discourse marks the transition into our recorded epoch.
                                                       `,
                                                       keyAttributes: ["Curbed the advance of Kali Yuga on earth", "Audience for the complete Srimad Bhagavatam", "Father of King Janamejaya who heard the Mahabharata"],
-                                                      children: []
+                                                      /* --- COSMOLOGICAL CHANDRAVAMSHA CONTINUATION TO 500 AD --- */
+                                                    children: [
+                                                      {
+                                                        id: "cosmo-nichakshu-udayana",
+                                                        name: "King Nichakshu & King Udayana (Kausambi Transfer)",
+                                                        sanskrit: "राजा निचक्षु एवं उदयन (कौशाम्बी साम्राज्य)",
+                                                        title: "Great-Grandsons of Janamejaya • Shift of Capital to Kausambi",
+                                                        tier: "beings",
+                                                        tierLevel: 14,
+                                                        category: "Cosmic Royal Dynasties",
+                                                        color: "#EAB308",
+                                                        glowColor: "rgba(234, 179, 8, 0.8)",
+                                                        icon: "🏛️",
+                                                        summary: "Following the inundation of Hastinapura by the Ganga, King Nichakshu moved the Paurava throne to Kausambi; King Udayana ruled during the era of Buddha.",
+                                                        shloka: {
+                                                          devanagari: "हस्तिनापुरमाप्लुत्य गङ्गा वेगेन संहृता । कौशाम्ब्यां न्यवसन् राजा निचक्षुर्वत्समण्डले ॥",
+                                                          transliteration: "Hastināpuram āplutya gaṅgā vegena saṁhṛtā | Kauśāmbyāṁ nyavasan rājā nicakṣur vatsa-maṇḍale ||",
+                                                          source: "Matsya Purana & Vishnu Purana 4.21",
+                                                          meaning: "When Hastinapura was inundated by the torrential waters of Ganga, King Nichakshu established the lunar throne at Kausambi in the fertile land of Vatsa."
+                                                        },
+                                                        details: `
+                                                          In Puranic cosmic geography, the shift of the capital preserved the institutional continuity of the Pandava throne into the historical era.
+                                                        `,
+                                                        keyAttributes: ["Capital transferred from Hastinapura to Kausambi", "King Udayana contemporary with Buddha", "Pivotal archaeological anchor of Puranic chronology"],
+                                                        children: [
+                                                          {
+                                                            id: "cosmo-magadha-mauryas",
+                                                            name: "The Magadha Axis & The Maurya Empire",
+                                                            sanskrit: "मगध साम्राज्य एवं मौर्य चक्रवर्तिनः (चन्द्रगुप्त-अशोक)",
+                                                            title: "Pan-Indian Unification • Emperor Ashoka's Cosmic Dharma Edicts",
+                                                            tier: "beings",
+                                                            tierLevel: 15,
+                                                            category: "Cosmic Royal Dynasties",
+                                                            color: "#38BDF8",
+                                                            glowColor: "rgba(56, 189, 248, 0.9)",
+                                                            icon: "🦁",
+                                                            summary: "The center of world governance shifted to Pataliputra; Chandragupta Maurya and Emperor Ashoka the Great unified the Indian subcontinent, inscribing moral Dharma on rock and pillar across all realms.",
+                                                            shloka: {
+                                                              devanagari: "देवानंप्रियस्य प्रियदर्शिनो राज्ञो धर्मलिपिः । इह न किञ्चि जीवं आरभित्पा प्रजूहितव्यं ॥",
+                                                              transliteration: "Devānaṁpriyasya priyadarśino rājño dharma-lipiḥ | Iha na kiñci jīvaṁ ārabhitpā prajūhitavyaṁ ||",
+                                                              source: "Major Rock Edict I of Emperor Ashoka",
+                                                              meaning: "This is the edict of King Devanampriya Priyadarsin (Ashoka): Here no living being must be slaughtered or sacrificed; all life must be cherished with compassion!"
+                                                            },
+                                                            details: `
+                                                              The Maurya Empire created the largest geographic empire in ancient Indian history, building highways, rest houses, and inscribing ethical codes across four languages (Prakrit, Greek, Aramaic, Sanskrit).
+                                                            `,
+                                                            keyAttributes: ["Pan-Indian geographic unification", "Guided by Chanakya's Arthashastra", "Universal moral edicts inscribed on stone across India"],
+                                                            children: [
+                                                              {
+                                                                id: "cosmo-shungas-satavahanas",
+                                                                name: "Shunga & Satavahana Empires (Revival of Cosmic Yajnas)",
+                                                                sanskrit: "शुङ्ग एवं सातवाहन साम्राज्य (अश्वमेध याजकाः)",
+                                                                title: "Lords of the Deccan & Aryavarta • Revivers of Vedic Sacrifices",
+                                                                tier: "beings",
+                                                                tierLevel: 16,
+                                                                category: "Cosmic Royal Dynasties",
+                                                                color: "#10B981",
+                                                                glowColor: "rgba(16, 185, 129, 0.85)",
+                                                                icon: "⚓",
+                                                                summary: "Pushyamitra Shunga revived the Ashvamedha sacrifice and patronized Sage Patanjali; Gautamiputra Satakarni established maritime trade and rock-cut cave sanctuaries across the Deccan.",
+                                                                shloka: {
+                                                                  devanagari: "अश्वमेधसहस्रस्य वाजपेयशतस्य च । फलं प्राप्नोति मेधावी धर्मं संरक्ष्य यत्नतः ॥",
+                                                                  transliteration: "Aśvamedha-sahasrasya vājapeya-śatasya ca | Phalaṁ prāpnoti medhāvī dharmaṁ saṁrakṣya yatnataḥ ||",
+                                                                  source: "Nayanika Inscription of Nanaghat",
+                                                                  meaning: "The fruits of a thousand Ashvamedha sacrifices and a hundred Vajapeya yajnas are attained by the wise ruler who earnestly preserves Dharma."
+                                                                },
+                                                                details: `
+                                                                  The Shungas and Satavahanas bridged northern and southern India through maritime trade networks, Vedic sacrifices, and the construction of the Great Stupa of Sanchi.
+                                                                `,
+                                                                keyAttributes: ["Revived ancient Vedic yajnas (Ashvamedha, Vajapeya)", "Gautamiputra Satakarni protected the Deccan", "Pioneered rock-cut architecture at Nanaghat and Karle"],
+                                                                children: [
+                                                                  {
+                                                                    id: "cosmo-gupta-empire-500ad",
+                                                                    name: "The Imperial Gupta Golden Age (to 500 AD • Aryabhata)",
+                                                                    sanskrit: "गुप्त साम्राज्य (सुवर्णयुग • आर्यभट्ट एवं वराहमिहिर • ५०० ईस्वी)",
+                                                                    title: "Zenith of Classical Indian Astronomy, Mathematics & Culture (499–550 AD)",
+                                                                    tier: "beings",
+                                                                    tierLevel: 17,
+                                                                    category: "Cosmic Royal Dynasties",
+                                                                    color: "#FACC15",
+                                                                    glowColor: "rgba(250, 204, 21, 0.95)",
+                                                                    icon: "🌌",
+                                                                    summary: "Pinnacle of cosmological science and culture by 500 AD: In 499 AD, Aryabhata composed the Aryabhatiya in Pataliputra; Varahamihira composed the Pancha Siddhantika; Nalanda University flourished under Kumaragupta and Skandagupta.",
+                                                                    shloka: {
+                                                                      devanagari: "कुसुमपुरेऽभ्यर्चितं ज्ञानम् । षष्ट्यब्दानां षष्टिर्यदा व्यतीतास्त्रयश्च युगपादाः । त्र्यधिका विंशतिरब्दास्तदेह मम जन्मनोऽतीताः ॥",
+                                                                      transliteration: "Kusumppure'bhyarcitaṁ jñānam | Ṣaṣṭy-abdānāṁ ṣaṣṭir yadā vyatītās trayaś ca yuga-pādāḥ | Try-adhikā viṁśatir abdās tadeha mama janmano'tītāḥ ||",
+                                                                      source: "Aryabhatiya of Aryabhata (Composed 499 AD at Pataliputra)",
+                                                                      meaning: "At Kusumapura (Pataliputra), this sacred astronomical wisdom was revealed: When sixty times sixty years (3,600 years of Kali Yuga) and three quarters of a Yuga had elapsed, twenty-three years had passed since my birth (499 AD)!"
+                                                                    },
+                                                                    details: `
+                                                                      The Imperial Gupta era at **c. 500 AD** represents the glorious culmination where Puranic cosmology and empirical mathematical science converged:
+                                                                      - In **499 AD** at the Gupta capital of Pataliputra, the 23-year-old astronomer **Aryabhata** composed the *Aryabhatiya*, formulating the spherical rotating earth, heliocentric planetary models, the value of $\pi$ to four decimals (3.1416), and the sine table.
+                                                                      - **Varahamihira** synthesized the five classical astronomical systems in the *Pancha Siddhantika*.
+                                                                      - **Nalanda Mahavihara University** taught astronomy (*Khagola*), logic (*Nyaya*), medicine (*Ayurveda*), and philosophy to scholars from across Asia.
+                                                                      - This brings the cosmic lineages of Sanatan Dharma from the unmanifest Parabrahman directly down to the historic threshold of **500 AD**!
+                                                                    `,
+                                                                    keyAttributes: [
+                                                                      "Aryabhata composed the Aryabhatiya in 499 AD at Pataliputra",
+                                                                      "Pinnacle of classical Indian mathematical astronomy and zero concept",
+                                                                      "Brought the continuous genealogical lineage down to 500 AD"
+                                                                    ],
+                                                                    children: []
+                                                                  }
+                                                                ]
+                                                              }
+                                                            ]
+                                                          }
+                                                        ]
+                                                      }
+                                                    ]
+
                                                     }
                                                   ]
                                                 }
