@@ -1,0 +1,1443 @@
+/* ==========================================================================
+   Cosmic Stylesheet: Sanatan Origin of the Universe
+   Colors: Suvarna Gold, Bhagwa Saffron, Shyama Azure, Shakti Violet, Emerald
+   ========================================================================== */
+
+:root {
+  --color-void: #020106;
+  --color-space-deep: #060412;
+  --color-space-card: rgba(13, 10, 30, 0.78);
+  --color-space-card-border: rgba(255, 215, 0, 0.22);
+  --color-space-card-hover: rgba(26, 19, 58, 0.9);
+  
+  /* Sacred Vedic Colors */
+  --gold-primary: #FFD700;
+  --gold-glow: rgba(255, 215, 0, 0.45);
+  --gold-light: #FEF08A;
+  --saffron-sacred: #FF7700;
+  --saffron-light: #FF9933;
+  --saffron-glow: rgba(255, 119, 0, 0.4);
+  --shyama-blue: #06B6D4;
+  --shyama-deep: #1E3A8A;
+  --shakti-violet: #9333EA;
+  --emerald-prakriti: #10B981;
+  --rudra-crimson: #E11D48;
+  
+  --text-main: #F8FAFC;
+  --text-muted: #94A3B8;
+  --text-gold: #FDE047;
+  --text-saffron: #FDBA74;
+
+  --font-serif: 'Cinzel', 'Yatra One', 'Noto Serif Devanagari', serif;
+  --font-sans: 'Plus Jakarta Sans', system-ui, -apple-system, sans-serif;
+  
+  --transition-smooth: all 0.28s cubic-bezier(0.16, 1, 0.3, 1);
+}
+
+* {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+}
+
+html, body {
+  width: 100%;
+  height: 100%;
+  overflow: hidden;
+  background-color: var(--color-void);
+  font-family: var(--font-sans);
+  color: var(--text-main);
+  user-select: none;
+  -webkit-font-smoothing: antialiased;
+}
+
+/* Background Canvas */
+#cosmic-canvas {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100vw;
+  height: 100vh;
+  z-index: 0;
+  pointer-events: none;
+}
+
+/* App Container */
+.app-container {
+  position: relative;
+  width: 100vw;
+  height: 100vh;
+  display: flex;
+  flex-direction: column;
+  z-index: 1;
+}
+
+/* ==========================================================================
+   Header & Navigation Bar (Decongested, High-Fidelity Modern Layout)
+   ========================================================================== */
+.cosmic-header {
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  height: 64px;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 0 24px;
+  background: linear-gradient(180deg, rgba(6, 4, 18, 0.92) 0%, rgba(6, 4, 18, 0.6) 80%, transparent 100%);
+  backdrop-filter: blur(16px);
+  border-bottom: 1px solid rgba(255, 215, 0, 0.14);
+  z-index: 20;
+}
+
+.brand-section {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  flex-shrink: 0;
+}
+
+.om-symbol-emblem {
+  width: 38px;
+  height: 38px;
+  border-radius: 50%;
+  background: radial-gradient(circle, rgba(255, 215, 0, 0.25) 0%, rgba(255, 119, 0, 0.1) 70%, transparent 100%);
+  border: 1px solid var(--gold-primary);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 20px;
+  color: var(--gold-primary);
+  box-shadow: 0 0 16px var(--gold-glow);
+  animation: emblemPulse 4s infinite ease-in-out;
+}
+
+@keyframes emblemPulse {
+  0%, 100% { box-shadow: 0 0 12px var(--gold-glow), inset 0 0 8px rgba(255, 215, 0, 0.2); }
+  50% { box-shadow: 0 0 24px rgba(255, 153, 51, 0.65), inset 0 0 14px rgba(255, 153, 51, 0.35); }
+}
+
+.brand-titles {
+  display: flex;
+  flex-direction: column;
+}
+
+.brand-title {
+  font-family: var(--font-serif);
+  font-size: 16.5px;
+  font-weight: 700;
+  letter-spacing: 0.8px;
+  background: linear-gradient(135deg, #FFF7ED 0%, #FFD700 45%, #FF9933 100%);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  text-shadow: 0 0 20px rgba(255, 215, 0, 0.35);
+  line-height: 1.2;
+}
+
+.brand-subtitle {
+  font-size: 10.5px;
+  color: var(--text-muted);
+  letter-spacing: 0.4px;
+}
+
+/* Center: Tradition Segmented Bar */
+.tradition-segmented-bar {
+  display: flex;
+  align-items: center;
+  background: rgba(13, 9, 28, 0.82);
+  border: 1px solid rgba(255, 215, 0, 0.28);
+  border-radius: 24px;
+  padding: 3px;
+  box-shadow: 0 4px 20px rgba(0, 0, 0, 0.4), inset 0 0 10px rgba(255, 215, 0, 0.05);
+  flex-shrink: 0;
+}
+
+.tradition-tab {
+  background: transparent;
+  border: none;
+  color: var(--text-muted);
+  font-size: 11.5px;
+  font-weight: 600;
+  padding: 6px 14px;
+  border-radius: 18px;
+  cursor: pointer;
+  transition: var(--transition-smooth);
+  display: flex;
+  align-items: center;
+  gap: 6px;
+  white-space: nowrap;
+}
+
+.tradition-tab:hover {
+  color: #fff;
+  background: rgba(255, 255, 255, 0.05);
+}
+
+.tradition-tab.active {
+  background: linear-gradient(135deg, rgba(255, 215, 0, 0.28) 0%, rgba(255, 119, 0, 0.32) 100%);
+  color: #FFF7ED;
+  border: 1px solid rgba(255, 215, 0, 0.55);
+  box-shadow: 0 0 14px rgba(255, 215, 0, 0.25);
+}
+
+/* Header Right: Search & Actions */
+.header-right {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  flex-shrink: 0;
+}
+
+.search-container {
+  position: relative;
+  width: 200px;
+  transition: width 0.3s ease;
+}
+
+.search-container:focus-within {
+  width: 260px;
+}
+
+.search-input {
+  width: 100%;
+  padding: 7px 14px 7px 32px;
+  background: rgba(15, 12, 35, 0.7);
+  border: 1px solid rgba(255, 215, 0, 0.2);
+  border-radius: 20px;
+  color: #fff;
+  font-size: 12px;
+  outline: none;
+  transition: var(--transition-smooth);
+}
+
+.search-input:focus {
+  border-color: var(--gold-primary);
+  background: rgba(22, 17, 50, 0.9);
+  box-shadow: 0 0 14px rgba(255, 215, 0, 0.25);
+}
+
+.search-icon {
+  position: absolute;
+  left: 10px;
+  top: 50%;
+  transform: translateY(-50%);
+  color: var(--gold-primary);
+  font-size: 12px;
+  opacity: 0.75;
+}
+
+.search-results-dropdown {
+  position: absolute;
+  top: 38px;
+  left: 0;
+  right: 0;
+  max-height: 340px;
+  overflow-y: auto;
+  background: rgba(12, 9, 28, 0.96);
+  border: 1px solid rgba(255, 215, 0, 0.3);
+  border-radius: 12px;
+  box-shadow: 0 12px 35px rgba(0, 0, 0, 0.75);
+  backdrop-filter: blur(16px);
+  display: none;
+  z-index: 100;
+}
+
+.search-result-item {
+  padding: 9px 12px;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  border-bottom: 1px solid rgba(255, 255, 255, 0.05);
+  cursor: pointer;
+  transition: background 0.15s;
+}
+
+.search-result-item:hover {
+  background: rgba(255, 215, 0, 0.12);
+}
+
+.search-result-title {
+  font-size: 12.5px;
+  font-weight: 600;
+  color: #fff;
+}
+
+.search-result-sanskrit {
+  font-size: 10.5px;
+  color: var(--gold-light);
+}
+
+.search-result-tier {
+  font-size: 9.5px;
+  padding: 2px 6px;
+  border-radius: 8px;
+  background: rgba(255, 255, 255, 0.1);
+  color: var(--text-muted);
+}
+
+/* ==========================================================================
+   Floating Sub-Filter Bar (Spacious, Uncluttered Below-Header Dock)
+   ========================================================================== */
+.floating-filter-dock {
+  position: absolute;
+  top: 74px;
+  left: 50%;
+  transform: translateX(-50%);
+  display: flex;
+  align-items: center;
+  gap: 6px;
+  background: rgba(12, 9, 26, 0.82);
+  border: 1px solid rgba(255, 215, 0, 0.18);
+  padding: 4px 10px;
+  border-radius: 24px;
+  backdrop-filter: blur(14px);
+  box-shadow: 0 8px 24px rgba(0, 0, 0, 0.55);
+  z-index: 15;
+  max-width: 90vw;
+  overflow-x: auto;
+  white-space: nowrap;
+}
+
+.filter-dock-label {
+  font-size: 10.5px;
+  font-weight: 700;
+  text-transform: uppercase;
+  letter-spacing: 0.6px;
+  color: var(--gold-primary);
+  margin-right: 4px;
+  display: flex;
+  align-items: center;
+  gap: 4px;
+}
+
+.filter-btn {
+  background: transparent;
+  border: none;
+  color: var(--text-muted);
+  font-size: 11.5px;
+  font-weight: 500;
+  padding: 5px 12px;
+  border-radius: 14px;
+  cursor: pointer;
+  transition: var(--transition-smooth);
+}
+
+.filter-btn:hover {
+  color: #fff;
+  background: rgba(255, 255, 255, 0.06);
+}
+
+.filter-btn.active {
+  background: linear-gradient(135deg, rgba(255, 215, 0, 0.22) 0%, rgba(255, 119, 0, 0.25) 100%);
+  color: var(--gold-light);
+  border: 1px solid rgba(255, 215, 0, 0.42);
+  font-weight: 600;
+  box-shadow: 0 0 10px rgba(255, 215, 0, 0.2);
+}
+
+/* Header Right - Audio & Tour Controls */
+.header-right {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+}
+
+.cosmic-btn {
+  display: inline-flex;
+  align-items: center;
+  gap: 7px;
+  padding: 8px 16px;
+  background: rgba(18, 14, 40, 0.7);
+  border: 1px solid rgba(255, 215, 0, 0.28);
+  border-radius: 20px;
+  color: var(--gold-light);
+  font-size: 12.5px;
+  font-weight: 600;
+  cursor: pointer;
+  transition: var(--transition-smooth);
+  backdrop-filter: blur(8px);
+}
+
+.cosmic-btn:hover {
+  background: rgba(255, 215, 0, 0.15);
+  border-color: var(--gold-primary);
+  box-shadow: 0 0 16px var(--gold-glow);
+  transform: translateY(-1px);
+}
+
+.audio-btn.playing {
+  border-color: var(--saffron-light);
+  background: rgba(255, 119, 0, 0.18);
+  color: #FFA726;
+  box-shadow: 0 0 18px rgba(255, 119, 0, 0.4);
+}
+
+.audio-wave {
+  display: inline-flex;
+  align-items: flex-end;
+  gap: 2px;
+  height: 12px;
+}
+
+.audio-wave span {
+  width: 2.5px;
+  background: currentColor;
+  border-radius: 1px;
+  height: 4px;
+}
+
+.audio-btn.playing .audio-wave span:nth-child(1) { animation: wave 1.1s ease-in-out infinite; }
+.audio-btn.playing .audio-wave span:nth-child(2) { animation: wave 0.8s ease-in-out infinite 0.2s; }
+.audio-btn.playing .audio-wave span:nth-child(3) { animation: wave 1.3s ease-in-out infinite 0.4s; }
+
+@keyframes wave {
+  0%, 100% { height: 4px; }
+  50% { height: 12px; }
+}
+
+/* ==========================================================================
+   Tree Viewport & Interactive Canvas (Rock-Solid 2D Stage)
+   ========================================================================== */
+.viewport-container {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  overflow: hidden;
+  cursor: grab;
+}
+
+.viewport-container:active {
+  cursor: grabbing;
+}
+
+#tree-svg {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  overflow: visible;
+}
+
+/* Cosmic Tier Guides (Framing Branches into Structured Sacred Levels) */
+.tier-guide-group {
+  pointer-events: none;
+}
+
+.tier-guide-line {
+  stroke: rgba(255, 215, 0, 0.13);
+  stroke-dasharray: 6 6;
+  stroke-width: 1;
+}
+
+.tier-guide-text {
+  fill: rgba(255, 215, 0, 0.42);
+  font-size: 10px;
+  font-family: var(--font-serif);
+  letter-spacing: 0.9px;
+  text-transform: uppercase;
+  font-weight: 600;
+  user-select: none;
+}
+
+/* Tree Connections (Nadis / Energy Streams) */
+.tree-link {
+  fill: none;
+  stroke: url(#link-grad);
+  stroke-width: 2.4;
+  opacity: 0.8;
+  filter: drop-shadow(0 0 4px rgba(255, 215, 0, 0.3));
+  transition: stroke 0.3s, stroke-width 0.3s, opacity 0.3s;
+}
+
+.tree-link.highlighted {
+  stroke: #FFD700;
+  stroke-width: 3.8;
+  opacity: 1;
+  filter: drop-shadow(0 0 10px #FFD700) drop-shadow(0 0 20px rgba(255, 153, 51, 0.6));
+}
+
+.tree-pulse-dot {
+  fill: var(--gold-primary);
+  filter: drop-shadow(0 0 5px var(--gold-light));
+}
+
+/* Tree Node Cards (ForeignObject with Smooth Reveal) */
+@keyframes cardSlideIn {
+  from {
+    opacity: 0;
+    transform: translateY(16px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+.node-card {
+  width: 100%;
+  height: 100%;
+  box-sizing: border-box;
+  padding: 14px 18px;
+  background: radial-gradient(circle at 50% 20%, rgba(38, 26, 82, 0.94) 0%, rgba(13, 9, 30, 0.98) 100%);
+  border: 1.5px solid var(--gold-primary);
+  border-radius: 16px;
+  backdrop-filter: blur(16px);
+  box-shadow: 0 0 35px var(--gold-glow), inset 0 0 20px rgba(255, 215, 0, 0.2);
+  cursor: pointer;
+  color: var(--text-main);
+  position: relative;
+  overflow: hidden;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  animation: cardSlideIn 0.3s cubic-bezier(0.16, 1, 0.3, 1) backwards;
+  transition: border-color 0.25s, box-shadow 0.25s, transform 0.25s;
+}
+
+.node-card::before {
+  content: "";
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  height: 3.5px;
+  background: linear-gradient(90deg, transparent, var(--gold-primary), transparent);
+  opacity: 0.95;
+}
+
+.node-card:hover {
+  transform: translateY(-4px);
+  border-color: #FFF3B0;
+  box-shadow: 0 14px 42px rgba(0, 0, 0, 0.95), 0 0 42px var(--gold-glow), inset 0 0 24px rgba(255, 215, 0, 0.3);
+}
+
+.node-card.selected {
+  border-color: #FFF;
+  box-shadow: 0 0 40px var(--gold-glow), 0 0 60px rgba(255, 119, 0, 0.5), inset 0 0 25px rgba(255, 215, 0, 0.35);
+}
+
+.node-card.apex-origin {
+  padding: 14px 18px;
+  background: radial-gradient(circle at 50% 20%, rgba(38, 26, 82, 0.94) 0%, rgba(13, 9, 30, 0.98) 100%);
+  border: 1.5px solid var(--gold-primary);
+  box-shadow: 0 0 35px var(--gold-glow), inset 0 0 20px rgba(255, 215, 0, 0.2);
+}
+
+.node-header {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  margin-bottom: 6px;
+}
+
+.node-icon-badge {
+  width: 38px;
+  height: 38px;
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 20px;
+  background: rgba(255, 255, 255, 0.08);
+  border: 1.5px solid var(--gold-primary);
+  box-shadow: 0 0 14px var(--gold-glow);
+  flex-shrink: 0;
+}
+
+.node-title-group {
+  flex: 1;
+  overflow: hidden;
+}
+
+.node-title {
+  font-size: 15px;
+  font-weight: 700;
+  color: #fff;
+  line-height: 1.25;
+  letter-spacing: 0.2px;
+  display: -webkit-box;
+  -webkit-line-clamp: 2;
+  -webkit-box-orient: vertical;
+  overflow: hidden;
+}
+
+.node-sanskrit {
+  font-size: 12px;
+  color: var(--gold-light);
+  font-family: 'Noto Serif Devanagari', var(--font-serif);
+  letter-spacing: 0.4px;
+  margin-top: 2px;
+  font-weight: 600;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+
+.node-body-content {
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+  gap: 6px;
+  justify-content: flex-start;
+  overflow: hidden;
+}
+
+.node-meta-row {
+  display: flex;
+  align-items: center;
+  gap: 6px;
+  flex-wrap: wrap;
+}
+
+.node-category-tag {
+  display: inline-block;
+  font-size: 10px;
+  font-weight: 700;
+  text-transform: uppercase;
+  letter-spacing: 0.6px;
+  padding: 2.5px 8px;
+  border-radius: 6px;
+  background: rgba(255, 215, 0, 0.14);
+  border: 1px solid rgba(255, 215, 0, 0.28);
+  color: var(--gold-light);
+  white-space: nowrap;
+}
+
+.node-parent-tag {
+  display: inline-flex;
+  align-items: center;
+  gap: 4px;
+  font-size: 10px;
+  font-weight: 600;
+  color: var(--gold-light);
+  background: rgba(255, 215, 0, 0.12);
+  padding: 2.5px 8px;
+  border-radius: 6px;
+  border: 1px solid rgba(255, 215, 0, 0.28);
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  max-width: 175px;
+}
+
+.node-relation-tags {
+  display: flex;
+  align-items: center;
+  gap: 6px;
+  flex-wrap: wrap;
+}
+
+.node-meta-chip {
+  font-size: 10px;
+  padding: 2.5px 7px;
+  border-radius: 6px;
+  background: rgba(255, 215, 0, 0.1);
+  color: #F1F5F9;
+  border: 1px solid rgba(255, 215, 0, 0.22);
+  white-space: nowrap;
+  max-width: 140px;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+
+.node-summary {
+  font-size: 12px;
+  color: #CBD5E1;
+  line-height: 1.48;
+  display: -webkit-box;
+  -webkit-line-clamp: 3;
+  -webkit-box-orient: vertical;
+  overflow: hidden;
+}
+
+.node-footer {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  margin-top: 6px;
+  padding-top: 8px;
+  border-top: 1px solid rgba(255, 215, 0, 0.15);
+}
+
+.node-footer-left {
+  display: flex;
+  align-items: center;
+  gap: 6px;
+  overflow: hidden;
+}
+
+.node-tier-label {
+  font-size: 10px;
+  color: var(--text-muted);
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  max-width: 130px;
+}
+
+.node-click-hint {
+  font-size: 10px;
+  color: var(--gold-light);
+  opacity: 0.88;
+  white-space: nowrap;
+  cursor: pointer;
+  text-decoration: underline dotted;
+}
+
+.node-expand-pill {
+  font-size: 11px;
+  padding: 4px 11px;
+  border-radius: 14px;
+  background: rgba(255, 215, 0, 0.16);
+  color: var(--gold-light);
+  border: 1.2px solid rgba(255, 215, 0, 0.35);
+  display: flex;
+  align-items: center;
+  gap: 4px;
+  cursor: pointer;
+  white-space: nowrap;
+  font-weight: 600;
+  box-shadow: 0 0 12px rgba(255, 215, 0, 0.16);
+  transition: var(--transition-smooth);
+}
+
+.node-expand-pill:hover {
+  background: var(--gold-primary);
+  color: #000;
+  border-color: #fff;
+  box-shadow: 0 0 18px var(--gold-glow);
+  transform: scale(1.04);
+}
+
+.node-terminal-pill {
+  font-size: 10px;
+  padding: 3px 9px;
+  border-radius: 12px;
+  background: rgba(255, 255, 255, 0.08);
+  border: 1px solid rgba(255, 255, 255, 0.15);
+  color: var(--text-muted);
+  white-space: nowrap;
+}
+
+.node-terminal-pill {
+  font-size: 9.5px;
+  color: var(--text-muted);
+  opacity: 0.75;
+  font-style: italic;
+  white-space: nowrap;
+}
+
+/* ==========================================================================
+   Cosmic Tier Navigator Rail (Left-Side Level Indicator & Fast Navigator)
+   ========================================================================== */
+.cosmic-tier-navigator {
+  position: absolute;
+  left: 20px;
+  top: 50%;
+  transform: translateY(-50%);
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+  background: rgba(12, 9, 28, 0.78);
+  border: 1px solid rgba(255, 215, 0, 0.2);
+  padding: 10px 8px;
+  border-radius: 24px;
+  backdrop-filter: blur(14px);
+  box-shadow: 0 8px 30px rgba(0, 0, 0, 0.55);
+  z-index: 15;
+}
+
+.tier-nav-dot {
+  position: relative;
+  width: 34px;
+  height: 34px;
+  border-radius: 50%;
+  background: rgba(255, 255, 255, 0.06);
+  border: 1px solid rgba(255, 215, 0, 0.22);
+  color: var(--gold-light);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 14px;
+  cursor: pointer;
+  transition: var(--transition-smooth);
+}
+
+.tier-nav-dot:hover {
+  background: rgba(255, 215, 0, 0.2);
+  border-color: var(--gold-primary);
+  transform: scale(1.12);
+}
+
+.tier-nav-dot.active {
+  background: linear-gradient(135deg, rgba(255, 215, 0, 0.35) 0%, rgba(255, 119, 0, 0.4) 100%);
+  border-color: var(--gold-primary);
+  box-shadow: 0 0 14px var(--gold-glow);
+  color: #fff;
+  transform: scale(1.1);
+}
+
+.tier-dot-label {
+  position: absolute;
+  left: 42px;
+  top: 50%;
+  transform: translateY(-50%);
+  background: rgba(12, 9, 28, 0.95);
+  border: 1px solid rgba(255, 215, 0, 0.3);
+  padding: 4px 10px;
+  border-radius: 12px;
+  font-size: 11px;
+  color: #FFF7ED;
+  white-space: nowrap;
+  opacity: 0;
+  pointer-events: none;
+  transition: opacity 0.2s, transform 0.2s;
+  box-shadow: 0 4px 14px rgba(0, 0, 0, 0.6);
+}
+
+.tier-nav-dot:hover .tier-dot-label {
+  opacity: 1;
+  transform: translateY(-50%) translateX(4px);
+}
+
+@media (max-width: 900px) {
+  .cosmic-tier-navigator {
+    display: none;
+  }
+}
+
+/* ==========================================================================
+   Floating Controls Dock (Bottom-Right / Center)
+   ========================================================================== */
+.controls-dock {
+  position: absolute;
+  bottom: 24px;
+  right: 28px;
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  background: rgba(12, 9, 28, 0.85);
+  border: 1px solid rgba(255, 215, 0, 0.2);
+  padding: 6px 10px;
+  border-radius: 30px;
+  backdrop-filter: blur(14px);
+  box-shadow: 0 10px 30px rgba(0, 0, 0, 0.5);
+  z-index: 20;
+}
+
+.dock-btn {
+  width: 38px;
+  height: 38px;
+  border-radius: 50%;
+  background: transparent;
+  border: none;
+  color: var(--text-muted);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 15px;
+  cursor: pointer;
+  transition: var(--transition-smooth);
+}
+
+.dock-btn:hover {
+  color: var(--gold-light);
+  background: rgba(255, 215, 0, 0.15);
+}
+
+.dock-divider {
+  width: 1px;
+  height: 20px;
+  background: rgba(255, 255, 255, 0.12);
+}
+
+/* Breadcrumb Bar at bottom-left */
+.breadcrumb-bar {
+  position: absolute;
+  bottom: 24px;
+  left: 28px;
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  background: rgba(12, 9, 28, 0.82);
+  border: 1px solid rgba(255, 215, 0, 0.15);
+  padding: 8px 18px;
+  border-radius: 20px;
+  backdrop-filter: blur(12px);
+  z-index: 20;
+  max-width: 50vw;
+  overflow-x: auto;
+  white-space: nowrap;
+}
+
+.breadcrumb-item {
+  font-size: 12px;
+  color: var(--text-muted);
+  cursor: pointer;
+  transition: color 0.2s;
+}
+
+.breadcrumb-item:hover {
+  color: var(--gold-light);
+}
+
+.breadcrumb-item.active {
+  color: var(--gold-primary);
+  font-weight: 600;
+}
+
+.breadcrumb-sep {
+  color: rgba(255, 215, 0, 0.4);
+  font-size: 10px;
+}
+
+/* ==========================================================================
+   Detail Drawer / Scripture Inspector (Right Slide-in)
+   ========================================================================== */
+.detail-drawer {
+  position: absolute;
+  top: 72px;
+  right: -520px;
+  width: 480px;
+  height: calc(100vh - 72px);
+  background: rgba(10, 7, 24, 0.94);
+  border-left: 1px solid rgba(255, 215, 0, 0.22);
+  backdrop-filter: blur(20px);
+  box-shadow: -15px 0 50px rgba(0, 0, 0, 0.75);
+  transition: right 0.38s cubic-bezier(0.16, 1, 0.3, 1);
+  z-index: 30;
+  display: flex;
+  flex-direction: column;
+}
+
+.detail-drawer.open {
+  right: 0;
+}
+
+.drawer-header {
+  padding: 22px 24px;
+  border-bottom: 1px solid rgba(255, 215, 0, 0.12);
+  display: flex;
+  align-items: flex-start;
+  justify-content: space-between;
+  background: linear-gradient(180deg, rgba(255, 215, 0, 0.05) 0%, transparent 100%);
+}
+
+.drawer-header-content {
+  flex: 1;
+}
+
+.drawer-category-badge {
+  display: inline-block;
+  font-size: 11px;
+  font-weight: 700;
+  text-transform: uppercase;
+  letter-spacing: 0.8px;
+  padding: 3px 10px;
+  border-radius: 8px;
+  background: rgba(255, 215, 0, 0.15);
+  color: var(--gold-primary);
+  border: 1px solid rgba(255, 215, 0, 0.3);
+  margin-bottom: 8px;
+}
+
+.drawer-title {
+  font-size: 20px;
+  font-weight: 700;
+  color: #fff;
+  margin-bottom: 2px;
+}
+
+.drawer-sanskrit {
+  font-family: 'Noto Serif Devanagari', var(--font-serif);
+  font-size: 15px;
+  color: var(--gold-light);
+  letter-spacing: 0.5px;
+}
+
+.drawer-close-btn {
+  width: 32px;
+  height: 32px;
+  border-radius: 50%;
+  background: rgba(255, 255, 255, 0.08);
+  border: none;
+  color: var(--text-muted);
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 16px;
+  transition: var(--transition-smooth);
+}
+
+.drawer-close-btn:hover {
+  background: rgba(255, 255, 255, 0.18);
+  color: #fff;
+}
+
+.drawer-body {
+  flex: 1;
+  overflow-y: auto;
+  padding: 24px;
+  display: flex;
+  flex-direction: column;
+  gap: 22px;
+}
+
+/* ==========================================================================
+   Beginner & Global Layman Guide Card (In Plain Terms for Non-Sanatan Readers)
+   ========================================================================== */
+.layman-guide-card {
+  background: linear-gradient(135deg, rgba(20, 16, 45, 0.95) 0%, rgba(32, 22, 60, 0.98) 100%);
+  border: 1px solid rgba(255, 215, 0, 0.38);
+  border-radius: 14px;
+  padding: 18px 20px;
+  box-shadow: 0 8px 30px rgba(0, 0, 0, 0.55), inset 0 0 16px rgba(255, 215, 0, 0.08);
+  position: relative;
+  overflow: hidden;
+}
+
+.layman-guide-card::before {
+  content: "";
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 4px;
+  height: 100%;
+  background: linear-gradient(180deg, var(--gold-primary), #FF9933);
+}
+
+.layman-card-header {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  margin-bottom: 14px;
+  padding-bottom: 10px;
+  border-bottom: 1px solid rgba(255, 255, 255, 0.08);
+  flex-wrap: wrap;
+  gap: 8px;
+}
+
+.layman-badge {
+  display: flex;
+  align-items: center;
+  gap: 6px;
+  background: rgba(255, 215, 0, 0.15);
+  border: 1px solid rgba(255, 215, 0, 0.32);
+  padding: 4px 10px;
+  border-radius: 20px;
+}
+
+.layman-badge-icon {
+  font-size: 13px;
+}
+
+.layman-badge-text {
+  font-size: 11px;
+  font-weight: 700;
+  color: var(--gold-primary);
+  text-transform: uppercase;
+  letter-spacing: 0.6px;
+}
+
+.layman-subtitle {
+  font-size: 11px;
+  color: var(--text-muted);
+  font-style: italic;
+}
+
+.layman-content {
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+}
+
+.layman-section {
+  display: flex;
+  flex-direction: column;
+  gap: 5px;
+}
+
+.layman-label {
+  font-size: 11px;
+  font-weight: 700;
+  text-transform: uppercase;
+  letter-spacing: 0.6px;
+  color: var(--gold-light);
+  display: flex;
+  align-items: center;
+  gap: 6px;
+}
+
+.layman-text {
+  font-size: 13px;
+  line-height: 1.6;
+  color: #E2E8F0;
+  background: rgba(0, 0, 0, 0.28);
+  padding: 10px 14px;
+  border-radius: 8px;
+  border-left: 2px solid rgba(255, 215, 0, 0.5);
+}
+
+/* Scripture Shloka Showcase Card */
+.shloka-card {
+  background: radial-gradient(circle at 50% 0%, rgba(40, 26, 8, 0.6) 0%, rgba(18, 12, 34, 0.7) 100%);
+  border: 1px solid rgba(255, 215, 0, 0.35);
+  border-radius: 14px;
+  padding: 18px 20px;
+  position: relative;
+  box-shadow: 0 8px 25px rgba(0, 0, 0, 0.4), inset 0 0 16px rgba(255, 215, 0, 0.08);
+}
+
+.shloka-card-badge {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  margin-bottom: 12px;
+}
+
+.shloka-source {
+  font-size: 11.5px;
+  font-weight: 600;
+  color: var(--gold-primary);
+  letter-spacing: 0.5px;
+}
+
+.shloka-devanagari {
+  font-family: 'Noto Serif Devanagari', var(--font-serif);
+  font-size: 15.5px;
+  line-height: 1.8;
+  color: #FFF7ED;
+  white-space: pre-line;
+  margin-bottom: 12px;
+  text-shadow: 0 0 15px rgba(255, 215, 0, 0.25);
+  border-left: 3px solid var(--gold-primary);
+  padding-left: 14px;
+}
+
+.shloka-translit {
+  font-style: italic;
+  font-size: 12px;
+  color: #CBD5E1;
+  line-height: 1.6;
+  white-space: pre-line;
+  margin-bottom: 12px;
+  padding-left: 14px;
+}
+
+.shloka-meaning {
+  font-size: 13px;
+  line-height: 1.65;
+  color: #E2E8F0;
+  background: rgba(0, 0, 0, 0.3);
+  padding: 12px 14px;
+  border-radius: 8px;
+  border-left: 3px solid var(--saffron-light);
+}
+
+/* Section Block */
+.drawer-section-title {
+  font-size: 13px;
+  font-weight: 700;
+  text-transform: uppercase;
+  letter-spacing: 0.8px;
+  color: var(--gold-light);
+  margin-bottom: 10px;
+  display: flex;
+  align-items: center;
+  gap: 8px;
+}
+
+/* Genealogy / Divine Family Profile Cards */
+.drawer-genealogy-grid {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 10px;
+}
+
+.drawer-genealogy-card {
+  background: rgba(255, 255, 255, 0.04);
+  border: 1px solid rgba(255, 215, 0, 0.18);
+  border-radius: 10px;
+  padding: 10px 12px;
+  display: flex;
+  flex-direction: column;
+  gap: 3px;
+  transition: var(--transition-smooth);
+}
+
+.drawer-genealogy-card:hover {
+  background: rgba(255, 215, 0, 0.08);
+  border-color: rgba(255, 215, 0, 0.35);
+}
+
+.drawer-genealogy-label {
+  font-size: 10px;
+  font-weight: 700;
+  text-transform: uppercase;
+  letter-spacing: 0.6px;
+  color: var(--gold-primary);
+  display: flex;
+  align-items: center;
+  gap: 5px;
+}
+
+.drawer-genealogy-value {
+  font-size: 12.5px;
+  font-weight: 600;
+  color: #FFF;
+  line-height: 1.35;
+}
+
+.drawer-parent-jump-btn {
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+  font-size: 11px;
+  color: var(--gold-light);
+  background: rgba(255, 215, 0, 0.15);
+  border: 1px solid rgba(255, 215, 0, 0.35);
+  border-radius: 6px;
+  padding: 3px 8px;
+  margin-top: 4px;
+  cursor: pointer;
+  transition: var(--transition-smooth);
+}
+
+.drawer-parent-jump-btn:hover {
+  background: rgba(255, 215, 0, 0.3);
+  transform: translateY(-1px);
+}
+
+.drawer-details-text {
+  font-size: 13.5px;
+  line-height: 1.7;
+  color: #CBD5E1;
+}
+
+.drawer-details-text strong {
+  color: #FFF;
+}
+
+.attributes-list {
+  list-style: none;
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+}
+
+.attribute-item {
+  display: flex;
+  align-items: flex-start;
+  gap: 10px;
+  font-size: 13px;
+  color: #E2E8F0;
+  line-height: 1.5;
+}
+
+.attribute-item::before {
+  content: "✦";
+  color: var(--gold-primary);
+  font-size: 12px;
+  margin-top: 1px;
+}
+
+/* Navigation between parent & children */
+.drawer-nav-group {
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+}
+
+.nav-link-card {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 10px 14px;
+  background: rgba(255, 255, 255, 0.04);
+  border: 1px solid rgba(255, 255, 255, 0.08);
+  border-radius: 10px;
+  cursor: pointer;
+  transition: var(--transition-smooth);
+}
+
+.nav-link-card:hover {
+  background: rgba(255, 215, 0, 0.1);
+  border-color: rgba(255, 215, 0, 0.3);
+}
+
+.nav-link-name {
+  font-size: 13px;
+  font-weight: 600;
+  color: #fff;
+}
+
+.nav-link-sub {
+  font-size: 11px;
+  color: var(--text-muted);
+}
+
+/* ==========================================================================
+   Guided Tour Overlay Card (Srishti Yatra)
+   ========================================================================== */
+.tour-overlay-card {
+  position: absolute;
+  bottom: 84px;
+  left: 50%;
+  transform: translateX(-50%);
+  width: 520px;
+  max-width: 90vw;
+  background: rgba(14, 10, 32, 0.94);
+  border: 1.5px solid var(--gold-primary);
+  border-radius: 18px;
+  padding: 20px 24px;
+  box-shadow: 0 16px 50px rgba(0, 0, 0, 0.8), 0 0 30px var(--gold-glow);
+  backdrop-filter: blur(18px);
+  z-index: 25;
+  display: none;
+}
+
+.tour-header {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  margin-bottom: 10px;
+}
+
+.tour-step-badge {
+  font-size: 11px;
+  font-weight: 700;
+  text-transform: uppercase;
+  color: var(--gold-primary);
+  letter-spacing: 0.8px;
+}
+
+.tour-close-btn {
+  background: transparent;
+  border: none;
+  color: var(--text-muted);
+  cursor: pointer;
+  font-size: 16px;
+}
+
+.tour-title {
+  font-size: 16px;
+  font-weight: 700;
+  color: #fff;
+  margin-bottom: 6px;
+}
+
+.tour-description {
+  font-size: 13px;
+  line-height: 1.6;
+  color: #CBD5E1;
+  margin-bottom: 16px;
+}
+
+.tour-actions {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+
+.tour-btn {
+  padding: 7px 16px;
+  border-radius: 16px;
+  font-size: 12.5px;
+  font-weight: 600;
+  cursor: pointer;
+  transition: var(--transition-smooth);
+}
+
+.tour-btn-secondary {
+  background: rgba(255, 255, 255, 0.08);
+  border: 1px solid rgba(255, 255, 255, 0.15);
+  color: #fff;
+}
+
+.tour-btn-primary {
+  background: linear-gradient(135deg, var(--gold-primary) 0%, var(--saffron-sacred) 100%);
+  border: none;
+  color: #000;
+  font-weight: 700;
+  box-shadow: 0 0 14px var(--gold-glow);
+}
+
+/* ==========================================================================
+   Scrollbar & Responsive Adjustments
+   ========================================================================== */
+::-webkit-scrollbar {
+  width: 6px;
+  height: 6px;
+}
+
+::-webkit-scrollbar-track {
+  background: rgba(10, 7, 24, 0.6);
+}
+
+::-webkit-scrollbar-thumb {
+  background: rgba(255, 215, 0, 0.25);
+  border-radius: 3px;
+}
+
+::-webkit-scrollbar-thumb:hover {
+  background: var(--gold-primary);
+}
+
+@media (max-width: 1100px) {
+  .cosmic-header {
+    padding: 0 16px;
+  }
+  .brand-subtitle {
+    display: none;
+  }
+  .tradition-tab {
+    padding: 5px 10px;
+    font-size: 11px;
+  }
+  .search-container {
+    width: 150px;
+  }
+  .search-container:focus-within {
+    width: 200px;
+  }
+}
+
+@media (max-width: 820px) {
+  .cosmic-header {
+    padding: 0 12px;
+    height: 60px;
+  }
+  .brand-title {
+    font-size: 14px;
+  }
+  .tradition-segmented-bar {
+    padding: 2px;
+  }
+  .tradition-tab {
+    padding: 4px 8px;
+    font-size: 10.5px;
+  }
+  .floating-filter-dock {
+    top: 66px;
+    padding: 3px 8px;
+    gap: 4px;
+  }
+  .search-container {
+    display: none;
+  }
+  .audio-label {
+    display: none;
+  }
+  .detail-drawer {
+    width: 100vw;
+    right: -100vw;
+  }
+  .breadcrumb-bar {
+    display: none;
+  }
+}

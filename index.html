@@ -1,0 +1,293 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Sanatan Origin of the Universe & Divine Pantheon • ब्रह्माण्डोत्पत्ति एवं देववंशावली</title>
+  
+  <!-- Sacred Cosmic Favicons (Pranava ॐ Emblem) -->
+  <link rel="icon" type="image/svg+xml" href="favicon.svg">
+  <link rel="icon" type="image/png" sizes="128x128" href="favicon.png">
+  <link rel="alternate icon" type="image/x-icon" href="favicon.ico">
+  <link rel="apple-touch-icon" href="apple-touch-icon.png">
+  
+  <!-- Google Fonts: Cinzel, Plus Jakarta Sans & Noto Serif Devanagari -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Cinzel:wght@600;700;800;900&family=Noto+Serif+Devanagari:wght@400;600;700&family=Plus+Jakarta+Sans:wght@400;500;600;700&display=swap" rel="stylesheet">
+  
+  <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+  <!-- Dynamic Cosmic Canvas Background (3D Stars, Vedic Nebulae, Sri Yantra Watermark, Prana Dust) -->
+  <canvas id="cosmic-canvas"></canvas>
+
+  <div class="app-container">
+    <!-- Cosmic Header Bar -->
+    <header class="cosmic-header">
+      <div class="brand-section" onclick="window.cosmicApp.resetToApexOnly()" style="cursor: pointer;" title="Reset view to top origin box (ॐ)">
+        <div class="om-symbol-emblem" title="Pranava (AUM) - Click to return to Cosmic Origin">ॐ</div>
+        <div class="brand-titles">
+          <h1 class="brand-title">ब्रह्माण्डोत्पत्ति एवं देववंशावली</h1>
+          <span class="brand-subtitle">Cosmic Origin & Divine Genealogies in Sanatan Dharma</span>
+        </div>
+      </div>
+
+      <!-- Center: Tradition Segmented Bar (Decongested High-Fidelity Navigation) -->
+      <div class="tradition-segmented-bar">
+        <button id="tradition-btn-general" class="tradition-tab active" onclick="window.cosmicApp.switchTradition('general')">
+          <span>📜</span>
+          <span>General Purana</span>
+        </button>
+        <button id="tradition-btn-vishnu" class="tradition-tab" onclick="window.cosmicApp.switchTradition('vishnu')">
+          <span>🪷</span>
+          <span>Vishnu Purana</span>
+        </button>
+        <button id="tradition-btn-shiva" class="tradition-tab" onclick="window.cosmicApp.switchTradition('shiva')">
+          <span>🔱</span>
+          <span>Shiva Purana</span>
+        </button>
+        <button id="tradition-btn-tattvas" class="tradition-tab" onclick="window.cosmicApp.switchTradition('tattvas')">
+          <span>🌌</span>
+          <span>Cosmic Tattvas</span>
+        </button>
+      </div>
+
+      <!-- Right Action Buttons -->
+      <div class="header-right">
+        <!-- Live Search -->
+        <div class="search-container">
+          <span class="search-icon">🔍</span>
+          <input type="text" id="search-input" class="search-input" placeholder="Search divinity, weapon..." autocomplete="off">
+          <div id="search-results-dropdown" class="search-results-dropdown"></div>
+        </div>
+
+        <!-- Cosmic Om Synthesizer Toggle -->
+        <button id="audio-toggle-btn" class="cosmic-btn audio-btn" title="Toggle 136.1 Hz Cosmic Omkara Synthesizer">
+          <div class="audio-wave">
+            <span></span>
+            <span></span>
+            <span></span>
+          </div>
+          <span class="audio-label">Cosmic OM: Off</span>
+        </button>
+
+        <!-- Guided Tour -->
+        <button id="tour-launch-btn" class="cosmic-btn" onclick="window.cosmicApp.startGuidedTour()" title="Start Step-by-Step Guided Cosmic Journey">
+          <span>✨</span>
+          <span id="tour-launch-label">Deva Yatra</span>
+        </button>
+      </div>
+    </header>
+
+    <!-- Floating Sub-Filter Bar (Decongested quick filters dock) -->
+    <div id="floating-filter-dock" class="floating-filter-dock"></div>
+
+    <!-- Main Tree Viewport (Pan & Zoom Container) -->
+    <main id="viewport-container" class="viewport-container">
+      <svg id="tree-svg">
+        <defs>
+          <!-- Radiant Golden Linear Gradient for Nadis / Links -->
+          <linearGradient id="link-grad" x1="0%" y1="0%" x2="0%" y2="100%">
+            <stop offset="0%" stop-color="#FFD700" stop-opacity="0.65"/>
+            <stop offset="50%" stop-color="#FF9933" stop-opacity="0.5"/>
+            <stop offset="100%" stop-color="#06B6D4" stop-opacity="0.6"/>
+          </linearGradient>
+          
+          <!-- Filter for Golden Glow Effect -->
+          <filter id="glow-filter" x="-20%" y="-20%" width="140%" height="140%">
+            <feGaussianBlur stdDeviation="4" result="blur"/>
+            <feMerge>
+              <feMergeNode in="blur"/>
+              <feMergeNode in="SourceGraphic"/>
+            </feMerge>
+          </filter>
+        </defs>
+
+        <!-- SVG Tree Groups -->
+        <g id="tier-guides-group"></g>
+        <g id="links-group"></g>
+        <g id="particles-group"></g>
+        <g id="nodes-group"></g>
+      </svg>
+    </main>
+
+    <!-- Left Cosmic Tier Navigator (Tier Navigation Rail) -->
+    <nav class="cosmic-tier-navigator" id="tier-navigator" aria-label="Cosmic Hierarchy Tiers">
+      <button class="tier-nav-dot active" data-tier="0" onclick="window.cosmicApp.scrollToTier(0)" title="Tier 0: दिव्य मूलम् • Primordial Origin">
+        <span class="tier-dot-icon">🕉️</span>
+        <span class="tier-dot-label">दिव्य मूलम् • Origin</span>
+      </button>
+      <button class="tier-nav-dot" data-tier="1" onclick="window.cosmicApp.scrollToTier(1)" title="Tier 1: आदि सृष्टि • Primary Divinities">
+        <span class="tier-dot-icon">🪷</span>
+        <span class="tier-dot-label">आदि सृष्टि • Trideva</span>
+      </button>
+      <button class="tier-nav-dot" data-tier="2" onclick="window.cosmicApp.scrollToTier(2)" title="Tier 2: देववंशावली • Celestial Emanations">
+        <span class="tier-dot-icon">👑</span>
+        <span class="tier-dot-label">देववंशावली • Lineages</span>
+      </button>
+      <button class="tier-nav-dot" data-tier="3" onclick="window.cosmicApp.scrollToTier(3)" title="Tier 3: लोकपाल • Dynasties & Guardians">
+        <span class="tier-dot-icon">☀️</span>
+        <span class="tier-dot-label">लोकपाल • Dynasties</span>
+      </button>
+    </nav>
+
+    <!-- Bottom Lineage Breadcrumb Trail -->
+    <div class="breadcrumb-bar">
+      <span style="font-size: 11px; color: var(--gold-primary); font-weight: 700; text-transform: uppercase;">Lineage Path:</span>
+      <div id="breadcrumb-container" style="display: inline-flex; align-items: center; gap: 8px;"></div>
+    </div>
+
+    <!-- Floating Navigation Controls Dock (Auto-Fit, Zoom, Hierarchy Toggles) -->
+    <div class="controls-dock">
+      <button class="dock-btn" onclick="window.cosmicApp.zoomIn()" title="Zoom In (+)">➕</button>
+      <button class="dock-btn" onclick="window.cosmicApp.zoomOut()" title="Zoom Out (-)">➖</button>
+      <div class="dock-divider"></div>
+      <button class="dock-btn" onclick="window.cosmicApp.fitTreeToViewport(true)" title="Fit Entire Tree to Device Screen (⛶)">⛶</button>
+      <button class="dock-btn" id="dock-expand-toggle-btn" onclick="window.cosmicApp.toggleExpandAll()" title="Expand / Collapse Branches (🌳)">🌳</button>
+      <div class="dock-divider"></div>
+      <button class="dock-btn" onclick="window.cosmicApp.resetToApex()" title="Center on Root Origin (Apex)">🕉️</button>
+    </div>
+
+    <!-- Guided Tour Overlay Modal -->
+    <div id="tour-overlay" class="tour-overlay-card">
+      <div class="tour-header">
+        <span id="tour-step-badge" class="tour-step-badge">Stage 1 of 8</span>
+        <button class="tour-close-btn" onclick="window.cosmicApp.closeTour()">✕</button>
+      </div>
+      <h3 id="tour-title" class="tour-title">Stage Title</h3>
+      <p id="tour-desc" class="tour-desc">Stage Description</p>
+      <div class="tour-actions">
+        <button id="tour-prev-btn" class="tour-btn tour-btn-secondary" onclick="window.cosmicApp.prevTourStep()">← Previous</button>
+        <button id="tour-next-btn" class="tour-btn tour-btn-primary" onclick="window.cosmicApp.nextTourStep()">Next Milestone ➔</button>
+      </div>
+    </div>
+
+    <!-- Detailed Scripture & Divine Profile Inspector (Slide-out Drawer) -->
+    <aside id="detail-drawer" class="detail-drawer">
+      <div class="drawer-header">
+        <div class="drawer-header-content">
+          <span id="drawer-category" class="drawer-category-badge">Trideva / Divinity</span>
+          <h2 id="drawer-title" class="drawer-title">Node Title</h2>
+          <div id="drawer-sanskrit" class="drawer-sanskrit">संस्कृत नाम</div>
+        </div>
+        <button class="drawer-close-btn" onclick="window.cosmicApp.closeDetailDrawer()" title="Close Inspector">✕</button>
+      </div>
+
+      <div class="drawer-body">
+        <!-- Layman's Universal Guide Card (Who is this in Simple Terms?) -->
+        <div class="layman-guide-card" id="drawer-layman-card">
+          <div class="layman-card-header">
+            <div class="layman-badge">
+              <span class="layman-badge-icon">🌱</span>
+              <span class="layman-badge-text">Beginner & Global Guide</span>
+            </div>
+            <span class="layman-subtitle">Core Meaning Decoded in Plain English</span>
+          </div>
+          <div class="layman-content">
+            <div class="layman-section">
+              <div class="layman-label"><span>💡</span> Who is this in the Cosmic Order?</div>
+              <div id="drawer-layman-role" class="layman-text"></div>
+            </div>
+            <div class="layman-section">
+              <div class="layman-label"><span>🌍</span> Universal Analogy (Relatable Concept)</div>
+              <div id="drawer-layman-analogy" class="layman-text"></div>
+            </div>
+            <div class="layman-section" id="drawer-layman-symbolism-wrapper">
+              <div class="layman-label"><span>✨</span> Symbolism Decoded (Why this form, mount & emblems?)</div>
+              <div id="drawer-layman-symbolism" class="layman-text"></div>
+            </div>
+          </div>
+        </div>
+
+        <!-- Divine Profile & Genealogy Grid (Parent, Consort, Mount, Weapons) -->
+        <div id="drawer-genealogy-section">
+          <h3 class="drawer-section-title">
+            <span>👑</span>
+            <span>Divine Lineage & Attributes</span>
+          </h3>
+          <div class="drawer-genealogy-grid">
+            <div class="drawer-genealogy-card">
+              <span class="drawer-genealogy-label"><span>↑</span> Parent God / Source</span>
+              <span id="drawer-parent-god-val" class="drawer-genealogy-value">-</span>
+              <div id="drawer-parent-btn-wrapper"></div>
+            </div>
+            <div class="drawer-genealogy-card">
+              <span class="drawer-genealogy-label"><span>💍</span> Consort (Shakti)</span>
+              <span id="drawer-consort-val" class="drawer-genealogy-value">-</span>
+            </div>
+            <div class="drawer-genealogy-card">
+              <span class="drawer-genealogy-label"><span>🐾</span> Vahana (Mount)</span>
+              <span id="drawer-vahana-val" class="drawer-genealogy-value">-</span>
+            </div>
+            <div class="drawer-genealogy-card">
+              <span class="drawer-genealogy-label"><span>⚔️</span> Ayudha (Weapons)</span>
+              <span id="drawer-ayudha-val" class="drawer-genealogy-value">-</span>
+            </div>
+          </div>
+        </div>
+
+        <!-- Scripture Shloka Card -->
+        <div class="shloka-card">
+          <div class="shloka-card-badge">
+            <span style="font-size: 11px; text-transform: uppercase; color: var(--gold-light); font-weight: 700;">✦ Authoritative Scripture & Mantra</span>
+            <span id="drawer-shloka-source" class="shloka-source">Rigveda 10.129.1</span>
+          </div>
+          <div id="drawer-shloka-devanagari" class="shloka-devanagari">
+            नासदासीन्नो सदासीत्तदानीं नासीद्रजो नो व्योमा परो यत् ।
+          </div>
+          <div id="drawer-shloka-translit" class="shloka-translit">
+            Nāsadāsīn no sadāsīt tadānīṁ...
+          </div>
+          <div id="drawer-shloka-meaning" class="shloka-meaning">
+            Translation and spiritual meaning...
+          </div>
+        </div>
+
+        <!-- Metaphysical & Scriptural Exposition -->
+        <div>
+          <h3 class="drawer-section-title">
+            <span>📜</span>
+            <span id="drawer-details-heading">Scriptural Exposition & Lore</span>
+          </h3>
+          <div id="drawer-details-text" class="drawer-details-text"></div>
+        </div>
+
+        <!-- Key Divine Signifiers & Powers -->
+        <div>
+          <h3 class="drawer-section-title">
+            <span>✨</span>
+            <span id="drawer-attributes-heading">Cosmic Powers & Signifiers</span>
+          </h3>
+          <ul id="drawer-attributes-list" class="attributes-list"></ul>
+        </div>
+
+        <!-- Divine Offspring / Children Gods (Downstream Manifestations) -->
+        <div>
+          <h3 class="drawer-section-title">
+            <span>⬇️</span>
+            <span id="drawer-children-heading">Divine Children & Emanations (Downstream)</span>
+          </h3>
+          <div id="drawer-children-container" class="drawer-nav-group"></div>
+        </div>
+
+        <!-- Upstream Parent Source -->
+        <div>
+          <h3 class="drawer-section-title">
+            <span>⬆️</span>
+            <span>Origin Source (Upstream)</span>
+          </h3>
+          <div id="drawer-parent-container" class="drawer-nav-group"></div>
+        </div>
+      </div>
+    </aside>
+  </div>
+
+  <!-- Scripts -->
+  <script src="cosmology-data.js"></script>
+  <script src="gods-data.js"></script>
+  <script src="cosmic-audio.js"></script>
+  <script src="cosmic-background.js"></script>
+  <script src="app.js"></script>
+</body>
+</html>
