@@ -9,6 +9,7 @@ class CosmicOmSynth {
   constructor() {
     this.ctx = null;
     this.isPlaying = false;
+    this.desiredPlaying = false;
     this.masterGain = null;
     this.filter = null;
     this.lfo = null;
@@ -56,11 +57,35 @@ class CosmicOmSynth {
 
   start() {
     this.init();
+    this.desiredPlaying = true;
+
+    // If context is suspended (modern browser autoplay policy before user gesture):
     if (this.ctx.state === "suspended") {
-      this.ctx.resume().catch(() => {});
+      this.ctx.resume().then(() => {
+        if (this.desiredPlaying) {
+          this._startOscillators();
+        }
+      }).catch(() => {});
+      return;
     }
 
-    if (this.isPlaying) return;
+    // Context is active and running:
+    this._startOscillators();
+  }
+
+  _startOscillators() {
+    if (!this.desiredPlaying || !this.ctx) return;
+
+    if (this.isPlaying) {
+      // Already running: smoothly ensure gain is ramped up to volume
+      try {
+        this.masterGain.gain.cancelScheduledValues(this.ctx.currentTime);
+        this.masterGain.gain.setValueAtTime(this.masterGain.gain.value || 0.001, this.ctx.currentTime);
+        this.masterGain.gain.linearRampToValueAtTime(this.volume, this.ctx.currentTime + 1.2);
+      } catch (e) {}
+      return;
+    }
+
     this.isPlaying = true;
 
     // Fundamental: 136.1 Hz (C#3 / OM frequency)
@@ -81,7 +106,7 @@ class CosmicOmSynth {
       const oscGain = this.ctx.createGain();
       
       osc.type = h.type;
-      // Slight detune for natural analog chorus/vibrato
+      // Detune for rich analog chorus
       const detuneCents = (Math.random() - 0.5) * 4;
       osc.frequency.setValueAtTime(baseFreq * h.mult, this.ctx.currentTime);
       osc.detune.setValueAtTime(detuneCents, this.ctx.currentTime);
@@ -95,11 +120,11 @@ class CosmicOmSynth {
       this.oscillators.push({ osc, gain: oscGain });
     });
 
-    // Fade in master gain smoothly
+    // Fade in master gain smoothly on active audio clock
     try {
       this.masterGain.gain.cancelScheduledValues(this.ctx.currentTime);
       this.masterGain.gain.setValueAtTime(0.0001, this.ctx.currentTime);
-      this.masterGain.gain.linearRampToValueAtTime(this.volume, this.ctx.currentTime + 2.5);
+      this.masterGain.gain.linearRampToValueAtTime(this.volume, this.ctx.currentTime + 2.0);
     } catch (e) {}
 
     // Start occasional celestial bell chime
@@ -107,8 +132,10 @@ class CosmicOmSynth {
   }
 
   stop() {
+    this.desiredPlaying = false;
     if (!this.isPlaying || !this.ctx) return;
     this.isPlaying = false;
+
     if (this.chimeTimer) {
       clearTimeout(this.chimeTimer);
       this.chimeTimer = null;
@@ -117,7 +144,8 @@ class CosmicOmSynth {
     // Smooth fade out
     try {
       this.masterGain.gain.cancelScheduledValues(this.ctx.currentTime);
-      this.masterGain.gain.linearRampToValueAtTime(0.0001, this.ctx.currentTime + 1.0);
+      this.masterGain.gain.setValueAtTime(this.masterGain.gain.value || this.volume, this.ctx.currentTime);
+      this.masterGain.gain.linearRampToValueAtTime(0.0001, this.ctx.currentTime + 0.8);
     } catch (e) {}
 
     const dyingOscs = this.oscillators;
@@ -126,7 +154,7 @@ class CosmicOmSynth {
       dyingOscs.forEach(o => {
         try { o.osc.stop(); o.osc.disconnect(); } catch (e) {}
       });
-    }, 1100);
+    }, 900);
   }
 
   toggle() {

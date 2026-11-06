@@ -1676,59 +1676,75 @@ class CosmicApp {
     // Reset manually-muted flag on reload so sound defaults to ON
     this.userManuallyMuted = false;
 
-    const startAudioUI = () => {
-      if (this.userManuallyMuted) return;
-      if (window.cosmicAudio) {
-        window.cosmicAudio.start();
+    const updateBtnUI = (isOn) => {
+      if (isOn) {
+        audioBtn.classList.add("playing");
+        const label = audioBtn.querySelector(".audio-label");
+        if (label) label.textContent = "Cosmic OM: On";
+      } else {
+        audioBtn.classList.remove("playing");
+        const label = audioBtn.querySelector(".audio-label");
+        if (label) label.textContent = "Cosmic OM: Off";
       }
-      audioBtn.classList.add("playing");
-      const label = audioBtn.querySelector(".audio-label");
-      if (label) label.textContent = "Cosmic OM: On";
     };
 
-    const stopAudioUI = () => {
-      if (window.cosmicAudio) {
-        window.cosmicAudio.stop();
+    // By default on reload / load: Turn ON in UI and request audio start
+    updateBtnUI(true);
+    if (window.cosmicAudio) {
+      window.cosmicAudio.start();
+    }
+
+    // Modern Autoplay Compliance:
+    // Browser autoplay policy suspends AudioContext until an initial user gesture.
+    // The very first time the user touches, clicks, drags, or interacts anywhere,
+    // ensure the AudioContext resumes and triggers the Omkara synth with target volume!
+    const unlockEvents = ["pointerdown", "touchstart", "touchend", "mousedown", "keydown", "click"];
+    const onUserInteraction = () => {
+      if (this.userManuallyMuted) {
+        cleanupListeners();
+        return;
       }
-      audioBtn.classList.remove("playing");
-      const label = audioBtn.querySelector(".audio-label");
-      if (label) label.textContent = "Cosmic OM: Off";
-    };
-
-    // By default on website reload / initial load: turn ON
-    startAudioUI();
-
-    // Auto-resume on first interaction if blocked by browser autoplay policy
-    const gestureEvents = ["pointerdown", "touchstart", "click", "keydown", "wheel"];
-    const onFirstUserGesture = () => {
-      if (!this.userManuallyMuted && window.cosmicAudio) {
+      if (window.cosmicAudio) {
         if (window.cosmicAudio.ctx && window.cosmicAudio.ctx.state === "suspended") {
-          window.cosmicAudio.ctx.resume().catch(() => {});
-        }
-        if (!window.cosmicAudio.isPlaying) {
-          startAudioUI();
+          window.cosmicAudio.ctx.resume().then(() => {
+            if (!this.userManuallyMuted && window.cosmicAudio) {
+              window.cosmicAudio.start();
+            }
+          }).catch(() => {});
+        } else {
+          window.cosmicAudio.start();
         }
       }
-      gestureEvents.forEach(evt => window.removeEventListener(evt, onFirstUserGesture, true));
+      cleanupListeners();
     };
 
-    gestureEvents.forEach(evt => {
-      window.addEventListener(evt, onFirstUserGesture, { capture: true, once: true });
+    const cleanupListeners = () => {
+      unlockEvents.forEach(evt => {
+        window.removeEventListener(evt, onUserInteraction, true);
+        document.removeEventListener(evt, onUserInteraction, true);
+      });
+    };
+
+    unlockEvents.forEach(evt => {
+      window.addEventListener(evt, onUserInteraction, { capture: true, once: true });
+      document.addEventListener(evt, onUserInteraction, { capture: true, once: true });
     });
 
-    // Manual click toggle
+    // Manual click toggle on the button
     audioBtn.addEventListener("click", (e) => {
       e.stopPropagation();
       if (!window.cosmicAudio) return;
 
-      if (window.cosmicAudio.isPlaying) {
-        // User manually turned it OFF
+      if (window.cosmicAudio.isPlaying || window.cosmicAudio.desiredPlaying) {
+        // User explicitly turned it OFF manually
         this.userManuallyMuted = true;
-        stopAudioUI();
+        window.cosmicAudio.stop();
+        updateBtnUI(false);
       } else {
-        // User manually turned it ON
+        // User explicitly turned it ON manually
         this.userManuallyMuted = false;
-        startAudioUI();
+        window.cosmicAudio.start();
+        updateBtnUI(true);
       }
     });
   }
