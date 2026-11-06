@@ -1774,40 +1774,48 @@ class CosmicApp {
       window.cosmicAudio.start();
     }
 
-    // Modern Autoplay Compliance:
-    // Browser autoplay policy suspends AudioContext until an initial user gesture.
-    // The very first time the user touches, clicks, drags, or interacts anywhere,
-    // ensure the AudioContext resumes and triggers the Omkara synth with target volume!
-    const unlockEvents = ["pointerdown", "touchstart", "touchend", "mousedown", "keydown", "click"];
-    const onUserInteraction = () => {
+    // Comprehensive unlock triggers for instant playback across all browsers
+    const unlockEvents = [
+      "pointerdown", "touchstart", "touchend", "mousedown", "mouseup",
+      "click", "keydown", "wheel", "pointermove", "mousemove"
+    ];
+
+    const unlockAudio = () => {
       if (this.userManuallyMuted) {
         cleanupListeners();
         return;
       }
       if (window.cosmicAudio) {
         if (window.cosmicAudio.ctx && window.cosmicAudio.ctx.state === "suspended") {
-          window.cosmicAudio.ctx.resume().then(() => {
-            if (!this.userManuallyMuted && window.cosmicAudio) {
-              window.cosmicAudio.start();
-            }
-          }).catch(() => {});
-        } else {
-          window.cosmicAudio.start();
+          window.cosmicAudio.ctx.resume().catch(() => {});
         }
+        window.cosmicAudio._ensurePlaying();
       }
       cleanupListeners();
     };
 
     const cleanupListeners = () => {
       unlockEvents.forEach(evt => {
-        window.removeEventListener(evt, onUserInteraction, true);
-        document.removeEventListener(evt, onUserInteraction, true);
+        window.removeEventListener(evt, unlockAudio, { capture: true });
+        document.removeEventListener(evt, unlockAudio, { capture: true });
       });
     };
 
     unlockEvents.forEach(evt => {
-      window.addEventListener(evt, onUserInteraction, { capture: true, once: true });
-      document.addEventListener(evt, onUserInteraction, { capture: true, once: true });
+      window.addEventListener(evt, unlockAudio, { capture: true, once: true });
+      document.addEventListener(evt, unlockAudio, { capture: true, once: true });
+    });
+
+    // Also attempt unlock on pageshow, focus, and visibilitychange (e.g. reload or tab switch)
+    ["pageshow", "focus", "visibilitychange"].forEach(evt => {
+      window.addEventListener(evt, () => {
+        if (!this.userManuallyMuted && window.cosmicAudio) {
+          if (window.cosmicAudio.ctx && window.cosmicAudio.ctx.state === "suspended") {
+            window.cosmicAudio.ctx.resume().catch(() => {});
+          }
+          window.cosmicAudio._ensurePlaying();
+        }
+      }, { passive: true });
     });
 
     // Manual click toggle on the button

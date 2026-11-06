@@ -17,7 +17,7 @@ class CosmicOmSynth {
     this.oscillators = [];
     this.analyser = null;
     this.chimeTimer = null;
-    this.volume = 0.35;
+    this.volume = 0.42;
   }
 
   init() {
@@ -25,9 +25,9 @@ class CosmicOmSynth {
     const AudioContext = window.AudioContext || window.webkitAudioContext;
     this.ctx = new AudioContext();
 
-    // Master Gain
+    // Master Gain initialized directly to audible volume
     this.masterGain = this.ctx.createGain();
-    this.masterGain.gain.setValueAtTime(0, this.ctx.currentTime);
+    this.masterGain.gain.setValueAtTime(this.volume, this.ctx.currentTime);
 
     // Analyser node for UI soundwave / visualizer
     this.analyser = this.ctx.createAnalyser();
@@ -39,9 +39,9 @@ class CosmicOmSynth {
     this.filter.frequency.setValueAtTime(320, this.ctx.currentTime);
     this.filter.Q.setValueAtTime(2.5, this.ctx.currentTime);
 
-    // LFO to create the subtle "cosmic breath" swelling (6-second cycle)
+    // LFO to create the subtle "cosmic breath" swelling (8-second cycle)
     this.lfo = this.ctx.createOscillator();
-    this.lfo.frequency.setValueAtTime(0.12, this.ctx.currentTime); // ~8 sec period
+    this.lfo.frequency.setValueAtTime(0.12, this.ctx.currentTime);
     this.lfoGain = this.ctx.createGain();
     this.lfoGain.gain.setValueAtTime(140, this.ctx.currentTime);
 
@@ -53,82 +53,83 @@ class CosmicOmSynth {
     this.filter.connect(this.masterGain);
     this.masterGain.connect(this.analyser);
     this.analyser.connect(this.ctx.destination);
+
+    // State change listener ensures oscillators and volume are active whenever browser unpauses audio
+    this.ctx.onstatechange = () => {
+      if (this.ctx && this.ctx.state === "running" && this.desiredPlaying) {
+        this._ensurePlaying();
+      }
+    };
   }
 
   start() {
     this.init();
     this.desiredPlaying = true;
 
-    // If context is suspended (modern browser autoplay policy before user gesture):
+    // Attempt immediate resume (succeeds instantly if MEI threshold or user gesture exists)
     if (this.ctx.state === "suspended") {
-      this.ctx.resume().then(() => {
-        if (this.desiredPlaying) {
-          this._startOscillators();
-        }
-      }).catch(() => {});
-      return;
+      this.ctx.resume().catch(() => {});
     }
 
-    // Context is active and running:
-    this._startOscillators();
+    // Immediately start oscillators and ensure audible volume
+    this._ensurePlaying();
   }
 
   _startOscillators() {
+    this._ensurePlaying();
+  }
+
+  _ensurePlaying() {
     if (!this.desiredPlaying || !this.ctx) return;
 
-    if (this.isPlaying) {
-      // Already running: smoothly ensure gain is ramped up to volume
-      try {
-        this.masterGain.gain.cancelScheduledValues(this.ctx.currentTime);
-        this.masterGain.gain.setValueAtTime(this.masterGain.gain.value || 0.001, this.ctx.currentTime);
-        this.masterGain.gain.linearRampToValueAtTime(this.volume, this.ctx.currentTime + 1.2);
-      } catch (e) {}
-      return;
+    if (!this.isPlaying || this.oscillators.length === 0) {
+      this.isPlaying = true;
+
+      // Fundamental: 136.1 Hz (C#3 / OM frequency)
+      const baseFreq = 136.1;
+      // Harmonic series: Sub-octave (68.05), Fundamental (136.1), Fifth (204.15), Octave (272.2), Higher Fifth (408.3)
+      const harmonicRatios = [
+        { mult: 0.5, type: "sine", gain: 0.4 },
+        { mult: 1.0, type: "sine", gain: 0.5 },
+        { mult: 1.5, type: "triangle", gain: 0.25 }, // Pa (Fifth)
+        { mult: 2.0, type: "sine", gain: 0.18 },
+        { mult: 3.0, type: "triangle", gain: 0.08 }
+      ];
+
+      this.oscillators = [];
+
+      harmonicRatios.forEach(h => {
+        const osc = this.ctx.createOscillator();
+        const oscGain = this.ctx.createGain();
+        
+        osc.type = h.type;
+        // Detune for rich analog chorus
+        const detuneCents = (Math.random() - 0.5) * 4;
+        osc.frequency.setValueAtTime(baseFreq * h.mult, this.ctx.currentTime);
+        osc.detune.setValueAtTime(detuneCents, this.ctx.currentTime);
+
+        oscGain.gain.setValueAtTime(h.gain, this.ctx.currentTime);
+
+        osc.connect(oscGain);
+        oscGain.connect(this.filter);
+
+        osc.start();
+        this.oscillators.push({ osc, gain: oscGain });
+      });
+
+      // Start occasional celestial bell chime
+      this.scheduleTempleChime();
     }
 
-    this.isPlaying = true;
-
-    // Fundamental: 136.1 Hz (C#3 / OM frequency)
-    const baseFreq = 136.1;
-    // Harmonic series: Sub-octave (68.05), Fundamental (136.1), Fifth (204.15), Octave (272.2), Higher Fifth (408.3)
-    const harmonicRatios = [
-      { mult: 0.5, type: "sine", gain: 0.4 },
-      { mult: 1.0, type: "sine", gain: 0.5 },
-      { mult: 1.5, type: "triangle", gain: 0.25 }, // Pa (Fifth)
-      { mult: 2.0, type: "sine", gain: 0.18 },
-      { mult: 3.0, type: "triangle", gain: 0.08 }
-    ];
-
-    this.oscillators = [];
-
-    harmonicRatios.forEach(h => {
-      const osc = this.ctx.createOscillator();
-      const oscGain = this.ctx.createGain();
-      
-      osc.type = h.type;
-      // Detune for rich analog chorus
-      const detuneCents = (Math.random() - 0.5) * 4;
-      osc.frequency.setValueAtTime(baseFreq * h.mult, this.ctx.currentTime);
-      osc.detune.setValueAtTime(detuneCents, this.ctx.currentTime);
-
-      oscGain.gain.setValueAtTime(h.gain, this.ctx.currentTime);
-
-      osc.connect(oscGain);
-      oscGain.connect(this.filter);
-
-      osc.start();
-      this.oscillators.push({ osc, gain: oscGain });
-    });
-
-    // Fade in master gain smoothly on active audio clock
-    try {
-      this.masterGain.gain.cancelScheduledValues(this.ctx.currentTime);
-      this.masterGain.gain.setValueAtTime(0.0001, this.ctx.currentTime);
-      this.masterGain.gain.linearRampToValueAtTime(this.volume, this.ctx.currentTime + 2.0);
-    } catch (e) {}
-
-    // Start occasional celestial bell chime
-    this.scheduleTempleChime();
+    // Always ensure master gain is audible at target volume
+    if (this.masterGain && this.ctx) {
+      try {
+        this.masterGain.gain.cancelScheduledValues(this.ctx.currentTime);
+        this.masterGain.gain.setValueAtTime(this.volume, this.ctx.currentTime);
+      } catch (e) {
+        try { this.masterGain.gain.value = this.volume; } catch (err) {}
+      }
+    }
   }
 
   stop() {
@@ -145,7 +146,7 @@ class CosmicOmSynth {
     try {
       this.masterGain.gain.cancelScheduledValues(this.ctx.currentTime);
       this.masterGain.gain.setValueAtTime(this.masterGain.gain.value || this.volume, this.ctx.currentTime);
-      this.masterGain.gain.linearRampToValueAtTime(0.0001, this.ctx.currentTime + 0.8);
+      this.masterGain.gain.linearRampToValueAtTime(0.0001, this.ctx.currentTime + 0.4);
     } catch (e) {}
 
     const dyingOscs = this.oscillators;
@@ -154,7 +155,7 @@ class CosmicOmSynth {
       dyingOscs.forEach(o => {
         try { o.osc.stop(); o.osc.disconnect(); } catch (e) {}
       });
-    }, 900);
+    }, 500);
   }
 
   toggle() {
