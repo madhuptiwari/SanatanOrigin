@@ -27,6 +27,16 @@ class CosmicApp {
     this.nodesGroup = document.getElementById("nodes-group");
     this.particlesGroup = document.getElementById("particles-group");
     this.tierNavigator = document.getElementById("tier-navigator");
+    this.htmlNodesStage = document.getElementById("html-nodes-stage");
+
+    // iOS Device Detection (Specific fix for iOS Safari / WebKit SVG foreignObject rendering bugs)
+    this.isIOS = /iPad|iPhone|iPod/.test(navigator.userAgent) ||
+                 (typeof navigator.platform === "string" && navigator.platform === "MacIntel" && navigator.maxTouchPoints > 1);
+
+    if (this.isIOS && this.htmlNodesStage) {
+      this.htmlNodesStage.style.display = "block";
+    }
+
     this.isRendering = false;
     this.lastActiveTier = -1;
     this.tierNavDots = null;
@@ -696,9 +706,7 @@ class CosmicApp {
         relationChipsHtml += `<span class="node-meta-chip" title="Divine Aspect">✦ ${data.category || 'Eternal Principle'}</span>`;
       }
 
-      nodesHtml += `
-        <g id="node-group-${data.id}" pointer-events="all" transform="translate(${x - width / 2}, ${y - height / 2})">
-          <foreignObject pointer-events="all" width="${width}" height="${height}" style="overflow: visible;">
+      const cardHtml = `
             <div xmlns="http://www.w3.org/1999/xhtml" 
                  id="card-${data.id}"
                  class="node-card apex-origin ${this.selectedNodeId === data.id ? 'selected' : ''}" 
@@ -742,11 +750,32 @@ class CosmicApp {
                 `}
               </div>
             </div>
-          </foreignObject>
-        </g>
       `;
+
+      if (this.isIOS) {
+        nodesHtml += `
+          <div id="node-group-${data.id}" class="html-node-wrapper" style="left: ${x - width / 2}px; top: ${y - height / 2}px; width: ${width}px; height: ${height}px;">
+            ${cardHtml}
+          </div>
+        `;
+      } else {
+        nodesHtml += `
+          <g id="node-group-${data.id}" pointer-events="all" transform="translate(${x - width / 2}, ${y - height / 2})">
+            <foreignObject pointer-events="all" width="${width}" height="${height}" style="overflow: visible;">
+              ${cardHtml}
+            </foreignObject>
+          </g>
+        `;
+      }
     });
-    this.nodesGroup.innerHTML = nodesHtml;
+
+    if (this.isIOS && this.htmlNodesStage) {
+      this.htmlNodesStage.innerHTML = nodesHtml;
+      this.nodesGroup.innerHTML = "";
+    } else {
+      this.nodesGroup.innerHTML = nodesHtml;
+      if (this.htmlNodesStage) this.htmlNodesStage.innerHTML = "";
+    }
     this.requestRender();
   }
 
@@ -837,14 +866,34 @@ class CosmicApp {
   updateTransforms() {
     // Single unified 2D transformation: hardware accelerated on the unified stage
     const stageTransform = `translate(${this.scrollX}px, ${this.scrollY}px) scale(${this.scale})`;
+    const svgAttrTransform = `translate(${this.scrollX}, ${this.scrollY}) scale(${this.scale})`;
     
     if (this.viewportStage) {
       this.viewportStage.style.transform = stageTransform;
+      // Also apply native SVG transform attribute for WebKit/Safari SVG engine compatibility
+      this.viewportStage.setAttribute("transform", svgAttrTransform);
     } else {
-      if (this.tierGuidesGroup) this.tierGuidesGroup.style.transform = stageTransform;
-      if (this.linksGroup) this.linksGroup.style.transform = stageTransform;
-      if (this.particlesGroup) this.particlesGroup.style.transform = stageTransform;
-      if (this.nodesGroup) this.nodesGroup.style.transform = stageTransform;
+      if (this.tierGuidesGroup) {
+        this.tierGuidesGroup.style.transform = stageTransform;
+        this.tierGuidesGroup.setAttribute("transform", svgAttrTransform);
+      }
+      if (this.linksGroup) {
+        this.linksGroup.style.transform = stageTransform;
+        this.linksGroup.setAttribute("transform", svgAttrTransform);
+      }
+      if (this.particlesGroup) {
+        this.particlesGroup.style.transform = stageTransform;
+        this.particlesGroup.setAttribute("transform", svgAttrTransform);
+      }
+      if (this.nodesGroup) {
+        this.nodesGroup.style.transform = stageTransform;
+        this.nodesGroup.setAttribute("transform", svgAttrTransform);
+      }
+    }
+
+    // On iOS devices, smoothly transform the dedicated HTML nodes stage in lockstep
+    if (this.isIOS && this.htmlNodesStage) {
+      this.htmlNodesStage.style.transform = stageTransform;
     }
   }
 
@@ -1185,6 +1234,13 @@ class CosmicApp {
       setTimeout(() => { this.justDragged = false; }, 220);
       this.requestRender();
     }, { passive: true });
+
+    // On iOS Safari, prevent native full-page pinch gesture from fighting canvas navigation
+    if (this.isIOS) {
+      this.viewport.addEventListener("gesturestart", (e) => e.preventDefault(), { passive: false });
+      this.viewport.addEventListener("gesturechange", (e) => e.preventDefault(), { passive: false });
+      this.viewport.addEventListener("gestureend", (e) => e.preventDefault(), { passive: false });
+    }
   }
 
   /* ========================================================================

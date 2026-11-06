@@ -516,6 +516,30 @@ html, body {
   transform-origin: 0 0;
 }
 
+/* ==========================================================================
+   Dedicated HTML Stage for iOS Devices (WebKit Hardware Stage)
+   Bypasses long-standing WebKit SVG foreignObject transform/drag/stack bugs
+   ========================================================================== */
+.html-nodes-stage {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  pointer-events: none;
+  transform-origin: 0 0;
+  will-change: transform;
+  z-index: 2;
+  display: none; /* Activated dynamically on iOS devices only */
+}
+
+.html-node-wrapper {
+  position: absolute;
+  pointer-events: auto;
+  box-sizing: border-box;
+  touch-action: none;
+}
+
 /* Cosmic Tier Guides (Framing Branches into Structured Sacred Levels) */
 .tier-guide-group {
   pointer-events: none;
