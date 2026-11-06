@@ -588,6 +588,8 @@ html, body {
   will-change: transform;
   animation: cardSlideIn 0.25s cubic-bezier(0.16, 1, 0.3, 1) backwards;
   transition: border-color 0.2s, box-shadow 0.2s;
+  pointer-events: auto;
+  touch-action: manipulation;
 }
 
 .node-card::before {
@@ -670,6 +672,7 @@ html, body {
 
 .node-body-content {
   flex: 1;
+  min-height: 0;
   display: flex;
   flex-direction: column;
   gap: 6px;
@@ -752,6 +755,9 @@ html, body {
   margin-top: 6px;
   padding-top: 8px;
   border-top: 1px solid rgba(255, 215, 0, 0.15);
+  flex-shrink: 0;
+  position: relative;
+  z-index: 2;
 }
 
 .node-footer-left {
@@ -781,19 +787,25 @@ html, body {
 
 .node-expand-pill {
   font-size: 11px;
-  padding: 4px 11px;
+  padding: 5px 12px;
+  min-height: 32px;
   border-radius: 14px;
   background: rgba(255, 215, 0, 0.16);
   color: var(--gold-light);
   border: 1.2px solid rgba(255, 215, 0, 0.35);
-  display: flex;
+  display: inline-flex;
   align-items: center;
-  gap: 4px;
+  justify-content: center;
+  gap: 5px;
   cursor: pointer;
   white-space: nowrap;
   font-weight: 600;
   box-shadow: 0 0 12px rgba(255, 215, 0, 0.16);
   transition: var(--transition-smooth);
+  touch-action: manipulation;
+  pointer-events: auto;
+  user-select: none;
+  -webkit-tap-highlight-color: transparent;
 }
 
 .node-expand-pill:hover {

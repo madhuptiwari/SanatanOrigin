@@ -51,10 +51,10 @@ class CosmicApp {
     this.activeFilter = "all";
 
     // Card & Layout Configuration: Uniform Majestic Format for EVERY Box (Matching Top Box)
-    this.nodeWidth = 330;
-    this.nodeHeight = 215;
-    this.verticalSpacing = 270;
-    this.horizontalGap = 42;
+    this.nodeWidth = 320;
+    this.nodeHeight = 235;
+    this.verticalSpacing = 295;
+    this.horizontalGap = 40;
 
     // Computed tree positions
     this.layoutNodes = new Map();
@@ -242,8 +242,9 @@ class CosmicApp {
   }
 
   getOptimalScale() {
-    if (window.innerWidth < 768) return 0.82;
-    if (window.innerWidth < 1200) return 0.90;
+    if (window.innerWidth < 480) return 0.88;
+    if (window.innerWidth < 768) return 0.90;
+    if (window.innerWidth < 1200) return 0.92;
     return 0.96;
   }
 
@@ -696,8 +697,8 @@ class CosmicApp {
       }
 
       nodesHtml += `
-        <g id="node-group-${data.id}" transform="translate(${x - width / 2}, ${y - height / 2})">
-          <foreignObject width="${width}" height="${height}" style="overflow: visible;">
+        <g id="node-group-${data.id}" pointer-events="all" transform="translate(${x - width / 2}, ${y - height / 2})">
+          <foreignObject pointer-events="all" width="${width}" height="${height}" style="overflow: visible;">
             <div xmlns="http://www.w3.org/1999/xhtml" 
                  id="card-${data.id}"
                  class="node-card apex-origin ${this.selectedNodeId === data.id ? 'selected' : ''}" 
@@ -733,7 +734,7 @@ class CosmicApp {
                   <span class="node-click-hint" title="Click box for full explanation & layman guide">ℹ️ Info</span>
                 </div>
                 ${hasChildren ? `
-                  <button class="node-expand-pill" data-node-id="${data.id}" onclick="event.stopPropagation(); window.cosmicApp.toggleCollapse('${data.id}')" title="${isCollapsed ? 'Expand child branches' : 'Collapse child branches'}">
+                  <button type="button" class="node-expand-pill" data-node-id="${data.id}" onclick="event.stopPropagation(); window.cosmicApp.toggleCollapse('${data.id}')" title="${isCollapsed ? 'Expand child branches' : 'Collapse child branches'}">
                     <span>${data.children.length}</span> ${isCollapsed ? 'Child Gods ▸' : 'Child Gods ▾'}
                   </button>
                 ` : `
@@ -755,6 +756,13 @@ class CosmicApp {
   }
 
   toggleCollapse(nodeId) {
+    const now = Date.now();
+    if (this._lastToggleTime && (now - this._lastToggleTime) < 400 && this._lastToggleNodeId === nodeId) {
+      return;
+    }
+    this._lastToggleTime = now;
+    this._lastToggleNodeId = nodeId;
+
     if (this.collapsedNodes.has(nodeId)) {
       this.collapsedNodes.delete(nodeId);
     } else {
@@ -1144,14 +1152,24 @@ class CosmicApp {
 
     this.viewport.addEventListener("touchend", () => {
       if (this.isDragging && !hasMoved) {
-        // Pure tap without pan movement
+        // If the tap was on the expand button, toggle collapse directly (debounced against synthetic click)
         if (touchTargetPill) {
           const nodeId = touchTargetPill.getAttribute("data-node-id") ||
                          (touchTargetCard ? touchTargetCard.id.replace("card-", "") : null);
           if (nodeId) {
             this.toggleCollapse(nodeId);
           }
-        } else if (touchTargetCard) {
+          this.isDragging = false;
+          hasMoved = false;
+          touchTargetPill = null;
+          touchTargetCard = null;
+          this.justDragged = true;
+          setTimeout(() => { this.justDragged = false; }, 350);
+          return;
+        }
+
+        // Tap on card body (outside expand button) selects node & opens detail drawer
+        if (touchTargetCard) {
           const nodeId = touchTargetCard.id.replace("card-", "");
           if (nodeId) {
             this.onNodeCardClick(nodeId);
@@ -1174,6 +1192,12 @@ class CosmicApp {
      ======================================================================== */
   onNodeCardClick(nodeId) {
     if (this.justDragged) return;
+    const now = Date.now();
+    if (this._lastCardClickTime && (now - this._lastCardClickTime) < 350 && this._lastCardClickId === nodeId) {
+      return;
+    }
+    this._lastCardClickTime = now;
+    this._lastCardClickId = nodeId;
     // User explicitly clicked this box -> select and OPEN the information popup window!
     this.selectNode(nodeId, true, true);
   }
