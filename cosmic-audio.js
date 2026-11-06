@@ -57,10 +57,11 @@ class CosmicOmSynth {
   start() {
     this.init();
     if (this.ctx.state === "suspended") {
-      this.ctx.resume();
+      this.ctx.resume().catch(() => {});
     }
 
     if (this.isPlaying) return;
+    this.isPlaying = true;
 
     // Fundamental: 136.1 Hz (C#3 / OM frequency)
     const baseFreq = 136.1;
@@ -95,8 +96,11 @@ class CosmicOmSynth {
     });
 
     // Fade in master gain smoothly
-    this.masterGain.gain.linearRampToValueAtTime(this.volume, this.ctx.currentTime + 3);
-    this.isPlaying = true;
+    try {
+      this.masterGain.gain.cancelScheduledValues(this.ctx.currentTime);
+      this.masterGain.gain.setValueAtTime(0.0001, this.ctx.currentTime);
+      this.masterGain.gain.linearRampToValueAtTime(this.volume, this.ctx.currentTime + 2.5);
+    } catch (e) {}
 
     // Start occasional celestial bell chime
     this.scheduleTempleChime();
@@ -104,20 +108,25 @@ class CosmicOmSynth {
 
   stop() {
     if (!this.isPlaying || !this.ctx) return;
+    this.isPlaying = false;
+    if (this.chimeTimer) {
+      clearTimeout(this.chimeTimer);
+      this.chimeTimer = null;
+    }
 
     // Smooth fade out
-    this.masterGain.gain.linearRampToValueAtTime(0.001, this.ctx.currentTime + 1.5);
+    try {
+      this.masterGain.gain.cancelScheduledValues(this.ctx.currentTime);
+      this.masterGain.gain.linearRampToValueAtTime(0.0001, this.ctx.currentTime + 1.0);
+    } catch (e) {}
+
+    const dyingOscs = this.oscillators;
+    this.oscillators = [];
     setTimeout(() => {
-      this.oscillators.forEach(o => {
+      dyingOscs.forEach(o => {
         try { o.osc.stop(); o.osc.disconnect(); } catch (e) {}
       });
-      this.oscillators = [];
-      this.isPlaying = false;
-      if (this.chimeTimer) {
-        clearTimeout(this.chimeTimer);
-        this.chimeTimer = null;
-      }
-    }, 1600);
+    }, 1100);
   }
 
   toggle() {

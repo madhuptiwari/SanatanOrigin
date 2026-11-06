@@ -1589,21 +1589,68 @@ class CosmicApp {
   }
 
   /* ========================================================================
-     Audio Synth Controls (Cosmic Omkara 136.1Hz)
+     Audio Synth Controls (Cosmic Omkara 136.1Hz - On by Default on Reload)
      ======================================================================== */
   setupAudio() {
     const audioBtn = document.getElementById("audio-toggle-btn");
     if (!audioBtn) return;
 
-    audioBtn.addEventListener("click", () => {
+    // Reset manually-muted flag on reload so sound defaults to ON
+    this.userManuallyMuted = false;
+
+    const startAudioUI = () => {
+      if (this.userManuallyMuted) return;
+      if (window.cosmicAudio) {
+        window.cosmicAudio.start();
+      }
+      audioBtn.classList.add("playing");
+      const label = audioBtn.querySelector(".audio-label");
+      if (label) label.textContent = "Cosmic OM: On";
+    };
+
+    const stopAudioUI = () => {
+      if (window.cosmicAudio) {
+        window.cosmicAudio.stop();
+      }
+      audioBtn.classList.remove("playing");
+      const label = audioBtn.querySelector(".audio-label");
+      if (label) label.textContent = "Cosmic OM: Off";
+    };
+
+    // By default on website reload / initial load: turn ON
+    startAudioUI();
+
+    // Auto-resume on first interaction if blocked by browser autoplay policy
+    const gestureEvents = ["pointerdown", "touchstart", "click", "keydown", "wheel"];
+    const onFirstUserGesture = () => {
+      if (!this.userManuallyMuted && window.cosmicAudio) {
+        if (window.cosmicAudio.ctx && window.cosmicAudio.ctx.state === "suspended") {
+          window.cosmicAudio.ctx.resume().catch(() => {});
+        }
+        if (!window.cosmicAudio.isPlaying) {
+          startAudioUI();
+        }
+      }
+      gestureEvents.forEach(evt => window.removeEventListener(evt, onFirstUserGesture, true));
+    };
+
+    gestureEvents.forEach(evt => {
+      window.addEventListener(evt, onFirstUserGesture, { capture: true, once: true });
+    });
+
+    // Manual click toggle
+    audioBtn.addEventListener("click", (e) => {
+      e.stopPropagation();
       if (!window.cosmicAudio) return;
-      const isPlaying = window.cosmicAudio.toggle();
-      if (isPlaying) {
-        audioBtn.classList.add("playing");
-        audioBtn.querySelector(".audio-label").textContent = "Cosmic OM: On";
+
+      if (window.cosmicAudio.isPlaying) {
+        // User manually turned it OFF
+        this.userManuallyMuted = true;
+        stopAudioUI();
       } else {
-        audioBtn.classList.remove("playing");
-        audioBtn.querySelector(".audio-label").textContent = "Cosmic OM: Off";
+        // User manually turned it ON
+        this.userManuallyMuted = false;
+        startAudioUI();
       }
     });
   }
