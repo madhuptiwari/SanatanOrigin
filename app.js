@@ -45,6 +45,7 @@ class CosmicApp {
     this.targetScrollY = 240;
 
     this.isDragging = false;
+    this.justDragged = false;
     this.dragStart = { x: 0, y: 0 };
     this.selectedNodeId = null;
     this.activeFilter = "all";
@@ -732,7 +733,7 @@ class CosmicApp {
                   <span class="node-click-hint" title="Click box for full explanation & layman guide">ℹ️ Info</span>
                 </div>
                 ${hasChildren ? `
-                  <button class="node-expand-pill" onclick="event.stopPropagation(); window.cosmicApp.toggleCollapse('${data.id}')" title="${isCollapsed ? 'Expand child branches' : 'Collapse child branches'}">
+                  <button class="node-expand-pill" data-node-id="${data.id}" onclick="event.stopPropagation(); window.cosmicApp.toggleCollapse('${data.id}')" title="${isCollapsed ? 'Expand child branches' : 'Collapse child branches'}">
                     <span>${data.children.length}</span> ${isCollapsed ? 'Child Gods ▸' : 'Child Gods ▾'}
                   </button>
                 ` : `
@@ -1063,19 +1064,39 @@ class CosmicApp {
       this.requestRender();
     }, { passive: false });
 
-    // Touch Support for mobile & touchscreens (pan & two-finger pinch-to-zoom)
+    // Touch Support for mobile & touchscreens (frictionless pan & two-finger pinch-to-zoom)
     let touchStartDist = 0;
     let touchStartScale = 1;
     let touchCenter = { x: 0, y: 0 };
+    let touchOrigin = { x: 0, y: 0 };
+    let hasMoved = false;
+    let touchTargetPill = null;
+    let touchTargetCard = null;
 
     this.viewport.addEventListener("touchstart", (e) => {
+      // Do not intercept touches on fixed UI buttons, modals, or drawer
+      if (e.target.closest(".controls-dock") ||
+          e.target.closest(".floating-filter-dock") ||
+          e.target.closest(".cosmic-tier-navigator") ||
+          e.target.closest("#tour-overlay") ||
+          e.target.closest("#detail-drawer") ||
+          e.target.closest("#mobile-search-overlay")) {
+        return;
+      }
+
       if (e.touches.length === 1) {
-        if (e.target.closest(".node-card") || e.target.closest(".cosmic-tier-navigator") || e.target.closest(".controls-dock") || e.target.closest(".floating-filter-dock")) return;
         this.isDragging = true;
         touchStartDist = 0;
+        hasMoved = false;
+        touchOrigin = { x: e.touches[0].clientX, y: e.touches[0].clientY };
         this.dragStart = { x: e.touches[0].clientX - this.targetScrollX, y: e.touches[0].clientY - this.targetScrollY };
+
+        touchTargetPill = e.target.closest(".node-expand-pill");
+        touchTargetCard = e.target.closest(".node-card");
       } else if (e.touches.length === 2) {
         this.isDragging = false;
+        hasMoved = true;
+        this.justDragged = true;
         touchStartDist = Math.hypot(
           e.touches[0].clientX - e.touches[1].clientX,
           e.touches[0].clientY - e.touches[1].clientY
@@ -1086,15 +1107,26 @@ class CosmicApp {
           y: (e.touches[0].clientY + e.touches[1].clientY) / 2
         };
       }
-    });
+    }, { passive: true });
 
     this.viewport.addEventListener("touchmove", (e) => {
       if (this.isDragging && e.touches.length === 1) {
-        this.targetScrollX = e.touches[0].clientX - this.dragStart.x;
-        this.targetScrollY = e.touches[0].clientY - this.dragStart.y;
-        this.clampScroll();
-        this.requestRender();
+        const delta = Math.hypot(e.touches[0].clientX - touchOrigin.x, e.touches[0].clientY - touchOrigin.y);
+        if (delta > 8) {
+          hasMoved = true;
+          this.justDragged = true;
+        }
+        if (hasMoved) {
+          if (e.cancelable) e.preventDefault();
+          this.targetScrollX = e.touches[0].clientX - this.dragStart.x;
+          this.targetScrollY = e.touches[0].clientY - this.dragStart.y;
+          this.clampScroll();
+          this.requestRender();
+        }
       } else if (e.touches.length === 2 && touchStartDist > 0) {
+        if (e.cancelable) e.preventDefault();
+        hasMoved = true;
+        this.justDragged = true;
         const dist = Math.hypot(
           e.touches[0].clientX - e.touches[1].clientX,
           e.touches[0].clientY - e.touches[1].clientY
@@ -1108,11 +1140,31 @@ class CosmicApp {
         this.clampScroll();
         this.requestRender();
       }
-    }, { passive: true });
+    }, { passive: false });
 
     this.viewport.addEventListener("touchend", () => {
+      if (this.isDragging && !hasMoved) {
+        // Pure tap without pan movement
+        if (touchTargetPill) {
+          const nodeId = touchTargetPill.getAttribute("data-node-id") ||
+                         (touchTargetCard ? touchTargetCard.id.replace("card-", "") : null);
+          if (nodeId) {
+            this.toggleCollapse(nodeId);
+          }
+        } else if (touchTargetCard) {
+          const nodeId = touchTargetCard.id.replace("card-", "");
+          if (nodeId) {
+            this.onNodeCardClick(nodeId);
+          }
+        }
+      }
+
       this.isDragging = false;
       touchStartDist = 0;
+      hasMoved = false;
+      touchTargetPill = null;
+      touchTargetCard = null;
+      setTimeout(() => { this.justDragged = false; }, 220);
       this.requestRender();
     }, { passive: true });
   }
@@ -1121,6 +1173,7 @@ class CosmicApp {
      Node Selection & Detailed Divine Profile Inspector
      ======================================================================== */
   onNodeCardClick(nodeId) {
+    if (this.justDragged) return;
     // User explicitly clicked this box -> select and OPEN the information popup window!
     this.selectNode(nodeId, true, true);
   }
@@ -1524,67 +1577,92 @@ class CosmicApp {
   }
 
   /* ========================================================================
-     Universal Search System across Active Tradition
+     Universal Search System across Active Tradition (Desktop & Mobile)
      ======================================================================== */
   setupSearch() {
-    const searchInput = document.getElementById("search-input");
-    const dropdown = document.getElementById("search-results-dropdown");
-    if (!searchInput || !dropdown) return;
+    const bindSearch = (inputId, resultsId) => {
+      const input = document.getElementById(inputId);
+      const resultsContainer = document.getElementById(resultsId);
+      if (!input || !resultsContainer) return;
 
-    searchInput.addEventListener("input", (e) => {
-      const query = e.target.value.toLowerCase().trim();
-      if (!query) {
-        dropdown.style.display = "none";
-        return;
-      }
-
-      const results = [];
-      this.activeMap.forEach(node => {
-        const matchName = node.name && node.name.toLowerCase().includes(query);
-        const matchSanskrit = node.sanskrit && node.sanskrit.toLowerCase().includes(query);
-        const matchCategory = node.category && node.category.toLowerCase().includes(query);
-        const matchSummary = node.summary && node.summary.toLowerCase().includes(query);
-        const matchParent = node.parentName && node.parentName.toLowerCase().includes(query);
-        const matchConsort = node.consort && node.consort.toLowerCase().includes(query);
-        const matchVahana = node.vahana && node.vahana.toLowerCase().includes(query);
-        const matchAyudha = node.ayudha && node.ayudha.toLowerCase().includes(query);
-        const matchShloka = node.shloka && (
-          (node.shloka.source && node.shloka.source.toLowerCase().includes(query)) ||
-          (node.shloka.meaning && node.shloka.meaning.toLowerCase().includes(query)) ||
-          (node.shloka.transliteration && node.shloka.transliteration.toLowerCase().includes(query))
-        );
-
-        if (matchName || matchSanskrit || matchCategory || matchSummary || matchParent || matchConsort || matchVahana || matchAyudha || matchShloka) {
-          results.push(node);
+      input.addEventListener("input", (e) => {
+        const query = e.target.value.toLowerCase().trim();
+        if (!query) {
+          resultsContainer.style.display = "none";
+          resultsContainer.innerHTML = "";
+          return;
         }
-      });
 
-      if (results.length === 0) {
-        dropdown.innerHTML = `<div style="padding: 12px; font-size: 12px; color: var(--text-muted); text-align: center;">No divine entity found</div>`;
-      } else {
-        dropdown.innerHTML = results.slice(0, 15).map(node => `
-          <div class="search-result-item" onclick="window.cosmicApp.selectSearchResult('${node.id}')">
-            <div>
-              <div class="search-result-title">${node.icon || '✦'} ${node.name}</div>
-              <div class="search-result-sanskrit">${node.sanskrit || ''} ${node.parentName ? `• Child of ${node.parentName.split('/')[0].split('(')[0].trim()}` : ''}</div>
+        const results = [];
+        this.activeMap.forEach(node => {
+          const matchName = node.name && node.name.toLowerCase().includes(query);
+          const matchSanskrit = node.sanskrit && node.sanskrit.toLowerCase().includes(query);
+          const matchCategory = node.category && node.category.toLowerCase().includes(query);
+          const matchSummary = node.summary && node.summary.toLowerCase().includes(query);
+          const matchParent = node.parentName && node.parentName.toLowerCase().includes(query);
+          const matchConsort = node.consort && node.consort.toLowerCase().includes(query);
+          const matchVahana = node.vahana && node.vahana.toLowerCase().includes(query);
+          const matchAyudha = node.ayudha && node.ayudha.toLowerCase().includes(query);
+          const matchShloka = node.shloka && (
+            (node.shloka.source && node.shloka.source.toLowerCase().includes(query)) ||
+            (node.shloka.meaning && node.shloka.meaning.toLowerCase().includes(query)) ||
+            (node.shloka.transliteration && node.shloka.transliteration.toLowerCase().includes(query))
+          );
+
+          if (matchName || matchSanskrit || matchCategory || matchSummary || matchParent || matchConsort || matchVahana || matchAyudha || matchShloka) {
+            results.push(node);
+          }
+        });
+
+        if (results.length === 0) {
+          resultsContainer.innerHTML = `<div style="padding: 14px; font-size: 13px; color: var(--text-muted); text-align: center;">No divine entity found</div>`;
+        } else {
+          resultsContainer.innerHTML = results.slice(0, 20).map(node => `
+            <div class="search-result-item" onclick="window.cosmicApp.selectSearchResult('${node.id}')">
+              <div>
+                <div class="search-result-title">${node.icon || '✦'} ${node.name}</div>
+                <div class="search-result-sanskrit">${node.sanskrit || ''} ${node.parentName ? `• Child of ${node.parentName.split('/')[0].split('(')[0].trim()}` : ''}</div>
+              </div>
+              <span class="search-result-tier">${node.category || node.tradition}</span>
             </div>
-            <span class="search-result-tier">${node.category || node.tradition}</span>
-          </div>
-        `).join("");
-      }
-      dropdown.style.display = "block";
-    });
+          `).join("");
+        }
+        resultsContainer.style.display = "block";
+      });
+    };
+
+    bindSearch("search-input", "search-results-dropdown");
+    bindSearch("mobile-search-input", "mobile-search-results");
 
     document.addEventListener("click", (e) => {
       if (!e.target.closest(".search-container")) {
-        dropdown.style.display = "none";
+        const d = document.getElementById("search-results-dropdown");
+        if (d) d.style.display = "none";
       }
     });
+  }
+
+  toggleMobileSearch(forceState) {
+    const overlay = document.getElementById("mobile-search-overlay");
+    if (!overlay) return;
+    const isOpen = forceState !== undefined ? forceState : !overlay.classList.contains("open");
+    overlay.classList.toggle("open", isOpen);
+    if (isOpen) {
+      const input = document.getElementById("mobile-search-input");
+      if (input) {
+        input.value = "";
+        setTimeout(() => input.focus(), 120);
+      }
+    } else {
+      const results = document.getElementById("mobile-search-results");
+      if (results) results.innerHTML = "";
+    }
   }
 
   selectSearchResult(nodeId) {
     const dropdown = document.getElementById("search-results-dropdown");
     if (dropdown) dropdown.style.display = "none";
+    this.toggleMobileSearch(false);
     this.selectNode(nodeId, true, true);
   }
 
@@ -1799,8 +1877,52 @@ class CosmicApp {
     this.requestRender();
   }
 
-  fitTreeToViewport() {
-    this.resetToApex();
+  fitTreeToViewport(animate = true) {
+    if (this.layoutNodes.size === 0) {
+      this.resetToApex();
+      return;
+    }
+
+    let minX = Infinity, maxX = -Infinity;
+    let minY = Infinity, maxY = -Infinity;
+
+    this.layoutNodes.forEach(nodeItem => {
+      if (nodeItem.x < minX) minX = nodeItem.x;
+      if (nodeItem.x > maxX) maxX = nodeItem.x;
+      if (nodeItem.y < minY) minY = nodeItem.y;
+      if (nodeItem.y > maxY) maxY = nodeItem.y;
+    });
+
+    const halfW = this.nodeWidth / 2 + 30;
+    const halfH = this.nodeHeight / 2 + 30;
+    const treeW = (maxX - minX) + (halfW * 2);
+    const treeH = (maxY - minY) + (halfH * 2);
+
+    const dock = document.getElementById("floating-filter-dock");
+    const topMargin = dock ? Math.max(120, dock.getBoundingClientRect().bottom + 15) : 130;
+    const bottomMargin = 90;
+    const availW = Math.max(240, window.innerWidth - 30);
+    const availH = Math.max(240, window.innerHeight - topMargin - bottomMargin);
+
+    const scaleX = availW / treeW;
+    const scaleY = availH / treeH;
+    const optimalScale = Math.max(0.18, Math.min(0.96, Math.min(scaleX, scaleY)));
+
+    const centerX = (minX + maxX) / 2;
+    const centerY = (minY + maxY) / 2;
+
+    this.targetScale = optimalScale;
+    this.targetScrollX = (window.innerWidth / 2) - (centerX * optimalScale);
+    this.targetScrollY = topMargin + (availH / 2) - (centerY * optimalScale);
+
+    this.clampScroll();
+    if (!animate) {
+      this.scale = this.targetScale;
+      this.scrollX = this.targetScrollX;
+      this.scrollY = this.targetScrollY;
+      this.updateTransforms();
+    }
+    this.requestRender();
   }
 
   resetToApex() {

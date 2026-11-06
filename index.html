@@ -2,7 +2,10 @@
 <html lang="en">
 <head>
   <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=5.0, viewport-fit=cover">
+  <meta name="theme-color" content="#060412">
+  <meta name="apple-mobile-web-app-capable" content="yes">
+  <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
   <title>Sanatan Origin of the Universe & Divine Pantheon • ब्रह्माण्डोत्पत्ति एवं देववंशावली</title>
   
   <!-- Sacred Cosmic Favicons (Pranava ॐ Emblem) -->
@@ -16,7 +19,7 @@
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Cinzel:wght@600;700;800;900&family=Noto+Serif+Devanagari:wght@400;600;700&family=Plus+Jakarta+Sans:wght@400;500;600;700&display=swap" rel="stylesheet">
   
-  <link rel="stylesheet" href="styles.css?v=20261106_v3">
+  <link rel="stylesheet" href="styles.css?v=20261106_v4">
 </head>
 <body>
   <!-- Dynamic Cosmic Canvas Background (3D Stars, Vedic Nebulae, Sri Yantra Watermark, Prana Dust) -->
@@ -55,6 +58,11 @@
 
       <!-- Right Action Buttons -->
       <div class="header-right">
+        <!-- Mobile Search Button -->
+        <button id="mobile-search-btn" class="cosmic-btn mobile-search-toggle" onclick="window.cosmicApp.toggleMobileSearch(true)" title="Search Divinities & Scriptures (🔍)">
+          <span>🔍</span>
+        </button>
+
         <!-- Live Search -->
         <div class="search-container">
           <span class="search-icon">🔍</span>
@@ -73,12 +81,24 @@
         </button>
 
         <!-- Guided Tour -->
-        <button id="tour-launch-btn" class="cosmic-btn" onclick="window.cosmicApp.startGuidedTour()" title="Start Step-by-Step Guided Cosmic Journey">
+        <button id="tour-launch-btn" class="cosmic-btn tour-btn-header" onclick="window.cosmicApp.startGuidedTour()" title="Start Step-by-Step Guided Cosmic Journey">
           <span>✨</span>
           <span id="tour-launch-label">Deva Yatra</span>
         </button>
       </div>
     </header>
+
+    <!-- Fullscreen Mobile Search Overlay -->
+    <div id="mobile-search-overlay" class="mobile-search-overlay">
+      <div class="mobile-search-header">
+        <div class="mobile-search-input-wrapper">
+          <span class="search-icon">🔍</span>
+          <input type="text" id="mobile-search-input" class="mobile-search-input" placeholder="Search divinity, weapon, scripture..." autocomplete="off">
+        </div>
+        <button class="mobile-search-close-btn" onclick="window.cosmicApp.toggleMobileSearch(false)" title="Close Search">✕</button>
+      </div>
+      <div id="mobile-search-results" class="mobile-search-results"></div>
+    </div>
 
     <!-- Floating Sub-Filter Bar (Decongested quick filters dock) -->
     <div id="floating-filter-dock" class="floating-filter-dock"></div>
@@ -295,10 +315,10 @@
   </footer>
 
   <!-- Scripts -->
-  <script src="cosmology-data.js?v=20261106_v3"></script>
-  <script src="gods-data.js?v=20261106_v3"></script>
-  <script src="cosmic-audio.js?v=20261106_v3"></script>
-  <script src="cosmic-background.js?v=20261106_v3"></script>
-  <script src="app.js?v=20261106_v3"></script>
+  <script src="cosmology-data.js?v=20261106_v4"></script>
+  <script src="gods-data.js?v=20261106_v4"></script>
+  <script src="cosmic-audio.js?v=20261106_v4"></script>
+  <script src="cosmic-background.js?v=20261106_v4"></script>
+  <script src="app.js?v=20261106_v4"></script>
 </body>
 </html>
