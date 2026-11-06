@@ -1,0 +1,116 @@
+AWSTemplateFormatVersion: '2010-09-09'
+Description: 'SanatanOrigin - Enterprise AWS S3 + CloudFront CDN Static Website Deployment with Origin Access Control (OAC)'
+
+Parameters:
+  ProjectName:
+    Type: String
+    Default: 'sanatan-origin'
+    Description: 'Base name for the S3 bucket and CloudFront distribution resources'
+
+Resources:
+  # 1. Private S3 Bucket for Static Assets
+  S3Bucket:
+    Type: AWS::S3::Bucket
+    Properties:
+      BucketName: !Sub '${ProjectName}-${AWS::AccountId}-${AWS::Region}'
+      PublicAccessBlockConfiguration:
+        BlockPublicAcls: true
+        BlockPublicPolicy: true
+        IgnorePublicAcls: true
+        RestrictPublicBuckets: true
+      BucketEncryption:
+        ServerSideEncryptionConfiguration:
+          - ServerSideEncryptionByDefault:
+              SSEAlgorithm: AES256
+
+  # 2. Modern CloudFront Origin Access Control (OAC)
+  CloudFrontOAC:
+    Type: AWS::CloudFront::OriginAccessControl
+    Properties:
+      OriginAccessControlConfig:
+        Name: !Sub '${ProjectName}-OAC'
+        OriginAccessControlOriginType: s3
+        SigningBehavior: always
+        SigningProtocol: sigv4
+
+  # 3. Security Response Headers Policy
+  SecurityHeadersPolicy:
+    Type: AWS::CloudFront::ResponseHeadersPolicy
+    Properties:
+      ResponseHeadersPolicyConfig:
+        Name: !Sub '${ProjectName}-SecurityHeaders'
+        SecurityHeadersConfig:
+          ContentTypeOptions:
+            Override: true
+          FrameOptions:
+            FrameOption: SAMEORIGIN
+            Override: true
+          ReferrerPolicy:
+            ReferrerPolicy: strict-origin-when-cross-origin
+            Override: true
+          StrictTransportSecurity:
+            AccessControlMaxAgeSec: 31536000
+            IncludeSubdomains: true
+            Preload: true
+            Override: true
+
+  # 4. Global CloudFront Distribution
+  CloudFrontDistribution:
+    Type: AWS::CloudFront::Distribution
+    Properties:
+      DistributionConfig:
+        Enabled: true
+        Comment: 'Global CDN distribution for SanatanOrigin'
+        DefaultRootObject: index.html
+        HttpVersion: http2and3
+        PriceClass: PriceClass_All
+        Origins:
+          - Id: S3Origin
+            DomainName: !GetAtt S3Bucket.RegionalDomainName
+            OriginAccessControlId: !GetAtt CloudFrontOAC.Id
+            S3OriginConfig: {}
+        DefaultCacheBehavior:
+          TargetOriginId: S3Origin
+          ViewerProtocolPolicy: redirect-to-https
+          Compress: true
+          # Managed-CachingOptimized policy ID
+          CachePolicyId: 658327ea-f89d-4fab-a63d-7e88639e58f6
+          ResponseHeadersPolicyId: !GetAtt SecurityHeadersPolicy.Id
+        CustomErrorResponses:
+          - ErrorCode: 403
+            ResponseCode: 200
+            ResponsePagePath: /index.html
+            ErrorCachingMinTTL: 10
+          - ErrorCode: 404
+            ResponseCode: 200
+            ResponsePagePath: /index.html
+            ErrorCachingMinTTL: 10
+
+  # 5. S3 Bucket Policy granting read access strictly to CloudFront Distribution
+  S3BucketPolicy:
+    Type: AWS::S3::BucketPolicy
+    Properties:
+      Bucket: !Ref S3Bucket
+      PolicyDocument:
+        Version: '2012-10-17'
+        Statement:
+          - Sid: AllowCloudFrontServicePrincipalReadOnly
+            Effect: Allow
+            Principal:
+              Service: cloudfront.amazonaws.com
+            Action: s3:GetObject
+            Resource: !Sub '${S3Bucket.Arn}/*'
+            Condition:
+              StringEquals:
+                AWS:SourceArn: !Sub 'arn:aws:cloudfront::${AWS::AccountId}:distribution/${CloudFrontDistribution.Id}'
+
+Outputs:
+  WebsiteURL:
+    Description: 'Live secure CloudFront HTTPS website URL'
+    Value: !Sub 'https://${CloudFrontDistribution.DomainName}'
+  S3BucketName:
+    Description: 'S3 Bucket Name storing website assets'
+    Value: !Ref S3Bucket
+  CloudFrontDistributionId:
+    Description: 'CloudFront Distribution ID (use for cache invalidations)'
+    Value: !Ref CloudFrontDistribution

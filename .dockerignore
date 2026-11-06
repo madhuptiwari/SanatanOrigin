@@ -1,0 +1,9 @@
+.git
+.gitignore
+.github
+*.bak*
+scratch
+open-app.bat
+deploy-aws.ps1
+deploy-aws.sh
+cloudformation-s3-cloudfront.yaml

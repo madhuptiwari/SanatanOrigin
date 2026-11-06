@@ -93,3 +93,19 @@ Simply open `index.html` in any modern web browser:
   ```powershell
   Start-Process "c:\Users\madhu\AntigravityProjects\SanatanOrigin\index.html"
   ```
+
+---
+
+## ☁️ Enterprise Cloud Deployment on AWS
+
+The project is fully pre-configured for turnkey deployment to Amazon Web Services (AWS) using either **AWS Amplify**, **Amazon S3 + CloudFront CDN**, or **Docker Containers (AWS App Runner / ECS)**.
+
+### Turnkey Deployment Assets Included:
+- **[`AWS-DEPLOYMENT-GUIDE.md`](./AWS-DEPLOYMENT-GUIDE.md)**: Complete step-by-step walkthrough for all AWS options.
+- **[`amplify.yml`](./amplify.yml)**: Pre-configured for AWS Amplify Hosting with automatic UTF-8 headers and edge caching.
+- **[`cloudformation-s3-cloudfront.yaml`](./cloudformation-s3-cloudfront.yaml)**: One-click Infrastructure-as-Code template creating an isolated S3 bucket with Origin Access Control (OAC) and CloudFront CDN.
+- **[`.github/workflows/deploy-aws.yml`](./.github/workflows/deploy-aws.yml)**: Automated CI/CD pipeline deploying on `git push origin main`.
+- **[`Dockerfile`](./Dockerfile) & [`nginx.conf`](./nginx.conf)**: High-performance Alpine Nginx container with Gzip compression and security headers.
+- **[`deploy-aws.ps1`](./deploy-aws.ps1) & [`deploy-aws.sh`](./deploy-aws.sh)**: CLI automation scripts for Windows PowerShell, Linux, macOS, and AWS CloudShell.
+
+👉 **Follow the full guide in [`AWS-DEPLOYMENT-GUIDE.md`](./AWS-DEPLOYMENT-GUIDE.md) to launch on your AWS account in under 3 minutes.**

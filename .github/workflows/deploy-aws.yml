@@ -1,0 +1,56 @@
+name: Deploy SanatanOrigin to AWS S3 & CloudFront
+
+on:
+  push:
+    branches:
+      - main
+  workflow_dispatch:
+
+permissions:
+  id-token: write
+  contents: read
+
+jobs:
+  deploy:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout Repository
+        uses: actions/checkout@v4
+
+      - name: Configure AWS Credentials
+        uses: aws-actions/configure-aws-credentials@v4
+        with:
+          aws-access-key-id: ${{ secrets.AWS_ACCESS_KEY_ID }}
+          aws-secret-access-key: ${{ secrets.AWS_SECRET_ACCESS_KEY }}
+          aws-region: ${{ secrets.AWS_REGION || 'ap-south-1' }}
+
+      - name: Upload Static Assets to AWS S3 (with 1-Year Cache-Control)
+        run: |
+          aws s3 sync . s3://${{ secrets.S3_BUCKET_NAME }} \
+            --exclude ".git/*" \
+            --exclude ".github/*" \
+            --exclude "*.bak*" \
+            --exclude "scratch/*" \
+            --exclude "Dockerfile" \
+            --exclude "nginx.conf" \
+            --exclude "cloudformation-s3-cloudfront.yaml" \
+            --exclude "deploy-aws.*" \
+            --exclude "open-app.bat" \
+            --exclude "index.html" \
+            --cache-control "public, max-age=31536000, immutable" \
+            --delete
+
+      - name: Upload index.html to AWS S3 (with No-Cache for Instant Updates)
+        run: |
+          aws s3 cp index.html s3://${{ secrets.S3_BUCKET_NAME }}/index.html \
+            --content-type "text/html; charset=utf-8" \
+            --cache-control "public, max-age=0, must-revalidate"
+
+      - name: Invalidate CloudFront Cache
+        if: env.CLOUDFRONT_DISTRIBUTION_ID != ''
+        env:
+          CLOUDFRONT_DISTRIBUTION_ID: ${{ secrets.CLOUDFRONT_DISTRIBUTION_ID }}
+        run: |
+          aws cloudfront create-invalidation \
+            --distribution-id ${{ secrets.CLOUDFRONT_DISTRIBUTION_ID }} \
+            --paths "/*"
