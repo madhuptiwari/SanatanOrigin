@@ -17,7 +17,48 @@ class CosmicOmSynth {
     this.oscillators = [];
     this.analyser = null;
     this.chimeTimer = null;
-    this.volume = 0.42;
+    this.volume = 0.45;
+    this.iosSilentMedia = null;
+  }
+
+  unlockIOSAudio() {
+    // 1. Force WebKit audio session to 'playback' category (bypasses physical Silent switch on iPhone)
+    if (typeof navigator !== "undefined" && navigator.audioSession) {
+      try {
+        navigator.audioSession.type = "playback";
+      } catch (e) {}
+    }
+
+    // 2. Play hidden looping silent HTML5 audio (forces iOS core audio into Playback mode for all iOS versions)
+    if (!this.iosSilentMedia) {
+      try {
+        const audio = document.createElement("audio");
+        audio.setAttribute("x-webkit-airplay", "deny");
+        audio.setAttribute("playsinline", "true");
+        audio.setAttribute("loop", "true");
+        audio.preload = "auto";
+        audio.src = "data:audio/wav;base64,UklGRiQAAABXQVZFZm10IBAAAAABAAEARKwAAESsAAABAAgAZGF0YQAAAAA=";
+        const p = audio.play();
+        if (p && p.catch) p.catch(() => {});
+        this.iosSilentMedia = audio;
+      } catch (e) {}
+    } else {
+      try {
+        const p = this.iosSilentMedia.play();
+        if (p && p.catch) p.catch(() => {});
+      } catch (e) {}
+    }
+
+    // 3. Prime Web Audio graph with a 1-sample silent buffer
+    if (this.ctx) {
+      try {
+        const buffer = this.ctx.createBuffer(1, 1, 22050);
+        const source = this.ctx.createBufferSource();
+        source.buffer = buffer;
+        source.connect(this.ctx.destination);
+        source.start(0);
+      } catch (e) {}
+    }
   }
 
   init() {
@@ -25,7 +66,7 @@ class CosmicOmSynth {
     const AudioContext = window.AudioContext || window.webkitAudioContext;
     this.ctx = new AudioContext();
 
-    // Master Gain initialized directly to audible volume
+    // Master Gain initialized directly to target volume
     this.masterGain = this.ctx.createGain();
     this.masterGain.gain.setValueAtTime(this.volume, this.ctx.currentTime);
 
@@ -33,11 +74,11 @@ class CosmicOmSynth {
     this.analyser = this.ctx.createAnalyser();
     this.analyser.fftSize = 64;
 
-    // Resonant Warm Filter (Breathing Cosmic filter)
+    // Resonant Warm Filter (420 Hz center with warm resonance for phones & headphones)
     this.filter = this.ctx.createBiquadFilter();
     this.filter.type = "lowpass";
-    this.filter.frequency.setValueAtTime(320, this.ctx.currentTime);
-    this.filter.Q.setValueAtTime(2.5, this.ctx.currentTime);
+    this.filter.frequency.setValueAtTime(420, this.ctx.currentTime);
+    this.filter.Q.setValueAtTime(2.0, this.ctx.currentTime);
 
     // LFO to create the subtle "cosmic breath" swelling (8-second cycle)
     this.lfo = this.ctx.createOscillator();
@@ -56,8 +97,8 @@ class CosmicOmSynth {
 
     // State change listener ensures oscillators and volume are active whenever browser unpauses audio
     this.ctx.onstatechange = () => {
-      if (this.ctx && this.ctx.state === "running" && this.desiredPlaying) {
-        this._ensurePlaying();
+      if (this.ctx && this.ctx.state === "running" && this.desiredPlaying && !this.isPlaying) {
+        this._createAndStartOscillators();
       }
     };
   }
@@ -65,61 +106,81 @@ class CosmicOmSynth {
   start() {
     this.init();
     this.desiredPlaying = true;
+    this.unlockIOSAudio();
 
-    // Attempt immediate resume (succeeds instantly if MEI threshold or user gesture exists)
-    if (this.ctx.state === "suspended") {
-      this.ctx.resume().catch(() => {});
+    if (!this.ctx) return;
+
+    if (this.ctx.state === "suspended" || this.ctx.state === "interrupted") {
+      this.ctx.resume().then(() => {
+        if (this.desiredPlaying) {
+          this._createAndStartOscillators();
+        }
+      }).catch(() => {});
+      return;
     }
 
-    // Immediately start oscillators and ensure audible volume
-    this._ensurePlaying();
+    this._createAndStartOscillators();
   }
 
   _startOscillators() {
-    this._ensurePlaying();
+    this.start();
   }
 
   _ensurePlaying() {
-    if (!this.desiredPlaying || !this.ctx) return;
+    this.start();
+  }
 
-    if (!this.isPlaying || this.oscillators.length === 0) {
-      this.isPlaying = true;
-
-      // Fundamental: 136.1 Hz (C#3 / OM frequency)
-      const baseFreq = 136.1;
-      // Harmonic series: Sub-octave (68.05), Fundamental (136.1), Fifth (204.15), Octave (272.2), Higher Fifth (408.3)
-      const harmonicRatios = [
-        { mult: 0.5, type: "sine", gain: 0.4 },
-        { mult: 1.0, type: "sine", gain: 0.5 },
-        { mult: 1.5, type: "triangle", gain: 0.25 }, // Pa (Fifth)
-        { mult: 2.0, type: "sine", gain: 0.18 },
-        { mult: 3.0, type: "triangle", gain: 0.08 }
-      ];
-
-      this.oscillators = [];
-
-      harmonicRatios.forEach(h => {
-        const osc = this.ctx.createOscillator();
-        const oscGain = this.ctx.createGain();
-        
-        osc.type = h.type;
-        // Detune for rich analog chorus
-        const detuneCents = (Math.random() - 0.5) * 4;
-        osc.frequency.setValueAtTime(baseFreq * h.mult, this.ctx.currentTime);
-        osc.detune.setValueAtTime(detuneCents, this.ctx.currentTime);
-
-        oscGain.gain.setValueAtTime(h.gain, this.ctx.currentTime);
-
-        osc.connect(oscGain);
-        oscGain.connect(this.filter);
-
-        osc.start();
-        this.oscillators.push({ osc, gain: oscGain });
+  _killOscillators() {
+    if (this.oscillators && this.oscillators.length > 0) {
+      this.oscillators.forEach(o => {
+        try {
+          o.osc.stop();
+          o.osc.disconnect();
+        } catch (e) {}
       });
-
-      // Start occasional celestial bell chime
-      this.scheduleTempleChime();
+      this.oscillators = [];
     }
+    this.isPlaying = false;
+  }
+
+  _createAndStartOscillators() {
+    if (!this.desiredPlaying || !this.ctx || this.ctx.state !== "running") return;
+
+    // Clean up any stale oscillators first
+    this._killOscillators();
+
+    this.isPlaying = true;
+
+    // Fundamental: 136.1 Hz (C#3 / OM frequency)
+    const baseFreq = 136.1;
+    // Harmonic series optimized for phone loudspeakers and deep headphones
+    const harmonicRatios = [
+      { mult: 0.5, type: "sine", gain: 0.45 },
+      { mult: 1.0, type: "sine", gain: 0.55 },
+      { mult: 1.5, type: "triangle", gain: 0.30 }, // Pa (Fifth - 204 Hz, clear on phone speakers)
+      { mult: 2.0, type: "sine", gain: 0.25 },     // Octave - 272 Hz
+      { mult: 3.0, type: "triangle", gain: 0.15 }  // Higher Fifth - 408 Hz
+    ];
+
+    this.oscillators = [];
+
+    harmonicRatios.forEach(h => {
+      const osc = this.ctx.createOscillator();
+      const oscGain = this.ctx.createGain();
+      
+      osc.type = h.type;
+      const detuneCents = (Math.random() - 0.5) * 4;
+      osc.frequency.setValueAtTime(baseFreq * h.mult, this.ctx.currentTime);
+      osc.detune.setValueAtTime(detuneCents, this.ctx.currentTime);
+
+      oscGain.gain.setValueAtTime(h.gain, this.ctx.currentTime);
+
+      osc.connect(oscGain);
+      oscGain.connect(this.filter);
+
+      osc.start();
+      this.oscillators.push({ osc, gain: oscGain });
+    });
 
     // Always ensure master gain is audible at target volume
     if (this.masterGain && this.ctx) {
@@ -130,32 +191,35 @@ class CosmicOmSynth {
         try { this.masterGain.gain.value = this.volume; } catch (err) {}
       }
     }
+
+    this.scheduleTempleChime();
   }
 
   stop() {
     this.desiredPlaying = false;
-    if (!this.isPlaying || !this.ctx) return;
-    this.isPlaying = false;
 
     if (this.chimeTimer) {
       clearTimeout(this.chimeTimer);
       this.chimeTimer = null;
     }
 
-    // Smooth fade out
-    try {
-      this.masterGain.gain.cancelScheduledValues(this.ctx.currentTime);
-      this.masterGain.gain.setValueAtTime(this.masterGain.gain.value || this.volume, this.ctx.currentTime);
-      this.masterGain.gain.linearRampToValueAtTime(0.0001, this.ctx.currentTime + 0.4);
-    } catch (e) {}
+    if (this.iosSilentMedia) {
+      try { this.iosSilentMedia.pause(); } catch (e) {}
+    }
 
-    const dyingOscs = this.oscillators;
-    this.oscillators = [];
+    if (this.masterGain && this.ctx) {
+      try {
+        this.masterGain.gain.cancelScheduledValues(this.ctx.currentTime);
+        this.masterGain.gain.setValueAtTime(this.masterGain.gain.value || this.volume, this.ctx.currentTime);
+        this.masterGain.gain.linearRampToValueAtTime(0.0001, this.ctx.currentTime + 0.3);
+      } catch (e) {}
+    }
+
     setTimeout(() => {
-      dyingOscs.forEach(o => {
-        try { o.osc.stop(); o.osc.disconnect(); } catch (e) {}
-      });
-    }, 500);
+      if (!this.desiredPlaying) {
+        this._killOscillators();
+      }
+    }, 350);
   }
 
   toggle() {

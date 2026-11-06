@@ -1786,10 +1786,16 @@ class CosmicApp {
         return;
       }
       if (window.cosmicAudio) {
-        if (window.cosmicAudio.ctx && window.cosmicAudio.ctx.state === "suspended") {
-          window.cosmicAudio.ctx.resume().catch(() => {});
+        window.cosmicAudio.unlockIOSAudio();
+        if (window.cosmicAudio.ctx && (window.cosmicAudio.ctx.state === "suspended" || window.cosmicAudio.ctx.state === "interrupted")) {
+          window.cosmicAudio.ctx.resume().then(() => {
+            if (!this.userManuallyMuted && window.cosmicAudio) {
+              window.cosmicAudio.start();
+            }
+          }).catch(() => {});
+        } else {
+          window.cosmicAudio.start();
         }
-        window.cosmicAudio._ensurePlaying();
       }
       cleanupListeners();
     };
@@ -1810,10 +1816,16 @@ class CosmicApp {
     ["pageshow", "focus", "visibilitychange"].forEach(evt => {
       window.addEventListener(evt, () => {
         if (!this.userManuallyMuted && window.cosmicAudio) {
-          if (window.cosmicAudio.ctx && window.cosmicAudio.ctx.state === "suspended") {
-            window.cosmicAudio.ctx.resume().catch(() => {});
+          window.cosmicAudio.unlockIOSAudio();
+          if (window.cosmicAudio.ctx && (window.cosmicAudio.ctx.state === "suspended" || window.cosmicAudio.ctx.state === "interrupted")) {
+            window.cosmicAudio.ctx.resume().then(() => {
+              if (!this.userManuallyMuted && window.cosmicAudio) {
+                window.cosmicAudio.start();
+              }
+            }).catch(() => {});
+          } else if (window.cosmicAudio.desiredPlaying) {
+            window.cosmicAudio.start();
           }
-          window.cosmicAudio._ensurePlaying();
         }
       }, { passive: true });
     });
@@ -1823,6 +1835,9 @@ class CosmicApp {
       e.stopPropagation();
       if (!window.cosmicAudio) return;
 
+      // Always unlock iOS audio session on click
+      window.cosmicAudio.unlockIOSAudio();
+
       if (window.cosmicAudio.isPlaying || window.cosmicAudio.desiredPlaying) {
         // User explicitly turned it OFF manually
         this.userManuallyMuted = true;
@@ -1831,7 +1846,13 @@ class CosmicApp {
       } else {
         // User explicitly turned it ON manually
         this.userManuallyMuted = false;
-        window.cosmicAudio.start();
+        if (window.cosmicAudio.ctx && (window.cosmicAudio.ctx.state === "suspended" || window.cosmicAudio.ctx.state === "interrupted")) {
+          window.cosmicAudio.ctx.resume().then(() => {
+            window.cosmicAudio.start();
+          }).catch(() => {});
+        } else {
+          window.cosmicAudio.start();
+        }
         updateBtnUI(true);
       }
     });
