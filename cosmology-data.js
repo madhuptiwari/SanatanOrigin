@@ -1035,7 +1035,35 @@ const COSMOLOGY_DATA = {
                                                                       Reaching 500 AD on Bhurloka, the solar monarchs preserved cosmic Dharma during foreign invasions, rebuilding the grand stone temples of northern India.
                                                                     `,
                                                                     keyAttributes: ["Brought the cosmological solar line down to 500–528 AD", "Vanquished the tyrannical Hunas at the Battle of Sondani", "Safeguarded the cultural and religious continuity of Bharatavarsha"],
-                                                                    children: []
+                                                                    children: [
+                {
+                  id: "cosmo-solar-mewar-jaipur-2026",
+                  name: "Living Solar Dynasties of Bhurloka to 2026 (Mewar & Jaipur)",
+                  sanskrit: "भूलोक के जीवित सूर्यवंशी राजवंश (मेवाड़ एवं जयपुर – २०२६)",
+                  title: "Continuity of the Cosmic Sun Dynasty – Bappa Rawal & Sawai Jai Singh to 2026",
+                  tier: "beings",
+                  tierLevel: 18,
+                  category: "Cosmic Royal Dynasties",
+                  color: "#FACC15",
+                  glowColor: "rgba(250, 204, 21, 1.0)",
+                  icon: "☀️",
+                  summary: "Carried the solar lineage of Vivasvan and Ikshvaku across medieval Bharatavarsha into 2026: The Guhila-Sisodias of Mewar (Bappa Rawal, Maharana Pratap to Arvind Singh and Lakshyaraj Singh Mewar) and the Kachhwahas of Jaipur (Sawai Jai Singh II to Padmanabh Singh).",
+                  shloka: {
+                    devanagari: "विवस्वतो महा-वंशो धरण्यां संप्रतिष्ठितः । मेदपाटे पुरे रम्ये जयपुर्यां विराजते ॥",
+                    transliteration: "Vivasvato maha-vamsho dharanyam sampratishthitah | Medapate pure ramye jayapuryam virajate ||",
+                    source: "Surya Vamsha Prashasti Sangraha",
+                    meaning: "The exalted cosmic lineage of the Sun God Vivasvan remains firmly established upon this earth; shining resplendent in sacred Medapata (Mewar) and the planned celestial city of Jaipur down to 2026."
+                  },
+                  details: `
+                    Cosmological time connects cosmic progenitors directly to living royal guardians on Bhurloka:
+                    - **Mewar Solar Throne:** 1,400 years of documented patrilineal descent from Sri Rama's son Lava, preserving royal solar seals and defending Sanatan Dharma through centuries of foreign invasions.
+                    - **Jaipur Kushavaha Throne:** Tracing unbroken descent from Sri Rama's elder son Kusha, synthesizing astronomical science (Jantar Mantar) with Vedic statecraft.
+                    - **Living Heritage in 2026:** Both dynasties actively participate in modern Indian public life while fulfilling hereditary dharmic roles at Shri Eklingji and Shri Govind Dev Ji temples.
+                  `,
+                  keyAttributes: ["Bridges cosmic Surya-vamsha with living 2026 dynasties", "Mewar: 1400 years of unbroken patrilineal royal descent from Lava", "Jaipur: Descendants of Kusha and builders of cosmic observatories"],
+                  children: []
+                }
+              ]
                                                                   }
                                                                 ]
                                                               }
@@ -1279,7 +1307,120 @@ const COSMOLOGY_DATA = {
                                                                       "Pinnacle of classical Indian mathematical astronomy and zero concept",
                                                                       "Brought the continuous genealogical lineage down to 500 AD"
                                                                     ],
-                                                                    children: []
+                                                                    children: [
+                {
+                  id: "cosmo-medieval-astronomers",
+                  name: "Medieval Cosmic Astronomers (c. 600-1500 AD)",
+                  sanskrit: "मध्यकालीन गणितज्ञ एवं खगोलविद् (भास्कराचार्य एवं माधव)",
+                  title: "Siddhanta Shiromani, Infinite Series & Exact Mathematical Geodesy",
+                  tier: "beings",
+                  tierLevel: 18,
+                  category: "Cosmic Astronomers & Rishis",
+                  color: "#FACC15",
+                  glowColor: "rgba(250, 204, 21, 0.9)",
+                  icon: "🔭",
+                  summary: "Carried forward Aryabhata's cosmology: Brahmagupta (Brahmasphutasiddhanta, 628 AD), Bhaskaracharya II (Siddhanta Shiromani, 1150 AD - calculated Earth's orbital period to 365.258756 days), and Madhava of Sangamagrama (14th cent. founder of the Kerala School, discovered calculus series for pi and trigonometric functions centuries before Newton).",
+                  shloka: {
+                    devanagari: "मध्याह्न-वेलायां यत् सूर्येण क्रियते गतिः । गोल-ज्ञानेन तज् ज्ञेयं सिद्धान्त-शिरोमणौ ॥",
+                    transliteration: "Madhyahna-velayam yat suryesha kriyate gatih | Gola-jnanena taj jeyah siddhanta-shiromanau ||",
+                    source: "Siddhanta Shiromani of Bhaskara II (Goladhyaya, 1150 AD)",
+                    meaning: "The precise speed and true celestial motion traced by the Sun across the meridian at noon is revealed through spherical astronomy (Gola-vidya) in this Siddhanta Shiromani."
+                  },
+                  details: `
+                    Indian mathematical astronomy preserved and refined cosmic timekeeping through the medieval era:
+                    - **Brahmagupta (598–668 AD):** Head of the astronomical observatory at Ujjain, codified the mathematical use of Zero (*Shunya*), negative numbers, and gravity (*gurutvakarshana*).
+                    - **Bhaskara II (1114–1185 AD):** Author of *Lilavati*, *Bijaganita*, and *Siddhanta Shiromani*. Calculated the Earth's circumference and orbital period with stunning accuracy.
+                    - **Madhava of Sangamagrama (1340–1425 AD):** Developed the infinite power series expansions for sine, cosine, and tangent (the Madhava-Gregory-Leibniz series) and calculated Pi to 11 decimal places two centuries ahead of European mathematics.
+                  `,
+                  keyAttributes: ["Authored the monumental Siddhanta Shiromani (1150 AD)", "Calculated Earth's orbital year to within minutes of modern atomic value", "Discovered infinite series calculus at the Kerala School of Astronomy"],
+                  children: [
+                    {
+                      id: "cosmo-jantar-mantar-observatories",
+                      name: "Maharaja Sawai Jai Singh's Cosmic Observatories (1724-1738 AD)",
+                      sanskrit: "महाराजा सवाई जयसिंह के जंतर-मंतर वेधशालाएँ (खगोल यंत्र)",
+                      title: "Samrat Yantra Sundials & Naked-Eye Precision Astro-Monuments of Aryavarta",
+                      tier: "beings",
+                      tierLevel: 19,
+                      category: "Cosmic Astronomers & Rishis",
+                      color: "#FACC15",
+                      glowColor: "rgba(250, 204, 21, 0.95)",
+                      icon: "📐",
+                      summary: "Maharaja Sawai Jai Singh II of Jaipur transformed Siddhantic astronomy into colossal architectural instruments in five cities: Jaipur, Delhi, Ujjain, Varanasi, and Mathura. The Brihat Samrat Yantra is the world's largest stone sundial, measuring time with an astonishing precision of 2 seconds.",
+                      shloka: {
+                        devanagari: "सम्राट्-यन्त्रादि-युक्तानि वेधशाला-वराणि च । जयपुरे निर्मितानि येन सूर्य-संसिद्धये सदा ॥",
+                        transliteration: "Samrat-yantradi-yuktani vedhasala-varani ca | Jayapure nirmitani yena surya-samsiddhaye sada ||",
+                        source: "Yantra-Raja-Rachana of Sawai Jai Singh (1734 AD)",
+                        meaning: "Equipped with the colossal Samrat Yantra and supreme observational instruments, these celestial observatories were constructed in Jaipur to attain flawless precision in calculating solar and planetary motions."
+                      },
+                      details: `
+                        Sawai Jai Singh II erected stone instruments to overcome the small-scale errors of brass astrolabes:
+                        - **Five Astronomical Cities:** Consecrated observatories in Jaipur, Delhi, Ujjain (the ancient Indian prime meridian), Varanasi (sacred pilgrim center), and Mathura.
+                        - **Brihat Samrat Yantra (Jaipur):** Stands 27 meters (90 feet) tall; its gnomon casts a shadow moving at 1 millimeter per second, reading local solar time to an accuracy of 2 seconds.
+                        - **Jai Prakash Yantra:** Hemispherical subterranean bowls allowing observers to directly map celestial coordinates, eclipses, and constellation transits onto an inverted sky grid.
+                      `,
+                      keyAttributes: ["Constructed the 5 monumental Jantar Mantar observatories across India", "Erected the world's largest stone sundial (Brihat Samrat Yantra)", "Synchronized Surya Siddhanta tables with real-time celestial observations"],
+                      children: [
+                        {
+                          id: "cosmo-modern-rashtriya-panchanga-2026",
+                          name: "Indian National Calendar & Kali Yuga Cosmic Epoch in 2026 AD",
+                          sanskrit: "राष्ट्रीय पंचांग एवं वर्तमान कलियुग गणना (२०२६ ईस्वी पर्यन्त)",
+                          title: "Year 5127 of Kali Yuga, Saka Era 1948, Vikrama Samvat 2083 – Living Cosmic Time",
+                          tier: "beings",
+                          tierLevel: 20,
+                          category: "Cosmic Time & Living Calendar",
+                          color: "#FACC15",
+                          glowColor: "rgba(250, 204, 21, 1.0)",
+                          icon: "📅",
+                          summary: "In 2026 AD, the cosmic clock of Sanatan Dharma marks Year 5127 of the Kali Yuga (which began in 3102 BCE at Krishna's departure). Tracked through the official Indian National Calendar (Rashtriya Panchanga, Saka 1948, Vikrama 2083) and the Positional Astronomy Centre, ensuring the unbroken synchronization of human time with cosmic rhythm.",
+                          shloka: {
+                            devanagari: "कल्यब्दाः ख-द्वि-चन्द्र-शर-मिताः (५१२७) सम्प्रति वर्तन्ते । सूर्य-सिद्धान्त-मार्गेण काल-चक्रं प्रवर्तते ॥",
+                            transliteration: "Kaly-abdah kha-dvi-candra-shara-mitah (5127) samprati vartante | Surya-siddhanta-margena kala-chakram pravartate ||",
+                            source: "Rashtriya Panchanga & Surya Siddhantic Ephemeris for 2026 AD",
+                            meaning: "In this present year 2026 AD, exactly 5,127 years of the cosmic Kali Yuga have elapsed; through the eternal methodology of the Surya Siddhanta, the cosmic wheel of time revolves uninterrupted."
+                          },
+                          details: `
+                            Sanatan cosmology is not an abstract myth; it is an active, living timekeeping system calculated daily in 2026:
+                            - **Year 5127 of Kali Yuga:** Commenced at midnight on February 18, 3102 BCE (Ujjain mean time) when all seven classical planets were aligned at 0 degrees Aries (*Mesha Adi*). In 2026, humanity lives in the 5,127th year of the 1st Charana of Kali Yuga.
+                            - **Panchanga System (Five Limbs of Time):** Every day is calibrated by *Tithi* (lunar day), *Vara* (solar day), *Nakshatra* (lunar mansion), *Yoga* (solar-lunar angular sum), and *Karana* (half-tithi), governing millions of temples and astronomical events nationwide.
+                            - **Calendar Reform & Ephemeris:** Supported by the Positional Astronomy Centre (Kolkata), harmonizing classical Sayana and Nirayana methods.
+                          `,
+                          keyAttributes: ["Calculates Year 5127 of the 7th Vaivasvata Manvantara Kali Yuga in 2026", "Synchronizes daily planetary positions across the 5 limbs of the Panchanga", "Official scientific calendar recognized by the Government of India"],
+                          children: [
+                            {
+                              id: "cosmo-shankaracharya-peethas-2026",
+                              name: "The Four Amnaya Peethas of Adi Shankara to 2026",
+                              sanskrit: "जगद्गुरु आदि शंकराचार्य चतुराम्नाय पीठ (२०२६ ईस्वी पर्यन्त)",
+                              title: "Guardians of the Four Vedas, Mahavakyas & Sanatan Cosmic Order Across Bharatavarsha",
+                              tier: "beings",
+                              tierLevel: 21,
+                              category: "Living Vedic Peethams",
+                              color: "#FACC15",
+                              glowColor: "rgba(250, 204, 21, 1.0)",
+                              icon: "🕉️",
+                              summary: "Established by Jagadguru Adi Shankaracharya to protect Vedic cosmology and dharma across the four geographic corners of India: Sringeri Sharada Peetham (Yajurveda, South), Puri Govardhana Peetham (Rigveda, East), Dwarka Sharada Peetham (Samaveda, West), and Badrikashram Jyotirmath (Atharvaveda, North). Thriving under their unbroken living apostolic lineages in 2026.",
+                              shloka: {
+                                devanagari: "श्रुति-स्मृति-पुराणानामालयं करुणालयम् । नमामि भगवत्पादं शङ्करं लोक-शङ्करम् ॥",
+                                transliteration: "Sruti-smriti-purananam alayah karunalayam | Namami bhagavatpadam shankarah loka-shankaram ||",
+                                source: "Traditional Guru Vandana of the Amnaya Peethas",
+                                meaning: "Abode of the Vedas, Smritis, and Puranas, the ocean of divine compassion; I bow before the holy feet of Jagadguru Adi Shankaracharya, the supreme benefactor of the universe."
+                              },
+                              details: `
+                                The Amnaya Peethas represent the spiritual spine of living Sanatan Dharma in 2026:
+                                - **Dakshinamnaya Sringeri Sharada Peetham (South):** Governs Yajurveda; Mahavakya: *Aham Brahmasmi*. Presided over by Jagadguru Shankaracharya Sri Sri Bharati Tirtha Mahaswamiji and Sri Sri Vidhushekhara Bharati Mahaswamiji in 2026.
+                                - **Purvamnaya Govardhana Peetham, Puri (East):** Governs Rigveda; Mahavakya: *Prajnanam Brahma*. Presided over by Jagadguru Shankaracharya Swami Nishchalananda Saraswatiji in 2026.
+                                - **Paschimamnaya Sharada Peetham, Dwarka (West):** Governs Samaveda; Mahavakya: *Tat Tvam Asi*. Presided over by Jagadguru Shankaracharya Swami Sadananda Saraswatiji in 2026.
+                                - **Uttaramnaya Jyotirmath, Badrikashram (North):** Governs Atharvaveda; Mahavakya: *Ayam Atma Brahma*. Presided over by Jagadguru Shankaracharya Swami Avimukteshwarananda Saraswatiji in 2026.
+                              `,
+                              keyAttributes: ["Four cardinal monastic seats protecting the Four Vedas and Mahavakyas", "Unbroken pontifical apostolic succession spanning over 1,200 years to 2026", "Spiritual custodians of Sanatan Vedic cosmology and Advaita philosophy"],
+                              children: []
+                            }
+                          ]
+                        }
+                      ]
+                    }
+                  ]
+                }
+              ]
                                                                   }
                                                                 ]
                                                               }

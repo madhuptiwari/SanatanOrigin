@@ -4,100 +4,54 @@ An interactive, high-fidelity web application visualizing the **Origin of the Un
 
 ---
 
-## 🌟 4 Authentic Scriptural Traditions & Exhaustive Lineage Trees
+## 🌟 4 Authentic Scriptural Traditions & Exhaustive Lineage Trees (Down to 2026 AD)
 
-The application allows you to explore the divine descent separately as revealed across the authentic Puranas, featuring **98 detailed entities** across all branches:
+The application visualizes the complete, unbroken descent from cosmic origins through ancient epics, classical dynasties (c. 500 AD), medieval defenders, and **living contemporary royal houses, temple trusts, and Vedic peethams down to 2026 AD**, featuring **324 detailed entities** across all branches:
 
-### 1. 📜 General Purana Tradition (Smarta & Universal Bhagavata Synthesis)
-*Visualizes the harmonious synthesis where all deities emerge from the singular Absolute (Parabrahman):*
+### 1. 📜 General Purana Tradition (Smarta & Universal Bhagavata Synthesis — 114 Nodes, Depth 20)
+*Visualizes the harmonious synthesis where all deities and dynasties emerge from the singular Absolute (Parabrahman):*
 - **Supreme Summit**: *Parabrahman (Ekam Sad Vipra Bahudha Vadanti — Rigveda 1.164.46)*
 - **Lord Maha-Vishnu & Goddess Mahalakshmi**:
   - **The 24 Avataras & Dashavatara**:
     - **Sri Rama & Raghu Lineage**: Sita Devi, Lava & Kusha, Lakshmana, Bharata, Shatrughna.
-    - **Sri Krishna & Chatur-Vyuha**: Rukmini Devi, Satyabhama, Vasudeva, Sankarshana, Pradyumna, Aniruddha, Vajranabha.
-    - **Primal Rescuers**: Matsya, Kurma, Varaha (lifting Bhumi Devi), Narasimha (slaying Hiranyakashipu), Vamana.
-    - **Jnana Avataras**: Kapila Muni (Samkhya), Dattatreya (Yoga), Dhanvantari (Ayurveda), Veda Vyasa (Vedas & Puranas).
-  - **Lord Kama Deva (Manmatha) & Rati Devi**: God of love; reborn as Pradyumna.
-  - **Lord Ananta Shesha (Adishesha / Balarama)**:
-    - **Lord Vasuki, Takshaka & Nagaloka Kings**: Churning rope of Samudra Manthan; neck ornament of Shiva.
-  - **Lord Garuda (King of Birds / Vainateya)**:
-    - **Aruna Deva, Jatayu & Sampati**: Solar charioteer; valiant defenders in Ramayana.
-- **Lord Shiva (Mahadeva) & Goddess Parvati (Adi Shakti)**:
-  - **Lord Ganesha (Vighnaharta)**:
-    - **Shubha, Labha, Santoshi Mata & Amoda-Pramoda**: Auspiciousness, prosperity, and contentment.
-  - **Lord Kartikeya (Skanda / Murugan)**:
-    - **Devasena & Valli**: The dual Shaktis of Skanda; 6 Krittikas.
-  - **Goddess Ashokasundari**: Wish-fulfilling daughter; mother of Emperor Yayati.
-  - **Lord Ayyappa (Hariharaputra / Dharma Sastha)**: Lord of Sabarimala.
-  - **The 11 Rudras (Ekadasha Rudras)**: Governors of 10 Pranas + Mind.
-  - **Kaala Bhairava & Ashta Bhairavas**: Kshetrapalas of Varanasi.
-  - **Virabhadra & Bhadrakali**: Dismantled Daksha Yajna.
-  - **Lord Nandi Deva (Nandikeshvara)**: Chief of Ganas; foremost master of devotion.
-- **Lord Chaturmukha Brahma & Goddess Saraswati**:
-  - **The 4 Sanat Kumaras**: Sanaka, Sanandana, Sanatana, Sanatkumara (perpetual child sages).
-  - **Devarshi Narada**: Messenger of heaven, author of Bhakti Sutras.
-  - **The Saptarishis & Progenitor Masters**:
-    - **Sage Atri & Mata Anasuya**: Lord Dattatreya, Durvasa Muni, and Chandra Deva.
-    - **Maharshi Vashistha Lineage**: Arundhati -> Shakti -> Parashara -> Veda Vyasa -> Shukadeva.
-    - **Maharshi Bhrigu**: Shukracharya (Venus) & Goddess Bhargavi (Lakshmi).
-    - **Maharshi Pulastya**: Vishrava -> Lord Kubera (Treasurer of the Gods).
-  - **Svayambhuva Manu & Shatarupa**: First human couple -> Uttanapada -> **Bhaktaraj Dhruva** (Pole Star).
-  - **Maharshi Kashyapa & The Cosmic Mothers**:
-    - **Lord Surya (The Sun God)**:
-      - **Lord Yama Dharmaraja**: God of Justice and King of Dharma.
-      - **Lord Shani Deva (Shaneeshwara)**: Magistrate of Karma and Saturn.
-      - **Suryavamsha (Solar Dynasty)**: Vaivasvata Manu -> Ikshvaku -> Mandhata -> Harishchandra -> Sagara -> Bhagiratha -> Raghu -> Sri Rama!
-      - **The Ashvini Kumaras**: Twin divine physicians of heaven.
-    - **Lord Indra (Devendra)**: King of heaven, wielder of Vajra.
-    - **Lord Chandra (Soma) & Chandravamsha**: Lunar dynasty -> Budha -> Pururavas -> Yayati -> Yaduvamsha (Krishna) & Pauravas (Pandavas).
-    - **Diti & Daitya Lineage**: Hiranyakashipu -> Bhaktaraj Prahlada -> King Bali.
-    - **Lord Vishvakarma**: Supreme architect of the gods.
-  - **Dharma Deva & Ashta Vasus**:
-    - **The Ashta Vasus & Vayu Deva**: Prabhasa (reborn as Bhishma Pitamaha!) -> **Lord Hanuman** (Chiranjeevi Rudra Avatara).
-    - **Nara-Narayana Rishis**: Badrikashrama ascetics -> Arjuna & Sri Krishna.
+    - **Suryavamsha Kings to 2026 AD**:
+      - Sri Rama -> Lava -> Guhaditya of Vallabhi -> Bappa Rawal (Eklingji / Chittorgarh, 728 AD) -> Maharana Kumbha (Vijay Stambha, 1448 AD) -> Maharana Sanga -> Maharana Pratap (Battle of Haldighati, 1576 AD) -> Maharana Amar Singh -> **The Modern Suryavamshi House of Mewar to 2026** (Maharana Arvind Singh Mewar & Lakshyaraj Singh Mewar in Udaipur, hereditary Diwans of Shri Eklingji Mahadeva).
+      - Sri Rama -> Kusha -> Kachhwaha Dynasty of Amber/Jaipur -> Raja Man Singh I (Govind Dev Ji, Vrindavan) -> Maharaja Sawai Jai Singh II (Founder of Jaipur, Jantar Mantar observatories) -> **Maharaja Padmanabh Singh of Jaipur to 2026**.
+    - **Sri Krishna & Chandravamsha / Yaduvamsha to 2026 AD**:
+      - Pururavas -> Yayati -> Yadu & Puru -> Sri Krishna, Balarama, Pandavas -> Vajranabha & Parikshit -> Janamejaya -> Guptas -> Imperial Rashtrakutas & Chandelas of Khajuraho (Kandariya Mahadeva) -> Tomaras of Delhi (Anangpal Tomar, Lal Kot) & **Bhati Yaduvamsha of Jaisalmer to 2026** (Sonar Qila, 44th Maharawal Chaitanya Raj Singh) -> **Mysore Yaduvamsha Wodeyar Dynasty to 2026** (Yaduveer Krishnadatta Chamaraja Wadiyar).
+  - **Southern Kings & Temple Custodians to 2026 AD**:
+    - Pallavas of Kanchi & Kadambas of Banavasi -> **Imperial Cholas** (Rajaraja Chola I & Rajendra Chola - Brihadisvara Temple of Thanjavur) -> **Vijayanagara Empire** (Harihara, Bukka & Krishnadevaraya - guardians of Hampi Virupaksha, Tirupati & Srisailam) -> **The Travancore Royal House to 2026** (Padmanabhadasas & Sree Padmanabhaswamy Temple Custodians, Sree Moolam Thirunal Rama Varma).
+  - **Lord Shiva, Ganesha, Kartikeya, Ayyappa, 11 Rudras, and Ashta Bhairavas**.
+  - **Lord Brahma, Sanat Kumaras, Narada, Saptarishis, and Prajapatis**.
 
-### 2. 🪷 Vishnu Purana Tradition (*Vishnu Purana Book 1-5*)
+### 2. 🪷 Vishnu Purana Tradition (*Vishnu Purana Book 1-5* — 67 Nodes, Depth 21)
 *Strictly structured as revealed in the Vishnu Purana by Sage Parashara to Maitreya:*
 - **Supreme Root**: **Lord Narayana (Paramatman / Vasudeva)** (*Vishnu Purana 1.1.31*).
-- **The Chatur-Vyuha**: Vasudeva, Sankarshana, Pradyumna, Aniruddha.
-- **The 24 Avataras**: Rama, Krishna, Matsya, Kurma, Varaha, Narasimha, Vamana, Kapila, Parashurama, Vyasa.
-- **Padmanabha Navel Lotus**: Lord Brahma born upon the golden lotus from Vishnu's navel (*VP 1.2.65*).
-- **Forehead of Wrath**: Lord Rudra bursts forth from Brahma's forehead of anger (*VP 1.7*) -> Ganesha & Kartikeya.
-- **Vaishnava Saptarishis & Progenitors**:
-  - Sage Parashara (speaker of Vishnu Purana), Veda Vyasa, and Bhaktaraj Dhruva.
-- **Kashyapa Lineage in Vishnu Purana**:
-  - **Suryavamsha Kings**: Comprehensive chronicle of the Ikshvaku dynasty.
-  - **Chandravamsha Kings**: Pururavas, Yayati, Yaduvamsha, and Sri Krishna.
-  - **Prahlada Maharaj & King Bali**: Paragons of total self-surrender (*Sharanagati*).
-- **Eternal Servitors**: Ananta Shesha & Garuda.
+- **The Chatur-Vyuha & 24 Avataras**: Rama, Krishna, Matsya, Kurma, Varaha, Narasimha, Vamana, Parashurama, Kalki.
+- **Suryavamsha Lineage to 2026**:
+  - Vaivasvata Manu -> Ikshvaku -> Mandhata -> Harishchandra -> Bhagiratha -> Raghu -> Dasharatha -> Sri Rama -> Lava -> **Sisodia Suryavamsha of Mewar to 2026** (1400-year living dynasty of Udaipur, patrons of Srinathji & Charbhuja Ji) -> **Kachhwaha Suryavamsha of Jaipur to 2026** (Govind Dev Ji patrons).
+- **Chandravamsha / Yaduvamsha to 2026**:
+  - Brahma -> Atri -> Soma -> Pururavas -> Yayati -> Yadu -> Vasudeva -> Sri Krishna -> Pradyumna -> Aniruddha -> Vajranabha -> **Bhati Yaduvamsha of Jaisalmer to 2026** -> **Mysore Wodeyar Dynasty to 2026** -> **Travancore Padmanabhadasas to 2026** (Sree Padmanabhaswamy sanctum trustees).
 
-### 3. 🔱 Shiva Purana Tradition (*Vidyeshvara, Rudra & Kotirudra Samhitas*)
+### 3. 🔱 Shiva Purana Tradition (*Vidyeshvara, Rudra & Kotirudra Samhitas* — 85 Nodes, Depth 18)
 *Strictly structured as revealed in the Shiva Purana:*
 - **Supreme Root**: **Lord Paramashiva (Sadashiva & Adi Parashakti Ambika)** (*Shiva Purana 2.1.9*).
-- **Pancha-Brahma (Five Faces of Shiva)**: Sadyojata, Vamadeva, Aghora, Tatpurusha, Ishana.
-- **Ashta Murti (Eight Embodiments)**: Earth, Water, Fire, Air, Space, Sun, Moon, and Soul.
-- **12 Sacred Jyotirlingas**:
-  - *Northern Sanctums*: Kedarnath, Kashi Vishwanath, Mahakaleshwar.
-  - *Southern Sanctums*: Rameshwaram, Mallikarjuna, Omkareshwar.
-  - *Western Sanctums*: Somnath, Trimbakeshwar, Nageshwar, Bhimashankar, Vaidyanath, Grishneshwar.
-- **Creation of Vishnu & Brahma**:
-  - **Left Side of Shiva**: Lord Vishnu manifested for preservation; gifted the Sudarshana Chakra; Rama at Rameshwaram; Krishna receiving Pashupatastra.
-  - **Right Side of Shiva**: Lord Brahma manifested for secondary creation.
-- **Kailasha Holy Family**:
-  - **Lord Ganesha**: First-worshipped; Shubha, Labha, and Santoshi Mata.
-  - **Lord Kartikeya (Skanda)**: Devasenapati; consorts Devasena & Valli; 6 Krittikas.
-  - **Goddess Ashokasundari & Lord Ayyappa**: Beloved daughter and son of Kailasha.
-  - **Lord Nandi Deva**: Foremost attendant and master of devotion.
-- **Fierce Protectors**: Virabhadra & Bhadrakali, Kaala Bhairava & Ashta Bhairavas, and 11 Rudras.
+- **Pancha-Brahma (Five Faces of Shiva)** & **Ashta Murti (Eight Cosmic Elements)**.
+- **12 Sacred Jyotirlingas & Their Living Rebirth to 2026**:
+  - Somnath, Mallikarjuna, Mahakaleshwar, Omkareshwar, Kedarnath, Bhimashankar, Kashi Vishwanath, Trimbakeshwar, Vaidyanath, Nageshwar, Rameshwaram, and Grishneshwar.
+- **Shaiva Royal Dynasties & Jyotirlinga Restorers to 2026**:
+  - Imperial Guptas & Vikramaditya -> **Imperial Cholas** (Brihadisvara Temple, Sengol tradition) -> **Vijayanagara Empire** (Virupaksha & Srisailam) -> **Chhatrapati Shivaji Maharaj** (Hindavi Swarajya, Srisailam restorer) -> **Punyashlok Rajmata Ahilyabai Holkar** (rebuilt Kashi Vishwanath in 1780, Somnath, Mahakaleshwar, Grishneshwar) -> **The Modern Jyotirlinga Trusts & Dham Corridors to 2026** (Kashi Vishwanath Dham Corridor, Shri Mahakal Lok Ujjain, Shree Somnath Trust, Kedarnath-Badrinath Mandir Samiti).
+  - King Yashodharman -> **Maharanas of Mewar as Diwans of Shri Eklingji Mahadeva to 2026** (1300-year unbroken Shaiva trusteeship).
+  - Pallavas of Kanchi -> **Tamil Shaiva Adheenams & Chidambaram Dikshitars to 2026** (Thiruvaduthurai, Dharmapuram, Madurai Adheenams, keepers of the 12 Tirumurais and Parliament Sengol).
 
-### 4. 🌌 Cosmic Tattvas Tree (Metaphysical Cosmogony)
+### 4. 🌌 Universal Cosmic Tattvas & Living Epochs (58 Nodes, Depth 22)
 *Visualizes the philosophical sequence of creation according to Samkhya, Vedanta, and the Puranas:*
-- **Nirguna Parabrahman** (Rigveda Nasadiya Sukta 10.129)
-- **Adi Spandana & Saguna Brahman** (Omkara / Maha-Vishnu on the Causal Ocean)
-- **Purusha & Mula-Prakriti** (Consciousness & Matrix of 3 Gunas)
-- **Mahat-Tattva & Ahankara-Tattva** (Universal Intelligence & Ego):
-  - *Sattvika*: Cosmic Mind (*Manas*) & 10 Adhidevatas
-  - *Rajasika*: 10 Indriyas (Senses & Action Organs) & Pancha Prana
+- **Nirguna Parabrahman** & **Adi Spandana (Saguna Brahman)**.
+- **Purusha & Mula-Prakriti** -> Mahat-Tattva -> Ahankara (Sattvika, Rajasika, Tamasika).
+- **14 Bhuvana (Lokas)**, 8.4 Million Species & Cosmic Time Cycles (*Chatur-Yugas, Manvantaras, Kalpas*).
+- **Bhurloka Dynasties & Cosmic Astronomy to 2026 AD**:
+  - Aryabhata (499 AD) -> **Medieval Mathematical Astronomers** (Brahmagupta, Bhaskara II's *Siddhanta Shiromani*, Madhava of Sangamagrama / Kerala School calculus) -> **Maharaja Sawai Jai Singh II's Five Jantar Mantar Observatories** (1724-1738 AD, Samrat Yantra sundials) -> **Indian National Calendar & Kali Yuga Cosmic Epoch in 2026 AD** (Year 5127 of Kali Yuga, Saka 1948, Vikrama 2083) -> **The Four Amnaya Peethas of Adi Shankaracharya to 2026** (Sringeri, Puri Govardhana, Dwarka Sharada, Jyotirmath Badrikashram).
+  - Cosmic Surya-vamsha -> **Living Solar Dynasties of Bhurloka to 2026** (Mewar & Jaipur).
   - *Tamasika*: 5 Subtle Potentials (*Tanmatras*) & 5 Gross Elements (*Pancha Mahabhutas*)
 - **Hiranyagarbha & Garbhodakashayi Vishnu** (The Cosmic Golden Egg)
 - **Chaturmukha Brahma** (Secondary Creation - *Visarga*)

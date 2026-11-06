@@ -651,7 +651,166 @@ const GENERAL_PURANA_DATA = {
                                                     Concurrently, King Pushyabhuti laid the foundations of the Vardhana dynasty at Thanesar, which culminated in Emperor Harshavardhana.
                                                   `,
                                                   keyAttributes: ["Brought the Solar lineage to c. 500–528 AD", "Defeated the fierce Huna invaders at the Battle of Sondani", "Re-established classical Vedic temple culture across northern India"],
-                                                  children: []
+                                                  children: [
+                {
+                  id: "gen-gurjara-pratihara-bappa",
+                  name: "Imperial Gurjara-Pratiharas & Bappa Rawal (c. 728-1000 AD)",
+                  sanskrit: "प्रतिहार साम्राज्य एवं बप्पा रावल (गुहिल वंश संस्थापक)",
+                  title: "Defenders of Aryavarta & Founders of Chittorgarh Sovereign Dynasty (c. 728-1000 AD)",
+                  category: "Suryavamsha Kings",
+                  tradition: "General Purana",
+                  parent: "gen-later-solar-kings",
+                  parentName: "Classical Suryavamshi Monarchs to 500 AD (Yashodharman)",
+                  consort: "Queens of Vallabhi & Mewar",
+                  vahana: "War Steed & Rajput Royal Chariot",
+                  ayudha: "Khanda Sword & Eklingji Bhala",
+                  color: "#FACC15",
+                  glowColor: "rgba(250, 204, 21, 0.9)",
+                  icon: "🛡️",
+                  summary: "Continuing the solar line from Lava through Vijayasena of Vallabhi. In c. 728 AD, Bappa Rawal was blessed by Sage Harit Rishi at Eklingji, received the sovereign state of Mewar, and repelled the Caliphate invasions. The Gurjara-Pratiharas preserved northern India as descendants of Lakshmana (Lakshmana-vamsha).",
+                  shloka: {
+                    devanagari: "हंसो हि बप्प-नामाभून् मुक्ता-मणिरिव क्षितौ । हारीत-मुनि-प्रसादेन प्राप राज्यमकण्टकम् ॥",
+                    transliteration: "Hamso hi bappa-namabhun mukta-manir iva kshitau | Harita-muni-prasadena prapa rajyam akantakam ||",
+                    source: "Eklingji Inscription of Mewar (c. 971 AD) & Gwalior Prashasti",
+                    meaning: "Like a spotless crest jewel upon the earth was Bappa Rawal; by the divine grace and blessings of Sage Harit Rishi at Eklingji, he attained an unshakeable and sovereign kingdom that defended the eternal Dharma."
+                  },
+                  details: `
+                    The genealogy of the Solar Dynasty (Suryavamsha) in western India directly bridges the epic age with medieval epigraphy:
+                    - **Descent from Lava:** The Guhila-Sisodia royal house traces patrilineal descent directly to Sri Rama's son Lava through Guhaditya and King Vijayasena of Vallabhi.
+                    - **Bappa Rawal (r. 728–753 AD):** Consecrated by Sage Harit Rishi at the shrine of Shri Eklingji (Lord Shiva) in Kailashpuri near Udaipur. Bappa captured the impregnable Chittorgarh fort, struck coinage bearing the Trident and Kamadhenu, and led the confederacy that shattered the early Umayyad incursions into Rajputana.
+                    - **Gurjara-Pratihara Imperial Line:** The Gwalior Prashasti of Emperor Mihira Bhoja (836–885 AD) records the imperial Pratihara dynasty as *Saumitri-vamsha* (descended from Lakshmana, the faithful guardian and brother of Rama), who held the gates of Aryavarta for three centuries.
+                  `,
+                  keyAttributes: ["Carried the Solar Dynasty from 500 AD into the medieval era", "Consecrated by Sage Harit Rishi as Diwan of Eklingji", "Repelled early invasions and founded the sovereign seat of Chittorgarh"],
+                  children: [
+                    {
+                      id: "gen-ranas-kumbha-sanga",
+                      name: "Maharana Kumbha & Maharana Sanga of Mewar (c. 1433-1528 AD)",
+                      sanskrit: "महाराणा कुम्भा एवं राणा सांगा (सिसोदिया सूर्यवंश)",
+                      title: "Polymath Sovereign, Architect of Vijay Stambha & Head of the Rajput Confederacy",
+                      category: "Suryavamsha Kings",
+                      tradition: "General Purana",
+                      parent: "gen-gurjara-pratihara-bappa",
+                      parentName: "Imperial Gurjara-Pratiharas & Bappa Rawal (c. 728-1000 AD)",
+                      consort: "Queens of Mewar (including Kumbhaldevi & Ratnaprabha)",
+                      vahana: "Imperial War Horse",
+                      ayudha: "Khanda Sword & Vijay Stambha Standard",
+                      color: "#FACC15",
+                      glowColor: "rgba(250, 204, 21, 0.95)",
+                      icon: "🏰",
+                      summary: "Rana Kumbha (r. 1433-1468) authored the Sangitaraja, constructed 32 of Mewar's 84 forts including Kumbhalgarh and the colossal Vijay Stambha (dedicated to Lord Vishnu). His grandson Maharana Sangram Singh I (Rana Sanga, r. 1508-1528) united 108 Rajput kings under the historic Solar banner.",
+                      shloka: {
+                        devanagari: "कुम्भकर्ण-महीपालो जयस्तम्भं चकार यः । विष्णु-भक्ति-रतो विद्वान् सर्व-शास्त्र-विशारदः ॥",
+                        transliteration: "Kumbhakarna-mahipalo jaya-stambhah cakara yah | Vishnu-bhakti-rato vidvan sarva-sastra-visaradah ||",
+                        source: "Kumbhalgarh Stone Inscription (1460 AD)",
+                        meaning: "Maharana Kumbhakarna, emperor of Mewar, erected the sacred Vijay Stambha in Chittor; a devoted servant of Lord Vishnu, deeply versed in all sacred arts, Vedas, and architectural sciences."
+                      },
+                      details: `
+                        The Sisodia branch of the Suryavamsha reached an artistic and martial zenith in the 15th and early 16th centuries:
+                        - **Maharana Kumbha:** Undefeated in 56 military engagements, he was a renowned Vedic scholar, musician (*Sangitaraja*), and patron of architecture who commissioned the marble Ranakpur Jain temple and built the colossal 9-storey Vijay Stambha (Kirti Stambha) adorned with hundreds of stone-sculpted Puranic deities.
+                        - **Rana Sanga:** The legendary warrior who bore eighty wounds from battle, lost an eye and an arm in defense of the realm, and united the entirety of Rajasthan and central India under the sacred Suryavamshi banner before the Battle of Khanwa (1527 AD).
+                      `,
+                      keyAttributes: ["Built the Vijay Stambha dedicated to Lord Vishnu", "Authored monumental treatises on Sanskrit literature and music", "United 108 royal houses under the historic Hindu confederacy"],
+                      children: [
+                        {
+                          id: "gen-maharana-pratap",
+                          name: "Maharana Pratap Singh & Rana Amar Singh I (1572-1620 AD)",
+                          sanskrit: "प्रातःस्मरणीय महाराणा प्रताप सिंह एवं अमर सिंह प्रथम",
+                          title: "Unbroken Symbol of Dharma & Independence – Battle of Haldighati (1576 AD)",
+                          category: "Suryavamsha Kings",
+                          tradition: "General Purana",
+                          parent: "gen-ranas-kumbha-sanga",
+                          parentName: "Maharana Kumbha & Maharana Sanga of Mewar (c. 1433-1528 AD)",
+                          consort: "Maharani Ajabde Punwar & Queens of Mewar",
+                          vahana: "The Incomparable War Stallion Chetak",
+                          ayudha: "Double Khanda & 25-Kilogram Mewari Bhala (Spear)",
+                          color: "#FACC15",
+                          glowColor: "rgba(250, 204, 21, 1.0)",
+                          icon: "⚔️",
+                          summary: "The celebrated 16th-century avatar of Kshatriya chivalry. Reigned 1572-1597 AD. Refused to surrender sovereign dignity, fought the heroic Battle of Haldighati (1576 AD) astride Chetak, and reclaimed almost the entirety of Mewar from Chavand. Succeeded by Maharana Amar Singh I and Maharana Raj Singh I.",
+                          shloka: {
+                            devanagari: "प्रताप-रुद्रो रण-रङ्ग-भीमः स्व-धर्म-रक्षा-कृत-निश्चयोऽभूत् । चेतक-वाजी-सहितो जिगाय न ननाम कदापि शत्रु-पुरतः ॥",
+                            transliteration: "Pratapa-rudro rana-ranga-bhimah sva-dharma-raksha-krita-niscayo'bhut | Cetaka-vaji-sahito jigaya na nanama kadapi shatru-puratah ||",
+                            source: "Rajaprasasti Mahakavya (Rajsamand Inscription, Canto 4)",
+                            meaning: "Fierce as Lord Rudra on the battlefield, Maharana Pratap was resolutely dedicated to the defense of Sva-Dharma; charging upon his faithful stallion Chetak, his head never bowed before any imperial conqueror."
+                          },
+                          details: `
+                            Maharana Pratap Singh stands as the immortal pillar of the Suryavamsha line:
+                            - **Haldighati (June 18, 1576):** Against overwhelming imperial odds, Pratap stood firm in the pass of Haldighati. His faithful war horse Chetak leapt onto an armored elephant to deliver Pratap's spear thrust, immortalized in Rajasthani folklore.
+                            - **Forest Exile & Grass Roti Legend:** For over a decade, Pratap and his family lived in the Aravalli hills, eating grass bread (*Ghas ki Roti*) rather than bending his knee. Supported by the Bhil tribesmen and the boundless treasury donated by his minister Bhama Shah, he reconquered 32 out of 36 garrisons.
+                            - **Maharana Raj Singh I (1652–1680 AD):** Great-grandson of Pratap, he constructed the monumental marble Rajsamand Lake and famously offered sanctuary to the sacred deities of Lord Krishna (Shri Srinathji and Dwarkadheesh) when temples were being destroyed in the north, establishing Nathdwara in Mewar.
+                          `,
+                          keyAttributes: ["Fought the Battle of Haldighati (1576 AD) for civilizational freedom", "Never surrendered sovereignty or royal solar insignia", "Patronized the safety of Shri Srinathji at Nathdwara"],
+                          children: [
+                            {
+                              id: "gen-mewar-modern-2026",
+                              name: "The Modern Suryavamshi House of Mewar to 2026 (Udaipur)",
+                              sanskrit: "आधुनिक मेवाड़ सूर्यवंश (उदयपुर – २०२६ ईस्वी पर्यन्त)",
+                              title: "Living Custodians & Diwans of Shri Eklingji Mahadeva – 1400-Year Unbroken Lineage",
+                              category: "Living Solar Dynasty",
+                              tradition: "General Purana",
+                              parent: "gen-maharana-pratap",
+                              parentName: "Maharana Pratap Singh & Rana Amar Singh I (1572-1620 AD)",
+                              consort: "Maharanis of the House of Mewar",
+                              vahana: "Royal Sun Standard (Surya Dhvaja)",
+                              ayudha: "Sacred Ancestral Mewari Talwar & Surya Emblem",
+                              color: "#FACC15",
+                              glowColor: "rgba(250, 204, 21, 1.0)",
+                              icon: "☀️",
+                              summary: "Through Maharana Fateh Singh (1884-1930) and Maharana Bhagwat Singh (1955-1984), down to living representatives Maharana Arvind Singh Mewar and Lakshyaraj Singh Mewar in 2026. The world's longest continuously documented royal lineage, preserving the historic motto: 'जो दृढ़ राखे धर्म, ताहि राखे करतार'.",
+                              shloka: {
+                                devanagari: "जो दृढ़ राखे धर्म को, ताहि राखे करतार । सूर्य-वंशोऽयमक्षय्यो वर्तते जगतीतले ॥",
+                                transliteration: "Jo dridha rakhe dharma ko, tahi rakhe karatar | Surya-vamsho'yam akshayyo vartate jagati-tale ||",
+                                source: "State Motto & Royal Seal of Mewar (Udaipur)",
+                                meaning: "He who steadfastly upholds Dharma is preserved and safeguarded by the Supreme Creator! This eternal Solar Dynasty continues unbroken upon this earth down to the modern era."
+                              },
+                              details: `
+                                The Mewar royal family in Udaipur represents an unbroken chain of living tradition down to 2026:
+                                - **Maharana Fateh Singh (1884–1930):** Revered for his moral rectitude; he famously refused to attend the British imperial Delhi Durbar of 1903 and 1911 as a subject, upholding the dignity of Bappa Rawal and Maharana Pratap.
+                                - **Maharana Bhagwat Singh (1955–1984):** Established the Maharana of Mewar Charitable Foundation (MMCF), transforming the City Palace of Udaipur into a world-class living museum, Vedic library, and charitable trust for dharmic education and medicine.
+                                - **Living Continuity in 2026:** Arvind Singh Mewar and Lakshyaraj Singh Mewar actively continue the ancestral Vedic rituals as the hereditary *Diwan* (custodian) of the Shri Eklingji Mahadeva Temple, maintaining daily pujas, Navaratri darbars, and social welfare programs in Rajasthan.
+                              `,
+                              keyAttributes: ["Direct living patrilineal lineage from Sri Rama and Lava to 2026", "Hereditary Diwan of Shri Eklingji Mahadeva Temple", "Royal emblem: 'Jo Dridh Rakhe Dharma, Tahi Rakhe Kartar'"],
+                              children: []
+                            }
+                          ]
+                        }
+                      ]
+                    }
+                  ]
+                },
+                {
+                  id: "gen-kachhwaha-jaipur-2026",
+                  name: "Kachhwaha Suryavamsha of Amber & Jaipur to 2026",
+                  sanskrit: "कछवाहा सूर्यवंश (आमेर एवं जयपुर – २०२६ ईस्वी पर्यन्त)",
+                  title: "Descendants of Kusha – Builders of Jaipur, Jantar Mantar & Govind Dev Ji Custodians",
+                  category: "Living Solar Dynasty",
+                  tradition: "General Purana",
+                  parent: "gen-later-solar-kings",
+                  parentName: "Classical Suryavamshi Monarchs to 500 AD (Yashodharman)",
+                  consort: "Empresses & Maharanis of Amber and Jaipur (including Maharani Gayatri Devi)",
+                  vahana: "Panchranga Flag (Five-Colored Solar Banner)",
+                  ayudha: "Khanda Sword & Samrat Yantra Sundial",
+                  color: "#FACC15",
+                  glowColor: "rgba(250, 204, 21, 0.95)",
+                  icon: "👑",
+                  summary: "Tracing patrilineal descent from Kusha (elder twin of Lava). Raja Man Singh I built the Govind Dev Ji temple in Vrindavan; Maharaja Sawai Jai Singh II founded Jaipur in 1727 AD and constructed the world-renowned Jantar Mantar observatories. Represented in 2026 by titular Maharaja Padmanabh Singh of Jaipur.",
+                  shloka: {
+                    devanagari: "यतो धर्मस्ततो जयः । कुश-वंश-समुद्भूताः कछवाहा महीक्षितः ॥",
+                    transliteration: "Yato dharmas tato jayah | Kusha-vamsa-samudbhutah kachavaha mahikshitah ||",
+                    source: "State Motto & Epigraphic Genealogy of Jaipur",
+                    meaning: "Where there is Dharma, there is Victory! The illustrious Kachwaha monarchs, born of the lineage of Kusha, uphold the cosmic order and protect the sacred realm."
+                  },
+                  details: `
+                    The Kachhwaha dynasty of Amber and Jaipur constitutes the second great surviving branch of the Suryavamsha:
+                    - **Descent from Kusha:** Detailed in the genealogies (*Kurmavamsa*) and Ain-i-Akbari, the Kachhwaha kings are direct descendants of Rama's son Kusha who migrated from Gwalior and Narwar to Dhundhar (Amber).
+                    - **Raja Man Singh I (1550–1614 AD):** A consummate statesman and commander who built the seven-storey red sandstone temple of Shri Govind Dev Ji in Vrindavan and fortified Amber Palace.
+                    - **Maharaja Sawai Jai Singh II (1688–1743 AD):** One of the greatest astronomer-kings in world history; he calculated astronomical tables (*Zij-i Muhammad Shahi*), founded the planned geometric city of Jaipur according to Shilpa Shastra, performed the Ashvamedha Yajna, and brought the sacred idol of Govind Dev Ji to the City Palace of Jaipur.
+                    - **Living Heritage in 2026:** Titular Maharaja Padmanabh Singh of Jaipur preserves the living custody of the City Palace, Jaigarh, and the worship of Govind Dev Ji, carrying forward the Kushavaha solar heritage in modern India.
+                  `,
+                  keyAttributes: ["Direct patrilineal descent from Kusha (son of Sri Rama)", "Constructed the planned capital of Jaipur and Jantar Mantar", "Hereditary guardians of the Shri Govind Dev Ji Temple"],
+                  children: []
+                }
+              ]
                                                 }
                                               ]
                                             }
@@ -1397,7 +1556,103 @@ const GENERAL_PURANA_DATA = {
                     They patronized Vedic learning, created early rock-cut shrines, and established Kanchipuram as one of the seven sacred Mokshapuri cities of Sanatan Dharma.
                   `,
                   keyAttributes: ["Brought the southern royal genealogies to 500 AD", "Rulers of Kanchipuram, one of the 7 Mokshapuris", "Pioneered early Dravidian rock-cut and structural temples"],
-                  children: []
+                  children: [
+                {
+                  id: "gen-imperial-cholas",
+                  name: "The Imperial Chola Dynasty (c. 850-1279 AD)",
+                  sanskrit: "बृहदीश्वर निर्माता चोल साम्राज्य (राजराज एवं राजेन्द्र चोल)",
+                  title: "Masters of the Bay of Bengal, Builders of Brihadisvara & Patrons of Nataraja",
+                  category: "Southern Dynasties",
+                  tradition: "General Purana",
+                  parent: "gen-pallava-kadamba",
+                  parentName: "The Pallavas of Kanchi & Kadambas of Banavasi (to 500 AD)",
+                  consort: "Empresses Lokamahadevi, Vanavan Mahadevi, Kundavai",
+                  vahana: "Imperial War Galley & Tiger Standard (Puli Kodi)",
+                  ayudha: "Chola Vel & Bronze Icon of Nataraja",
+                  color: "#8B5CF6",
+                  glowColor: "rgba(139, 92, 246, 0.85)",
+                  icon: "🔱",
+                  summary: "Under Emperor Rajaraja Chola I (r. 985-1014) and Rajendra Chola I (r. 1014-1044), the Cholas constructed the colossal Brihadisvara Temple (Peruvudaiyar Kovil) at Thanjavur and Gangaikonda Cholapuram. Masters of maritime trade across Southeast Asia, casting the world-famous sacred bronze icons of Shiva Nataraja.",
+                  shloka: {
+                    devanagari: "राजराजेन चोलेन तञ्जापुर-महा-पुरे । कारितः शङ्करावासो बृहदीश्वर-संज्ञितः ॥",
+                    transliteration: "Rajarajena colena thanjapura-maha-pure | Karitah shankaravaso brihadisvara-samjnitah ||",
+                    source: "Thanjavur Brihadisvara Temple Granite Inscriptions (1010 AD)",
+                    meaning: "By Emperor Rajaraja Chola, in the great imperial city of Thanjavur, was erected the monumental stone abode of Lord Shiva, eternally venerated as Brihadisvara."
+                  },
+                  details: `
+                    The Imperial Cholas brought Dravidian temple architecture and Vedic ritual arts to their zenith:
+                    - **Brihadisvara Temple:** Consecrated in 1010 AD, its 216-foot granite vimana is crowned with an 80-ton single-stone octagonal shikhara. Built without mortar, it has withstood earthquakes for over a millennium.
+                    - **Rajaraja and Rajendra:** Rajendra Chola led maritime expeditions across Sri Lanka, the Maldives, Srivijaya (Sumatra/Java), and Kedah, making the Bay of Bengal the 'Chola Lake' while bringing sacred water from the Ganges to consecrated Gangaikonda Cholapuram.
+                    - **Nataraja Bronzes:** The Cholas perfected the lost-wax (*cire-perdue*) casting of Shiva Nataraja, creating the cosmic symbol of Ananda Tandava celebrated worldwide.
+                  `,
+                  keyAttributes: ["Built the monumental Brihadisvara Temple of Thanjavur (1010 AD)", "Created the golden standard for bronze sacred iconography", "United peninsular India and Southeast Asia under Vedic temple governance"],
+                  children: [
+                    {
+                      id: "gen-vijayanagara-empire",
+                      name: "Vijayanagara Empire (c. 1336-1646 AD)",
+                      sanskrit: "विजयनगर साम्राज्य (हम्पी एवं विरूपाक्ष संरक्षक)",
+                      title: "Guardians of South Indian Sanatan Dharma, Virupaksha, Tirupati & Srisailam",
+                      category: "Southern Dynasties",
+                      tradition: "General Purana",
+                      parent: "gen-imperial-cholas",
+                      parentName: "The Imperial Chola Dynasty (c. 850-1279 AD)",
+                      consort: "Empresses Tirumala Devi & Chinnadevi",
+                      vahana: "Varaha Standard (Boar Emblem) & Imperial White Steed",
+                      ayudha: "Khanda Sword & Gopuram Shikhara",
+                      color: "#8B5CF6",
+                      glowColor: "rgba(139, 92, 246, 0.9)",
+                      icon: "🏛️",
+                      summary: "Founded in 1336 AD by Harihara I and Bukka Raya I with the guidance of Jagadguru Vidyaranya of Sringeri Peetha. Under Emperor Krishnadevaraya (r. 1509-1529), Vijayanagara became the shield of Southern India, rebuilding the colossal gopurams of Hampi Virupaksha, Tirupati Venkateshwara, Srisailam, and Madurai Meenakshi.",
+                      shloka: {
+                        devanagari: "विद्यारण्य-कृपा-पात्रो विजये नगरोत्तमे । कृष्णदेव-महीपालो धर्मं ररक्ष सर्वथा ॥",
+                        transliteration: "Vidyaranya-kripa-patro vijaye nagarottame | Krishnadeva-mahipalo dharmam raraksha sarvatha ||",
+                        source: "Amuktamalyada of Sri Krishnadevaraya & Hampi Prashasti",
+                        meaning: "Blessed by the grace of Jagadguru Vidyaranya, in the supreme city of Vijayanagara, Emperor Krishnadevaraya safeguarded Sanatan Dharma in its entirety."
+                      },
+                      details: `
+                        The Vijayanagara Empire served as the invincible rampart of Hindu civilization in the South:
+                        - **Divine Inception:** Guided by Jagadguru Vidyaranya (the 12th Shankaracharya of Sringeri), the brothers Harihara and Bukka established the empire at Hampi on the banks of the Tungabhadra, dedicating their realm to Lord Virupaksha.
+                        - **Krishnadevaraya:** Author of the Telugu classic *Amuktamalyada*, he was an ardent devotee of Lord Venkateshwara of Tirupati (donating gold-plated vimanas and diamond jewels) and constructed the majestic Raja-gopurams across South India.
+                        - **Cosmic Heritage:** Preserved Vedic recitations, Carnatic music, Sanskrit commentaries by Sayana, and the temple architectural canons that survive today.
+                      `,
+                      keyAttributes: ["Founded with the blessings of Sringeri Jagadguru Vidyaranya", "Built the magnificent Raya Gopurams across South India", "Patronized Tirupati Venkateshwara, Hampi Virupaksha, and Srisailam"],
+                      children: [
+                        {
+                          id: "gen-travancore-living-2026",
+                          name: "The Travancore Royal House to 2026",
+                          sanskrit: "त्रावणकोर पद्मनाभदास राजवंश (केरल – २०२६ ईस्वी पर्यन्त)",
+                          title: "Keepers of Sree Padmanabhaswamy Temple & Living Chera-Kulasekhara Lineage to 2026",
+                          category: "Living Royal Lineage",
+                          tradition: "General Purana",
+                          parent: "gen-vijayanagara-empire",
+                          parentName: "Vijayanagara Empire (c. 1336-1646 AD)",
+                          consort: "Maharanis of Travancore (including Maharani Aswathi Thirunal Gowri Lakshmi Bayi)",
+                          vahana: "Conch Standard (Valampuri Shankha)",
+                          ayudha: "Ottakkal Mandapam Golden Staff & Anantha Shayana Bow",
+                          color: "#8B5CF6",
+                          glowColor: "rgba(139, 92, 246, 1.0)",
+                          icon: "🐚",
+                          summary: "Tracing descent from the ancient Cheras and Kulasekhara Alwar. In 1750 AD, Anizham Thirunal Marthanda Varma performed Thrippadidanam, surrendering the entire state of Travancore to Lord Padmanabha as his eternal servant (Padmanabhadasa). Preserved unbroken to 2026 by Sree Moolam Thirunal Rama Varma.",
+                          shloka: {
+                            devanagari: "श्री-पद्मनाभ-चरणौ शरणं प्रपद्ये दासोऽहमस्य जगदीश्वर-शाश्वतस्य । राज्यं समर्प्य विधिना प्रणतोऽस्मि नित्यम् ॥",
+                            transliteration: "Sri-padmanabha-charanau sharanam prapadye daso'ham asya jagadisvara-sasvatasya | Rajyam samarpya vidhina pranato'smi nityam ||",
+                            source: "Thrippadidanam Inscription of Travancore (1750 AD)",
+                            meaning: "At the lotus feet of Lord Sree Padmanabha I take eternal refuge; I am the humble servant of the Supreme Lord of the Cosmos, having surrendered the entirety of my kingdom to Him in perpetuity."
+                          },
+                          details: `
+                            The royal house of Travancore represents an unbroken living tradition of divine trusteeship (*Dharmakarta*):
+                            - **Thrippadidanam (1750 AD):** Maharaja Marthanda Varma laid his royal sword (*Udaival*) upon the steps of the sanctum of Sree Padmanabhaswamy in Thiruvananthapuram, declaring that the monarchs would rule only as *Padmanabhadasas* (servants of the Lord).
+                            - **Swathi Thirunal Rama Varma (1813–1846):** A legendary composer of Carnatic and Hindustani classical music who composed over 400 kirtis dedicated to Lord Padmanabha.
+                            - **Supreme Court of India Ruling & 2026 Status:** The Supreme Court of India in 2020 affirmed the hereditary shebaitship of the Travancore royal family. In 2026, Titular Maharaja Sree Moolam Thirunal Rama Varma serves as the trustee and custodian of the sacred sanctum, performing dawn rituals in traditional attire.
+                          `,
+                          keyAttributes: ["Surrendered state sovereignty to Lord Padmanabha in 1750 AD (Thrippadidanam)", "Hereditary Padmanabhadasas confirmed by the Supreme Court of India", "Unbroken living Chera-Kulasekhara royal tradition to 2026"],
+                          children: []
+                        }
+                      ]
+                    }
+                  ]
+                }
+              ]
                 }
               ]
 
@@ -2990,7 +3245,132 @@ const GENERAL_PURANA_DATA = {
                                                                     "Founded Nalanda University and erected the rustless Iron Pillar",
                                                                     "Defeated the fierce Huna invasions, safeguarding Dharma through 500 AD"
                                                                   ],
-                                                                  children: []
+                                                                  children: [
+                {
+                  id: "gen-rashtrakuta-chandela",
+                  name: "Imperial Rashtrakutas & Chandela Dynasty (c. 750-1200 AD)",
+                  sanskrit: "राष्ट्रकूट एवं चन्देल राजवंश (खजुराहो मन्दिर निर्माता)",
+                  title: "Carvers of Ellora Kailasa & Khajuraho Kandariya Mahadeva – Protectors of the Lunar Line",
+                  category: "Chandravamsha Kings",
+                  tradition: "General Purana",
+                  parent: "gen-gupta-empire",
+                  parentName: "The Imperial Gupta Dynasty (c. 320-550 AD – Golden Age)",
+                  consort: "Queens of Manyakheta & Mahoba",
+                  vahana: "Imperial War Chariot & Garuda Standard",
+                  ayudha: "Khanda Sword & Khajuraho Architectural Shila",
+                  color: "#FACC15",
+                  glowColor: "rgba(250, 204, 21, 0.9)",
+                  icon: "🏛️",
+                  summary: "Continuing the Chandravamsha through the medieval renaissance: King Krishna I of the Rashtrakutas carved the monolithic Kailasa Temple at Ellora; the Chandelas of Jejakabhukti (claiming birth from Chandra) erected the world-renowned temple city of Khajuraho (Kandariya Mahadeva).",
+                  shloka: {
+                    devanagari: "चन्द्रवंश-समुद्भूताश्चन्देला भुवि विश्रुताः । खजूरा-वाहक-स्थाने शिव-धामानि चक्रिरे ॥",
+                    transliteration: "Candra-vamsa-samudbhutas candela bhuvi visrutah | Khajura-vahaka-sthane shiva-dhamani cakrire ||",
+                    source: "Khajuraho Stone Inscription of King Dhanga (954 AD)",
+                    meaning: "Born of the illustrious Lunar Dynasty (Chandravamsha), renowned across the earth were the Chandelas, who erected celestial abodes of Lord Shiva in the sacred city of Khajuraho."
+                  },
+                  details: `
+                    The Lunar Dynasty preserved spiritual and temporal authority across central and western India:
+                    - **Rashtrakutas (c. 753–982 AD):** King Krishna I carved the world-famous monolithic Kailasa temple (Cave 16) at Ellora out of a single basalt cliffside, replicating Mount Kailasa on earth.
+                    - **Chandela Dynasty of Jejakabhukti:** Inscriptions at Khajuraho trace the dynasty back to Sage Hemraj and the Moon God Chandra. Kings Yashovarman, Dhanga, and Vidyadhara built 85 magnificent temples of stone, dedicated to Shiva (Kandariya Mahadeva) and Vishnu (Lakshmana Temple), while successfully defending the northern fortress of Kalinjar against Mahmud of Ghazni.
+                  `,
+                  keyAttributes: ["Continued the Chandravamsha lineage after the Guptas", "Carved the monolithic Kailasa Temple of Ellora", "Constructed the celestial Khajuraho temple complex"],
+                  children: [
+                    {
+                      id: "gen-tomara-bhati",
+                      name: "Tomaras of Delhi & Yaduvamshi Bhatis of Jaisalmer (c. 1000-1500 AD)",
+                      sanskrit: "तोमर राजवंश एवं भाटी यदुवंश (दिल्ली एवं जैसलमेर संस्थापक)",
+                      title: "Descendants of Arjuna & Vajranabha – Founders of Lal Kot (Delhi) & Sonar Qila",
+                      category: "Chandravamsha Kings",
+                      tradition: "General Purana",
+                      parent: "gen-rashtrakuta-chandela",
+                      parentName: "Imperial Rashtrakutas & Chandela Dynasty (c. 750-1200 AD)",
+                      consort: "Queens of Dhillika (Delhi) & Lodhurva",
+                      vahana: "War Chariot & Desert Camels (Saurashtra Horse)",
+                      ayudha: "Tomara Bow & Jaisalmer Golden Lance",
+                      color: "#FACC15",
+                      glowColor: "rgba(250, 204, 21, 0.95)",
+                      icon: "🚩",
+                      summary: "King Anangpal Tomar I & II founded Dhillika (Delhi) and built Lal Kot, tracing direct descent from Parikshit and the Pandavas. In 1156 AD, Maharawal Jaisal Singh founded the desert citadel of Jaisalmer (Sonar Qila), tracing unbroken patrilineal descent from Lord Krishna and his grandson Vajranabha.",
+                      shloka: {
+                        devanagari: "यदु-वंश-प्रसूतेन जैसलेन महीभृता । स्वर्ण-शैले कृतं दुर्गं भाटी-कुल-विभूषणम् ॥",
+                        transliteration: "Yadu-vamsa-prasutena jaisalena mahibhrita | Svarna-shaile kritah durgah bhati-kula-vibhushanam ||",
+                        source: "Jaisalmer Inscription of Trikuta Hill (1156 AD)",
+                        meaning: "By King Jaisal, born of the sacred Yadu Dynasty, was erected this Golden Fortress upon the Trikuta Hill, the crowning jewel of the illustrious Bhati clan."
+                      },
+                      details: `
+                        The Tomara and Bhati royal houses represent the two principal branches of the Pandava and Yaduvamsha lines:
+                        - **Tomara Dynasty of Delhi:** Established the Iron Pillar of Delhi at Yoginipura (Mehrauli) and built Lal Kot (1060 AD). Royal genealogical records (*Vamshavalis*) track their descent from King Kshemaka and Emperor Arjuna.
+                        - **Bhati Yaduvamshis of Jaisalmer:** Directly descended from Krishna's grandson Vajranabha, who was installed at Mathura after the Dvapara Yuga. The Bhatis defended the western frontiers of Rajasthan through the sands of the Thar desert, establishing Jaisalmer as an unassailable bastion of Sanatan culture.
+                      `,
+                      keyAttributes: ["Traces descent from the Pandavas and Sri Krishna's grandson Vajranabha", "Founded the historic city of Delhi (Lal Kot)", "Erected the world-renowned Golden Fort of Jaisalmer (1156 AD)"],
+                      children: [
+                        {
+                          id: "gen-wodeyar-mysore-2026",
+                          name: "The Mysore Yaduvamsha Wodeyar Dynasty to 2026",
+                          sanskrit: "मैसूर यदुवंश (वडियार राजवंश – २०२६ ईस्वी पर्यन्त)",
+                          title: "Sovereigns of Karnataka, Patrons of Chamundeshwari & Living Yaduvamsha to 2026",
+                          category: "Living Lunar Dynasty",
+                          tradition: "General Purana",
+                          parent: "gen-tomara-bhati",
+                          parentName: "Tomaras of Delhi & Yaduvamshi Bhatis of Jaisalmer (c. 1000-1500 AD)",
+                          consort: "Maharanis of Mysore (including Maharani Trishikha Kumari Devi)",
+                          vahana: "Gandaberunda Royal Standard (Two-Headed Cosmic Bird)",
+                          ayudha: "Khanda Sword & Chamundeshwari Trident",
+                          color: "#FACC15",
+                          glowColor: "rgba(250, 204, 21, 1.0)",
+                          icon: "🦚",
+                          summary: "Founded in 1399 AD by Yaduraya, tracing direct Yaduvamsha roots from Dwarka. Patrons of Chamundeshwari Devi, builders of modern Mysore under Rajarshi Nalvadi Krishnaraja Wadiyar IV. Represented in 2026 by titular Maharaja Yaduveer Krishnadatta Chamaraja Wadiyar.",
+                          shloka: {
+                            devanagari: "न हि धर्मात् परो लोके धर्मो रक्षति रक्षितः । चामुण्डेशी-कृपा-पात्रा वडियारा जयन्ति ते ॥",
+                            transliteration: "Na hi dharmat paro loke dharmo rakshati rakshitah | Camushdesi-kripa-patra vashiyara jayanti te ||",
+                            source: "Motto of the Royal House of Mysore & Sritattvanidhi",
+                            meaning: "There is nothing superior to Dharma in this world; Dharma protects those who protect it. Blessed by the grace of Goddess Chamundeshwari, the glorious Wodeyars prevail."
+                          },
+                          details: `
+                            The Wodeyar dynasty of Mysore carries the Yaduvamsha into living 21st-century reality:
+                            - **Yaduvamsha Origin:** Royal charters and historical texts (*Kanthirava Narasaraja Vijayam*) recount that Yaduraya and Krishnaraya arrived from Dwarka in Kathiawar to Mysore in 1399 AD, establishing the Yaduvamsha sovereign state under the patronage of Goddess Chamundeshwari.
+                            - **Rajarshi Krishnaraja Wadiyar IV (1884–1940):** Hailed by Mahatma Gandhi as a 'Rajarshi' (Philosopher-King); he founded IISc Bangalore with Jamsetji Tata, Mysore University, Krishna Raja Sagara Dam, and made Mysore an exemplary model of public welfare.
+                            - **Living Continuity in 2026:** Titular Maharaja Yaduveer Krishnadatta Chamaraja Wadiyar, elected Member of Parliament and spiritual head of the dynasty, oversees the world-famous 400-year-old Mysore Dasara festival, upholding the unbroken lunar tradition in 2026.
+                          `,
+                          keyAttributes: ["Direct living Yaduvamsha royal house preserving Dwarka roots to 2026", "Hereditary patron of the Goddess Chamundeshwari Temple", "Presides over the world-renowned historic Mysore Dasara celebrations"],
+                          children: []
+                        },
+                        {
+                          id: "gen-jaisalmer-living-2026",
+                          name: "Living Yaduvamsha House of Jaisalmer to 2026",
+                          sanskrit: "जैसलमेर भाटी यदुवंश (स्वर्ण दुर्ग – २०२६ ईस्वी पर्यन्त)",
+                          title: "44th Maharawal of Sonar Qila – Custodians of Shri Laxminath Ji Temple",
+                          category: "Living Lunar Dynasty",
+                          tradition: "General Purana",
+                          parent: "gen-tomara-bhati",
+                          parentName: "Tomaras of Delhi & Yaduvamshi Bhatis of Jaisalmer (c. 1000-1500 AD)",
+                          consort: "Maharanis of Jaisalmer",
+                          vahana: "Swarna Dhvaja (Golden Standard of the Desert)",
+                          ayudha: "Bhati Talwar & Silver Chhatra of Laxminath Ji",
+                          color: "#FACC15",
+                          glowColor: "rgba(250, 204, 21, 0.95)",
+                          icon: "🏰",
+                          summary: "Represented in 2026 by Maharawal Chaitanya Raj Singh (44th head of the Bhati Yaduvamsha clan). Hereditary custodians of the living Sonar Qila, the ancient Jain library of palm-leaf manuscripts (Gyan Bhandar), and the historic temple of Shri Laxminath Ji.",
+                          shloka: {
+                            devanagari: "उत्तर-भड़-किंवाड़-भाटी जैसलमेर-पतिः सदा । कृष्ण-वंश-प्रदीपोऽयं भासते धरणी-तले ॥",
+                            transliteration: "Uttara-bhad-kinvad-bhati jaisalmera-patih sada | Krishna-vamsa-pradipo'yam bhasate dharani-tale ||",
+                            source: "Historic Title of the Maharawals of Jaisalmer",
+                            meaning: "The invincible western and northern gateway shield of Hindustan is the Bhati Sovereign of Jaisalmer; like a radiant lamp of Lord Krishna's Yaduvamsha, he illuminates the earth down to the modern era."
+                          },
+                          details: `
+                            The Bhati royal family of Jaisalmer is celebrated throughout Indian history as *Uttara-Bhad-Kiwad* (the northern gatekeeper of India):
+                            - **Unbroken Yaduvamsha:** The living Maharawals are direct descendants of Lord Krishna's son Pradyumna and grandson Vajranabha.
+                            - **Living Fortress:** Jaisalmer Fort is one of the few living forts in the world, where thousands of residents continue ancient traditions inside the ramparts.
+                            - **Living Representative in 2026:** Maharawal Chaitanya Raj Singh actively leads local community development, desert heritage preservation, and the worship of Lord Krishna as Laxminath Ji in 2026.
+                          `,
+                          keyAttributes: ["44th unbroken generational head of the Bhati Yaduvamsha to 2026", "Hereditary guardian of the living UNESCO World Heritage Sonar Qila", "Historical honorific: 'Uttara-Bhad-Kiwad' (Shield of the North)"],
+                          children: []
+                        }
+                      ]
+                    }
+                  ]
+                }
+              ]
                                                                 }
                                                               ]
                                                             }
@@ -4512,7 +4892,100 @@ const VISHNU_PURANA_DATA = {
                                                 Reaching 500 AD, the solar scions ruled from central and northern India, repelling the white Huna incursions and establishing magnificent stone temples dedicated to Lord Vishnu and Lord Shiva.
                                               `,
                                               keyAttributes: ["Brought the Vishnu Purana solar lineage to 500 AD", "Defended Aryavarta against foreign Huna invasions", "Endowed the great temple sanctuaries of classical India"],
-                                              children: []
+                                              children: [
+                {
+                  id: "vp-mewar-sisodia-solar",
+                  name: "The Sisodia Suryavamsha of Mewar (c. 728-1600 AD)",
+                  sanskrit: "मेवाड़ सिसोदिया सूर्यवंश (बप्पा रावल से महाराणा प्रताप)",
+                  title: "Lineal Heirs of Ikshvaku, Rama and Lava – Defenders of the Vedic Solar Throne",
+                  category: "Suryavamsha Kings",
+                  tradition: "Vishnu Purana",
+                  parent: "vp-classical-solar-500ad",
+                  parentName: "Classical Solar Monarchs to 500 AD (Vardhanas & Malwa)",
+                  consort: "Maharanis of Chittorgarh & Udaipur",
+                  vahana: "Solar War Steed & Imperial Chariot",
+                  ayudha: "Ancestral Khanda & Eklingji Bow",
+                  color: "#FACC15",
+                  glowColor: "rgba(250, 204, 21, 0.9)",
+                  icon: "☀️",
+                  summary: "Continuing the direct patrilineal lineage of the Vishnu Purana's Surya-vamsha through Sri Rama's son Lava: Bappa Rawal (728 AD) founded Chittor; Maharana Kumbha built the 9-storey Vijay Stambha dedicated to Lord Vishnu; Maharana Sanga and Maharana Pratap upheld dharma against all odds.",
+                  shloka: {
+                    devanagari: "इक्ष्वाकु-वंश-सम्भूतः श्री-राम-कुल-दीपकः । बप्प-रावल-प्रभृतयो गुहिला भुवि विश्रुताः ॥",
+                    transliteration: "Ikshvaku-vamsa-sambhutah Sri-rama-kula-dipakah | Bappa-ravala-prabhritayo guhila bhuvi visrutah ||",
+                    source: "Chittorgarh Inscriptions & Mewar Vamshavali",
+                    meaning: "Born in the exalted lineage of Ikshvaku, shining as lamps of Sri Rama's dynasty, Bappa Rawal and the noble Guhila-Sisodia monarchs became renowned throughout the earth."
+                  },
+                  details: `
+                    The Vishnu Purana concludes its dynastic account with the future kings (Book 4, Ch 21-24), prophesying the enduring nature of the Solar line:
+                    - **Genealogical Transmission:** From Lava's line at Shravasti through the Maitrakas of Vallabhi to Bappa Rawal at Chittor, the Sisodia dynasty maintains the purest recorded Solar descent in India.
+                    - **Vaishnava Patronage:** While reigning as Diwans of Eklingji (Shiva), the Maharanas dedicated their greatest monuments to Vishnu: Maharana Kumbha built the Vijay Stambha (Kirti Stambha) in 1448 AD as a monumental temple tower to Vishnu's avataras, and Maharana Kumbha personally authored the *Rasikapriya*, a celebrated commentary on Jayadeva's *Gita Govinda*.
+                  `,
+                  keyAttributes: ["Direct continuation of the Vishnu Purana's Suryavamsha", "Built the Vijay Stambha dedicated to Lord Vishnu at Chittor", "Unbroken Kshatriya commitment to Dharma through medieval history"],
+                  children: [
+                    {
+                      id: "vp-mewar-living-2026",
+                      name: "Modern Suryavamshi House of Mewar to 2026",
+                      sanskrit: "आधुनिक मेवाड़ सूर्यवंश (उदयपुर – २०२६ ईस्वी पर्यन्त)",
+                      title: "Maharana Arvind Singh & Lakshyaraj Singh Mewar – Living 1400-Year Solar Lineage in 2026",
+                      category: "Living Solar Dynasty",
+                      tradition: "Vishnu Purana",
+                      parent: "vp-mewar-sisodia-solar",
+                      parentName: "The Sisodia Suryavamsha of Mewar (c. 728-1600 AD)",
+                      consort: "Maharanis of Udaipur",
+                      vahana: "Surya Dhvaja (Golden Sun Standard)",
+                      ayudha: "Sacred Mewari Talwar & Royal Surya Shield",
+                      color: "#FACC15",
+                      glowColor: "rgba(250, 204, 21, 1.0)",
+                      icon: "👑",
+                      summary: "Through Maharana Raj Singh (who provided refuge to the deity of Lord Srinathji at Nathdwara, 1672 AD), Maharana Fateh Singh, and Maharana Bhagwat Singh, down to living custodians Maharana Arvind Singh Mewar and Lakshyaraj Singh Mewar in 2026, preserving the solar lineage unbroken.",
+                      shloka: {
+                        devanagari: "जो दृढ़ राखे धर्म को, ताहि राखे करतार । सूर्य-वंशोऽयमक्षय्यो वर्तते जगतीतले ॥",
+                        transliteration: "Jo dridha rakhe dharma ko, tahi rakhe karatar | Surya-vamsho'yam akshayyo vartate jagati-tale ||",
+                        source: "Royal Seal of Mewar & Eklingji Charter",
+                        meaning: "He who holds steadfastly to Dharma is preserved and safeguarded by the Supreme Creator! This eternal Solar Dynasty continues unbroken upon this earth down to 2026."
+                      },
+                      details: `
+                        The House of Mewar in 2026 is recognized worldwide as the longest unbroken royal dynasty in recorded history:
+                        - **Sanctuary of Srinathji (1672 AD):** When the 600-year-old sacred Govardhan deity of Lord Krishna (Shri Srinathji) was moved to protect it from Mughal desecration, Maharana Raj Singh I offered his entire army and kingdom, enshrining the Lord at Nathdwara, Rajasthan.
+                        - **Charbhuja Ji Temple:** The Maharanas serve as the hereditary patron of the ancient four-armed Vishnu temple (Charbhuja Ji) at Garhbor, built in 1444 AD.
+                        - **Living Heirs in 2026:** Arvind Singh Mewar and Lakshyaraj Singh Mewar manage the living heritage, Vedic research, and religious institutions of Mewar, demonstrating the unbroken truth of Puranic prophecy.
+                      `,
+                      keyAttributes: ["World's longest living unbroken royal dynasty down to 2026", "Patrons and protectors of Shri Srinathji of Nathdwara", "Living adherence to Vedic solar lineage and royal duties"],
+                      children: []
+                    },
+                    {
+                      id: "vp-kachhwaha-jaipur-solar-2026",
+                      name: "Kachhwaha Suryavamsha of Jaipur to 2026",
+                      sanskrit: "जयपुर कछवाहा सूर्यवंश (कुश वंशज – २०२६ ईस्वी पर्यन्त)",
+                      title: "Kushavaha Lineage – Sawai Jai Singh II to Titular Maharaja Padmanabh Singh in 2026",
+                      category: "Living Solar Dynasty",
+                      tradition: "Vishnu Purana",
+                      parent: "vp-mewar-living-2026",
+                      parentName: "Modern Suryavamshi House of Mewar to 2026",
+                      consort: "Maharanis of Amber & Jaipur",
+                      vahana: "Panchranga Flag & Imperial Chariot",
+                      ayudha: "Khanda Sword & Govind Dev Ji Standard",
+                      color: "#FACC15",
+                      glowColor: "rgba(250, 204, 21, 0.95)",
+                      icon: "🏛️",
+                      summary: "Tracing descent from Sri Rama's son Kusha. Built the monumental Govind Dev Ji temple in Vrindavan and Jaipur; founded Jaipur under astronomical principles; represented in 2026 by titular Maharaja Padmanabh Singh of Jaipur.",
+                      shloka: {
+                        devanagari: "कुश-वंश-प्रदीपेन जयसिंहेन धीमता । गोविन्द-देव-सेवार्थं पुरी जयपुरिका कृता ॥",
+                        transliteration: "Kusha-vamsa-pradipena jayasimhena dhimata | Govinda-deva-sevartham puri jayapurika krita ||",
+                        source: "Jaipur Foundation Epigraph (1727 AD)",
+                        meaning: "By the wise Sawai Jai Singh, luminary of Kusha's lineage, was founded the city of Jaipur solely for the sacred service and worship of Lord Govinda Deva (Krishna)."
+                      },
+                      details: `
+                        The Kachhwaha line of Jaipur preserves the Kusha branch of the Solar Dynasty:
+                        - **Sri Govind Dev Ji:** The sacred idol carved by Vajranabha (Krishna's great-grandson) was enshrined at Vrindavan by Raja Man Singh and later moved to the central courtyard of the City Palace of Jaipur by Sawai Jai Singh II, where the King served as the deity's *Diwan*.
+                        - **Living Continuity in 2026:** Titular Maharaja Padmanabh Singh of Jaipur maintains the temple trusts and royal solar traditions in 2026.
+                      `,
+                      keyAttributes: ["Direct descent from Kusha (son of Sri Rama)", "Enshrined Lord Govind Dev Ji at Jaipur City Palace", "Living titular royal lineage active in 2026"],
+                      children: []
+                    }
+                  ]
+                }
+              ]
                                             }
                                           ]
                                         }
@@ -4924,7 +5397,103 @@ const VISHNU_PURANA_DATA = {
                                                 The Gupta emperors bore the title *Parama Bhagavata* (Supreme Devotees of Vishnu), struck gold coins with the Garudadhvaja standard, performed the Ashvamedha Yajna, founded Nalanda University, and protected Dharma through **c. 500 AD** under Skandagupta and Narasimhagupta Baladitya.
                                               `,
                                               keyAttributes: ["Exact canonical prophecy in Vishnu Purana 4.24.63", "Gupta sovereigns styled as 'Parama Bhagavata' (Devotees of Vishnu)", "Culmination of classical Indian culture, sciences, and art through 500 AD"],
-                                              children: []
+                                              children: [
+                {
+                  id: "vp-yaduvamsha-bhati-jaisalmer",
+                  name: "Yaduvamshi Bhati Dynasty of Jaisalmer to 2026",
+                  sanskrit: "जैसलमेर भाटी यदुवंश (वज्रनाभ वंशज – ११५६ से २०२६ ईस्वी)",
+                  title: "Continuous Descent from Sri Krishna & Vajranabha – Sovereign Protectors of the Thar",
+                  category: "Living Lunar Dynasty",
+                  tradition: "Vishnu Purana",
+                  parent: "vp-gupta-empire-golden-age",
+                  parentName: "The Imperial Gupta Dynasty (Vishnu Purana 4.24.63 – to 500 AD)",
+                  consort: "Maharanis of Jaisalmer",
+                  vahana: "Swarna Rath & Desert Camels",
+                  ayudha: "Bhati Khanda & Silver Chhatra of Laxminath Ji",
+                  color: "#FACC15",
+                  glowColor: "rgba(250, 204, 21, 0.95)",
+                  icon: "🏰",
+                  summary: "Direct continuation of the Yaduvamsha detailed in Vishnu Purana Book 4. Tracing unbroken patrilineal descent from Lord Krishna's grandson Vajranabha. Maharawal Jaisal Singh built Sonar Qila in 1156 AD; represented in 2026 by 44th Maharawal Chaitanya Raj Singh.",
+                  shloka: {
+                    devanagari: "यदु-वंशो न नश्येत कदाचिदपि भूतले । कृष्णस्य कृपया नित्यं भाटी-रूपेण तिष्ठति ॥",
+                    transliteration: "Yadu-vamsho na nashyeta kadacid api bhu-tale | Krishnasya kripaya nityam bhati-rupena tishthati ||",
+                    source: "Jaisalmer Vamshavali & Trikuta Prashasti",
+                    meaning: "The sacred Yadu Dynasty can never perish from this earth; by the eternal grace of Lord Krishna, it endures perpetually in the form of the glorious Bhati lineage of Jaisalmer."
+                  },
+                  details: `
+                    The Vishnu Purana devotes major sections to the genealogies of Yadu and the pastimes of Krishna (Book 4 & 5):
+                    - **Vajranabha to Modern Era:** After the Dvapara Yuga, Arjuna crowned Krishna's grandson Vajranabha as king of Mathura and Indraprastha. The lineage moved westward into the Punjab and Rajasthan, establishing the Bhati clan.
+                    - **Maharawal Jaisal (1156 AD):** Founded Jaisalmer upon the advice of a hermit who revealed Lord Krishna's ancient prophecy that a descendant of the Yaduvamsha would build a capital upon Trikuta Hill.
+                    - **Active in 2026:** Maharawal Chaitanya Raj Singh of Jaisalmer preserves this millennial heritage, serving as the head of the dynasty in 2026.
+                  `,
+                  keyAttributes: ["Continuous patrilineal descent from Lord Krishna and Vajranabha", "Fulfilled Krishna's prophecy on Trikuta Hill (Jaisalmer Fort, 1156 AD)", "Preserved living Yaduvamsha royal house into 2026"],
+                  children: [
+                    {
+                      id: "vp-wodeyar-yaduvamsha-2026",
+                      name: "Mysore Yaduvamsha Wodeyar Dynasty to 2026",
+                      sanskrit: "मैसूर यदुवंश वडियार (द्वारका परंपरा – २०२६ ईस्वी पर्यन्त)",
+                      title: "Patrons of Cheluvanarayana Swamy of Melkote & Sri Ranganatha Swamy – Living Yaduvamsha",
+                      category: "Living Lunar Dynasty",
+                      tradition: "Vishnu Purana",
+                      parent: "vp-yaduvamsha-bhati-jaisalmer",
+                      parentName: "Yaduvamshi Bhati Dynasty of Jaisalmer to 2026",
+                      consort: "Maharanis of Mysore",
+                      vahana: "Gandaberunda Royal Crest",
+                      ayudha: "Khanda Sword & Mysore Dasara Royal Bow",
+                      color: "#FACC15",
+                      glowColor: "rgba(250, 204, 21, 1.0)",
+                      icon: "🦚",
+                      summary: "Founded in 1399 AD by Yaduraya, claiming direct Yaduvamsha lineage migrating from Dwarka. Supreme patrons of Sri Ranganathaswamy (Srirangapatna) and Cheluvanarayana Swamy (Melkote). Represented in 2026 by titular Maharaja Yaduveer Krishnadatta Chamaraja Wadiyar.",
+                      shloka: {
+                        devanagari: "द्वारकायाः समागत्य यदु-रायो महीपतिः । श्री-रङ्ग-भक्ति-सम्पन्नो वंशं चक्रे सनातनम् ॥",
+                        transliteration: "Dvarakayah samagatya yadu-rayo mahipatih | Sri-ranga-bhakti-sampanno vamsam cakre sanatanam ||",
+                        source: "Mysore Palace Royal Chronicle & Sritattvanidhi",
+                        meaning: "Arriving from sacred Dwarka, King Yaduraya, endowed with supreme devotion to Lord Sri Ranganatha, established an eternal dynasty of the Yaduvamsha in the South."
+                      },
+                      details: `
+                        The Wodeyars of Mysore are one of the most distinguished surviving Vaishnava royal families:
+                        - **Vairamudi Festival:** The royal family personally presents the sacred diamond crown (*Vairamudi*) to Lord Cheluvanarayana Swamy at Melkote each year, a tradition dating back centuries.
+                        - **Rajarshi Tradition:** Nalvadi Krishnaraja Wadiyar IV transformed Mysore into a modern economic powerhouse while funding Sanskrit gurukulas and temple conservations.
+                        - **Living in 2026:** Yaduveer Wadiyar upholds the sacred Dasara rituals and temple traditions in 2026.
+                      `,
+                      keyAttributes: ["Yaduvamsha branch migrating from Dwarka to Karnataka in 1399 AD", "Hereditary patrons of Melkote and Srirangapatna Vaishnava sanctums", "Living titular royal head active in 2026"],
+                      children: [
+                        {
+                          id: "vp-travancore-padmanabhadasa-2026",
+                          name: "The Travancore Padmanabhadasas to 2026",
+                          sanskrit: "त्रावणकोर पद्मनाभदास राजवंश (अनंतशयनम् – २०२६ ईस्वी पर्यन्त)",
+                          title: "Perpetual Servants of Lord Padmanabha – Custodians of the Anantha Shayana Sanctum",
+                          category: "Living Royal Lineage",
+                          tradition: "Vishnu Purana",
+                          parent: "vp-wodeyar-yaduvamsha-2026",
+                          parentName: "Mysore Yaduvamsha Wodeyar Dynasty to 2026",
+                          consort: "Maharanis of Travancore",
+                          vahana: "Conch Standard (Valampuri Shankha)",
+                          ayudha: "Royal Sword of Thrippadidanam & Tulabharam Scales",
+                          color: "#FACC15",
+                          glowColor: "rgba(250, 204, 21, 1.0)",
+                          icon: "🐚",
+                          summary: "Descendants of the Chera monarchs and Kulasekhara Alwar. In 1750 AD, Maharaja Marthanda Varma dedicated the entire kingdom to Lord Padmanabha, ruling only as his servant (Padmanabhadasa). Custodians of the world's most sacred and wealthy temple vault, led in 2026 by Sree Moolam Thirunal Rama Varma.",
+                          shloka: {
+                            devanagari: "अनन्त-शयने शान्ते पद्मनाभे परात्मनि । समर्पयामि राज्यं मे दासोऽहं तव शाश्वतः ॥",
+                            transliteration: "Ananta-shayane sante padmanabhe paratmani | Samarpayami Rajyam me daso'ham tava sasvatah ||",
+                            source: "Sree Padmanabhaswamy Temple Epigraph (1750 AD)",
+                            meaning: "Unto Lord Padmanabha, the Supreme Soul resting serenely upon the serpent Ananta, I surrender my entire kingdom; I remain Your humble and eternal servant forever."
+                          },
+                          details: `
+                            The Travancore royal house is the epitome of Vaishnava devotion and sovereign surrender:
+                            - **Thrippadidanam Charter:** On January 3, 1750, Maharaja Marthanda Varma surrendered his kingdom and royal sword to Lord Padmanabha, instituting the title *Sree Padmanabhadasa*.
+                            - **Sacred Vaults:** The underground chambers (Kallaras) preserve centuries of consecrated offerings, making it the richest sacred treasury in the world.
+                            - **Supreme Court of India Ruling:** In 2020, the Supreme Court affirmed the hereditary rights of the Travancore family as *Shebait* (trustee). Sree Moolam Thirunal Rama Varma actively discharges these duties daily in 2026.
+                          `,
+                          keyAttributes: ["Dedicated sovereignty to Lord Padmanabha (1750 AD)", "Hereditary Shebait affirmed by the Supreme Court of India", "Unbroken living Vaishnava royal trusteeship active in 2026"],
+                          children: []
+                        }
+                      ]
+                    }
+                  ]
+                }
+              ]
                                             }
                                           ]
                                         }
@@ -5960,7 +6529,169 @@ const SHIVA_PURANA_DATA = {
                                             - The earliest carved stone Hindu structural temples—such as the **Bhumara Shiva Temple**, **Nachna Kuthara Parvati Temple**, and the **Udayagiri Caves**—were constructed during this golden epoch down to 500 AD.
                                           `,
                                           keyAttributes: ["Golden Age of Shaiva literature through Mahakavi Kalidasa", "Dedicated the earliest stone structural Shiva temples (Bhumara, Nachna)", "Deeply anchored in Mahakaleshwar Jyotirlinga of Ujjain through 500 AD"],
-                                          children: []
+                                          children: [
+                {
+                  id: "sp-imperial-cholas",
+                  name: "Imperial Chola Shaiva Dynasty (c. 850-1279 AD)",
+                  sanskrit: "बृहदीश्वर निर्माता राजराज एवं राजेन्द्र चोल",
+                  title: "Architects of the Great Living Chola Temples & Universal Cosmic Nataraja Worship",
+                  category: "Historical Shaiva Kings",
+                  tradition: "Shiva Purana",
+                  parent: "sp-gupta-shaiva-golden-age",
+                  parentName: "The Imperial Guptas & Vikramaditya (to 500 AD)",
+                  consort: "Empresses Lokamahadevi & Kundavai",
+                  vahana: "Sacred Nandi Bull & Imperial Tiger Standard",
+                  ayudha: "Shiva Trishula & Chola Sengol (Scepter of Righteousness)",
+                  color: "#8B5CF6",
+                  glowColor: "rgba(139, 92, 246, 0.9)",
+                  icon: "🔱",
+                  summary: "Emperors Rajaraja Chola I (r. 985-1014) and Rajendra Chola I (r. 1014-1044) elevated Shaiva Agama temple culture to unparalleled heights. Erected the granite wonder Brihadisvara Temple (Peruvudaiyar Kovil) at Thanjavur and Gangaikonda Cholapuram, and codified the sacred bronze casting of Shiva Nataraja.",
+                  shloka: {
+                    devanagari: "नमः शिवाय शान्ताय राजराजेन धीमता । स्थापितो दक्षिणामूर्तिर् बृहदीश्वर-सन्निधौ ॥",
+                    transliteration: "Namah shivaya santaya rajarajena dhimata | Sthapito dakshinamurtir brihadisvara-sannidhau ||",
+                    source: "Brihadisvara Temple Epigraphs of Thanjavur (1010 AD)",
+                    meaning: "Salutations to Shiva, the Embodiment of Supreme Peace! By the wise Emperor Rajaraja, Lord Dakshinamurti and Brihadisvara were consecrated in this grand granite sanctum."
+                  },
+                  details: `
+                    The Imperial Cholas transformed South India and the Indian Ocean rim into an empire of Shaiva devotion:
+                    - **Brihadisvara at Thanjavur:** Completed in 1010 AD, its 66-meter high vimana is crowned by a colossal monolithic dome weighing 80 tons. The walls bear thousands of lines of inscriptions documenting temple grants, dancers, and Vedic reciters.
+                    - **Sengol Tradition:** The Cholas instituted the sacred *Sengol* (golden scepter surmounted by the Nandi bull, blessed by the Shaiva Adheenam pontiffs), signifying that the king reigns under the spiritual authority of Lord Shiva.
+                    - **Gangaikonda Cholapuram:** Rajendra Chola built a mirror capital to commemorate bringing holy Ganga water from the Himalayas to consecrate the temple tank Chola-Ganga.
+                  `,
+                  keyAttributes: ["Built the colossal Brihadisvara Temple of Thanjavur (1010 AD)", "Instituted the sacred Shaiva Sengol scepter of righteous rule", "Commissioned the iconic bronze sculptures of Shiva Nataraja"],
+                  children: [
+                    {
+                      id: "sp-vijayanagara-shaiva",
+                      name: "Vijayanagara Empire (c. 1336-1646 AD)",
+                      sanskrit: "विजयनगर साम्राज्य (हम्पी विरूपाक्ष एवं श्रीशैलम संरक्षक)",
+                      title: "Erected Under Sringeri Vidyaranya's Blessings – Krishnadevaraya's Majestic Gopurams",
+                      category: "Historical Shaiva Kings",
+                      tradition: "Shiva Purana",
+                      parent: "sp-imperial-cholas",
+                      parentName: "Imperial Chola Shaiva Dynasty (c. 850-1279 AD)",
+                      consort: "Empresses Tirumala Devi & Chinnadevi",
+                      vahana: "Varaha Standard & Nandi Banner",
+                      ayudha: "Khanda Sword & Virupaksha Trishula",
+                      color: "#8B5CF6",
+                      glowColor: "rgba(139, 92, 246, 0.95)",
+                      icon: "🏛️",
+                      summary: "Founded under the blessings of Jagadguru Vidyaranya of Sringeri Peetha. Harihara, Bukka, and Emperor Krishnadevaraya dedicated the empire to Lord Virupaksha (Shiva) of Hampi. Restored and built majestic gopurams at the Jyotirlinga of Srisailam Mallikarjuna, Lepakshi, Kalahasti, and Chidambaram.",
+                      shloka: {
+                        devanagari: "श्री-विरूपाक्ष-देवेन रक्षितं भुवि मण्डलम् । विद्यारण्य-यतीन्द्रस्य तपसा विजयान्वितम् ॥",
+                        transliteration: "Sri-virupaksha-devena rakshitah bhuvi mahalam | Vidyarashya-yatindrasya tapasa vijayanvitam ||",
+                        source: "Hampi Virupaksha Temple Copper Plate (1378 AD)",
+                        meaning: "Protected upon earth by Lord Sri Virupaksha, and crowned with victory through the ascetic spiritual power of Jagadguru Vidyaranya, this empire defends the eternal Sanatan Dharma."
+                      },
+                      details: `
+                        The Vijayanagara Empire was conceived as a sacred dharmic trust dedicated to Lord Shiva Virupaksha:
+                        - **Virupaksha Inscription:** All royal edicts were signed in Kannada with the holy name *"Sri Virupaksha"* rather than the king's personal name, acknowledging Lord Shiva as the real Emperor.
+                        - **Mallikarjuna Jyotirlinga at Srisailam:** Krishnadevaraya personally visited Srisailam in 1515 AD after his conquests, constructing the grand southern gopuram, stone mandapas, and granting villages for the perpetual worship of Lord Mallikarjuna and Goddess Bhramaramba.
+                        - **Architectural Glory:** Built the monumental Lepakshi Veerabhadra temple and the hundred-pillar halls across South India.
+                      `,
+                      keyAttributes: ["Signed all imperial edicts in the name of Lord Shiva ('Sri Virupaksha')", "Rebuilt the southern gopuram of Srisailam Mallikarjuna Jyotirlinga", "Founded under the spiritual guidance of Sringeri Shankaracharya Vidyaranya"],
+                      children: [
+                        {
+                          id: "sp-maratha-swarajya-shivaji",
+                          name: "Chhatrapati Shivaji Maharaj & Hindavi Swarajya (1630-1680 AD)",
+                          sanskrit: "छत्रपति शिवाजी महाराज एवं हिन्दवी स्वराज्य (श्रीशैल संरक्षक)",
+                          title: "Champion of Dharma, Devotee of Bhavani & Restorer of Jyotirlinga Shrines",
+                          category: "Historical Shaiva Kings",
+                          tradition: "Shiva Purana",
+                          parent: "sp-vijayanagara-shaiva",
+                          parentName: "Vijayanagara Empire (c. 1336-1646 AD)",
+                          consort: "Maharani Saibai, Soyarabai, Putalabai",
+                          vahana: "Bhagwa Dhvaja (Saffron Flag of Shiva & Bhavani)",
+                          ayudha: "Bhavani Talwar, Trishula & Wagh Nakh",
+                          color: "#F97316",
+                          glowColor: "rgba(249, 115, 22, 0.95)",
+                          icon: "🚩",
+                          summary: "Chhatrapati Shivaji Maharaj established 'Hindavi Swarajya' (Self-rule of the Righteous) as a sacred duty dedicated to Lord Shiva and Goddess Tulja Bhavani. Built naval sea forts (Sindhudurg, Vijaydurg) housing consecrated Shiva lingams, and personally renovated the Jyotirlinga of Srisailam in 1677 AD.",
+                          shloka: {
+                            devanagari: "प्रतिपच्चन्द्रलेखेव वर्धिष्णुर्विश्ववन्दिता । शाहसूनोः शिवस्यैषा मुद्रा भद्राय राजते ॥",
+                            transliteration: "Pratipat-candra-lekheva vardhishnur visva-vandita | Saha-sunoh shivasyaisa mudra bhadraya rajate ||",
+                            source: "Royal Sanskrit Seal (Rajamudra) of Chhatrapati Shivaji Maharaj",
+                            meaning: "Growing ever like the crescent moon of the first lunar day, and revered by the entire cosmos, this sacred royal seal of Shivaji, son of Shahaji, shines resplendent for the supreme welfare of all!"
+                          },
+                          details: `
+                            Chhatrapati Shivaji Maharaj revived Hindu sovereignty through profound Shaiva-Shakta devotion:
+                            - **Srisailam Jyotirlinga (1677 AD):** En route to his southern expedition (Dakshin Digvijaya), Shivaji spent ten days in deep meditation at the Srisailam Mallikarjuna Jyotirlinga, building bathing ghats, a massive stone pavilion (*Shivaji Gopuram*), and endowing the temple.
+                            - **Fort Sanctums:** Every Maratha hill fort and naval stronghold was anchored by a sanctum to Mahadeva.
+                            - **Spiritual Mentorship:** Guided by Samarth Ramdas and Sant Tukaram, Shivaji declared: *"हे राज्य व्हावे, हे तो श्रींची इच्छा"* ('That this kingdom be established is the will of the Divine').
+                          `,
+                          keyAttributes: ["Founded Hindavi Swarajya dedicated to Lord Shiva and Bhavani", "Renovated the Jyotirlinga of Srisailam Mallikarjuna (1677 AD)", "Consecrated Shiva sanctums across Maratha hill and sea forts"],
+                          children: [
+                            {
+                              id: "sp-punyashlok-ahilyabai",
+                              name: "Punyashlok Rajmata Ahilyabai Holkar (1725-1795 AD)",
+                              sanskrit: "पुण्यश्लोक राजमाता अहिल्याबाई होळकर (द्वादश ज्योतिर्लिंग पुनरुद्धारक)",
+                              title: "Supreme Restorer of India's Desecrated Jyotirlingas & Sacred Teerthas",
+                              category: "Historical Shaiva Restorers",
+                              tradition: "Shiva Purana",
+                              parent: "sp-maratha-swarajya-shivaji",
+                              parentName: "Chhatrapati Shivaji Maharaj & Hindavi Swarajya (1630-1680 AD)",
+                              consort: "Khanderao Holkar (Prince of Malwa)",
+                              vahana: "Royal White Palanquin & Holkar Saffron Banner",
+                              ayudha: "Shiva Linga Held in Hands (Shiva-Arpana Sovereign)",
+                              color: "#F97316",
+                              glowColor: "rgba(249, 115, 22, 1.0)",
+                              icon: "🕉️",
+                              summary: "The legendary queen of Malwa who ruled from Maheshwar on the sacred Narmada. Following medieval destruction, Ahilyabai personally funded and reconstructed the sacred Jyotirlingas: rebuilt Kashi Vishwanath in 1780 AD, Somnath, Mahakaleshwar at Ujjain, Grishneshwar, and Trimbakeshwar ghats, uniting Bharatavarsha through stone.",
+                              shloka: {
+                                devanagari: "काशी-विश्वेश-धाम्नश्च सोमनाथ-महेशयोः । उद्धारं कृतवती साक्षाद् अहल्या शिव-रूपिणी ॥",
+                                transliteration: "Kashi-vishvesha-dhamnas ca somanatha-maheshayoh | Uddharam kritavati sakshad ahalya siva-rupishi ||",
+                                source: "Maheshwar Inscription & Holkar Dynasty Chronicles",
+                                meaning: "Of the supreme abodes of Lord Kashi Vishwanath and Lord Somnath Mahadeva, she performed the sacred resurrection; Rajmata Ahilyabai, verily the living embodiment of Shiva's grace upon earth."
+                              },
+                              details: `
+                                Rani Ahilyabai Holkar's reconstruction of the Jyotirlingas represents the greatest act of religious restoration in Indian history:
+                                - **Rebuilding Kashi Vishwanath (1780 AD):** After Aurangzeb demolished the ancient sanctum in 1669, Ahilyabai constructed the present golden sanctum of Shri Kashi Vishwanath, which stood as the heart of Varanasi for over two centuries.
+                                - **Rebuilding Somnath:** Built the magnificent Ahilyabai Somnath Temple adjacent to the ruined site in Prabhas Patan, allowing devotees to worship the First Jyotirlinga safely.
+                                - **Mahakaleshwar & Grishneshwar:** Reconstructed the subterranean sanctum of Mahakaleshwar at Ujjain, rebuilt the entire 12th Jyotirlinga of Grishneshwar near Ellora, and built the famous Manikarnika Ghat, Dashashwamedha Ghat, and Kedarnath winter shrines.
+                                - **Rule as Shiva-Arpana:** She governed without pomp, signing all official state documents as *"Shri Shankara"* and holding a Shiva Linga in her palms during royal darbars.
+                              `,
+                              keyAttributes: ["Rebuilt Kashi Vishwanath Temple in 1780 AD after Mughal desecration", "Reconstructed Somnath, Mahakaleshwar, Grishneshwar, and Trimbakeshwar", "Ruled as a saint-queen signing all state edicts as 'Shri Shankara'"],
+                              children: [
+                                {
+                                  id: "sp-modern-jyotirlinga-trusts-2026",
+                                  name: "Modern Jyotirlinga Trusts & Dham Corridors to 2026",
+                                  sanskrit: "आधुनिक द्वादश ज्योतिर्लिंग न्यास एवं संस्थान (२०२६ ईस्वी पर्यन्त)",
+                                  title: "Shri Kashi Vishwanath Dham, Somnath Trust, Mahakal Lok & Kedarnath Samiti in 2026",
+                                  category: "Living Shaiva Institutions",
+                                  tradition: "Shiva Purana",
+                                  parent: "sp-punyashlok-ahilyabai",
+                                  parentName: "Punyashlok Rajmata Ahilyabai Holkar (1725-1795 AD)",
+                                  consort: "Living Vedic Archakas, Pujaris & Dharmic Trusts",
+                                  vahana: "All-India Pilgrim Network & Heli-Dham Services",
+                                  ayudha: "Shiva Trishula & Vedic Agamic Ritual Vessels",
+                                  color: "#8B5CF6",
+                                  glowColor: "rgba(139, 92, 246, 1.0)",
+                                  icon: "✨",
+                                  summary: "In 2026, the 12 Jyotirlingas are conserved and celebrated through massive national restorations: the Shri Kashi Vishwanath Dham Corridor (reconnecting Ganga to Vishwanath), Shri Mahakal Lok at Ujjain, Shree Somnath Trust (chaired by the Prime Minister), and Shri Badrinath-Kedarnath Mandir Samiti (BKTC).",
+                                  shloka: {
+                                    devanagari: "सौराष्ट्र-प्रभृतीनि द्वादश-शिव-धामानि भुवि विराजन्ते । अद्यापि संप्रवर्तन्ते वैदिक-विधिना नित्य-मङ्गलाः ॥",
+                                    transliteration: "Saurashtra-prabhritini dvadasa-shiva-dhamani bhuvi virajante | Adyapi sampravartante vaidika-vidhina nitya-mangalah ||",
+                                    source: "Sanatan Mahotsava Inscription (2021-2026)",
+                                    meaning: "From Saurashtra to the Himalayas, the Twelve Sacred Abodes of Shiva shine resplendent upon this earth; even today in 2026, they resound with auspicious Vedic chants, unbroken rituals, and millions of devout pilgrims."
+                                  },
+                                  details: `
+                                    In the 21st century and actively continuing in 2026, the Jyotirlinga heritage has undergone a grand renaissance:
+                                    - **Shri Kashi Vishwanath Dham (2021–2026):** Reconnected the sacred Ganga at Lalita Ghat directly to the sanctum sanctorum over 50,000 square meters, allowing over 100,000 pilgrims daily to perform Ganga-Jal abhisheka.
+                                    - **Shri Mahakal Lok Corridor, Ujjain:** Inaugurated with 108 grand sculpted pillars depicting Shiva Tandava, Shivapuranic lore, and astronomical alignments along Rudrasagar Lake.
+                                    - **Shree Somnath Trust:** Governed as an autonomous public trust safeguarding the eternal first Jyotirlinga facing the Arabian Sea.
+                                    - **Kedarnath Reconstruction:** Post-2013 flood resilience project restored Adi Shankaracharya's Samadhi, pilgrim corridors, and winter worship at Ukhimath Omkareshwar.
+                                  `,
+                                  keyAttributes: ["Kashi Vishwanath Dham Corridor connecting the Ganga to Mahadeva", "Shri Mahakal Lok Corridor revitalizing Ujjain's astronomical Shaiva heritage", "Millions of pilgrims practicing unbroken Vedic Shivaradhana in 2026"],
+                                  children: []
+                                }
+                              ]
+                            }
+                          ]
+                        }
+                      ]
+                    }
+                  ]
+                }
+              ]
                                         }
                                       ]
                                     }
@@ -7107,7 +7838,38 @@ const SHIVA_PURANA_DATA = {
                     King Yashodharman liberated northern India from the cruelty of the Hunas, inscribing on stone that his victory was achieved solely through devotion to Pinakapani (Lord Shiva).
                   `,
                   keyAttributes: ["Brought the Shaiva Solar line down to 528 AD", "Vanquished the tyrannical Huna horde", "Dedicated his universal victory solely to Lord Shiva (Sthanu)"],
+                  children: [
+                {
+                  id: "sp-mewar-eklingji-custodians-2026",
+                  name: "Maharanis & Maharanas of Mewar as Diwans of Eklingji to 2026",
+                  sanskrit: "मेवाड़ के महाराणा (श्री एकलिंगजी के दीवान – २०२६ ईस्वी पर्यन्त)",
+                  title: "From Bappa Rawal to Arvind & Lakshyaraj Singh Mewar – 1300 Years of Shaiva Trusteeship",
+                  category: "Historical Shaiva Monarchs",
+                  tradition: "Shiva Purana",
+                  parent: "sp-brihadbala-yashodharman",
+                  parentName: "From Brihadbala to King Yashodharman (to 528 AD)",
+                  consort: "Maharanis of Mewar",
+                  vahana: "Eklingji Dhvaja & Royal Solar Chariot",
+                  ayudha: "Sacred Mewari Talwar & Bilva Patra",
+                  color: "#F59E0B",
+                  glowColor: "rgba(245, 158, 11, 0.95)",
+                  icon: "🕉️",
+                  summary: "Continuing the Shaiva royal lineages from Yashodharman directly into the modern era: The Maharanas of Mewar rule strictly as 'Diwan' (prime ministers) on behalf of Lord Eklingji (Shiva). An unbroken 1300-year Shaiva trusteeship preserved down to 2026 by Arvind Singh Mewar and Lakshyaraj Singh Mewar.",
+                  shloka: {
+                    devanagari: "श्री-एकलिङ्ग-प्रसादेन राज्यं कुर्वन्ति मेदिनीम् । दीवान-भावमापन्ना मेदपाट-महीश्वराः ॥",
+                    transliteration: "Sri-ekalinga-prasadena Rajyam kurvanti medinim | Divana-bhavam apanna medapata-mahisvarah ||",
+                    source: "Eklingji Mahatmya & Mewar Royal Sanad",
+                    meaning: "Solely through the divine grace and blessings of Lord Shri Eklingji do the kings of Medapata (Mewar) protect this earth, having humbly assumed the sacred role of Diwan (servant-trustee) rather than king."
+                  },
+                  details: `
+                    The Shiva Purana celebrates those monarchs who surrender temporal ego to Shiva's supreme sovereignty:
+                    - **Consecration by Harit Rishi (728 AD):** Bappa Rawal was initiated into the Pashupata Shaiva order by Sage Harit Rishi at the Eklingji shrine. The saint bestowed the kingdom upon Bappa on the strict vow that the rulers would never call themselves king, but only *Diwan of Shri Eklingji*.
+                    - **Living Ritual in 2026:** Even today in 2026, when the Maharana of Mewar enters the sanctum of Eklingji in Kailashpuri, he removes his royal insignia, wears simple pitambari, and fans the Lord with the chamara like a humble pujari.
+                  `,
+                  keyAttributes: ["Ruled for 1300 years as Diwan (trustee) of Lord Shiva Eklingji", "Consecrated by Sage Harit Rishi in 728 AD", "Living Shaiva royal lineage active in Udaipur in 2026"],
                   children: []
+                }
+              ]
                 }
               ]
 
@@ -7232,7 +7994,39 @@ const SHIVA_PURANA_DATA = {
                 - The early Pallavas of Kanchi constructed the foundations for the monolithic rock-cut cave temples and structural shrines across Tamil Nadu.
               `,
               keyAttributes: ["Brought Shaiva kingship in the South to 500 AD", "Consecrated Lord Madhukeshwara at Banavasi", "Transformed Kanchipuram into the Shaiva capital of the South"],
-              children: []
+              children: [
+                {
+                  id: "sp-shaiva-adheenams-2026",
+                  name: "Tamil Shaiva Adheenams & Chidambaram Dikshitars to 2026",
+                  sanskrit: "तमिल शैव अधीनम् एवं चिदम्बरम् दीक्षिताः (२०२६ ईस्वी पर्यन्त)",
+                  title: "Keepers of the 12 Tirumurais, Sengol Tradition & Chidambaram Nataraja Sanctum",
+                  category: "Historical Shaiva Monarchs",
+                  tradition: "Shiva Purana",
+                  parent: "sp-pallava-kadamba-shaiva",
+                  parentName: "The Pallavas of Kanchi & Kadambas of Banavasi (to 500 AD)",
+                  consort: "Living Shaiva Pontiffs & Tillai Dikshitars",
+                  vahana: "Sacred Nandi Standard & Golden Temple Chariots",
+                  ayudha: "Sacred Sengol & Shiva Agamic Arghya Patra",
+                  color: "#8B5CF6",
+                  glowColor: "rgba(139, 92, 246, 1.0)",
+                  icon: "🪷",
+                  summary: "Continuing the southern Shaiva agamic lineages to 2026: The ancient Shaiva Adheenams of Tamil Nadu (Thiruvaduthurai, Dharmapuram, Madurai, Thiruppanandal) and the hereditary Tillai Vazh Anththanar (Dikshitars of Chidambaram) safeguard thousands of stone temples, Vedic recitations, and the sacred Sengol scepter of state.",
+                  shloka: {
+                    devanagari: "शैव-सिद्धान्त-मार्गेण पूजयन्ति महेश्वरम् । अद्यापि पालयन्त्येते परम्परां सनातनीम् ॥",
+                    transliteration: "Shaiva-siddhanta-margena pujayanti maheshvaram | Adyapi palayanty ete paramparam sanatanim ||",
+                    source: "Shaiva Agamic Epigraphs of Tamil Nadu",
+                    meaning: "According to the sacred path of Shaiva Siddhanta, they continuously worship Lord Maheshwara; even today in 2026, they protect and preserve the eternal Sanatan tradition unbroken."
+                  },
+                  details: `
+                    The southern Shaiva institutions preserve an unbroken living liturgical tradition:
+                    - **The 27 Shaiva Adheenams:** Monastic mathams established centuries ago (such as Thiruvaduthurai, founded by Namasivaya Murthigal in the 14th century, and Madurai Adheenam dating back over 1,500 years to Sambandar) govern temple lands, publish canonical *Tirumurai* hymns, and administer daily Vedic and Agamic rites.
+                    - **The Sengol Scepter:** Presented by the pontiffs of Thiruvaduthurai Adheenam to the first Prime Minister of India at midnight in August 1947, and ceremonially installed in the new Parliament of India in May 2023 by the Adheenam heads, symbolizing righteous governance under divine law.
+                    - **Chidambaram Dikshitars:** The hereditary community of 300+ Vedic priests serving Lord Nataraja inside the cosmic Kanaka Sabha of the Chidambaram temple continuously in 2026.
+                  `,
+                  keyAttributes: ["Guardians of the 12 Shaiva Tirumurais and Agamas to 2026", "Presented the sacred Sengol installed in the Parliament of India", "Unbroken hereditary Vedic puja at Chidambaram Nataraja Temple"],
+                  children: []
+                }
+              ]
             }
 
           ]
