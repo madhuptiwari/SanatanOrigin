@@ -11,7 +11,9 @@ class CosmicCanvasBackground {
   constructor(canvasId) {
     this.canvas = document.getElementById(canvasId);
     if (!this.canvas) return;
-    this.ctx = this.canvas.getContext("2d");
+    this.ctx = this.canvas.getContext("2d", { alpha: false }); // Optimize for non-transparent canvas
+    this.bgCanvas = document.createElement("canvas");
+    this.bgCtx = this.bgCanvas.getContext("2d");
     this.stars = [];
     this.pranaParticles = [];
     this.nebulaPoints = [];
@@ -20,22 +22,23 @@ class CosmicCanvasBackground {
     this.width = window.innerWidth;
     this.height = window.innerHeight;
     this.isRunning = true;
+    this.lastFrameTime = 0;
 
     this.init();
   }
 
   init() {
     this.resize();
-    window.addEventListener("resize", () => this.resize());
+    window.addEventListener("resize", () => this.resize(), { passive: true });
 
-    // Create starfield
-    const starCount = Math.min(260, Math.floor((this.width * this.height) / 5000));
+    // Create optimized starfield (120 high-fidelity stars)
+    const starCount = Math.min(120, Math.floor((this.width * this.height) / 8000));
     this.stars = [];
     for (let i = 0; i < starCount; i++) {
       this.stars.push({
         x: Math.random() * this.width,
         y: Math.random() * this.height,
-        size: Math.random() * 1.8 + 0.3,
+        size: Math.random() * 1.6 + 0.4,
         baseAlpha: Math.random() * 0.7 + 0.3,
         twinkleSpeed: Math.random() * 0.04 + 0.01,
         twinklePhase: Math.random() * Math.PI * 2,
@@ -43,37 +46,69 @@ class CosmicCanvasBackground {
       });
     }
 
-    // Create drifting Prana particles (cosmic golden dust)
-    const pranaCount = 45;
+    // Create drifting Prana particles (cosmic golden dust - 25 lightweight particles)
+    const pranaCount = 25;
     this.pranaParticles = [];
     for (let i = 0; i < pranaCount; i++) {
       this.pranaParticles.push({
         x: Math.random() * this.width,
         y: Math.random() * this.height,
-        radius: Math.random() * 2 + 0.8,
-        vx: (Math.random() - 0.5) * 0.3,
-        vy: Math.random() * 0.4 + 0.15, // Cascading downwards like cosmic grace
-        alpha: Math.random() * 0.6 + 0.2,
+        radius: Math.random() * 1.8 + 0.8,
+        vx: (Math.random() - 0.5) * 0.25,
+        vy: Math.random() * 0.35 + 0.12,
+        alpha: Math.random() * 0.5 + 0.2,
         pulseSpeed: Math.random() * 0.02 + 0.01,
         pulsePhase: Math.random() * Math.PI * 2,
-        hue: Math.random() > 0.4 ? "40, 100%, 65%" : "25, 95%, 60%" // Golden / Saffron
+        hue: Math.random() > 0.4 ? "40, 100%, 65%" : "25, 95%, 60%"
       });
     }
 
-    // Setup cosmic nebula centers
-    this.nebulaPoints = [
-      { x: this.width * 0.5, y: this.height * 0.2, color: "rgba(255, 160, 50, 0.07)", radius: 450 }, // Apex golden glow
-      { x: this.width * 0.25, y: this.height * 0.6, color: "rgba(99, 102, 241, 0.06)", radius: 500 }, // Blue indigo nebula
-      { x: this.width * 0.75, y: this.height * 0.7, color: "rgba(217, 70, 239, 0.05)", radius: 480 }, // Shakti magenta
-      { x: this.width * 0.5, y: this.height * 0.85, color: "rgba(16, 185, 129, 0.04)", radius: 400 }  // Prakriti emerald
-    ];
-
-    this.animate();
+    requestAnimationFrame((t) => this.animate(t));
   }
 
   resize() {
     this.width = this.canvas.width = window.innerWidth;
     this.height = this.canvas.height = window.innerHeight;
+    this.bgCanvas.width = this.width;
+    this.bgCanvas.height = this.height;
+    this.renderStaticNebulae();
+  }
+
+  renderStaticNebulae() {
+    if (!this.bgCtx) return;
+    const ctx = this.bgCtx;
+
+    // Deep cosmic background gradient
+    const bgGrad = ctx.createRadialGradient(
+      this.width * 0.5,
+      this.height * 0.15,
+      50,
+      this.width * 0.5,
+      this.height * 0.6,
+      this.width
+    );
+    bgGrad.addColorStop(0, "#08061a");
+    bgGrad.addColorStop(0.4, "#04030d");
+    bgGrad.addColorStop(1, "#020106");
+
+    ctx.fillStyle = bgGrad;
+    ctx.fillRect(0, 0, this.width, this.height);
+
+    // Ethereal cosmic nebulae (rendered once onto offscreen buffer)
+    const nebulae = [
+      { x: this.width * 0.5, y: this.height * 0.2, color: "rgba(255, 160, 50, 0.08)", radius: 450 },
+      { x: this.width * 0.25, y: this.height * 0.6, color: "rgba(99, 102, 241, 0.06)", radius: 500 },
+      { x: this.width * 0.75, y: this.height * 0.7, color: "rgba(217, 70, 239, 0.05)", radius: 480 },
+      { x: this.width * 0.5, y: this.height * 0.85, color: "rgba(16, 185, 129, 0.04)", radius: 400 }
+    ];
+
+    nebulae.forEach(neb => {
+      const grad = ctx.createRadialGradient(neb.x, neb.y, 10, neb.x, neb.y, neb.radius);
+      grad.addColorStop(0, neb.color);
+      grad.addColorStop(1, "rgba(0, 0, 0, 0)");
+      ctx.fillStyle = grad;
+      ctx.fillRect(neb.x - neb.radius, neb.y - neb.radius, neb.radius * 2, neb.radius * 2);
+    });
   }
 
   getRandomStarColor() {
@@ -151,45 +186,35 @@ class CosmicCanvasBackground {
     ctx.restore();
   }
 
-  animate() {
+  animate(timestamp = 0) {
     if (!this.isRunning) return;
 
-    // Deep cosmic background gradient
-    const bgGrad = this.ctx.createRadialGradient(
-      this.width * 0.5,
-      this.height * 0.15,
-      50,
-      this.width * 0.5,
-      this.height * 0.6,
-      this.width
-    );
-    bgGrad.addColorStop(0, "#08061a"); // Subtle divine glow near top
-    bgGrad.addColorStop(0.4, "#04030d");
-    bgGrad.addColorStop(1, "#020106"); // Deepest cosmic void
+    // Throttle background animation to ~33 FPS for ultra-smooth responsiveness
+    if (timestamp - this.lastFrameTime < 30) {
+      requestAnimationFrame((t) => this.animate(t));
+      return;
+    }
+    this.lastFrameTime = timestamp;
 
-    this.ctx.fillStyle = bgGrad;
-    this.ctx.fillRect(0, 0, this.width, this.height);
-
-    // Draw ethereal cosmic nebulae
-    this.nebulaPoints.forEach(neb => {
-      const grad = this.ctx.createRadialGradient(neb.x, neb.y, 10, neb.x, neb.y, neb.radius);
-      grad.addColorStop(0, neb.color);
-      grad.addColorStop(1, "rgba(0, 0, 0, 0)");
-      this.ctx.fillStyle = grad;
-      this.ctx.fillRect(neb.x - neb.radius, neb.y - neb.radius, neb.radius * 2, neb.radius * 2);
-    });
+    // Blit pre-rendered static cosmic background & nebulae in a single 0.1ms GPU pass
+    if (this.bgCanvas && this.bgCanvas.width > 0) {
+      this.ctx.drawImage(this.bgCanvas, 0, 0);
+    } else {
+      this.ctx.fillStyle = "#04030d";
+      this.ctx.fillRect(0, 0, this.width, this.height);
+    }
 
     // Draw faint rotating Sacred Mandala centered near the apex origin
-    this.mandalaAngle += 0.0004; // Very slow majestic cosmic rotation
+    this.mandalaAngle += 0.0006;
     this.drawSacredMandala(
       this.width * 0.5,
       this.height * 0.35,
       Math.min(this.width, this.height) * 0.55
     );
 
-    // Draw Steady Twinkling Stars (No parallax motion)
+    // Draw Steady Twinkling Stars
     this.stars.forEach(s => {
-      s.twinklePhase += s.twinkleSpeed;
+      s.twinklePhase += s.twinkleSpeed * 1.5;
       const alpha = s.baseAlpha * (0.65 + 0.35 * Math.sin(s.twinklePhase));
       
       this.ctx.fillStyle = s.color;
@@ -200,13 +225,12 @@ class CosmicCanvasBackground {
     });
     this.ctx.globalAlpha = 1;
 
-    // Draw Drifting Prana Dust (downward cascading cosmic energy)
+    // Draw Drifting Prana Dust
     this.pranaParticles.forEach(p => {
-      p.x += p.vx;
-      p.y += p.vy;
-      p.pulsePhase += p.pulseSpeed;
+      p.x += p.vx * 1.2;
+      p.y += p.vy * 1.2;
+      p.pulsePhase += p.pulseSpeed * 1.5;
 
-      // Wrap around screen
       if (p.y > this.height) {
         p.y = -10;
         p.x = Math.random() * this.width;
@@ -219,21 +243,13 @@ class CosmicCanvasBackground {
       this.ctx.beginPath();
       this.ctx.arc(p.x, p.y, p.radius, 0, Math.PI * 2);
       this.ctx.fill();
-
-      // Soft halo on larger dust
-      if (p.radius > 1.8) {
-        this.ctx.fillStyle = `hsla(${p.hue}, ${pAlpha * 0.25})`;
-        this.ctx.beginPath();
-        this.ctx.arc(p.x, p.y, p.radius * 3.5, 0, Math.PI * 2);
-        this.ctx.fill();
-      }
     });
 
-    // Draw Spandana / Cosmic Shockwave Ripples
+    // Draw Spandana / Cosmic Shockwave Ripples (without expensive shadowBlur)
     for (let i = this.ripples.length - 1; i >= 0; i--) {
       const r = this.ripples[i];
-      r.radius += r.growth;
-      r.alpha -= 0.012;
+      r.radius += r.growth * 1.5;
+      r.alpha -= 0.018;
 
       if (r.alpha <= 0 || r.radius > r.maxRadius) {
         this.ripples.splice(i, 1);
@@ -242,16 +258,14 @@ class CosmicCanvasBackground {
 
       this.ctx.save();
       this.ctx.strokeStyle = `rgba(255, 215, 0, ${r.alpha})`;
-      this.ctx.lineWidth = 1.8;
-      this.ctx.shadowColor = "#FFD700";
-      this.ctx.shadowBlur = 10;
+      this.ctx.lineWidth = 2;
       this.ctx.beginPath();
       this.ctx.arc(r.x, r.y, r.radius, 0, Math.PI * 2);
       this.ctx.stroke();
       this.ctx.restore();
     }
 
-    requestAnimationFrame(() => this.animate());
+    requestAnimationFrame((t) => this.animate(t));
   }
 }
 

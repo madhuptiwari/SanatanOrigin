@@ -21,11 +21,15 @@ class CosmicApp {
   constructor() {
     this.svg = document.getElementById("tree-svg");
     this.viewport = document.getElementById("viewport-container");
+    this.viewportStage = document.getElementById("viewport-stage");
     this.tierGuidesGroup = document.getElementById("tier-guides-group");
     this.linksGroup = document.getElementById("links-group");
     this.nodesGroup = document.getElementById("nodes-group");
     this.particlesGroup = document.getElementById("particles-group");
     this.tierNavigator = document.getElementById("tier-navigator");
+    this.isRendering = false;
+    this.lastActiveTier = -1;
+    this.tierNavDots = null;
 
     // Active Tradition: "general" (default), "vishnu", "shiva", "tattvas"
     this.tradition = "general";
@@ -389,6 +393,7 @@ class CosmicApp {
     // 7. Visually highlight apex node without opening the drawer
     const apex = this.apexId;
     this.selectNode(apex, false, false);
+    this.requestRender();
   }
 
   collapseDeeperBranches(node, depth = 0) {
@@ -740,6 +745,7 @@ class CosmicApp {
       `;
     });
     this.nodesGroup.innerHTML = nodesHtml;
+    this.requestRender();
   }
 
   createCurvedPath(x1, y1, x2, y2) {
@@ -781,45 +787,56 @@ class CosmicApp {
   }
 
   /* ========================================================================
-     Smooth 2D Viewport & Navigation Engine (NO PARALLAX, NO TILT)
+     Smooth 2D Viewport & Navigation Engine (Demand-Driven 60 FPS)
      ======================================================================== */
   startRenderLoop() {
-    const loop = () => {
-      // Direct, responsive 2D panning and zooming with smooth damping
-      const dx = (this.targetScrollX - this.scrollX) * 0.18;
-      const dy = (this.targetScrollY - this.scrollY) * 0.18;
-      const ds = (this.targetScale - this.scale) * 0.18;
+    this.isRendering = false;
+    this.requestRender();
+  }
+
+  requestRender() {
+    if (this.isRendering) return;
+    this.isRendering = true;
+    requestAnimationFrame(() => this.renderFrame());
+  }
+
+  renderFrame() {
+    // Direct, responsive 2D panning and zooming with smooth damping
+    const dx = (this.targetScrollX - this.scrollX) * 0.22;
+    const dy = (this.targetScrollY - this.scrollY) * 0.22;
+    const ds = (this.targetScale - this.scale) * 0.22;
+
+    const isMoving = Math.abs(dx) > 0.05 || Math.abs(dy) > 0.05 || Math.abs(ds) > 0.0004 || this.isDragging;
+
+    if (isMoving) {
       this.scrollX += dx;
       this.scrollY += dy;
       this.scale += ds;
-
       this.updateTransforms();
       this.updateActiveTierIndicator();
-
-      requestAnimationFrame(loop);
-    };
-    requestAnimationFrame(loop);
+      requestAnimationFrame(() => this.renderFrame());
+    } else {
+      this.scrollX = this.targetScrollX;
+      this.scrollY = this.targetScrollY;
+      this.scale = this.targetScale;
+      this.updateTransforms();
+      this.updateActiveTierIndicator();
+      this.isRendering = false; // Zero CPU/GPU idle spinning
+    }
   }
 
   updateTransforms() {
-    // Single unified 2D transformation: all guidelines, lines, and cards move 1:1 together
+    // Single unified 2D transformation: hardware accelerated on the unified stage
     const stageTransform = `translate(${this.scrollX}px, ${this.scrollY}px) scale(${this.scale})`;
     
-    if (this.tierGuidesGroup) {
-      this.tierGuidesGroup.style.transform = stageTransform;
+    if (this.viewportStage) {
+      this.viewportStage.style.transform = stageTransform;
+    } else {
+      if (this.tierGuidesGroup) this.tierGuidesGroup.style.transform = stageTransform;
+      if (this.linksGroup) this.linksGroup.style.transform = stageTransform;
+      if (this.particlesGroup) this.particlesGroup.style.transform = stageTransform;
+      if (this.nodesGroup) this.nodesGroup.style.transform = stageTransform;
     }
-    if (this.linksGroup) {
-      this.linksGroup.style.transform = stageTransform;
-    }
-    if (this.particlesGroup) {
-      this.particlesGroup.style.transform = stageTransform;
-    }
-    if (this.nodesGroup) {
-      this.nodesGroup.style.transform = stageTransform;
-    }
-
-    // Flat 2D SVG canvas - no 3D tilt or perspective
-    this.svg.style.transform = "none";
   }
 
   clampScroll() {
@@ -872,7 +889,9 @@ class CosmicApp {
       this.scrollX = this.targetScrollX;
       this.scrollY = this.targetScrollY;
       this.scale = this.targetScale;
+      this.updateTransforms();
     }
+    this.requestRender();
   }
 
   scrollToTier(tierLevel) {
@@ -880,6 +899,7 @@ class CosmicApp {
       this.targetScrollX = window.innerWidth / 2;
       this.targetScrollY = this.getApexScrollY(this.targetScale);
       this.clampScroll();
+      this.requestRender();
       return;
     }
 
@@ -899,6 +919,7 @@ class CosmicApp {
       this.targetScrollY = (window.innerHeight * 0.38) - (avgY * currentScale);
       this.targetScrollX = window.innerWidth / 2;
       this.clampScroll();
+      this.requestRender();
     }
   }
 
@@ -914,46 +935,88 @@ class CosmicApp {
     else if (currentViewY > 120) activeTier = 1;
     else activeTier = 0;
 
-    document.querySelectorAll(".tier-nav-dot").forEach(dot => {
+    if (this.lastActiveTier === activeTier) return; // Prevent repeated DOM queries
+    this.lastActiveTier = activeTier;
+
+    if (!this.tierNavDots) {
+      this.tierNavDots = document.querySelectorAll(".tier-nav-dot");
+    }
+    this.tierNavDots.forEach(dot => {
       const dotTier = parseInt(dot.getAttribute("data-tier"), 10);
       dot.classList.toggle("active", dotTier === activeTier);
     });
   }
 
   /* ========================================================================
-     Animated Nadi Pulses (Cosmic Grace descending from the Origin)
+     Animated Nadi Pulses (Zero-Reflow Cubic Bezier Pool)
      ======================================================================== */
   startNadiPulses() {
-    const emitPulse = () => {
-      if (this.layoutLinks.length === 0) return;
-      const randomLink = this.layoutLinks[Math.floor(Math.random() * this.layoutLinks.length)];
-      const pathEl = document.getElementById(`link-${randomLink.sourceId}-${randomLink.targetId}`);
-      if (!pathEl) return;
-
+    const poolSize = 3;
+    const pulseDots = [];
+    for (let i = 0; i < poolSize; i++) {
       const dot = document.createElementNS("http://www.w3.org/2000/svg", "circle");
-      dot.setAttribute("r", "3.5");
+      dot.setAttribute("r", "3");
       dot.setAttribute("class", "tree-pulse-dot");
+      dot.style.display = "none";
       this.particlesGroup.appendChild(dot);
+      pulseDots.push({
+        element: dot,
+        active: false,
+        link: null,
+        progress: 0,
+        speed: 0.02
+      });
+    }
 
-      const pathLength = pathEl.getTotalLength();
-      let progress = 0;
-      const speed = 0.018 + Math.random() * 0.022;
-
-      const animatePulse = () => {
-        progress += speed;
-        if (progress >= 1) {
-          if (dot.parentNode) dot.parentNode.removeChild(dot);
-          return;
-        }
-        const point = pathEl.getPointAtLength(progress * pathLength);
-        dot.setAttribute("cx", point.x);
-        dot.setAttribute("cy", point.y);
-        requestAnimationFrame(animatePulse);
+    const cubicBezier = (t, p0, p1, p2, p3) => {
+      const mt = 1 - t;
+      const mt2 = mt * mt;
+      const t2 = t * t;
+      return {
+        x: mt2 * mt * p0.x + 3 * mt2 * t * p1.x + 3 * mt * t2 * p2.x + t2 * t * p3.x,
+        y: mt2 * mt * p0.y + 3 * mt2 * t * p1.y + 3 * mt * t2 * p2.y + t2 * t * p3.y
       };
-      animatePulse();
     };
 
-    setInterval(emitPulse, 160);
+    const spawnPulse = () => {
+      if (!this.layoutLinks || this.layoutLinks.length === 0) return;
+      const available = pulseDots.find(p => !p.active);
+      if (!available) return;
+
+      const randomLink = this.layoutLinks[Math.floor(Math.random() * this.layoutLinks.length)];
+      if (!randomLink) return;
+
+      const deltaY = (randomLink.targetY - randomLink.sourceY) * 0.52;
+      available.link = {
+        p0: { x: randomLink.sourceX, y: randomLink.sourceY },
+        p1: { x: randomLink.sourceX, y: randomLink.sourceY + deltaY },
+        p2: { x: randomLink.targetX, y: randomLink.targetY - deltaY },
+        p3: { x: randomLink.targetX, y: randomLink.targetY }
+      };
+      available.progress = 0;
+      available.speed = 0.014 + Math.random() * 0.014;
+      available.active = true;
+      available.element.style.display = "";
+    };
+
+    const updatePulses = () => {
+      pulseDots.forEach(p => {
+        if (!p.active) return;
+        p.progress += p.speed;
+        if (p.progress >= 1) {
+          p.active = false;
+          p.element.style.display = "none";
+          return;
+        }
+        const pt = cubicBezier(p.progress, p.link.p0, p.link.p1, p.link.p2, p.link.p3);
+        p.element.setAttribute("cx", pt.x);
+        p.element.setAttribute("cy", pt.y);
+      });
+      requestAnimationFrame(updatePulses);
+    };
+
+    requestAnimationFrame(updatePulses);
+    setInterval(spawnPulse, 500);
   }
 
   /* ========================================================================
@@ -972,11 +1035,13 @@ class CosmicApp {
       this.targetScrollX = e.clientX - this.dragStart.x;
       this.targetScrollY = e.clientY - this.dragStart.y;
       this.clampScroll();
-    });
+      this.requestRender();
+    }, { passive: true });
 
     window.addEventListener("mouseup", () => {
       this.isDragging = false;
-    });
+      this.requestRender();
+    }, { passive: true });
 
     // Mouse Wheel: Zoom in and zoom out towards cursor (like initially!)
     this.viewport.addEventListener("wheel", (e) => {
@@ -995,6 +1060,7 @@ class CosmicApp {
       this.targetScale = newScale;
 
       this.clampScroll();
+      this.requestRender();
     }, { passive: false });
 
     // Touch Support for mobile & touchscreens (pan & two-finger pinch-to-zoom)
@@ -1027,6 +1093,7 @@ class CosmicApp {
         this.targetScrollX = e.touches[0].clientX - this.dragStart.x;
         this.targetScrollY = e.touches[0].clientY - this.dragStart.y;
         this.clampScroll();
+        this.requestRender();
       } else if (e.touches.length === 2 && touchStartDist > 0) {
         const dist = Math.hypot(
           e.touches[0].clientX - e.touches[1].clientX,
@@ -1039,13 +1106,15 @@ class CosmicApp {
         this.targetScrollY = touchCenter.y - (touchCenter.y - this.targetScrollY) * (newScale / this.targetScale);
         this.targetScale = newScale;
         this.clampScroll();
+        this.requestRender();
       }
-    });
+    }, { passive: true });
 
     this.viewport.addEventListener("touchend", () => {
       this.isDragging = false;
       touchStartDist = 0;
-    });
+      this.requestRender();
+    }, { passive: true });
   }
 
   /* ========================================================================
@@ -1669,6 +1738,7 @@ class CosmicApp {
     this.targetScrollY = cy - (cy - this.targetScrollY) * (newScale / this.targetScale);
     this.targetScale = newScale;
     this.clampScroll();
+    this.requestRender();
   }
 
   zoomOut() {
@@ -1679,6 +1749,7 @@ class CosmicApp {
     this.targetScrollY = cy - (cy - this.targetScrollY) * (newScale / this.targetScale);
     this.targetScale = newScale;
     this.clampScroll();
+    this.requestRender();
   }
 
   fitTreeToViewport() {
@@ -1690,13 +1761,15 @@ class CosmicApp {
     this.targetScrollX = window.innerWidth / 2;
     this.targetScrollY = this.getApexScrollY(this.targetScale);
     this.clampScroll();
+    this.requestRender();
   }
 
   setupEventListeners() {
     window.addEventListener("resize", () => {
       this.targetScale = this.getOptimalScale();
       this.clampScroll();
-    });
+      this.requestRender();
+    }, { passive: true });
   }
 }
 
