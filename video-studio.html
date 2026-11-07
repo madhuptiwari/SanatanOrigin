@@ -1,0 +1,659 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>SanatanOrigin • Automated YouTube Video Studio & Walkthrough</title>
+
+  <!-- Google Fonts -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Cinzel:wght@600;700;800;900&family=Noto+Serif+Devanagari:wght@400;600;700&family=Plus+Jakarta+Sans:wght@400;500;600;700;800&family=JetBrains+Mono:wght@500;700&display=swap" rel="stylesheet">
+
+  <!-- Core App Stylesheet -->
+  <link rel="stylesheet" href="styles.css?v=20261106_v11">
+
+  <!-- Video Studio Overlay Styles -->
+  <style>
+    /* ==========================================================================
+       Video Studio Cinema Stage & Director HUD
+       ========================================================================== */
+    body.studio-mode {
+      overflow: hidden;
+      margin: 0;
+      padding: 0;
+      background: #060312;
+      font-family: 'Plus Jakarta Sans', system-ui, sans-serif;
+    }
+
+    /* Floating Director Control Bar (Top-Right Dock) */
+    .studio-director-dock {
+      position: fixed;
+      top: 14px;
+      right: 18px;
+      z-index: 999999;
+      display: flex;
+      align-items: center;
+      gap: 10px;
+      padding: 8px 16px;
+      border-radius: 30px;
+      background: rgba(13, 9, 30, 0.94);
+      border: 1.5px solid rgba(255, 215, 0, 0.45);
+      box-shadow: 0 8px 32px rgba(0, 0, 0, 0.85), 0 0 20px rgba(255, 215, 0, 0.2);
+      backdrop-filter: blur(16px);
+      -webkit-backdrop-filter: blur(16px);
+      user-select: none;
+    }
+
+    .studio-badge {
+      display: inline-flex;
+      align-items: center;
+      gap: 6px;
+      font-family: 'Cinzel', serif;
+      font-size: 11px;
+      font-weight: 800;
+      color: #FFD700;
+      letter-spacing: 0.8px;
+      padding-right: 8px;
+      border-right: 1px solid rgba(255, 215, 0, 0.25);
+    }
+
+    .studio-btn {
+      display: inline-flex;
+      align-items: center;
+      gap: 6px;
+      padding: 7px 14px;
+      border-radius: 20px;
+      font-size: 12px;
+      font-weight: 700;
+      cursor: pointer;
+      border: 1px solid transparent;
+      transition: all 0.2s cubic-bezier(0.16, 1, 0.3, 1);
+    }
+
+    .studio-btn-primary {
+      background: linear-gradient(135deg, #FF4444 0%, #CC0000 100%);
+      color: #FFF;
+      box-shadow: 0 0 16px rgba(255, 68, 68, 0.45);
+    }
+    .studio-btn-primary:hover {
+      transform: scale(1.04);
+      box-shadow: 0 0 24px rgba(255, 68, 68, 0.7);
+    }
+
+    .studio-btn-record.recording {
+      background: linear-gradient(135deg, #00C853 0%, #009624 100%);
+      box-shadow: 0 0 20px rgba(0, 200, 83, 0.6);
+      animation: recordPulse 1.5s infinite;
+    }
+
+    @keyframes recordPulse {
+      0%, 100% { opacity: 1; transform: scale(1); }
+      50% { opacity: 0.88; transform: scale(1.03); }
+    }
+
+    .studio-btn-secondary {
+      background: rgba(255, 255, 255, 0.1);
+      color: #F1F5F9;
+      border-color: rgba(255, 255, 255, 0.2);
+    }
+    .studio-btn-secondary:hover {
+      background: rgba(255, 255, 255, 0.18);
+    }
+
+    .studio-select {
+      background: rgba(20, 15, 45, 0.85);
+      color: #FFD700;
+      border: 1px solid rgba(255, 215, 0, 0.35);
+      padding: 5px 10px;
+      border-radius: 14px;
+      font-size: 11.5px;
+      font-weight: 600;
+      cursor: pointer;
+      outline: none;
+    }
+
+    /* Top Cinema Progress & Chapter Bar */
+    .cinema-top-bar {
+      position: fixed;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 4px;
+      background: rgba(255, 255, 255, 0.1);
+      z-index: 999998;
+    }
+
+    .cinema-progress-fill {
+      width: 0%;
+      height: 100%;
+      background: linear-gradient(90deg, #FF9933, #FFD700, #06B6D4);
+      box-shadow: 0 0 12px #FFD700;
+      transition: width 0.3s linear;
+    }
+
+    .cinema-chapter-indicator {
+      position: fixed;
+      top: 14px;
+      left: 20px;
+      z-index: 999998;
+      display: inline-flex;
+      align-items: center;
+      gap: 10px;
+      padding: 6px 16px;
+      border-radius: 20px;
+      background: rgba(10, 7, 24, 0.88);
+      border: 1px solid rgba(255, 215, 0, 0.3);
+      backdrop-filter: blur(12px);
+      box-shadow: 0 4px 20px rgba(0, 0, 0, 0.6);
+      user-select: none;
+    }
+
+    .chapter-tag {
+      font-family: 'Cinzel', serif;
+      font-size: 10px;
+      font-weight: 800;
+      color: #FF9933;
+      text-transform: uppercase;
+      letter-spacing: 1px;
+    }
+
+    .chapter-title {
+      font-size: 12px;
+      font-weight: 700;
+      color: #FFF;
+    }
+
+    /* Bottom Broadcast Lower-Third Graphic (TV / Documentary Style) */
+    .broadcast-lower-third {
+      position: fixed;
+      bottom: 65px;
+      left: 50%;
+      transform: translateX(-50%);
+      width: min(920px, 94vw);
+      z-index: 999990;
+      pointer-events: none;
+      display: flex;
+      flex-direction: column;
+      gap: 8px;
+      animation: lowerThirdSlideUp 0.4s cubic-bezier(0.16, 1, 0.3, 1);
+    }
+
+    @keyframes lowerThirdSlideUp {
+      from { opacity: 0; transform: translate(-50%, 20px); }
+      to { opacity: 1; transform: translate(-50%, 0); }
+    }
+
+    .lower-third-card {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 16px;
+      padding: 10px 22px;
+      border-radius: 16px;
+      background: linear-gradient(90deg, rgba(13, 9, 32, 0.96) 0%, rgba(26, 17, 60, 0.94) 100%);
+      border: 1.5px solid rgba(255, 215, 0, 0.4);
+      box-shadow: 0 10px 40px rgba(0, 0, 0, 0.85), 0 0 24px rgba(255, 215, 0, 0.22);
+      backdrop-filter: blur(16px);
+      -webkit-backdrop-filter: blur(16px);
+    }
+
+    .lower-third-left {
+      display: flex;
+      align-items: center;
+      gap: 14px;
+    }
+
+    .lower-third-emblem {
+      width: 42px;
+      height: 42px;
+      border-radius: 50%;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 22px;
+      background: radial-gradient(circle, rgba(255, 215, 0, 0.25) 0%, rgba(255, 153, 51, 0.1) 100%);
+      border: 1.5px solid #FFD700;
+      box-shadow: 0 0 16px rgba(255, 215, 0, 0.4);
+      flex-shrink: 0;
+    }
+
+    .lower-third-text-group {
+      display: flex;
+      flex-direction: column;
+      gap: 2px;
+    }
+
+    .lower-third-sanskrit {
+      font-family: 'Noto Serif Devanagari', serif;
+      font-size: 13px;
+      font-weight: 700;
+      color: #FFD700;
+      letter-spacing: 0.4px;
+    }
+
+    .lower-third-headline {
+      font-size: 14.5px;
+      font-weight: 800;
+      color: #FFFFFF;
+      letter-spacing: 0.2px;
+    }
+
+    .lower-third-tag {
+      font-family: 'Cinzel', serif;
+      font-size: 10px;
+      font-weight: 700;
+      color: #38BDF8;
+      letter-spacing: 1px;
+      text-transform: uppercase;
+      padding: 3px 10px;
+      border-radius: 8px;
+      background: rgba(56, 189, 248, 0.12);
+      border: 1px solid rgba(56, 189, 248, 0.3);
+      white-space: nowrap;
+    }
+
+    /* Live Voice Subtitles Banner */
+    .live-subtitles-banner {
+      padding: 8px 18px;
+      border-radius: 12px;
+      background: rgba(7, 4, 18, 0.92);
+      border: 1px solid rgba(255, 255, 255, 0.15);
+      color: #F1F5F9;
+      font-size: 13.5px;
+      font-weight: 600;
+      line-height: 1.45;
+      text-align: center;
+      box-shadow: 0 4px 20px rgba(0, 0, 0, 0.7);
+      backdrop-filter: blur(12px);
+      letter-spacing: 0.2px;
+    }
+
+    .live-subtitles-banner mark {
+      background: transparent;
+      color: #FFD700;
+      font-weight: 700;
+    }
+
+    /* Video Recording Indicator Overlay */
+    .recording-live-indicator {
+      display: none;
+      align-items: center;
+      gap: 6px;
+      font-family: 'JetBrains Mono', monospace;
+      font-size: 11px;
+      font-weight: 700;
+      color: #FF4444;
+      background: rgba(255, 68, 68, 0.12);
+      border: 1px solid rgba(255, 68, 68, 0.35);
+      padding: 4px 10px;
+      border-radius: 12px;
+    }
+
+    .rec-dot {
+      width: 8px;
+      height: 8px;
+      border-radius: 50%;
+      background: #FF4444;
+      box-shadow: 0 0 10px #FF4444;
+      animation: blink 1s infinite;
+    }
+
+    @keyframes blink {
+      0%, 100% { opacity: 1; }
+      50% { opacity: 0.2; }
+    }
+
+    /* Video Download Modal Popup */
+    .studio-modal-overlay {
+      position: fixed;
+      inset: 0;
+      z-index: 1000000;
+      background: rgba(0, 0, 0, 0.85);
+      backdrop-filter: blur(12px);
+      display: none;
+      align-items: center;
+      justify-content: center;
+    }
+
+    .studio-modal-card {
+      width: min(540px, 92vw);
+      padding: 30px;
+      border-radius: 24px;
+      background: radial-gradient(circle at 50% 10%, rgba(35, 22, 75, 0.98) 0%, rgba(10, 7, 24, 0.98) 100%);
+      border: 2px solid #FFD700;
+      box-shadow: 0 12px 60px rgba(0, 0, 0, 0.9), 0 0 40px rgba(255, 215, 0, 0.35);
+      text-align: center;
+      color: #FFF;
+      animation: modalPop 0.3s cubic-bezier(0.16, 1, 0.3, 1);
+    }
+
+    @keyframes modalPop {
+      from { opacity: 0; transform: scale(0.92); }
+      to { opacity: 1; transform: scale(1); }
+    }
+
+    .studio-modal-card h2 {
+      font-family: 'Cinzel', serif;
+      font-size: 22px;
+      color: #FFD700;
+      margin: 0 0 10px 0;
+    }
+
+    .studio-modal-card p {
+      font-size: 13.5px;
+      color: #CBD5E1;
+      line-height: 1.5;
+      margin: 0 0 20px 0;
+    }
+
+    .studio-download-btn {
+      display: inline-flex;
+      align-items: center;
+      gap: 10px;
+      padding: 12px 28px;
+      border-radius: 28px;
+      background: linear-gradient(135deg, #FFD700 0%, #FF9933 100%);
+      color: #000;
+      font-size: 15px;
+      font-weight: 800;
+      text-decoration: none;
+      box-shadow: 0 0 24px rgba(255, 215, 0, 0.5);
+      cursor: pointer;
+      border: none;
+      transition: all 0.2s ease;
+    }
+    .studio-download-btn:hover {
+      transform: scale(1.05);
+      box-shadow: 0 0 34px rgba(255, 215, 0, 0.8);
+    }
+  </style>
+</head>
+<body class="studio-mode">
+  <!-- Dynamic Cosmic Canvas Background (3D Stars, Vedic Nebulae, Sri Yantra Watermark, Prana Dust) -->
+  <canvas id="cosmic-canvas"></canvas>
+
+  <!-- Top Cinema Progress Bar -->
+  <div class="cinema-top-bar">
+    <div id="cinema-progress-fill" class="cinema-progress-fill"></div>
+  </div>
+
+  <!-- Live Chapter & Scene Badge (Top-Left) -->
+  <div class="cinema-chapter-indicator">
+    <span class="chapter-tag" id="studio-chapter-tag">ACT 1</span>
+    <span style="color: rgba(255, 215, 0, 0.4);">•</span>
+    <span class="chapter-title" id="studio-chapter-title">The Primordial Source</span>
+  </div>
+
+  <!-- Floating Video Studio Director Dock (Top-Right) -->
+  <div class="studio-director-dock" id="studio-director-dock">
+    <div class="studio-badge">
+      <span>🎬</span>
+      <span>YOUTUBE STUDIO</span>
+    </div>
+
+    <div class="recording-live-indicator" id="recording-live-indicator">
+      <span class="rec-dot"></span>
+      <span id="rec-time-counter">REC 00:00</span>
+    </div>
+
+    <!-- Play/Pause Showcase -->
+    <button class="studio-btn studio-btn-secondary" id="studio-play-btn" onclick="window.videoStudio.togglePlay()" title="Start or Pause Automated Showcase">
+      <span id="studio-play-icon">▶️</span>
+      <span id="studio-play-label">Play Walkthrough</span>
+    </button>
+
+    <!-- Record Video Button -->
+    <button class="studio-btn studio-btn-primary studio-btn-record" id="studio-record-btn" onclick="window.videoStudio.toggleRecording()" title="Record and export 1080p video file for YouTube">
+      <span id="studio-record-icon">⏺️</span>
+      <span id="studio-record-label">Record Video</span>
+    </button>
+
+    <!-- Voiceover Toggle -->
+    <select class="studio-select" id="studio-voice-select" onchange="window.videoStudio.setVoiceMode(this.value)" title="Choose narration audio style">
+      <option value="speech" selected>🎙️ Voiceover: AI Narrator</option>
+      <option value="mute">🔇 Voiceover: Muted (Speak Yourself)</option>
+    </select>
+
+    <!-- Skip Scene -->
+    <button class="studio-btn studio-btn-secondary" onclick="window.videoStudio.nextScene()" title="Skip to next scene">
+      <span>⏭️</span>
+    </button>
+
+    <!-- Restart -->
+    <button class="studio-btn studio-btn-secondary" onclick="window.videoStudio.restart()" title="Restart from beginning">
+      <span>🔄</span>
+    </button>
+  </div>
+
+  <!-- Broadcast Lower-Third Banner (Golden Subtitles & Headline) -->
+  <div class="broadcast-lower-third" id="broadcast-lower-third">
+    <div class="lower-third-card">
+      <div class="lower-third-left">
+        <div class="lower-third-emblem" id="lower-third-emblem">🕉️</div>
+        <div class="lower-third-text-group">
+          <span class="lower-third-sanskrit" id="lower-third-sanskrit">✦ दिव्य मूलम् • परब्रह्मन्</span>
+          <span class="lower-third-headline" id="lower-third-headline">The Unmanifested Absolute Consciousness</span>
+        </div>
+      </div>
+      <div class="lower-third-tag" id="lower-third-tag">VEDIC GENEALOGY</div>
+    </div>
+    <div class="live-subtitles-banner" id="live-subtitles-banner">
+      "Have you ever wondered how all the deities in Sanatan Dharma are connected?"
+    </div>
+  </div>
+
+  <!-- Main Application Wrapper (Full App UI) -->
+  <div class="app-layout">
+    <!-- Top Cosmic Header Bar -->
+    <header class="cosmic-header">
+      <div class="brand-section" onclick="window.cosmicApp.resetToApexOnly()" style="cursor: pointer;" title="Reset view to top origin box (ॐ)">
+        <div class="om-symbol-emblem" title="Pranava (AUM) - Click to return to Cosmic Origin">ॐ</div>
+        <div class="brand-titles">
+          <h1 class="brand-title">ब्रह्माण्डोत्पत्ति एवं देववंशावली</h1>
+          <span class="brand-subtitle">Cosmic Origin & Divine Genealogies in Sanatan Dharma</span>
+        </div>
+      </div>
+
+      <!-- Center: Tradition Segmented Bar -->
+      <div class="tradition-segmented-bar">
+        <button id="tradition-btn-general" class="tradition-tab active" onclick="window.cosmicApp.switchTradition('general')">
+          <span>📜</span>
+          <span>General Purana</span>
+        </button>
+        <button id="tradition-btn-vishnu" class="tradition-tab" onclick="window.cosmicApp.switchTradition('vishnu')">
+          <span>🪷</span>
+          <span>Vishnu Purana</span>
+        </button>
+        <button id="tradition-btn-shiva" class="tradition-tab" onclick="window.cosmicApp.switchTradition('shiva')">
+          <span>🔱</span>
+          <span>Shiva Purana</span>
+        </button>
+        <button id="tradition-btn-tattvas" class="tradition-tab" onclick="window.cosmicApp.switchTradition('tattvas')">
+          <span>🌌</span>
+          <span>Cosmic Tattvas</span>
+        </button>
+      </div>
+
+      <!-- Right Action Buttons -->
+      <div class="header-right">
+        <!-- Live Search -->
+        <div class="search-container">
+          <span class="search-icon">🔍</span>
+          <input type="text" id="search-input" class="search-input" placeholder="Search divinity, weapon..." autocomplete="off">
+          <div id="search-results-dropdown" class="search-results-dropdown"></div>
+        </div>
+
+        <!-- Cosmic Om Synthesizer Toggle -->
+        <button id="audio-toggle-btn" class="cosmic-btn audio-btn playing" title="Toggle 136.1 Hz Cosmic Omkara Synthesizer">
+          <div class="audio-wave">
+            <span></span>
+            <span></span>
+            <span></span>
+          </div>
+          <span class="audio-label">Cosmic OM: On</span>
+        </button>
+
+        <!-- Return to Standard Web View -->
+        <a href="index.html" class="cosmic-btn" style="text-decoration: none;" title="Exit Video Studio">
+          <span>✕</span>
+          <span>Exit Studio</span>
+        </a>
+      </div>
+    </header>
+
+    <!-- Floating Sub-Filter Bar -->
+    <div id="floating-filter-dock" class="floating-filter-dock"></div>
+
+    <!-- Main Tree Viewport (Pan & Zoom Container) -->
+    <main id="viewport-container" class="viewport-container">
+      <svg id="tree-svg">
+        <defs>
+          <linearGradient id="link-grad" x1="0%" y1="0%" x2="0%" y2="100%">
+            <stop offset="0%" stop-color="#FFD700" stop-opacity="0.65"/>
+            <stop offset="50%" stop-color="#FF9933" stop-opacity="0.5"/>
+            <stop offset="100%" stop-color="#06B6D4" stop-opacity="0.6"/>
+          </linearGradient>
+          <filter id="glow-filter" x="-20%" y="-20%" width="140%" height="140%">
+            <feGaussianBlur stdDeviation="4" result="blur"/>
+            <feMerge>
+              <feMergeNode in="blur"/>
+              <feMergeNode in="SourceGraphic"/>
+            </feMerge>
+          </filter>
+        </defs>
+
+        <!-- Unified Hardware-Accelerated Stage -->
+        <g id="viewport-stage">
+          <g id="tier-guides-group"></g>
+          <g id="links-group"></g>
+          <g id="particles-group"></g>
+          <g id="nodes-group"></g>
+        </g>
+      </svg>
+      <!-- Dedicated HTML Nodes Stage -->
+      <div id="html-nodes-stage" class="html-nodes-stage" aria-label="Cosmic Nodes HTML Stage"></div>
+    </main>
+
+    <!-- Left Cosmic Tier Navigator (Tier Navigation Rail) -->
+    <nav class="cosmic-tier-navigator" id="tier-navigator" aria-label="Cosmic Hierarchy Tiers">
+      <button class="tier-nav-dot active" data-tier="0" onclick="window.cosmicApp.scrollToTier(0)" title="Tier 0: दिव्य मूलम् • Primordial Origin">
+        <span class="tier-dot-icon">🕉️</span>
+        <span class="tier-dot-label">दिव्य मूलम् • Origin</span>
+      </button>
+      <button class="tier-nav-dot" data-tier="1" onclick="window.cosmicApp.scrollToTier(1)" title="Tier 1: आदि सृष्टि • Primary Divinities">
+        <span class="tier-dot-icon">🪷</span>
+        <span class="tier-dot-label">आदि सृष्टि • Trideva</span>
+      </button>
+      <button class="tier-nav-dot" data-tier="2" onclick="window.cosmicApp.scrollToTier(2)" title="Tier 2: देववंशावली • Celestial Lineages & Avatars">
+        <span class="tier-dot-icon">⚡</span>
+        <span class="tier-dot-label">देववंशावली • Lineages</span>
+      </button>
+      <button class="tier-nav-dot" data-tier="3" onclick="window.cosmicApp.scrollToTier(3)" title="Tier 3: लोकपाल • Dynasties & Guardians">
+        <span class="tier-dot-icon">☀️</span>
+        <span class="tier-dot-label">लोकपाल • Dynasties</span>
+      </button>
+    </nav>
+
+    <!-- Bottom Lineage Breadcrumb Trail -->
+    <div class="breadcrumb-bar">
+      <span style="font-size: 11px; color: var(--gold-primary); font-weight: 700; text-transform: uppercase;">Lineage Path:</span>
+      <div id="breadcrumb-container" style="display: inline-flex; align-items: center; gap: 8px;"></div>
+    </div>
+
+    <!-- Floating Navigation Controls Dock -->
+    <div class="controls-dock">
+      <button class="dock-btn" onclick="window.cosmicApp.zoomIn()" title="Zoom In (+)">➕</button>
+      <button class="dock-btn" onclick="window.cosmicApp.zoomOut()" title="Zoom Out (-)">➖</button>
+      <div class="dock-divider"></div>
+      <button class="dock-btn" onclick="window.cosmicApp.fitTreeToViewport(true)" title="Fit Entire Tree to Device Screen (⛶)">⛶</button>
+      <button class="dock-btn" id="dock-expand-toggle-btn" onclick="window.cosmicApp.toggleExpandAll()" title="Expand / Collapse Branches (🌳)">🌳</button>
+      <div class="dock-divider"></div>
+      <button class="dock-btn" onclick="window.cosmicApp.resetToApex()" title="Center on Root Origin (Apex)">🕉️</button>
+    </div>
+
+    <!-- Divine Profile Inspector Drawer -->
+    <aside id="detail-drawer" class="detail-drawer" aria-label="Divine Profile Inspector">
+      <div class="drawer-header">
+        <div class="drawer-title-group">
+          <span id="drawer-icon" class="drawer-icon">🕉️</span>
+          <div>
+            <h2 id="drawer-name" class="drawer-name">Parabrahman</h2>
+            <div id="drawer-sanskrit" class="drawer-sanskrit">परब्रह्मन्</div>
+          </div>
+        </div>
+        <button class="drawer-close-btn" onclick="window.cosmicApp.closeDetailDrawer()" title="Close Profile Inspector (Esc)">✕</button>
+      </div>
+
+      <div class="drawer-body">
+        <div class="drawer-meta-grid">
+          <div class="drawer-meta-card">
+            <span class="drawer-meta-label">Tradition</span>
+            <span id="drawer-tradition" class="drawer-meta-value">Vedic Synthesis</span>
+          </div>
+          <div class="drawer-meta-card">
+            <span class="drawer-meta-label">Aspect</span>
+            <span id="drawer-category" class="drawer-meta-value">Eternal Principle</span>
+          </div>
+          <div class="drawer-meta-card">
+            <span class="drawer-meta-label">Abode</span>
+            <span id="drawer-abode" class="drawer-meta-value">Beyond Space</span>
+          </div>
+          <div class="drawer-meta-card">
+            <span class="drawer-meta-label">Consort / Energy</span>
+            <span id="drawer-consort" class="drawer-meta-value">Adi Parashakti</span>
+          </div>
+        </div>
+
+        <div class="drawer-section">
+          <h3 class="drawer-section-title">✦ Layman's Guide & Core Essence</h3>
+          <div id="drawer-layman" class="drawer-layman-content"></div>
+        </div>
+
+        <div class="drawer-section">
+          <h3 class="drawer-section-title">📜 Scriptural & Philosophical Significance</h3>
+          <p id="drawer-summary" class="drawer-summary-text"></p>
+        </div>
+
+        <div class="drawer-section">
+          <h3 class="drawer-section-title">✦ Canonical Quotes & Sacred Mantras</h3>
+          <div id="drawer-mantra" class="drawer-mantra-box"></div>
+        </div>
+      </div>
+    </aside>
+  </div>
+
+  <!-- Site Footer & Copyright Statement -->
+  <footer class="site-footer" id="site-footer" role="contentinfo" style="position: fixed; bottom: max(10px, env(safe-area-inset-bottom, 10px)); left: 50%; transform: translateX(-50%); z-index: 99999; pointer-events: auto; text-align: center; font-family: 'Plus Jakarta Sans', system-ui, -apple-system, sans-serif; user-select: none; max-width: 95vw;">
+    <div class="site-footer-content" style="display: inline-flex; align-items: center; justify-content: center; gap: 8px; padding: 6px 18px; border-radius: 24px; background: rgba(10, 7, 24, 0.92); border: 1.5px solid rgba(255, 215, 0, 0.4); box-shadow: 0 4px 24px rgba(0, 0, 0, 0.75), 0 0 16px rgba(255, 215, 0, 0.2); backdrop-filter: blur(14px); -webkit-backdrop-filter: blur(14px); font-size: 11.5px; color: rgba(255, 255, 255, 0.9); letter-spacing: 0.3px; white-space: nowrap;">
+      <span>© 2026 SanatanOrigin. All Rights Reserved.</span>
+      <span class="footer-divider" style="color: rgba(255, 215, 0, 0.6); font-size: 10px;">•</span>
+      <span>This website is copyright to <a href="https://www.linkedin.com/in/madhup-t" target="_blank" rel="noopener noreferrer" class="footer-author-link" style="color: #FFD700; font-weight: 700; text-decoration: underline; text-underline-offset: 3px;" title="Visit Madhup Tiwari on LinkedIn">Madhup Tiwari</a></span>
+    </div>
+  </footer>
+
+  <!-- Video Export Ready Modal -->
+  <div class="studio-modal-overlay" id="studio-modal-overlay">
+    <div class="studio-modal-card">
+      <div style="font-size: 48px; margin-bottom: 10px;">🎉</div>
+      <h2>Video Recording Complete!</h2>
+      <p>Your high-definition YouTube explainer video of <strong>SanatanOrigin</strong> has been recorded and compiled. Click below to save it to your computer.</p>
+      <a id="modal-download-btn" class="studio-download-btn" download="SanatanOrigin-YouTube-Explainer.webm">
+        <span>⬇️</span>
+        <span>Download Video File (.webm)</span>
+      </a>
+      <div style="margin-top: 20px;">
+        <button class="studio-btn studio-btn-secondary" onclick="document.getElementById('studio-modal-overlay').style.display='none'">Close</button>
+      </div>
+    </div>
+  </div>
+
+  <!-- Scripts -->
+  <script src="cosmology-data.js?v=20261106_v11"></script>
+  <script src="gods-data.js?v=20261106_v11"></script>
+  <script src="cosmic-audio.js?v=20261106_v11"></script>
+  <script src="cosmic-background.js?v=20261106_v11"></script>
+  <script src="app.js?v=20261106_v11"></script>
+  <script src="video-studio.js?v=20261106_v11"></script>
+</body>
+</html>
