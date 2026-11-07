@@ -11,7 +11,7 @@
   <link href="https://fonts.googleapis.com/css2?family=Cinzel:wght@600;700;800;900&family=Noto+Serif+Devanagari:wght@400;600;700&family=Plus+Jakarta+Sans:wght@400;500;600;700;800&family=JetBrains+Mono:wght@500;700&display=swap" rel="stylesheet">
 
   <!-- Core App Stylesheet -->
-  <link rel="stylesheet" href="styles.css?v=20261106_v12">
+  <link rel="stylesheet" href="styles.css?v=20261106_v13">
 
   <!-- Video Studio Overlay Styles -->
   <style>
@@ -632,76 +632,6 @@
     </div>
   </footer>
 
-  <!-- Recording Setup Options Modal (Fixes Laptop Dual-GPU & Audio Deadlocks) -->
-  <div class="studio-modal-overlay" id="record-setup-modal" style="display: none;">
-    <div class="studio-modal-card" style="width: min(720px, 94vw); text-align: left;">
-      <div style="display: flex; align-items: center; justify-content: space-between; margin-bottom: 12px;">
-        <h2 style="margin: 0; font-size: 20px;">🎬 Video Recording Options</h2>
-        <button class="drawer-close-btn" onclick="document.getElementById('record-setup-modal').style.display='none'" style="margin: 0; border: none; background: transparent; color: #FFF; font-size: 18px; cursor: pointer;">✕</button>
-      </div>
-      <p style="margin-bottom: 20px; font-size: 13px; color: #94A3B8; line-height: 1.5;">
-        To prevent GPU and audio driver freezes on gaming laptops (like HP Omen with dual Intel/AMD + NVIDIA RTX GPUs and Bang &amp; Olufsen / Realtek audio), choose how you want to record:
-      </p>
-
-      <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(280px, 1fr)); gap: 16px; margin-bottom: 24px;">
-        <!-- Option 1: Hardware NVIDIA / Windows Game Bar (100% Recommended for HP Omen) -->
-        <div class="record-mode-box featured" style="background: rgba(255, 215, 0, 0.08); border: 2px solid #FFD700; border-radius: 16px; padding: 20px; display: flex; flex-direction: column; justify-content: space-between;">
-          <div>
-            <div style="display: flex; align-items: center; justify-content: space-between; margin-bottom: 8px;">
-              <span style="font-size: 24px;">⚡</span>
-              <span style="font-size: 10px; font-weight: 800; background: #FFD700; color: #000; padding: 2px 8px; border-radius: 10px; text-transform: uppercase;">Zero Lag • Recommended</span>
-            </div>
-            <h3 style="margin: 0 0 6px 0; font-size: 16px; color: #FFD700;">Hardware NVENC (Game Bar)</h3>
-            <p style="font-size: 12px; color: #CBD5E1; line-height: 1.45; margin: 0 0 12px 0;">
-              Uses your HP Omen's NVIDIA RTX GPU hardware encoder. 0% CPU freeze, zero browser overhead, crystal-clear 60 FPS video.
-            </p>
-            <div style="background: rgba(0, 0, 0, 0.5); padding: 8px 12px; border-radius: 8px; font-size: 12px; font-family: 'JetBrains Mono', monospace; color: #38BDF8; margin-bottom: 14px;">
-              Shortcut: <strong>Win + Alt + R</strong>
-            </div>
-          </div>
-          <button class="studio-btn studio-btn-primary" onclick="window.videoStudio.startCountdownAndPlay()" style="width: 100%; justify-content: center; padding: 10px 16px; font-size: 13px;">
-            <span>🚀</span>
-            <span>3s Countdown &amp; Auto-Play</span>
-          </button>
-        </div>
-
-        <!-- Option 2: Safe In-Browser Recording (No Audio Deadlock) -->
-        <div class="record-mode-box" style="background: rgba(255, 255, 255, 0.04); border: 1.5px solid rgba(255, 255, 255, 0.2); border-radius: 16px; padding: 20px; display: flex; flex-direction: column; justify-content: space-between;">
-          <div>
-            <div style="display: flex; align-items: center; justify-content: space-between; margin-bottom: 8px;">
-              <span style="font-size: 24px;">🌐</span>
-              <span style="font-size: 10px; font-weight: 700; background: rgba(56, 189, 248, 0.2); color: #38BDF8; padding: 2px 8px; border-radius: 10px;">Safe 30 FPS</span>
-            </div>
-            <h3 style="margin: 0 0 6px 0; font-size: 16px; color: #FFF;">Browser Tab Recording</h3>
-            <p style="font-size: 12px; color: #CBD5E1; line-height: 1.45; margin: 0 0 12px 0;">
-              Constrained to 1080p @ 30 FPS with direct Web Audio stream. Avoids Windows WASAPI audio locks. In the prompt, pick <strong>"Chrome Tab"</strong>.
-            </p>
-          </div>
-          <button class="studio-btn studio-btn-secondary" onclick="window.videoStudio.launchSafeBrowserRecording()" style="width: 100%; justify-content: center; padding: 10px 16px; font-size: 13px;">
-            <span>⏺️</span>
-            <span>Record Browser Tab</span>
-          </button>
-        </div>
-      </div>
-
-      <div style="text-align: right;">
-        <button class="studio-btn studio-btn-secondary" onclick="document.getElementById('record-setup-modal').style.display='none'">Cancel</button>
-      </div>
-    </div>
-  </div>
-
-  <!-- Countdown Overlay for Hardware Recording (3... 2... 1... ACTION) -->
-  <div class="studio-modal-overlay" id="studio-countdown-overlay" style="display: none; background: rgba(0, 0, 0, 0.92); z-index: 1000001;">
-    <div style="text-align: center; color: #FFF;">
-      <div style="font-size: 18px; font-family: 'Cinzel', serif; color: #FF9933; margin-bottom: 10px; letter-spacing: 2px;">PREPARE TO RECORD</div>
-      <div id="countdown-number" style="font-size: 96px; font-weight: 900; font-family: 'Cinzel', serif; color: #FFD700; text-shadow: 0 0 40px #FFD700; margin: 10px 0;">3</div>
-      <div style="font-size: 14px; color: #CBD5E1; max-width: 440px; line-height: 1.6; margin: 0 auto 20px auto;">
-        Press <kbd style="background: rgba(255,255,255,0.2); padding: 3px 8px; border-radius: 6px; font-family: monospace; color: #FFD700;">Win + Alt + R</kbd> now to start your hardware recording!
-      </div>
-      <button class="studio-btn studio-btn-secondary" onclick="window.videoStudio.cancelCountdown()">Skip / Cancel</button>
-    </div>
-  </div>
-
   <!-- Video Export Ready Modal -->
   <div class="studio-modal-overlay" id="studio-modal-overlay">
     <div class="studio-modal-card">
@@ -719,11 +649,11 @@
   </div>
 
   <!-- Scripts -->
-  <script src="cosmology-data.js?v=20261106_v12"></script>
-  <script src="gods-data.js?v=20261106_v12"></script>
-  <script src="cosmic-audio.js?v=20261106_v12"></script>
-  <script src="cosmic-background.js?v=20261106_v12"></script>
-  <script src="app.js?v=20261106_v12"></script>
-  <script src="video-studio.js?v=20261106_v12"></script>
+  <script src="cosmology-data.js?v=20261106_v13"></script>
+  <script src="gods-data.js?v=20261106_v13"></script>
+  <script src="cosmic-audio.js?v=20261106_v13"></script>
+  <script src="cosmic-background.js?v=20261106_v13"></script>
+  <script src="app.js?v=20261106_v13"></script>
+  <script src="video-studio.js?v=20261106_v13"></script>
 </body>
 </html>
