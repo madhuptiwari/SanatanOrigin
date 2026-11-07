@@ -19,7 +19,7 @@
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Cinzel:wght@600;700;800;900&family=Noto+Serif+Devanagari:wght@400;600;700&family=Plus+Jakarta+Sans:wght@400;500;600;700&display=swap" rel="stylesheet">
   
-  <link rel="stylesheet" href="styles.css?v=20261106_v13">
+  <link rel="stylesheet" href="styles.css?v=20261106_v14">
 </head>
 <body>
   <!-- Dynamic Cosmic Canvas Background (3D Stars, Vedic Nebulae, Sri Yantra Watermark, Prana Dust) -->
@@ -86,8 +86,8 @@
           <span id="tour-launch-label">Deva Yatra</span>
         </button>
 
-        <!-- Automated YouTube Video Studio -->
-        <a href="video-studio.html" class="cosmic-btn tour-btn-header" style="text-decoration: none;" title="Open Automated YouTube Video Studio & Walkthrough (🎬)">
+        <!-- Creator YouTube Video Studio (Hidden by Default from Public; Only Viewable by Creator) -->
+        <a id="creator-studio-btn" href="video-studio.html" class="cosmic-btn tour-btn-header" style="text-decoration: none; display: none;" title="Open Creator Video Studio (🎬)">
           <span>🎬</span>
           <span>Studio</span>
         </a>
@@ -323,10 +323,51 @@
   </footer>
 
   <!-- Scripts -->
-  <script src="cosmology-data.js?v=20261106_v13"></script>
-  <script src="gods-data.js?v=20261106_v13"></script>
-  <script src="cosmic-audio.js?v=20261106_v13"></script>
-  <script src="cosmic-background.js?v=20261106_v13"></script>
-  <script src="app.js?v=20261106_v13"></script>
+  <script src="cosmology-data.js?v=20261106_v14"></script>
+  <script src="gods-data.js?v=20261106_v14"></script>
+  <script src="cosmic-audio.js?v=20261106_v14"></script>
+  <script src="cosmic-background.js?v=20261106_v14"></script>
+  <script src="app.js?v=20261106_v14"></script>
+
+  <!-- Creator Studio Secret Access Gate (Hidden from Public Eyes) -->
+  <script>
+    (function () {
+      var isLocal = window.location.hostname === 'localhost' || window.location.hostname === '127.0.0.1' || window.location.protocol === 'file:';
+      var params = new URLSearchParams(window.location.search);
+      var hasSecretParam = params.has('studio') || params.has('creator') || params.has('admin');
+      var isUnlocked = localStorage.getItem('sanatan_creator_access') === 'granted';
+
+      var btn = document.getElementById('creator-studio-btn');
+      if (isLocal || hasSecretParam || isUnlocked) {
+        if (hasSecretParam) localStorage.setItem('sanatan_creator_access', 'granted');
+        if (btn) btn.style.display = 'inline-flex';
+      }
+
+      // Keyboard shortcut: Alt + S or Ctrl + Shift + S unlocks and navigates to Studio
+      window.addEventListener('keydown', function (e) {
+        if ((e.ctrlKey && e.shiftKey && (e.key === 'S' || e.key === 's')) || (e.altKey && (e.key === 's' || e.key === 'S'))) {
+          localStorage.setItem('sanatan_creator_access', 'granted');
+          window.location.href = 'video-studio.html';
+        }
+      });
+
+      // Triple click on author link in footer unlocks and navigates
+      var authorLink = document.querySelector('.footer-author-link');
+      if (authorLink) {
+        var clicks = 0;
+        var timer = null;
+        authorLink.addEventListener('click', function (e) {
+          clicks++;
+          clearTimeout(timer);
+          timer = setTimeout(function () { clicks = 0; }, 700);
+          if (clicks >= 3) {
+            e.preventDefault();
+            localStorage.setItem('sanatan_creator_access', 'granted');
+            window.location.href = 'video-studio.html';
+          }
+        });
+      }
+    })();
+  </script>
 </body>
 </html>

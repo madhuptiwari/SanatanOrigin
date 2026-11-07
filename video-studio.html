@@ -11,7 +11,7 @@
   <link href="https://fonts.googleapis.com/css2?family=Cinzel:wght@600;700;800;900&family=Noto+Serif+Devanagari:wght@400;600;700&family=Plus+Jakarta+Sans:wght@400;500;600;700;800&family=JetBrains+Mono:wght@500;700&display=swap" rel="stylesheet">
 
   <!-- Core App Stylesheet -->
-  <link rel="stylesheet" href="styles.css?v=20261106_v13">
+  <link rel="stylesheet" href="styles.css?v=20261106_v14">
 
   <!-- Video Studio Overlay Styles -->
   <style>
@@ -648,12 +648,70 @@
     </div>
   </div>
 
+  <!-- Creator Security Gate Overlay (Protects Studio from Public Eyes) -->
+  <div id="creator-lock-overlay" style="position: fixed; inset: 0; z-index: 2000000; background: #060312; display: flex; align-items: center; justify-content: center; backdrop-filter: blur(20px);">
+    <div style="width: min(440px, 92vw); padding: 36px 28px; border-radius: 24px; background: radial-gradient(circle at 50% 10%, rgba(35, 22, 75, 0.98) 0%, rgba(10, 7, 24, 0.98) 100%); border: 2px solid #FFD700; box-shadow: 0 12px 60px rgba(0, 0, 0, 0.95), 0 0 40px rgba(255, 215, 0, 0.35); text-align: center; color: #FFF; font-family: 'Plus Jakarta Sans', system-ui, sans-serif;">
+      <div style="font-size: 44px; margin-bottom: 12px;">🔒</div>
+      <h2 style="font-family: 'Cinzel', serif; font-size: 22px; color: #FFD700; margin: 0 0 8px 0;">Creator Studio Access</h2>
+      <p style="font-size: 13px; color: #CBD5E1; line-height: 1.5; margin: 0 0 20px 0;">
+        This automated video production suite is private and restricted to the creator (<strong>Madhup Tiwari</strong>).
+      </p>
+
+      <form id="creator-auth-form" onsubmit="event.preventDefault(); window.checkCreatorStudioKey();" style="display: flex; flex-direction: column; gap: 14px;">
+        <input type="password" id="creator-key-input" placeholder="Enter Creator Passcode / PIN..." autocomplete="off" style="padding: 12px 16px; border-radius: 14px; background: rgba(255, 255, 255, 0.08); border: 1.5px solid rgba(255, 215, 0, 0.4); color: #FFF; font-size: 14px; outline: none; text-align: center; letter-spacing: 2px;">
+        <div id="auth-error-msg" style="display: none; color: #FF4444; font-size: 12px; font-weight: 600;">Incorrect Passcode. Access Denied.</div>
+        <button type="submit" style="padding: 12px 20px; border-radius: 20px; background: linear-gradient(135deg, #FFD700 0%, #FF9933 100%); color: #000; font-size: 14px; font-weight: 800; border: none; cursor: pointer; box-shadow: 0 0 20px rgba(255, 215, 0, 0.4);">
+          🔓 Unlock Studio
+        </button>
+      </form>
+
+      <div style="margin-top: 20px; padding-top: 16px; border-top: 1px solid rgba(255, 255, 255, 0.1);">
+        <a href="index.html" style="color: #94A3B8; font-size: 12.5px; text-decoration: none;">← Return to SanatanOrigin Public Map</a>
+      </div>
+    </div>
+  </div>
+
   <!-- Scripts -->
-  <script src="cosmology-data.js?v=20261106_v13"></script>
-  <script src="gods-data.js?v=20261106_v13"></script>
-  <script src="cosmic-audio.js?v=20261106_v13"></script>
-  <script src="cosmic-background.js?v=20261106_v13"></script>
-  <script src="app.js?v=20261106_v13"></script>
-  <script src="video-studio.js?v=20261106_v13"></script>
+  <script src="cosmology-data.js?v=20261106_v14"></script>
+  <script src="gods-data.js?v=20261106_v14"></script>
+  <script src="cosmic-audio.js?v=20261106_v14"></script>
+  <script src="cosmic-background.js?v=20261106_v14"></script>
+  <script src="app.js?v=20261106_v14"></script>
+  <script src="video-studio.js?v=20261106_v14"></script>
+
+  <!-- Creator Gatekeeper Script -->
+  <script>
+    (function () {
+      var isLocal = window.location.hostname === 'localhost' || window.location.hostname === '127.0.0.1' || window.location.protocol === 'file:';
+      var params = new URLSearchParams(window.location.search);
+      var validPasscodes = ['madhup', 'madhup2026', 'om136', '108', 'sanatan'];
+
+      var grantAccess = function () {
+        localStorage.setItem('sanatan_creator_access', 'granted');
+        var overlay = document.getElementById('creator-lock-overlay');
+        if (overlay) overlay.style.display = 'none';
+      };
+
+      window.checkCreatorStudioKey = function () {
+        var input = document.getElementById('creator-key-input');
+        var errorMsg = document.getElementById('auth-error-msg');
+        var val = (input ? input.value : '').trim().toLowerCase();
+        if (validPasscodes.indexOf(val) !== -1) {
+          grantAccess();
+        } else {
+          if (errorMsg) errorMsg.style.display = 'block';
+          if (input) {
+            input.style.borderColor = '#FF4444';
+            input.focus();
+          }
+        }
+      };
+
+      var urlKey = (params.get('key') || params.get('auth') || '').toLowerCase();
+      if (isLocal || localStorage.getItem('sanatan_creator_access') === 'granted' || (urlKey && validPasscodes.indexOf(urlKey) !== -1)) {
+        grantAccess();
+      }
+    })();
+  </script>
 </body>
 </html>
