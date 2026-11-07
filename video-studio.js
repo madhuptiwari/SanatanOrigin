@@ -25,17 +25,21 @@
     constructor(director) {
       this.director = director;
       this.canvas = document.createElement('canvas');
-      this.canvas.width = 1920;
-      this.canvas.height = 1080;
-      this.ctx = this.canvas.getContext('2d');
+      // 1280x720 HD: Crystal clear YouTube presentation with 60% less memory than 1080p
+      this.canvas.width = 1280;
+      this.canvas.height = 720;
+      this.ctx = this.canvas.getContext('2d', { alpha: false });
       this.isRunning = false;
       this.animFrameId = null;
+      this.lastFrameTime = 0;
+      this.videoTrack = null;
       this.cosmicCanvas = document.getElementById('cosmic-canvas');
     }
 
     start() {
       this.isRunning = true;
-      this.renderLoop();
+      this.lastFrameTime = 0;
+      this.renderLoop(performance.now());
     }
 
     stop() {
@@ -44,22 +48,34 @@
         cancelAnimationFrame(this.animFrameId);
         this.animFrameId = null;
       }
+      this.videoTrack = null;
     }
 
-    renderLoop() {
+    renderLoop(timestamp) {
       if (!this.isRunning) return;
-      try {
-        this.drawFrame();
-      } catch (err) {
-        console.warn('Compositor frame warning:', err);
+
+      // STRICT 25 FPS INTERVAL (40ms):
+      // Prevents HP Omen 16 165Hz/240Hz refresh rates from overloading V8 memory
+      if (!this.lastFrameTime || (timestamp - this.lastFrameTime) >= 40) {
+        this.lastFrameTime = timestamp;
+        try {
+          this.drawFrame();
+          // Request EXACTLY 1 frame on-demand (ZERO uncompressed frame queue buildup!)
+          if (this.videoTrack && typeof this.videoTrack.requestFrame === 'function') {
+            this.videoTrack.requestFrame();
+          }
+        } catch (err) {
+          console.warn('Compositor frame warning:', err);
+        }
       }
-      this.animFrameId = requestAnimationFrame(() => this.renderLoop());
+
+      this.animFrameId = requestAnimationFrame((ts) => this.renderLoop(ts));
     }
 
     drawFrame() {
       const ctx = this.ctx;
-      const w = this.canvas.width;  // 1920
-      const h = this.canvas.height; // 1080
+      const w = this.canvas.width;  // 1280
+      const h = this.canvas.height; // 720
 
       // 1. Deep Cosmic Background
       ctx.fillStyle = '#060312';
@@ -1120,24 +1136,29 @@
 
     startRecording() {
       try {
-        // 1. Initialize 1920x1080 canvas compositor
+        // 1. Initialize 1280x720 canvas compositor
         if (!this.compositor) {
           this.compositor = new StudioCanvasCompositor(this);
         }
+
+        // 2. Stream from internal canvas with captureStream(0) - on-demand ONLY!
+        // ZERO automatic polling = ZERO uncompressed frame queue in RAM!
+        const canvasStream = this.compositor.canvas.captureStream(0);
+        this.compositor.videoTrack = canvasStream.getVideoTracks()[0];
         this.compositor.start();
 
-        // 2. Stream from internal canvas (100% in-browser, no OS calls)
-        const canvasStream = this.compositor.canvas.captureStream(30);
-
-        // 3. Attach Web Audio internal synth stream (zero WASAPI loopback calls)
+        // 3. Attach Web Audio internal synth stream
         const combinedStream = new MediaStream();
-        canvasStream.getVideoTracks().forEach(t => combinedStream.addTrack(t));
+        if (this.compositor.videoTrack) {
+          combinedStream.addTrack(this.compositor.videoTrack);
+        }
 
         if (window.cosmicAudio && typeof window.cosmicAudio.getMediaStreamDestination === 'function') {
           try {
             const audioDest = window.cosmicAudio.getMediaStreamDestination();
             if (audioDest && audioDest.stream) {
-              audioDest.stream.getAudioTracks().forEach(t => combinedStream.addTrack(t));
+              const audioTrack = audioDest.stream.getAudioTracks()[0];
+              if (audioTrack) combinedStream.addTrack(audioTrack);
             }
           } catch (e) {
             console.warn('Audio stream mix note:', e);
@@ -1146,7 +1167,7 @@
 
         this.recordedChunks = [];
 
-        // 4. Codec Selection: VP8 / WebM (instant hardware encode)
+        // 4. Codec Selection with bitrate cap (2.5 Mbps = ~300 KB/sec, under 50 MB total!)
         const mimeTypes = [
           'video/webm;codecs=vp8',
           'video/webm',
@@ -1161,7 +1182,12 @@
           }
         }
 
-        this.mediaRecorder = new MediaRecorder(combinedStream, chosenMime ? { mimeType: chosenMime } : {});
+        const options = {
+          mimeType: chosenMime || 'video/webm',
+          videoBitsPerSecond: 2500000 // 2.5 Mbps cap guarantees low memory
+        };
+
+        this.mediaRecorder = new MediaRecorder(combinedStream, options);
 
         this.mediaRecorder.ondataavailable = (event) => {
           if (event.data && event.data.size > 0) {
@@ -1173,7 +1199,7 @@
           this.finalizeRecording();
         };
 
-        this.mediaRecorder.start(1000); // 1-second chunks
+        this.mediaRecorder.start(2000); // 2-second chunks
         this.isRecording = true;
 
         // UI Updates
