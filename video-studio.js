@@ -32,6 +32,7 @@
       this.mediaRecorder = null;
       this.recordedChunks = [];
       this.mediaStream = null;
+      this.countdownInterval = null;
 
       // DOM Elements
       this.chapterTag = document.getElementById('studio-chapter-tag');
@@ -667,49 +668,115 @@
     }
 
     /* ========================================================================
-       HD Screen & Tab Recording Engine
+       HD Screen & Tab Recording Engine (Gaming Laptop / HP Omen Safe Mode)
        ======================================================================== */
-    async toggleRecording() {
+    toggleRecording() {
       if (this.isRecording) {
         this.stopRecording();
       } else {
-        await this.startRecording();
+        // Open setup options modal so HP Omen / gaming laptop users choose safe mode
+        const modal = document.getElementById('record-setup-modal');
+        if (modal) {
+          modal.style.display = 'flex';
+        } else {
+          this.launchSafeBrowserRecording();
+        }
       }
     }
 
-    async startRecording() {
+    startCountdownAndPlay() {
+      const modal = document.getElementById('record-setup-modal');
+      if (modal) modal.style.display = 'none';
+
+      const overlay = document.getElementById('studio-countdown-overlay');
+      const numberEl = document.getElementById('countdown-number');
+      if (!overlay || !numberEl) {
+        this.restart();
+        return;
+      }
+
+      overlay.style.display = 'flex';
+      let count = 3;
+      numberEl.textContent = count;
+
+      if (this.countdownInterval) {
+        clearInterval(this.countdownInterval);
+      }
+
+      this.countdownInterval = setInterval(() => {
+        count--;
+        if (count > 0) {
+          numberEl.textContent = count;
+        } else if (count === 0) {
+          numberEl.textContent = '🎬 ACTION!';
+        } else {
+          clearInterval(this.countdownInterval);
+          this.countdownInterval = null;
+          overlay.style.display = 'none';
+          this.restart();
+        }
+      }, 1000);
+    }
+
+    cancelCountdown() {
+      if (this.countdownInterval) {
+        clearInterval(this.countdownInterval);
+        this.countdownInterval = null;
+      }
+      const overlay = document.getElementById('studio-countdown-overlay');
+      if (overlay) overlay.style.display = 'none';
+    }
+
+    async launchSafeBrowserRecording() {
+      const modal = document.getElementById('record-setup-modal');
+      if (modal) modal.style.display = 'none';
+
       try {
-        // Request capture of current browser tab or window
         let stream = null;
         if (navigator.mediaDevices && navigator.mediaDevices.getDisplayMedia) {
+          // CRITICAL FOR HP OMEN / DUAL GPU GAMING LAPTOPS:
+          // 1. audio: false completely avoids Windows WASAPI loopback deadlock with Bang & Olufsen / Nahimic / Realtek drivers!
+          // 2. frameRate: 30 prevents DWM cross-GPU texture copy stalls between Intel/AMD iGPU and NVIDIA RTX dGPU.
+          // 3. width/height: 1920x1080 prevents 2.5K/4K buffer saturation.
           stream = await navigator.mediaDevices.getDisplayMedia({
             video: {
               displaySurface: 'browser',
-              frameRate: { ideal: 60, max: 60 }
+              width: { ideal: 1920, max: 1920 },
+              height: { ideal: 1080, max: 1080 },
+              frameRate: { ideal: 30, max: 30 }
             },
-            audio: true
+            audio: false
           });
-        } else {
-          // Fallback to canvas stream
-          const canvas = document.getElementById('cosmic-canvas');
-          if (canvas && canvas.captureStream) {
-            stream = canvas.captureStream(60);
-          }
         }
 
         if (!stream) {
-          alert('Screen capture is not supported in this browser environment. You can still use the Play Walkthrough mode to present or record with external software (OBS / QuickTime).');
+          alert('Screen capture was cancelled or is not supported. You can use the "Win + Alt + R" hardware recording option instead.');
           return;
+        }
+
+        // Combine video track with direct Web Audio stream (no OS driver loopback!)
+        const combinedStream = new MediaStream();
+        stream.getVideoTracks().forEach(t => combinedStream.addTrack(t));
+
+        if (window.cosmicAudio && typeof window.cosmicAudio.getMediaStreamDestination === 'function') {
+          try {
+            const audioDest = window.cosmicAudio.getMediaStreamDestination();
+            if (audioDest && audioDest.stream) {
+              audioDest.stream.getAudioTracks().forEach(t => combinedStream.addTrack(t));
+            }
+          } catch (audioErr) {
+            console.warn('Could not attach Web Audio stream:', audioErr);
+          }
         }
 
         this.mediaStream = stream;
         this.recordedChunks = [];
 
-        // Select optimal recording codec
+        // Select lightweight hardware-friendly codec (AVOID VP9 60fps software encoding)
         const mimeTypes = [
-          'video/webm;codecs=vp9,opus',
-          'video/webm;codecs=vp8,opus',
+          'video/webm;codecs=vp8',
           'video/webm',
+          'video/mp4;codecs=avc1',
           'video/mp4'
         ];
         let chosenMime = '';
@@ -720,7 +787,7 @@
           }
         }
 
-        this.mediaRecorder = new MediaRecorder(stream, chosenMime ? { mimeType: chosenMime } : {});
+        this.mediaRecorder = new MediaRecorder(combinedStream, chosenMime ? { mimeType: chosenMime } : {});
 
         this.mediaRecorder.ondataavailable = (event) => {
           if (event.data && event.data.size > 0) {
@@ -732,7 +799,6 @@
           this.finalizeRecording();
         };
 
-        // If the user stops screen sharing from browser UI
         stream.getVideoTracks().forEach(track => {
           track.onended = () => {
             if (this.isRecording) {
@@ -741,7 +807,7 @@
           };
         });
 
-        this.mediaRecorder.start(1000); // 1-second chunks
+        this.mediaRecorder.start(1000); // 1s slice
         this.isRecording = true;
 
         // UI Updates
@@ -754,7 +820,6 @@
           this.recIndicator.style.display = 'inline-flex';
         }
 
-        // Start timer
         this.recordingStartTime = Date.now();
         this.recordingTimerId = setInterval(() => {
           const elapsedSec = Math.floor((Date.now() - this.recordingStartTime) / 1000);
@@ -765,24 +830,21 @@
           }
         }, 1000);
 
-        // If walkthrough is not playing, start it automatically
         if (!this.isPlaying) {
           this.restart();
         }
       } catch (err) {
-        console.warn('Recording permission or launch cancelled:', err);
+        console.warn('Safe browser recording cancelled or blocked:', err);
+        this.resetRecordingUI();
       }
     }
 
-    stopRecording() {
-      if (!this.isRecording) return;
+    resetRecordingUI() {
       this.isRecording = false;
-
       if (this.recordingTimerId) {
         clearInterval(this.recordingTimerId);
         this.recordingTimerId = null;
       }
-
       if (this.recordBtn) {
         this.recordBtn.classList.remove('recording');
         if (this.recordIcon) this.recordIcon.textContent = '⏺️';
@@ -791,6 +853,11 @@
       if (this.recIndicator) {
         this.recIndicator.style.display = 'none';
       }
+    }
+
+    stopRecording() {
+      if (!this.isRecording) return;
+      this.resetRecordingUI();
 
       if (this.mediaRecorder && this.mediaRecorder.state !== 'inactive') {
         this.mediaRecorder.stop();

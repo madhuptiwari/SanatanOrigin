@@ -19,6 +19,7 @@ class CosmicOmSynth {
     this.chimeTimer = null;
     this.volume = 0.45;
     this.iosSilentMedia = null;
+    this.streamDest = null;
   }
 
   unlockIOSAudio() {
@@ -128,6 +129,21 @@ class CosmicOmSynth {
 
   _ensurePlaying() {
     this.start();
+  }
+
+  getMediaStreamDestination() {
+    this.init();
+    if (!this.streamDest && this.ctx && this.ctx.createMediaStreamDestination) {
+      try {
+        this.streamDest = this.ctx.createMediaStreamDestination();
+        if (this.masterGain) {
+          this.masterGain.connect(this.streamDest);
+        }
+      } catch (e) {
+        console.warn("Could not create Web Audio media stream destination:", e);
+      }
+    }
+    return this.streamDest;
   }
 
   _killOscillators() {
