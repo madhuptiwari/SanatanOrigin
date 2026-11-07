@@ -398,12 +398,15 @@
       // Build Beat Registry
       this.beats = this.buildBeats();
 
-      // Ensure SpeechSynthesis is warmed up
+      // Ensure SpeechSynthesis is warmed up and Indian female voices populated
+      this.voices = [];
       if ('speechSynthesis' in window) {
-        window.speechSynthesis.onvoiceschanged = () => {
+        const loadVoices = () => {
           this.voices = window.speechSynthesis.getVoices();
+          this.populateVoiceDropdown();
         };
-        this.voices = window.speechSynthesis.getVoices();
+        window.speechSynthesis.onvoiceschanged = loadVoices;
+        loadVoices();
       }
 
       this.updateDisplay(0);
@@ -915,6 +918,87 @@
       this.play();
     }
 
+    getIndianFemaleVoice() {
+      if (!this.voices || this.voices.length === 0) {
+        if ('speechSynthesis' in window) {
+          this.voices = window.speechSynthesis.getVoices();
+        }
+      }
+      const voices = this.voices || [];
+      if (voices.length === 0) return null;
+
+      // Indian Female Voice Names across Windows (Chrome/Edge), iOS/macOS, Android & Web
+      const indianFemaleKeywords = [
+        'neerja', 'heera', 'veena', 'kavya', 'aditi', 'swara',
+        'isha', 'sangeeta', 'priya', 'ananya', 'geeta', 'sunita'
+      ];
+
+      // Tier 1: Explicit Indian English Female Voices (e.g. Microsoft Neerja Online Natural, Apple Veena, Google en-in)
+      for (const v of voices) {
+        const lang = (v.lang || '').replace('_', '-').toLowerCase();
+        const name = (v.name || '').toLowerCase();
+        const isIndian = lang === 'en-in' || lang.startsWith('en-in') || name.includes('india') || name.includes('indian');
+        if (isIndian) {
+          for (const kw of indianFemaleKeywords) {
+            if (name.includes(kw)) {
+              return v;
+            }
+          }
+          if (name.includes('female')) {
+            return v;
+          }
+        }
+      }
+
+      // Tier 2: Any Indian English voice (Google English (India), Microsoft en-IN)
+      for (const v of voices) {
+        const lang = (v.lang || '').replace('_', '-').toLowerCase();
+        const name = (v.name || '').toLowerCase();
+        if (lang === 'en-in' || lang.startsWith('en-in') || (name.includes('english') && name.includes('india'))) {
+          return v;
+        }
+      }
+
+      // Tier 3: Indian Hindi voice (speaks Sanskrit & English loanwords with authentic Indian phonetics)
+      for (const v of voices) {
+        const lang = (v.lang || '').replace('_', '-').toLowerCase();
+        const name = (v.name || '').toLowerCase();
+        if (lang === 'hi-in' || lang.startsWith('hi') || name.includes('hindi') || name.includes('swara') || name.includes('kalpana')) {
+          return v;
+        }
+      }
+
+      // Tier 4: Natural feminine voice fallback
+      for (const v of voices) {
+        const name = (v.name || '').toLowerCase();
+        if (v.lang && v.lang.startsWith('en') && (name.includes('natural') || name.includes('female') || name.includes('zira') || name.includes('samantha') || name.includes('victoria'))) {
+          return v;
+        }
+      }
+
+      return voices.find(v => v.lang && v.lang.startsWith('en')) || voices[0] || null;
+    }
+
+    populateVoiceDropdown() {
+      const select = document.getElementById('studio-voice-select');
+      if (!select) return;
+
+      const voice = this.getIndianFemaleVoice();
+      let displayName = 'Indian Female AI (Natural)';
+      if (voice && voice.name) {
+        displayName = voice.name
+          .replace('Microsoft ', '')
+          .replace(' Online (Natural)', '')
+          .replace(' - English (India)', ' (Indian Female)')
+          .replace(' English (India)', ' (Indian Female)');
+      }
+
+      select.innerHTML = `
+        <option value="speech" selected>🎙️ AI: ${displayName}</option>
+        <option value="mute">🔇 Voiceover: Muted (Speak Yourself)</option>
+      `;
+    }
+
     setVoiceMode(mode) {
       this.voiceMode = mode;
       if (mode === 'mute' && 'speechSynthesis' in window) {
@@ -959,26 +1043,47 @@
       }
 
       if (this.voiceMode === 'speech' && 'speechSynthesis' in window) {
-        window.speechSynthesis.cancel();
-        const utterance = new SpeechSynthesisUtterance(beat.speech);
-        utterance.rate = 1.02;
-        utterance.pitch = 1.0;
-
-        if (this.voices && this.voices.length > 0) {
-          const preferredVoice = this.voices.find(v => 
-            v.lang.startsWith('en') && (v.name.includes('Natural') || v.name.includes('Google') || v.name.includes('David') || v.name.includes('Samantha') || v.name.includes('George'))
-          ) || this.voices.find(v => v.lang.startsWith('en'));
-          if (preferredVoice) utterance.voice = preferredVoice;
+        // Resume synthesis if paused (resolves Chrome Windows background pause bug)
+        if (window.speechSynthesis.paused) {
+          window.speechSynthesis.resume();
+        }
+        if (window.speechSynthesis.speaking) {
+          window.speechSynthesis.cancel();
         }
 
+        const utterance = new SpeechSynthesisUtterance(beat.speech);
+        utterance.lang = 'en-IN'; // Explicit Indian English accent!
+        utterance.rate = 1.04;    // Fluent, confident, articulate pacing
+        utterance.pitch = 1.06;   // Natural, warm feminine pitch
+
+        const preferredVoice = this.getIndianFemaleVoice();
+        if (preferredVoice) {
+          utterance.voice = preferredVoice;
+          if (preferredVoice.lang) utterance.lang = preferredVoice.lang;
+        }
+
+        // Keep-alive timer prevents Chrome from stalling on longer sentences
+        if (this._speechKeepAlive) clearInterval(this._speechKeepAlive);
+        this._speechKeepAlive = setInterval(() => {
+          if (window.speechSynthesis.speaking && !window.speechSynthesis.paused) {
+            window.speechSynthesis.pause();
+            window.speechSynthesis.resume();
+          } else {
+            clearInterval(this._speechKeepAlive);
+          }
+        }, 10000);
+
         utterance.onend = () => {
+          if (this._speechKeepAlive) clearInterval(this._speechKeepAlive);
           if (!this.isPlaying) return;
+          // Ultra-crisp 120ms gap: completely eliminates awkward dead air between statements!
           this.timerId = setTimeout(() => {
             this.nextScene();
-          }, 850);
+          }, 120);
         };
 
         utterance.onerror = (e) => {
+          if (this._speechKeepAlive) clearInterval(this._speechKeepAlive);
           console.warn('Speech error, fallback to timer:', e);
           this.scheduleTimerFallback(beat.speech);
         };
@@ -991,7 +1096,8 @@
 
     scheduleTimerFallback(text) {
       const wordCount = (text || '').split(/\s+/).length;
-      const durationMs = Math.max(3800, (wordCount * 365) + 1200);
+      // ~165 words per minute + tight 120ms buffer
+      const durationMs = Math.max(2400, (wordCount * 360) + 120);
 
       this.timerId = setTimeout(() => {
         if (this.isPlaying) {
